@@ -133,46 +133,6 @@ static inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS) {
 
 zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_emergency, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_alert, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_critical, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_error, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_warning, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_notice, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_info, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogAbstractLogger_debug, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
-
 static void php_psr_PsrLogAbstractLogger_log(const char * level, int level_len, INTERNAL_FUNCTION_PARAMETERS) {
     zval * _this_zval;
     zval * message;
@@ -238,14 +198,14 @@ PHP_METHOD(PsrLogAbstractLogger, debug) {
 }
 
 static zend_function_entry PsrLogAbstractLogger_methods[] = {
-    PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogAbstractLogger_emergency, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, alert, arginfo_PsrLogAbstractLogger_alert, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, critical, arginfo_PsrLogAbstractLogger_critical, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, error, arginfo_PsrLogAbstractLogger_error, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, warning, arginfo_PsrLogAbstractLogger_warning, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, notice, arginfo_PsrLogAbstractLogger_notice, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, info, arginfo_PsrLogAbstractLogger_info, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, debug, arginfo_PsrLogAbstractLogger_debug, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogLoggerInterface_emergency, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, alert, arginfo_PsrLogLoggerInterface_alert, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, critical, arginfo_PsrLogLoggerInterface_critical, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, error, arginfo_PsrLogLoggerInterface_error, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, warning, arginfo_PsrLogLoggerInterface_warning, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, notice, arginfo_PsrLogLoggerInterface_notice, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, info, arginfo_PsrLogLoggerInterface_info, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, debug, arginfo_PsrLogLoggerInterface_debug, ZEND_ACC_PUBLIC)
     PHP_FE_END
 };
 
@@ -255,6 +215,72 @@ static inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS) {
     PsrLogAbstractLogger_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
     zend_class_implements(PsrLogAbstractLogger_ce_ptr TSRMLS_CC, 1, PsrLogLoggerInterface_ce_ptr);
 }
+
+/* }}} ---------------------------------------------------------------------- */
+/* {{{ NullLogger ----------------------------------------------------------- */
+
+zend_class_entry * PsrLogNullLogger_ce_ptr;
+
+PHP_METHOD(PsrLogNullLogger, log) {
+    // noop
+}
+
+static zend_function_entry PsrLogNullLogger_methods[] = {
+    PHP_ME(PsrLogNullLogger, log, arginfo_PsrLogLoggerInterface_log, ZEND_ACC_PUBLIC)
+    PHP_FE_END
+};
+
+static inline void php_psr_register_NullLogger(INIT_FUNC_ARGS) {
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, "Psr\\Log\\NullLogger", PsrLogNullLogger_methods);
+    PsrLogNullLogger_ce_ptr = zend_register_internal_class_ex(&ce, PsrLogAbstractLogger_ce_ptr, NULL TSRMLS_CC);
+}
+
+/* }}} ---------------------------------------------------------------------- */
+/* {{{ LoggerTrait ---------------------------------------------------------- */
+
+zend_class_entry * PsrLogLoggerTrait_ce_ptr;
+
+static zend_function_entry PsrLogLoggerTrait_methods[] = {
+    PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogLoggerInterface_emergency, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, alert, arginfo_PsrLogLoggerInterface_alert, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, critical, arginfo_PsrLogLoggerInterface_critical, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, error, arginfo_PsrLogLoggerInterface_error, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, warning, arginfo_PsrLogLoggerInterface_warning, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, notice, arginfo_PsrLogLoggerInterface_notice, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, info, arginfo_PsrLogLoggerInterface_info, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ME(PsrLogAbstractLogger, debug, arginfo_PsrLogLoggerInterface_debug, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_ABSTRACT_ME(PsrLogNullLogger, log, arginfo_PsrLogLoggerInterface_log)
+    PHP_FE_END
+};
+
+static inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS) {
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerTrait", PsrLogLoggerTrait_methods);
+    PsrLogLoggerTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
+}
+
+/* }}} ---------------------------------------------------------------------- */
+/* {{{ LoggerAwareTrait ----------------------------------------------------- */
+
+zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
+
+PHP_METHOD(PsrLogLoggerAwareTrait, setLogger) {
+    // noop
+}
+
+static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {
+    PHP_ME(PsrLogLoggerAwareTrait, setLogger, arginfo_PsrLogLoggerAwareInterface_setLogger, ZEND_ACC_PUBLIC | ZEND_ACC_TRAIT)
+    PHP_FE_END
+};
+
+static inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS) {
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareTrait", PsrLogLoggerAwareTrait_methods);
+    PsrLogLoggerAwareTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
+	zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED | ZEND_ACC_TRAIT TSRMLS_CC);
+}
+
 /* }}} ---------------------------------------------------------------------- */
 
 static PHP_MINIT_FUNCTION(psr)
@@ -263,6 +289,8 @@ static PHP_MINIT_FUNCTION(psr)
     php_psr_register_LoggerInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_AbstractLogger(INIT_FUNC_ARGS_PASSTHRU);
+    php_psr_register_NullLogger(INIT_FUNC_ARGS_PASSTHRU);
+    php_psr_register_LoggerTrait(INIT_FUNC_ARGS_PASSTHRU);
 
     return SUCCESS;
 }
