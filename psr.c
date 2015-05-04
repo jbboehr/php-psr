@@ -252,6 +252,8 @@ static inline void php_psr_register_NullLogger(INIT_FUNC_ARGS) {
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ LoggerTrait ---------------------------------------------------------- */
 
+#if PHP_API_VERSION >= 20100412
+
 zend_class_entry * PsrLogLoggerTrait_ce_ptr;
 
 static zend_function_entry PsrLogLoggerTrait_methods[] = {
@@ -275,8 +277,12 @@ static inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS) {
     PsrLogLoggerTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
 }
 
+#endif
+
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ LoggerAwareTrait ----------------------------------------------------- */
+
+#if PHP_API_VERSION >= 20100412
 
 zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 
@@ -306,6 +312,8 @@ static inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS) {
 	zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED TSRMLS_CC);
 }
 
+#endif
+
 /* }}} ---------------------------------------------------------------------- */
 
 static PHP_MINIT_FUNCTION(psr)
@@ -316,8 +324,10 @@ static PHP_MINIT_FUNCTION(psr)
     php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_AbstractLogger(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_NullLogger(INIT_FUNC_ARGS_PASSTHRU);
+#if PHP_API_VERSION >= 20100412
     php_psr_register_LoggerTrait(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS_PASSTHRU);
+#endif
 
     return SUCCESS;
 }
