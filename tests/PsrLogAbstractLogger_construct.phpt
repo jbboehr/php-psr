@@ -1,5 +1,5 @@
 --TEST--
-PsrLogAbstractLogger
+Psr\Log\AbstractLogger
 --SKIPIF--
 <?php if( !extension_loaded('psr') ) die('skip '); ?>
 --FILE--

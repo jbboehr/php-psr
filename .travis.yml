@@ -1,0 +1,33 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: 5.3
+    - php: 7.0
+
+branches:
+  only:
+    - master
+
+before_script:
+  - travis_retry git clone -b 1.13.1 https://github.com/Seldaek/monolog.git
+  - cd monolog
+  - travis_retry composer install
+  - rm vendor/psr/log/Psr/Log/*.php
+  - cd ..
+
+script:
+  - phpize
+  - ./configure
+  - make
+  - make test
+  - php -d extension=modules/psr.so ./monolog/vendor/bin/phpunit -c monolog/
+

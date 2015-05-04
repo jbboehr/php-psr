@@ -1,5 +1,5 @@
 --TEST--
-PsrLogLevel
+Psr\Log\LogLevel
 --SKIPIF--
 <?php if( !extension_loaded('psr') ) die('skip '); ?>
 --FILE--

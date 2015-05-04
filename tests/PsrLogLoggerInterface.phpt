@@ -1,5 +1,5 @@
 --TEST--
-LoggerInterface
+Psr\Log\LoggerInterface
 --SKIPIF--
 <?php if( !extension_loaded('psr') ) die('skip '); ?>
 --FILE--

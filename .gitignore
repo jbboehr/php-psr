@@ -16,6 +16,7 @@ gmon*
 nbproject
 build
 modules
+monolog
 test.php
 tests/*.diff
 tests/*.exp

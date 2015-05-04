@@ -1,5 +1,5 @@
 --TEST--
-PsrLogLoggerAwareTrait
+Psr\Log\LoggerAwareTrait
 --SKIPIF--
 <?php if( !extension_loaded('psr') ) die('skip '); ?>
 --FILE--

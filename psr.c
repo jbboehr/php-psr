@@ -8,6 +8,7 @@
 #include "php.h"
 #include "php_ini.h"
 #include "ext/standard/info.h"
+#include "ext/spl/spl_exceptions.h"
 #include "zend_API.h"
 #include "zend_interfaces.h"
 
@@ -16,8 +17,19 @@
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1 TSRMLS_CC);
 
+/* {{{ InvalidArgumentException --------------------------------------------- */
 
-/* {{{ LogLevel ------------------------------------------------------------ */
+zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
+
+static inline void php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS)
+{
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, "Psr\\Log\\InvalidArgumentException", NULL);
+    PsrLogInvalidArgumentException_ce_ptr = zend_register_internal_class_ex(&ce, spl_ce_InvalidArgumentException, NULL TSRMLS_CC);
+}
+
+/* }}} ---------------------------------------------------------------------- */
+/* {{{ LogLevel ------------------------------------------------------------- */
 
 zend_class_entry * PsrLogLogLevel_ce_ptr;
 
@@ -298,6 +310,7 @@ static inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS) {
 
 static PHP_MINIT_FUNCTION(psr)
 {
+    php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LogLevel(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LoggerInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS_PASSTHRU);
@@ -318,8 +331,15 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_end();
 }
 
+static const zend_module_dep psr_deps[] = {
+	ZEND_MOD_REQUIRED("spl")
+	ZEND_MOD_END
+};
+
 zend_module_entry psr_module_entry = {
-    STANDARD_MODULE_HEADER,
+    STANDARD_MODULE_HEADER_EX,
+    NULL,
+    psr_deps,
     PHP_PSR_NAME,                       /* Name */
     NULL,                               /* Functions */
     PHP_MINIT(psr),                     /* MINIT */
