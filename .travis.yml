@@ -17,6 +17,8 @@ branches:
   only:
     - master
 
+env: NO_INTERACTION=1
+
 before_script:
   - travis_retry git clone -b 1.13.1 https://github.com/Seldaek/monolog.git
   - cd monolog
