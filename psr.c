@@ -18,7 +18,7 @@
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1 TSRMLS_CC);
 
 #if PHP_MAJOR_VERSION < 7
-#define _zend_register_internal_class(class) zend_register_internal_class_ex(class, NULL TSRMLS_CC)
+#define _zend_register_internal_class(class) zend_register_internal_class(class TSRMLS_CC)
 #define _zend_register_internal_class_ex(class, parent) zend_register_internal_class_ex(class, parent, NULL TSRMLS_CC)
 #else
 #define _zend_register_internal_class zend_register_internal_class
