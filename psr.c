@@ -153,7 +153,7 @@ static inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS) {
 
 zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 
-static void php_psr_PsrLogAbstractLogger_log(const char * level, int level_len, INTERNAL_FUNCTION_PARAMETERS) {
+static void php_psr_PsrLogAbstractLogger_log(const char * level_str, int level_len, INTERNAL_FUNCTION_PARAMETERS) {
 #if PHP_MAJOR_VERSION < 7
     zval * _this_zval;
     zval * message;
@@ -175,7 +175,7 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level, int level_len, 
     MAKE_STD_ZVAL(fparams[0]);
     MAKE_STD_ZVAL(fparams[1]);
     MAKE_STD_ZVAL(fparams[2]);
-    ZVAL_STRINGL(fparams[0], level, level_len, 0);
+    ZVAL_STRINGL(fparams[0], level_str, level_len, 0);
     ZVAL_ZVAL(fparams[1], message, 0, 0);
     ZVAL_ZVAL(fparams[2], context, 0, 0);
 
@@ -187,8 +187,8 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level, int level_len, 
     efree(fparams[2]);
 #else
     zval * _this_zval;
-    zval message;
-    zval context;
+    zval * message;
+    zval * context;
     zval fname;
     zval fparams[3];
     zend_class_entry * expected_ce = NULL; // PsrLogAbstractLogger_ce_ptr
@@ -202,13 +202,11 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level, int level_len, 
     ZVAL_STRINGL(&fname, "log", sizeof("log")-1);
     
     // Make function params
-    ZVAL_STRINGL(&fparams[0], level, level_len);
-//    fparams[1] = message;
-//    fparams[2] = context;
-    ZVAL_ZVAL(&fparams[1], &message, 0, 0);
-    ZVAL_ZVAL(&fparams[2], &context, 0, 0);
+    ZVAL_STRINGL(&fparams[0], level_str, level_len);
+    ZVAL_ZVAL(&fparams[1], message, 0, 0);
+    ZVAL_ZVAL(&fparams[2], context, 0, 0);
 
-    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams);
+    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
 #endif
 }
 
