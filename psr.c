@@ -20,9 +20,12 @@
 #if PHP_MAJOR_VERSION < 7
 #define _zend_register_internal_class(class) zend_register_internal_class(class TSRMLS_CC)
 #define _zend_register_internal_class_ex(class, parent) zend_register_internal_class_ex(class, parent, NULL TSRMLS_CC)
+#define PHP_PSR_EXTRA_TRAIT_FLAGS 0
 #else
 #define _zend_register_internal_class zend_register_internal_class
 #define _zend_register_internal_class_ex zend_register_internal_class_ex
+/* Needed to work around https://bugs.php.net/bug.php?id=69579 */
+#define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
 #endif
 
 /* {{{ InvalidArgumentException --------------------------------------------- */
@@ -289,14 +292,14 @@ static inline void php_psr_register_NullLogger(INIT_FUNC_ARGS) {
 zend_class_entry * PsrLogLoggerTrait_ce_ptr;
 
 static zend_function_entry PsrLogLoggerTrait_methods[] = {
-    PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogLoggerInterface_emergency, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, alert, arginfo_PsrLogLoggerInterface_alert, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, critical, arginfo_PsrLogLoggerInterface_critical, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, error, arginfo_PsrLogLoggerInterface_error, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, warning, arginfo_PsrLogLoggerInterface_warning, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, notice, arginfo_PsrLogLoggerInterface_notice, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, info, arginfo_PsrLogLoggerInterface_info, ZEND_ACC_PUBLIC)
-    PHP_ME(PsrLogAbstractLogger, debug, arginfo_PsrLogLoggerInterface_debug, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogLoggerInterface_emergency, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, alert, arginfo_PsrLogLoggerInterface_alert, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, critical, arginfo_PsrLogLoggerInterface_critical, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, error, arginfo_PsrLogLoggerInterface_error, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, warning, arginfo_PsrLogLoggerInterface_warning, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, notice, arginfo_PsrLogLoggerInterface_notice, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, info, arginfo_PsrLogLoggerInterface_info, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
+    PHP_ME(PsrLogAbstractLogger, debug, arginfo_PsrLogLoggerInterface_debug, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
     PHP_ABSTRACT_ME(PsrLogNullLogger, log, arginfo_PsrLogLoggerInterface_log)
     PHP_FE_END
 };
@@ -331,7 +334,7 @@ PHP_METHOD(PsrLogLoggerAwareTrait, setLogger) {
 }
 
 static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {
-    PHP_ME(PsrLogLoggerAwareTrait, setLogger, arginfo_PsrLogLoggerAwareInterface_setLogger, ZEND_ACC_PUBLIC)
+    PHP_ME(PsrLogLoggerAwareTrait, setLogger, arginfo_PsrLogLoggerAwareInterface_setLogger, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
     PHP_FE_END
 };
 
