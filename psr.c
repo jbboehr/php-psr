@@ -13,11 +13,14 @@
 #include "zend_interfaces.h"
 
 #include "php_psr.h"
+#include "psr_cache.h"
+#include "psr_http_message.h"
 #include "psr_log.h"
 
 PHP_MINIT_FUNCTION(psr)
 {
 	PHP_MINIT(psr_cache)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(psr_http_message)(INIT_FUNC_ARGS_PASSTHRU);
 	PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
     return SUCCESS;
 }
