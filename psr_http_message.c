@@ -61,8 +61,8 @@ PHP_PSR_END_ARG_INFO()
 PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageMessageInterface, getBody, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageMessageInterface, withBody, 0)
-    ZEND_ARG_OBJ_INFO(0, logger, Psr\\Http\\Message\\StreamInterface, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageMessageInterface, withBody, 1)
+    ZEND_ARG_OBJ_INFO(0, body, Psr\\Http\\Message\\StreamInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
 static zend_function_entry PsrHttpMessageMessageInterface_methods[] = {
@@ -402,23 +402,23 @@ PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withUserInfo, 1)
     ZEND_ARG_INFO(0, password)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withHost, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withHost, 1)
     ZEND_ARG_INFO(0, host)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withPort, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withPort, 1)
     ZEND_ARG_INFO(0, port)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withPath, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withPath, 1)
     ZEND_ARG_INFO(0, path)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withQuery, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withQuery, 1)
     ZEND_ARG_INFO(0, query)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withFragment, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageUriInterface, withFragment, 1)
     ZEND_ARG_INFO(0, fragment)
 PHP_PSR_END_ARG_INFO()
 
