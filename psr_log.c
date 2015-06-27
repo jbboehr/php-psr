@@ -32,7 +32,7 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
 
 PHPAPI zend_class_entry * PsrLogLogLevel_ce_ptr;
 
-static zend_always_inline void  php_psr_register_LogLevel(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS) {
     zend_class_entry ce;
 
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LogLevel", NULL);
@@ -54,62 +54,62 @@ static zend_always_inline void  php_psr_register_LogLevel(INIT_FUNC_ARGS) {
 
 PHPAPI zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_emergency, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, emergency, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_alert, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, alert, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_critical, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, critical, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_error, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, error, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_warning, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, warning, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_notice, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, notice, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_info, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, info, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_debug, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, debug, 1)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerInterface_log, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 2)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, log, 2)
     ZEND_ARG_INFO(0, level)
     ZEND_ARG_INFO(0, message)
     ZEND_ARG_ARRAY_INFO(0, context, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
 static zend_function_entry PsrLogLoggerInterface_methods[] = {
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, emergency, arginfo_PsrLogLoggerInterface_emergency)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, alert, arginfo_PsrLogLoggerInterface_alert)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, critical, arginfo_PsrLogLoggerInterface_critical)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, error, arginfo_PsrLogLoggerInterface_error)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, warning, arginfo_PsrLogLoggerInterface_warning)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, notice, arginfo_PsrLogLoggerInterface_notice)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, info, arginfo_PsrLogLoggerInterface_info)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, debug, arginfo_PsrLogLoggerInterface_debug)
-    PHP_ABSTRACT_ME(PsrLogLoggerInterface, log, arginfo_PsrLogLoggerInterface_log)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, emergency)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, alert)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, critical)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, error)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, warning)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, notice)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, info)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, debug)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, log)
     PHP_FE_END
 };
 
@@ -124,12 +124,12 @@ static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS) 
 
 PHPAPI zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrLogLoggerAwareInterface_setLogger, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerAwareInterface, setLogger, 1)
     ZEND_ARG_OBJ_INFO(0, logger, Psr\\Log\\LoggerInterface, 0)
-ZEND_END_ARG_INFO();
+PHP_PSR_END_ARG_INFO();
 
 static zend_function_entry PsrLogLoggerAwareInterface_methods[] = {
-    PHP_ABSTRACT_ME(PsrLogLoggerAwareInterface, setLogger, arginfo_PsrLogLoggerAwareInterface_setLogger)
+    PHP_PSR_ABSTRACT_ME(PsrLogLoggerAwareInterface, setLogger)
     PHP_FE_END
 };
 
