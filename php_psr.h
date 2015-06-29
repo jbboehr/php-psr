@@ -17,6 +17,9 @@
 #define PHP_PSR_RELEASE "2015-05-02"
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
+#define PHP_PSR_ABSTRACT_ME(c, f) PHP_ABSTRACT_ME(c, f, arginfo_ ## c ## _ ## f)
+#define PHP_PSR_BEGIN_ARG_INFO(c, f, n) ZEND_BEGIN_ARG_INFO_EX(arginfo_ ## c ## _ ## f, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, n)
+#define PHP_PSR_END_ARG_INFO ZEND_END_ARG_INFO
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1 TSRMLS_CC);
 

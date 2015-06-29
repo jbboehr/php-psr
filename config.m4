@@ -8,6 +8,6 @@ PHP_ARG_ENABLE(psr, whether to enable psr support,
 
 # MAIN -------------------------------------------------------------------------
 if test "$PHP_PSR" != "no"; then
-    PHP_NEW_EXTENSION(psr, psr.c psr_log.c psr_cache.c, $ext_shared, , $PHP_PSR_FLAGS)
+    PHP_NEW_EXTENSION(psr, psr.c psr_log.c psr_cache.c psr_http_message.c, $ext_shared, , $PHP_PSR_FLAGS)
 fi
 

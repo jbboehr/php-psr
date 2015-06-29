@@ -21,42 +21,42 @@
 
 PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_getKey, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, getKey, 0)
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_get, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, get, 0)
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_set, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, set, 1)
     ZEND_ARG_INFO(0, value)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_isHit, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, isHit, 0)
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_exists, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, exists, 0)
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_expiresAt, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAt, 1)
     ZEND_ARG_INFO(0, expiration)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_expiresAfter, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAfter, 1)
     ZEND_ARG_INFO(0, time)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_getExpiration, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, getExpiration, 0)
+PHP_PSR_END_ARG_INFO()
 
 static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey, arginfo_PsrCacheCacheItemInterface_getKey)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, get, arginfo_PsrCacheCacheItemInterface_get)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, set, arginfo_PsrCacheCacheItemInterface_set)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, isHit, arginfo_PsrCacheCacheItemInterface_isHit)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, exists, arginfo_PsrCacheCacheItemInterface_exists)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAt, arginfo_PsrCacheCacheItemInterface_expiresAt)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAfter, arginfo_PsrCacheCacheItemInterface_expiresAfter)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemInterface, getExpiration, arginfo_PsrCacheCacheItemInterface_getExpiration)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, get)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, set)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, isHit)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, exists)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAt)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAfter)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getExpiration)
     PHP_FE_END
 };
 
@@ -72,40 +72,40 @@ static zend_always_inline void php_psr_register_CacheItemInterface(INIT_FUNC_ARG
 
 PHPAPI zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_getItem, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, getItem, 1)
     ZEND_ARG_INFO(0, key)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_getItems, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, getItems, 0)
     ZEND_ARG_ARRAY_INFO(0, keys, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_clear, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, clear, 0)
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_deleteItems, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, deleteItems, 1)
     ZEND_ARG_ARRAY_INFO(0, keys, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_save, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, save, 1)
     ZEND_ARG_OBJ_INFO(0, logger, Psr\\Cache\\CacheItemInterface, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_saveDeferred, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 1)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, saveDeferred, 1)
     ZEND_ARG_OBJ_INFO(0, logger, Psr\\Cache\\CacheItemInterface, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_PsrCacheCacheItemInterface_commit, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, 0)
-ZEND_END_ARG_INFO()
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, commit, 0)
+PHP_PSR_END_ARG_INFO()
 
 static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem, arginfo_PsrCacheCacheItemInterface_getItem)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItems, arginfo_PsrCacheCacheItemInterface_getItems)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, clear, arginfo_PsrCacheCacheItemInterface_clear)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItems, arginfo_PsrCacheCacheItemInterface_deleteItems)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, save, arginfo_PsrCacheCacheItemInterface_save)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, saveDeferred, arginfo_PsrCacheCacheItemInterface_saveDeferred)
-    PHP_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, commit, arginfo_PsrCacheCacheItemInterface_commit)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItems)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, clear)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItems)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, save)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, saveDeferred)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, commit)
     PHP_FE_END
 };
 
