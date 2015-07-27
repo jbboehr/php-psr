@@ -7,28 +7,27 @@ php:
   - 5.6
   - 7.0
 
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: 7.0
-
 branches:
   only:
     - master
 
 env: NO_INTERACTION=1
 
-before_script:
-  - travis_retry git clone -b 1.13.1 https://github.com/Seldaek/monolog.git
-  - cd monolog
-  - travis_retry composer install
-  - rm vendor/psr/log/Psr/Log/*.php
-  - cd ..
-
-script:
+install:
   - phpize
   - ./configure
   - make
+
+before_script:
+  - travis_retry ./.travis.sh monolog_init
+# it's out of date
+#  - travis_retry ./.travis.sh cache_init
+  - travis_retry ./.travis.sh psr7_init
+
+script:
   - make test
-  - php -d extension=modules/psr.so ./monolog/vendor/bin/phpunit -c monolog/
+  - ./.travis.sh monolog_test
+# it's out of date
+#  - ./.travis.sh cache_test
+  - ./.travis.sh psr7_test
 

@@ -16,7 +16,6 @@ gmon*
 nbproject
 build
 modules
-monolog
 test.php
 tests/*.diff
 tests/*.exp
@@ -45,3 +44,7 @@ mkinstalldirs
 run-tests.php
 tmp-php.ini
 specs
+
+/Cache/
+/monolog/
+/psr7/
