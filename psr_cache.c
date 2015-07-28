@@ -1,6 +1,4 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -14,8 +12,6 @@
 
 #include "php_psr.h"
 #include "psr_cache.h"
-
-
 
 /* {{{ CacheItemInterface --------------------------------------------------- */
 
@@ -142,6 +138,7 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 
 /* }}} ---------------------------------------------------------------------- */
 
+/* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_cache)
 {
     php_psr_register_CacheItemInterface(INIT_FUNC_ARGS_PASSTHRU);
@@ -151,4 +148,14 @@ PHP_MINIT_FUNCTION(psr_cache)
 
     return SUCCESS;
 }
+/* }}} */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 

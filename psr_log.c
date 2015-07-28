@@ -1,6 +1,4 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -15,8 +13,7 @@
 #include "php_psr.h"
 #include "psr_log.h"
 
-
-/* {{{ InvalidArgumentException --------------------------------------------- */
+/* {{{ Psr\Log\InvalidArgumentException */
 
 PHPAPI zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
 
@@ -27,12 +24,13 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
     PsrLogInvalidArgumentException_ce_ptr = REGISTER_PSR_CLASS_EX(&ce, spl_ce_InvalidArgumentException);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ LogLevel ------------------------------------------------------------- */
+/* }}} Psr\Log\InvalidArgumentException */
+/* {{{ Psr\Log\LogLevel */
 
 PHPAPI zend_class_entry * PsrLogLogLevel_ce_ptr;
 
-static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
 
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LogLevel", NULL);
@@ -49,8 +47,8 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS) {
 
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ LoggerInterface ------------------------------------------------------ */
+/* }}} Psr\Log\LogLevel */
+/* {{{ Psr\Log\LoggerInterface */
 
 PHPAPI zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 
@@ -119,8 +117,8 @@ static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS) 
     PsrLogLoggerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ LoggerAwareInterface ------------------------------------------------- */
+/* }}} Psr\Log\LoggerInterface */
+/* {{{ Psr\Log\LoggerAwareInterface */
 
 PHPAPI zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
 
@@ -133,18 +131,20 @@ static zend_function_entry PsrLogLoggerAwareInterface_methods[] = {
     PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareInterface", PsrLogLoggerAwareInterface_methods);
     PsrLogLoggerAwareInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ AbstractLogger ------------------------------------------------------- */
+/* }}} Psr\Log\LoggerAwareInterface */
+/* {{{ Psr\Log\AbstractLogger */
 
 PHPAPI zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 
-static void php_psr_PsrLogAbstractLogger_log(const char * level_str, int level_len, INTERNAL_FUNCTION_PARAMETERS) {
+static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t level_len, INTERNAL_FUNCTION_PARAMETERS)
+{
 #if PHP_MAJOR_VERSION < 7
     zval * _this_zval;
     zval * message;
@@ -201,35 +201,43 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, int level_l
 #endif
 }
 
-PHP_METHOD(PsrLogAbstractLogger, emergency) {
+PHP_METHOD(PsrLogAbstractLogger, emergency)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("emergency"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, alert) {
+PHP_METHOD(PsrLogAbstractLogger, alert)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("alert"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, critical) {
+PHP_METHOD(PsrLogAbstractLogger, critical)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("critical"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, error) {
+PHP_METHOD(PsrLogAbstractLogger, error)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("error"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, warning) {
+PHP_METHOD(PsrLogAbstractLogger, warning)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("warning"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, notice) {
+PHP_METHOD(PsrLogAbstractLogger, notice)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("notice"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, info) {
+PHP_METHOD(PsrLogAbstractLogger, info)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("info"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHP_METHOD(PsrLogAbstractLogger, debug) {
+PHP_METHOD(PsrLogAbstractLogger, debug)
+{
     php_psr_PsrLogAbstractLogger_log(ZEND_STRL("debug"), INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
@@ -245,19 +253,21 @@ static zend_function_entry PsrLogAbstractLogger_methods[] = {
     PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\AbstractLogger", PsrLogAbstractLogger_methods);
     PsrLogAbstractLogger_ce_ptr = REGISTER_PSR_CLASS(&ce);
     zend_class_implements(PsrLogAbstractLogger_ce_ptr TSRMLS_CC, 1, PsrLogLoggerInterface_ce_ptr);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ NullLogger ----------------------------------------------------------- */
+/* }}} Psr\Log\AbstractLogger */
+/* {{{ Psr\Log\NullLogger */
 
 PHPAPI zend_class_entry * PsrLogNullLogger_ce_ptr;
 
-PHP_METHOD(PsrLogNullLogger, log) {
+PHP_METHOD(PsrLogNullLogger, log)
+{
     // noop
 }
 
@@ -266,14 +276,15 @@ static zend_function_entry PsrLogNullLogger_methods[] = {
     PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_NullLogger(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_NullLogger(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\NullLogger", PsrLogNullLogger_methods);
     PsrLogNullLogger_ce_ptr = REGISTER_PSR_CLASS_EX(&ce, PsrLogAbstractLogger_ce_ptr);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ LoggerTrait ---------------------------------------------------------- */
+/* }}} Psr\Log\NullLogger */
+/* {{{ Psr\Log\LoggerTrait */
 
 #if PHP_API_VERSION >= 20100412
 
@@ -292,24 +303,25 @@ static zend_function_entry PsrLogLoggerTrait_methods[] = {
     PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerTrait", PsrLogLoggerTrait_methods);
-    //ce.ce_flags |= ZEND_ACC_TRAIT;
     PsrLogLoggerTrait_ce_ptr = REGISTER_PSR_CLASS(&ce);
     PsrLogLoggerTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
 }
 
 #endif
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ LoggerAwareTrait ----------------------------------------------------- */
+/* }}} Psr\Log\LoggerTrait */
+/* {{{ Psr\Log\LoggerAwareTrait */
 
 #if PHP_API_VERSION >= 20100412
 
 PHPAPI zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 
-PHP_METHOD(PsrLogLoggerAwareTrait, setLogger) {
+PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
+{
     zval * _this_zval;
     zval * logger;
     
@@ -326,7 +338,8 @@ static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {
     PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS) {
+static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS)
+{
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareTrait", PsrLogLoggerAwareTrait_methods);
     //ce.ce_flags |= ZEND_ACC_TRAIT;
@@ -337,9 +350,9 @@ static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS)
 
 #endif
 
+/* }}} Psr\Log\LoggerAwareTrait */
 
-/* }}} ---------------------------------------------------------------------- */
-
+/* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_log)
 {
     php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS_PASSTHRU);
@@ -355,4 +368,14 @@ PHP_MINIT_FUNCTION(psr_log)
 
     return SUCCESS;
 }
+/* }}} */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 

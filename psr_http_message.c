@@ -1,6 +1,4 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -15,10 +13,7 @@
 #include "php_psr.h"
 #include "psr_http_message.h"
 
-
-
-
-/* {{{ MessageInterface ----------------------------------------------------- */
+/* {{{ Psr\Http\Message\MessageInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
 
@@ -87,8 +82,8 @@ static zend_always_inline void php_register_PsrHttpMessageMessageInterface(INIT_
     PsrHttpMessageMessageInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ RequestInterface ----------------------------------------------------- */
+/* }}} Psr\Http\Message\MessageInterface */
+/* {{{ Psr\Http\Message\RequestInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;
 
@@ -133,8 +128,8 @@ static zend_always_inline void php_register_PsrHttpMessageRequestInterface(INIT_
     zend_class_implements(PsrHttpMessageRequestInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ ResponseInterface ---------------------------------------------------- */
+/* }}} Psr\Http\Message\RequestInterface */
+/* {{{ Psr\Http\Message\ResponseInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageResponseInterface_ce_ptr;
 
@@ -161,12 +156,11 @@ static zend_always_inline void php_register_PsrHttpMessageResponseInterface(INIT
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ResponseInterface", PsrHttpMessageResponseInterface_methods);
     PsrHttpMessageResponseInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    // @todo make sure this is right
     zend_class_implements(PsrHttpMessageResponseInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ ServerRequestInterface ----------------------------------------------- */
+/* }}} Psr\Http\Message\ResponseInterface */
+/* {{{ Psr\Http\Message\ServerRequestInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageServerRequestInterface_ce_ptr;
 
@@ -242,8 +236,8 @@ static zend_always_inline void php_register_PsrHttpMessageServerRequestInterface
     PsrHttpMessageServerRequestInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ StreamInterface ------------------------------------------------ */
+/* }}} Psr\Http\Message\ServerRequestInterface */
+/* {{{ Psr\Http\Message\StreamInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageStreamInterface_ce_ptr;
 
@@ -323,8 +317,8 @@ static zend_always_inline void php_register_PsrHttpMessageStreamInterface(INIT_F
     PsrHttpMessageStreamInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ UploadedFileInterface ------------------------------------------------ */
+/* }}} Psr\Http\Message\StreamInterface */
+/* {{{ Psr\Http\Message\UploadedFileInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageUploadedFileInterface_ce_ptr;
 
@@ -364,8 +358,8 @@ static zend_always_inline void php_register_PsrHttpMessageUploadedFileInterface(
     PsrHttpMessageUploadedFileInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ UriInterface --------------------------------------------------------- */
+/* }}} Psr\Http\Message\UploadedFileInterface */
+/* {{{ Psr\Http\Message\UriInterface */
 
 PHPAPI zend_class_entry * PsrHttpMessageUriInterface_ce_ptr;
 
@@ -452,8 +446,9 @@ static zend_always_inline void php_register_PsrHttpMessageUriInterface(INIT_FUNC
     PsrHttpMessageUriInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
-/* }}} ---------------------------------------------------------------------- */
+/* }}} Psr\Http\Message\UriInterface */
 
+/* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_message)
 {
     php_register_PsrHttpMessageMessageInterface(INIT_FUNC_ARGS_PASSTHRU);
@@ -465,4 +460,14 @@ PHP_MINIT_FUNCTION(psr_http_message)
     php_register_PsrHttpMessageUriInterface(INIT_FUNC_ARGS_PASSTHRU);
     return SUCCESS;
 }
+/* }}} */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 

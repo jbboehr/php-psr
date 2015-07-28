@@ -1,11 +1,10 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifndef PSR_LOG_H
 #define PSR_LOG_H
 
 #include "php.h"
-#include "php_psr.h"
+
+#define PHP_PSR_LOG_VERSION "1.0.0"
 
 extern PHPAPI zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
 extern PHPAPI zend_class_entry * PsrLogLogLevel_ce_ptr;
@@ -15,11 +14,20 @@ extern PHPAPI zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 extern PHPAPI zend_class_entry * PsrLogNullLogger_ce_ptr;
 
 #if PHP_API_VERSION >= 20100412
-PHPAPI zend_class_entry * PsrLogLoggerTrait_ce_ptr;
-PHPAPI zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
+extern PHPAPI zend_class_entry * PsrLogLoggerTrait_ce_ptr;
+extern PHPAPI zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 #endif
 
-PHP_MINIT_FUNCTION(psr_log);
+extern PHP_MINIT_FUNCTION(psr_log);
 
-#endif
+#endif /* PSR_LOG_H */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 

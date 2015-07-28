@@ -1,6 +1,4 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifndef PHP_PSR_H
 #define PHP_PSR_H
 
@@ -27,18 +25,26 @@
 #define REGISTER_PSR_CLASS(class) zend_register_internal_class(class TSRMLS_CC)
 #define REGISTER_PSR_CLASS_EX(class, parent) zend_register_internal_class_ex(class, parent, NULL TSRMLS_CC)
 #define PHP_PSR_EXTRA_TRAIT_FLAGS 0
+typedef int strsize_t;
 #else
 #define REGISTER_PSR_CLASS zend_register_internal_class
 #define REGISTER_PSR_CLASS_EX zend_register_internal_class_ex
 /* Needed to work around https://bugs.php.net/bug.php?id=69579 */
 #define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
+typedef size_t strsize_t;
 #endif
 
 extern zend_module_entry psr_module_entry;
 #define phpext_psr_ptr &psr_module_entry
 
-PHP_MINIT_FUNCTION(psr);
-PHP_MINFO_FUNCTION(psr);
+#endif /* PHP_PSR_H */
 
-#endif	/* PHP_PSR_H */
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 
