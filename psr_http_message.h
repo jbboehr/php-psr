@@ -1,11 +1,8 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifndef PSR_HTTP_MESSAGE_H
 #define PSR_HTTP_MESSAGE_H
 
 #include "php.h"
-#include "php_psr.h"
 
 extern PHPAPI zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
 extern PHPAPI zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;
@@ -15,7 +12,16 @@ extern PHPAPI zend_class_entry * PsrHttpMessageStreamInterface_ce_ptr;
 extern PHPAPI zend_class_entry * PsrHttpMessageUploadedFileInterface_ce_ptr;
 extern PHPAPI zend_class_entry * PsrHttpMessageUriInterface_ce_ptr;
 
-PHP_MINIT_FUNCTION(psr_http_message);
+extern PHP_MINIT_FUNCTION(psr_http_message);
 
-#endif
+#endif /* PSR_HTTP_MESSAGE_H */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 

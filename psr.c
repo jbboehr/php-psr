@@ -1,6 +1,4 @@
 
-/* vim: tabstop=4:softtabstop=4:shiftwidth=4:expandtab */
-
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -17,7 +15,7 @@
 #include "psr_http_message.h"
 #include "psr_log.h"
 
-PHP_MINIT_FUNCTION(psr)
+static PHP_MINIT_FUNCTION(psr)
 {
 	PHP_MINIT(psr_cache)(INIT_FUNC_ARGS_PASSTHRU);
 	PHP_MINIT(psr_http_message)(INIT_FUNC_ARGS_PASSTHRU);
@@ -25,7 +23,7 @@ PHP_MINIT_FUNCTION(psr)
     return SUCCESS;
 }
 
-PHP_MINFO_FUNCTION(psr)
+static PHP_MINFO_FUNCTION(psr)
 {
     php_info_print_table_start();
     php_info_print_table_row(2, "Version", PHP_PSR_VERSION);
@@ -57,4 +55,13 @@ zend_module_entry psr_module_entry = {
 #ifdef COMPILE_DL_PSR
     ZEND_GET_MODULE(psr)      // Common for all PHP extensions which are build as shared modules  
 #endif
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: noet sw=4 ts=4
+ */
 
