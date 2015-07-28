@@ -4,6 +4,8 @@
 
 #include "php.h"
 
+#define PHP_PSR_LOG_VERSION "1.0.0"
+
 extern PHPAPI zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
 extern PHPAPI zend_class_entry * PsrLogLogLevel_ce_ptr;
 extern PHPAPI zend_class_entry * PsrLogLoggerInterface_ce_ptr;

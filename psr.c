@@ -29,6 +29,9 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "Version", PHP_PSR_VERSION);
     php_info_print_table_row(2, "Released", PHP_PSR_RELEASE);
     php_info_print_table_row(2, "Authors", PHP_PSR_AUTHORS);
+    php_info_print_table_row(2, "PSR-3 Log Version", PHP_PSR_LOG_VERSION);
+    php_info_print_table_row(2, "PSR-6 Cache Version", PHP_PSR_CACHE_VERSION);
+    php_info_print_table_row(2, "PSR-7 Http Message Version", PHP_PSR_HTTP_MESSAGE_VERSION);
     php_info_print_table_end();
 }
 
