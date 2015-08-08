@@ -17,9 +17,9 @@
 
 static PHP_MINIT_FUNCTION(psr)
 {
-	PHP_MINIT(psr_cache)(INIT_FUNC_ARGS_PASSTHRU);
-	PHP_MINIT(psr_http_message)(INIT_FUNC_ARGS_PASSTHRU);
-	PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_cache)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_http_message)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
     return SUCCESS;
 }
 
@@ -36,8 +36,8 @@ static PHP_MINFO_FUNCTION(psr)
 }
 
 static const zend_module_dep psr_deps[] = {
-	ZEND_MOD_REQUIRED("spl")
-	ZEND_MOD_END
+    ZEND_MOD_REQUIRED("spl")
+    ZEND_MOD_END
 };
 
 zend_module_entry psr_module_entry = {

@@ -330,7 +330,7 @@ PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
         return;
     }
     
-	zend_update_property(Z_OBJCE_P(_this_zval), _this_zval, "logger", sizeof("logger")-1, logger TSRMLS_CC);
+    zend_update_property(Z_OBJCE_P(_this_zval), _this_zval, "logger", sizeof("logger")-1, logger TSRMLS_CC);
 }
 
 static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {
@@ -345,7 +345,7 @@ static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS)
     //ce.ce_flags |= ZEND_ACC_TRAIT;
     PsrLogLoggerAwareTrait_ce_ptr = REGISTER_PSR_CLASS(&ce);
     PsrLogLoggerAwareTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
-	zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED TSRMLS_CC);
+    zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED TSRMLS_CC);
 }
 
 #endif
