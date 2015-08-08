@@ -159,8 +159,8 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     }
 
     // Alloc function name to call
-    ALLOC_INIT_ZVAL(fname);
-    ZVAL_STRINGL(fname, "log", sizeof("log")-1, 1);
+    MAKE_STD_ZVAL(fname);
+    ZVAL_STRINGL(fname, "log", sizeof("log")-1, 0);
     
     // Make function params
     MAKE_STD_ZVAL(fparams[0]);
