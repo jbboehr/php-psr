@@ -11,7 +11,7 @@ branches:
   only:
     - master
 
-env: NO_INTERACTION=1
+sudo: false
 
 install:
   - phpize
@@ -25,9 +25,12 @@ before_script:
   - travis_retry ./.travis.sh psr7_init
 
 script:
-  - make test
+  - export NO_INTERACTION=1
+  - export REPORT_EXIT_STATUS=1
+  - export TEST_PHP_EXECUTABLE=`which php`
+  - php run-tests.php -d extension=psr.so -d extension_dir=modules -n ./tests/*.phpt
+  - for i in `ls tests/*.out 2>/dev/null`; do echo "-- START ${i}"; cat $i; echo "-- END"; done
   - ./.travis.sh monolog_test
 # it's out of date
 #  - ./.travis.sh cache_test
   - ./.travis.sh psr7_test
-
