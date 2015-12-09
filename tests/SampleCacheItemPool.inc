@@ -15,9 +15,19 @@ class SampleCacheItemPool implements CacheItemPoolInterface
         var_dump(__METHOD__, $keys);
     }
 
+    public function hasItem($key)
+    {
+        var_dump(__METHOD__, $key);
+    }
+
     public function clear()
     {
         var_dump(__METHOD__);
+    }
+
+    public function deleteItem($key)
+    {
+        var_dump(__METHOD__, $key);
     }
 
     public function deleteItems(array $keys)

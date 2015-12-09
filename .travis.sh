@@ -5,7 +5,7 @@
 case "$1" in
 monolog_init)
 	rm -rf monolog
-	git clone -b 1.15.0 https://github.com/Seldaek/monolog.git
+	git clone -b $MONOLOG_VERSION https://github.com/Seldaek/monolog.git
 	cd monolog
 	composer install
 	rm -f vendor/psr/log/Psr/Log/*.php
@@ -14,21 +14,21 @@ monolog_init)
 monolog_test)
 	php -d extension=modules/psr.so ./monolog/vendor/bin/phpunit -c monolog/
 	;;
-cache_init)
-	rm -rf Cache
-	git clone -b master https://github.com/egils/Cache.git
-	cd Cache
+stash_init)
+	rm -rf Stash
+	git clone -b v1.0.0-dev https://github.com/tedious/Stash.git
+	cd Stash
 	composer install
-	rm -f Psr/Cache/*.php
+	rm -f vendor/psr/cache/*.php
 	cd ..
 	;;
-cache_test)
-	php -d extension=modules/psr.so ./Cache/vendor/bin/phpunit -c Cache/
+stash_test)
+	php -d extension=modules/psr.so ./Stash/vendor/bin/phpunit -c Stash/
 	;;
 psr7_init)
 	if [ "$TRAVIS_PHP_VERSION" != "5.3" ]; then
 		rm -rf psr7
-		git clone -b 1.1.0 https://github.com/guzzle/psr7.git
+		git clone -b $GUZZLE_PSR7_VERSION https://github.com/guzzle/psr7.git
 		cd psr7
 		composer install
 		rm -f vendor/psr/http-message/src/*.php

@@ -13,6 +13,18 @@
 #include "php_psr.h"
 #include "psr_cache.h"
 
+/* {{{ CacheException ------------------------------------------------------- */
+
+PHPAPI zend_class_entry * PsrCacheCacheException_ce_ptr;
+
+static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
+{
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheException", NULL);
+    PsrCacheCacheException_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+}
+
+/* }}} ---------------------------------------------------------------------- */
 /* {{{ CacheItemInterface --------------------------------------------------- */
 
 PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
@@ -23,14 +35,11 @@ PHP_PSR_END_ARG_INFO()
 PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, get, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, set, 1)
-    ZEND_ARG_INFO(0, value)
-PHP_PSR_END_ARG_INFO()
-
 PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, isHit, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, exists, 0)
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, set, 1)
+    ZEND_ARG_INFO(0, value)
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAt, 1)
@@ -41,18 +50,13 @@ PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAfter, 1)
     ZEND_ARG_INFO(0, time)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, getExpiration, 0)
-PHP_PSR_END_ARG_INFO()
-
 static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, get)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, set)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, isHit)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, exists)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, set)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAt)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAfter)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getExpiration)
     PHP_FE_END
 };
 
@@ -76,7 +80,15 @@ PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, getItems, 0)
     ZEND_ARG_ARRAY_INFO(0, keys, 0)
 PHP_PSR_END_ARG_INFO()
 
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, hasItem, 1)
+    ZEND_ARG_INFO(0, key)
+PHP_PSR_END_ARG_INFO()
+
 PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, clear, 0)
+PHP_PSR_END_ARG_INFO()
+
+PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, deleteItem, 1)
+    ZEND_ARG_INFO(0, key)
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, deleteItems, 1)
@@ -97,7 +109,9 @@ PHP_PSR_END_ARG_INFO()
 static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItems)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, hasItem)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, clear)
+    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItem)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItems)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, save)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, saveDeferred)
@@ -122,18 +136,7 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Cache\\InvalidArgumentException", NULL);
     PsrCacheInvalidArgumentException_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-}
-
-/* }}} ---------------------------------------------------------------------- */
-/* {{{ CacheException ------------------------------------------------------- */
-
-PHPAPI zend_class_entry * PsrCacheCacheException_ce_ptr;
-
-static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
-{
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheException", NULL);
-    PsrCacheCacheException_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    zend_class_implements(PsrCacheInvalidArgumentException_ce_ptr TSRMLS_CC, 1, PsrCacheCacheException_ce_ptr);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -141,10 +144,10 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_cache)
 {
+    php_psr_register_CacheException(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_CacheItemInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_CacheItemPoolInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS_PASSTHRU);
-    php_psr_register_CacheException(INIT_FUNC_ARGS_PASSTHRU);
 
     return SUCCESS;
 }
