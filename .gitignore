@@ -11,6 +11,7 @@ gmon*
 *.la
 *.lo
 *.log
+*.mem
 *.o
 *.out
 nbproject
@@ -45,6 +46,6 @@ run-tests.php
 tmp-php.ini
 specs
 
-/Cache/
+/Stash/
 /monolog/
 /psr7/
