@@ -12,7 +12,9 @@ $cacheItem = new SampleCacheItemPool();
 $cacheItem->getItem('key');
 $cacheItem->getItems();
 $cacheItem->getItems(array('keyA', 'keyB'));
+$cacheItem->hasItem('key');
 $cacheItem->clear();
+$cacheItem->deleteItem('keyC');
 $cacheItem->deleteItems(array('keyC'));
 $cacheItem->save(new SampleCacheItem());
 $cacheItem->saveDeferred(new SampleCacheItem());
@@ -35,7 +37,11 @@ array(2) {
   [1]=>
   string(4) "keyB"
 }
+string(28) "SampleCacheItemPool::hasItem"
+string(3) "key"
 string(26) "SampleCacheItemPool::clear"
+string(31) "SampleCacheItemPool::deleteItem"
+string(4) "keyC"
 string(32) "SampleCacheItemPool::deleteItems"
 array(1) {
   [0]=>

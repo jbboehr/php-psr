@@ -10,12 +10,10 @@ var_dump(class_implements('SampleCacheItem', false));
 $cacheItem = new SampleCacheItem();
 $cacheItem->getKey();
 $cacheItem->get();
-$cacheItem->set('test set');
 $cacheItem->isHit();
-$cacheItem->exists();
+$cacheItem->set('test set');
 $cacheItem->expiresAt(1435364259);
 $cacheItem->expiresAfter(1435364259);
-$cacheItem->getExpiration();
 --EXPECT--
 bool(true)
 array(1) {
@@ -24,13 +22,11 @@ array(1) {
 }
 string(23) "SampleCacheItem::getKey"
 string(20) "SampleCacheItem::get"
+string(22) "SampleCacheItem::isHit"
 string(20) "SampleCacheItem::set"
 string(8) "test set"
-string(22) "SampleCacheItem::isHit"
-string(23) "SampleCacheItem::exists"
 string(26) "SampleCacheItem::expiresAt"
 int(1435364259)
 string(29) "SampleCacheItem::expiresAfter"
 int(1435364259)
-string(30) "SampleCacheItem::getExpiration"
 
