@@ -4,7 +4,7 @@
 
 #include "php.h"
 
-#define PHP_PSR_CACHE_VERSION "0.0.0-4908941"
+#define PHP_PSR_CACHE_VERSION "1.0.0"
 
 extern PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 extern PHPAPI zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
