@@ -15,15 +15,23 @@ monolog_test)
 	php -d extension=modules/psr.so ./monolog/vendor/bin/phpunit -c monolog/
 	;;
 stash_init)
-	rm -rf Stash
-	git clone -b v1.0.0-dev https://github.com/tedious/Stash.git
-	cd Stash
-	composer install
-	rm -f vendor/psr/cache/*.php
-	cd ..
+	if [ "$TRAVIS_PHP_VERSION" != "5.3" ]; then
+		rm -rf Stash
+		git clone -b v1.0.0-dev https://github.com/tedious/Stash.git
+		cd Stash
+		composer install
+		rm -f vendor/psr/cache/*.php
+		cd ..
+	else
+		echo Stash does not support PHP 5.3
+	fi
 	;;
 stash_test)
-	php -d extension=modules/psr.so ./Stash/vendor/bin/phpunit -c Stash/
+	if [ "$TRAVIS_PHP_VERSION" != "5.3" ]; then
+		php -d extension=modules/psr.so ./Stash/vendor/bin/phpunit -c Stash/
+	else
+		echo Stash does not support PHP 5.3
+	fi
 	;;
 psr7_init)
 	if [ "$TRAVIS_PHP_VERSION" != "5.3" ]; then
