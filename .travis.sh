@@ -20,7 +20,7 @@ stash_init)
 		git clone -b v1.0.0-dev https://github.com/tedious/Stash.git
 		cd Stash
 		composer install
-		rm -f vendor/psr/cache/*.php
+		rm -f vendor/psr/cache/src/*.php
 		cd ..
 	else
 		echo Stash does not support PHP 5.3
