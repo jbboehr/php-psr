@@ -199,6 +199,9 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     ZVAL_ZVAL(&fparams[2], context, 0, 0);
 
     call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
+
+    zval_dtor(&fparams[0]);
+    zval_dtor(&fname);
 #endif
 }
 
