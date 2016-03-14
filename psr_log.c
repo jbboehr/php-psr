@@ -52,52 +52,6 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
 
 PHPAPI zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, emergency, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, alert, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, critical, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, error, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, warning, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, notice, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, info, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, debug, 1)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, log, 2)
-    ZEND_ARG_INFO(0, level)
-    ZEND_ARG_INFO(0, message)
-    ZEND_ARG_ARRAY_INFO(0, context, 0)
-PHP_PSR_END_ARG_INFO()
-
 static zend_function_entry PsrLogLoggerInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, emergency)
     PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, alert)
@@ -121,10 +75,6 @@ static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS) 
 /* {{{ Psr\Log\LoggerAwareInterface */
 
 PHPAPI zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
-
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerAwareInterface, setLogger, 1)
-    ZEND_ARG_OBJ_INFO(0, logger, Psr\\Log\\LoggerInterface, 0)
-PHP_PSR_END_ARG_INFO();
 
 static zend_function_entry PsrLogLoggerAwareInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrLogLoggerAwareInterface, setLogger)

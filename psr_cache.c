@@ -29,27 +29,6 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 
 PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, getKey, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, get, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, isHit, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, set, 1)
-    ZEND_ARG_INFO(0, value)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAt, 1)
-    ZEND_ARG_INFO(0, expiration)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemInterface, expiresAfter, 1)
-    ZEND_ARG_INFO(0, time)
-PHP_PSR_END_ARG_INFO()
-
 static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey)
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, get)
@@ -71,40 +50,6 @@ static zend_always_inline void php_psr_register_CacheItemInterface(INIT_FUNC_ARG
 /* {{{ CacheItemPoolInterface ----------------------------------------------- */
 
 PHPAPI zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, getItem, 1)
-    ZEND_ARG_INFO(0, key)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, getItems, 0)
-    ZEND_ARG_ARRAY_INFO(0, keys, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, hasItem, 1)
-    ZEND_ARG_INFO(0, key)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, clear, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, deleteItem, 1)
-    ZEND_ARG_INFO(0, key)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, deleteItems, 1)
-    ZEND_ARG_ARRAY_INFO(0, keys, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, save, 1)
-    ZEND_ARG_OBJ_INFO(0, logger, Psr\\Cache\\CacheItemInterface, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, saveDeferred, 1)
-    ZEND_ARG_OBJ_INFO(0, logger, Psr\\Cache\\CacheItemInterface, 0)
-PHP_PSR_END_ARG_INFO()
-
-PHP_PSR_BEGIN_ARG_INFO(PsrCacheCacheItemPoolInterface, commit, 0)
-PHP_PSR_END_ARG_INFO()
 
 static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem)
