@@ -98,13 +98,7 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     zval * _this_zval;
     zval * message;
     zval * context;
-    zval fname = {0};
     zend_class_entry * expected_ce = NULL; // PsrLogAbstractLogger_ce_ptr
-#if PHP_MAJOR_VERSION < 7
-    zval * fparams[3];
-#else
-    zval fparams[3];
-#endif
 
 #ifndef FAST_ZPP
     if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oza", 
@@ -121,25 +115,31 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
 #endif
 
 #if PHP_MAJOR_VERSION < 7
+    zval * fname;
+    zval * fparams[3];
+
     // Alloc function name to call
-    INIT_ZVAL(fname);
-    ZVAL_STRINGL(&fname, "log", sizeof("log")-1, 1);
+	MAKE_STD_ZVAL(fname);
+    ZVAL_STRINGL(fname, "log", sizeof("log")-1, 1);
     
     // Make function params
-    ALLOC_INIT_ZVAL(fparams[0]);
-    ALLOC_INIT_ZVAL(fparams[1]);
-    ALLOC_INIT_ZVAL(fparams[2]);
+    MAKE_STD_ZVAL(fparams[0]);
+    MAKE_STD_ZVAL(fparams[1]);
+    MAKE_STD_ZVAL(fparams[2]);
     ZVAL_STRINGL(fparams[0], level_str, level_len, 1);
     ZVAL_ZVAL(fparams[1], message, 1, 0);
     ZVAL_ZVAL(fparams[2], context, 1, 0);
 
-    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, &_this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
+    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, &_this_zval, fname, return_value, 3, fparams TSRMLS_CC);
 
-    zval_dtor(fparams[0]);
-    zval_dtor(fparams[1]);
-    zval_dtor(fparams[2]);
-	zval_dtor(&fname);
+    zval_ptr_dtor(&fparams[0]);
+    zval_ptr_dtor(&fparams[1]);
+    zval_ptr_dtor(&fparams[2]);
+	zval_ptr_dtor(&fname);
 #else
+    zval fname = {0};
+    zval fparams[3];
+
     // Alloc function name to call
     ZVAL_STRINGL(&fname, "log", sizeof("log")-1);
     
@@ -150,8 +150,8 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
 
     call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
 
-    zval_dtor(&fparams[0]);
-    zval_dtor(&fname);
+    zval_ptr_dtor(&fparams[0]);
+    zval_ptr_dtor(&fname);
 #endif
 }
 
