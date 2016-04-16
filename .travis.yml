@@ -25,6 +25,8 @@ sudo: required
 dist: trusty
 
 before_install:
+  - travis_retry sudo apt-get update -y
+  - travis_retry sudo apt-get install -y lcov
   - travis_retry gem install coveralls-lcov
 
 install:
