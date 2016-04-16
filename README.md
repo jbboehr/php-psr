@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/jbboehr/php-psr.svg?branch=master)](https://travis-ci.org/jbboehr/php-psr)
 
-PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfaces.
+PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfaces, so they can be used [in an extension](https://github.com/jbboehr/php-handlebars/blob/v0.7.1/impl.c#L215).
 
 
 ## Installation
