@@ -2,6 +2,8 @@
 # php-psr
 
 [![Build Status](https://travis-ci.org/jbboehr/php-psr.svg?branch=master)](https://travis-ci.org/jbboehr/php-psr)
+[![Coverage Status](https://coveralls.io/repos/jbboehr/php-psr/badge.svg?branch=master&service=github)](https://coveralls.io/github/jbboehr/php-psr?branch=master)
+[![License](https://img.shields.io/badge/license-LGPLv3-brightgreen.svg)](LICENSE.md)
 
 PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfaces.
 
