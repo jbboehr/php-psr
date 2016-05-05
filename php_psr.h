@@ -21,19 +21,6 @@
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1 TSRMLS_CC);
 
-#if PHP_MAJOR_VERSION < 7
-#define REGISTER_PSR_CLASS(class) zend_register_internal_class(class TSRMLS_CC)
-#define REGISTER_PSR_CLASS_EX(class, parent) zend_register_internal_class_ex(class, parent, NULL TSRMLS_CC)
-#define PHP_PSR_EXTRA_TRAIT_FLAGS 0
-typedef int strsize_t;
-#else
-#define REGISTER_PSR_CLASS zend_register_internal_class
-#define REGISTER_PSR_CLASS_EX zend_register_internal_class_ex
-/* Needed to work around https://bugs.php.net/bug.php?id=69579 */
-#define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
-typedef size_t strsize_t;
-#endif
-
 extern zend_module_entry psr_module_entry;
 #define phpext_psr_ptr &psr_module_entry
 
