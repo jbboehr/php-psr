@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/jbboehr/php-psr.svg?branch=master)](https://travis-ci.org/jbboehr/php-psr)
 [![Coverage Status](https://coveralls.io/repos/jbboehr/php-psr/badge.svg?branch=master&service=github)](https://coveralls.io/github/jbboehr/php-psr?branch=master)
-[![License](https://img.shields.io/badge/license-LGPLv3-brightgreen.svg)](LICENSE.md)
+[![License](https://img.shields.io/badge/license-BSD-brightgreen.svg)](LICENSE.md)
 
 PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfaces, so they can be used [in an extension](https://github.com/jbboehr/php-handlebars/blob/v0.7.1/impl.c#L213-L215).
 
@@ -33,5 +33,5 @@ sudo php5enmod psr
 
 ## License
 
-This project is licensed under the [LGPLv3](http://www.gnu.org/licenses/lgpl-3.0.txt).
+This project is licensed under the [Simplified BSD License](LICENSE.md).
 
