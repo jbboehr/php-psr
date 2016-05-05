@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [0.2.3] - 2016-05-05
+
 ### Changed
 - Changed the license from `LGPLv3` to `Simplified BSD License`
 - Move PHP5/7 compatibility macros into separate header
