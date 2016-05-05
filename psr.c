@@ -14,6 +14,7 @@
 #include "psr_cache.h"
 #include "psr_http_message.h"
 #include "psr_log.h"
+#include "php5to7.h"
 
 static PHP_MINIT_FUNCTION(psr)
 {

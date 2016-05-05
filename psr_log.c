@@ -12,6 +12,14 @@
 
 #include "php_psr.h"
 #include "psr_log.h"
+#include "php5to7.h"
+
+#ifdef ZEND_ENGINE_3
+/* Needed to work around https://bugs.php.net/bug.php?id=69579 */
+#define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
+#else
+#define PHP_PSR_EXTRA_TRAIT_FLAGS 0
+#endif
 
 /* {{{ Psr\Log\InvalidArgumentException */
 
@@ -21,7 +29,7 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\InvalidArgumentException", NULL);
-    PsrLogInvalidArgumentException_ce_ptr = REGISTER_PSR_CLASS_EX(&ce, spl_ce_InvalidArgumentException);
+    PsrLogInvalidArgumentException_ce_ptr = php5to7_register_internal_class_ex(&ce, spl_ce_InvalidArgumentException);
 }
 
 /* }}} Psr\Log\InvalidArgumentException */
@@ -34,7 +42,7 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
     zend_class_entry ce;
 
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LogLevel", NULL);
-    PsrLogLogLevel_ce_ptr = REGISTER_PSR_CLASS(&ce);
+    PsrLogLogLevel_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
 
     REGISTER_PSR_CLASS_CONST_STRING(PsrLogLogLevel_ce_ptr, "EMERGENCY", "emergency");
     REGISTER_PSR_CLASS_CONST_STRING(PsrLogLogLevel_ce_ptr, "ALERT", "alert");
@@ -211,7 +219,7 @@ static zend_always_inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\AbstractLogger", PsrLogAbstractLogger_methods);
-    PsrLogAbstractLogger_ce_ptr = REGISTER_PSR_CLASS(&ce);
+    PsrLogAbstractLogger_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
     zend_class_implements(PsrLogAbstractLogger_ce_ptr TSRMLS_CC, 1, PsrLogLoggerInterface_ce_ptr);
 }
 
@@ -234,7 +242,7 @@ static zend_always_inline void php_psr_register_NullLogger(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\NullLogger", PsrLogNullLogger_methods);
-    PsrLogNullLogger_ce_ptr = REGISTER_PSR_CLASS_EX(&ce, PsrLogAbstractLogger_ce_ptr);
+    PsrLogNullLogger_ce_ptr = php5to7_register_internal_class_ex(&ce, PsrLogAbstractLogger_ce_ptr);
 }
 
 /* }}} Psr\Log\NullLogger */
@@ -261,7 +269,7 @@ static zend_always_inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerTrait", PsrLogLoggerTrait_methods);
-    PsrLogLoggerTrait_ce_ptr = REGISTER_PSR_CLASS(&ce);
+    PsrLogLoggerTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
     PsrLogLoggerTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
 }
 
@@ -304,7 +312,7 @@ static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS)
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareTrait", PsrLogLoggerAwareTrait_methods);
     //ce.ce_flags |= ZEND_ACC_TRAIT;
-    PsrLogLoggerAwareTrait_ce_ptr = REGISTER_PSR_CLASS(&ce);
+    PsrLogLoggerAwareTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
     PsrLogLoggerAwareTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
     zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED TSRMLS_CC);
 }
