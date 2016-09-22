@@ -19,6 +19,7 @@ branches:
   only:
     - master
     - develop
+    - phpbug-69579
 
 
 sudo: required

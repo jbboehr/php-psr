@@ -14,12 +14,12 @@
 #include "psr_log.h"
 #include "php5to7.h"
 
-#ifdef ZEND_ENGINE_3
+//#ifdef ZEND_ENGINE_3
 /* Needed to work around https://bugs.php.net/bug.php?id=69579 */
-#define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
-#else
+//#define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
+//#else
 #define PHP_PSR_EXTRA_TRAIT_FLAGS 0
-#endif
+//#endif
 
 /* {{{ Psr\Log\InvalidArgumentException */
 
