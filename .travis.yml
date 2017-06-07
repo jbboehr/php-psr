@@ -14,12 +14,12 @@ env:
     - MONOLOG_VERSION=1.17.2
     - GUZZLE_PSR7_VERSION=1.2.1
     - STASH_VERSION=v1.0.0-dev
+    - LINK_UTIL_VERSION=1.0.0
 
 branches:
   only:
     - master
     - develop
-
 
 sudo: required
 

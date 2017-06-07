@@ -13,6 +13,7 @@
 #include "php_psr.h"
 #include "psr_cache.h"
 #include "psr_http_message.h"
+#include "psr_link.h"
 #include "psr_log.h"
 #include "php5to7.h"
 
@@ -20,6 +21,7 @@ static PHP_MINIT_FUNCTION(psr)
 {
     PHP_MINIT(psr_cache)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_message)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_link)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
     return SUCCESS;
 }
@@ -33,6 +35,7 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "PSR-3 Log Version", PHP_PSR_LOG_VERSION);
     php_info_print_table_row(2, "PSR-6 Cache Version", PHP_PSR_CACHE_VERSION);
     php_info_print_table_row(2, "PSR-7 Http Message Version", PHP_PSR_HTTP_MESSAGE_VERSION);
+    php_info_print_table_row(2, "PSR-13 Link Version", PHP_PSR_LOG_VERSION);
     php_info_print_table_end();
 }
 
