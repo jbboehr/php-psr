@@ -52,4 +52,5 @@ specs
 
 .idea
 /CMakeLists.txt
+/league-container/
 

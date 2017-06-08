@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- PSR-11 Container support
+
 ## [0.2.3] - 2016-05-05
 
 ### Changed

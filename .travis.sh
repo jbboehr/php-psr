@@ -52,5 +52,17 @@ psr7_test)
 		echo PSR7 does not support PHP 5.3
 	fi
 	;;
+league_container_init)
+    rm -rf league-container
+    git clone -b ${LEAGUE_CONTAINER_VERSION:-master} https://github.com/thephpleague/container.git league-container
+    cd league-container
+    composer install
+    rm -rf vendor/psr
+    cd ..
+	;;
+league_container_test)
+    php -d extension=modules/psr.so ./league-container/vendor/bin/phpunit -c league-container
+	;;
 esac
 
+exit 0
