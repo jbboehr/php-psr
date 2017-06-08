@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - PSR-11 Container support
 - PSR-13 Link support
+- PSR-16 Simple Cache support
 
 ### Removed
 - No longer test against PHP 5.5 or earlier

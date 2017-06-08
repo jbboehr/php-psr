@@ -47,9 +47,10 @@ tmp-php.ini
 specs
 
 .idea
-/CMakeLists.txt
+CMakeLists.txt
 /Stash/
 /monolog/
 /psr7/
+/psx-cache/
 /league-container/
 /link-util/

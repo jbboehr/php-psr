@@ -58,6 +58,17 @@ link_util_init)
 link_util_test)
 	php -d extension=modules/psr.so ./link-util/vendor/bin/phpunit -c link-util/
 	;;
+psx_cache_init)
+	rm -rf psx-cache
+	git clone -b ${PSX_CACHE_VERSION:-master} https://github.com/apioo/psx-cache.git
+	cd psx-cache
+	composer install
+	rm -rf vendor/psr
+	cd ..
+	;;
+psx_cache_test)
+	php -d extension=modules/psr.so ./psx-cache/vendor/bin/phpunit -c psx-cache/
+	;;
 esac
 
 exit 0
