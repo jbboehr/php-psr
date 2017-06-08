@@ -49,3 +49,7 @@ specs
 /Stash/
 /monolog/
 /psr7/
+
+.idea
+/CMakeLists.txt
+
