@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Removed
+- No longer test against PHP 5.5 or earlier
+
 ## [0.2.3] - 2016-05-05
 
 ### Changed
