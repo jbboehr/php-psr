@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- PSR-11 Container support
+
 ### Removed
 - No longer test against PHP 5.5 or earlier
 

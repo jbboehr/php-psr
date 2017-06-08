@@ -10,6 +10,7 @@ env:
     - MONOLOG_VERSION=1.17.2
     - GUZZLE_PSR7_VERSION=1.2.1
     - STASH_VERSION=v1.0.0-dev
+    - LEAGUE_CONTAINER_VERSION=2.3.0
 
 branches:
   only:
@@ -37,6 +38,7 @@ before_script:
   - travis_retry ./.travis.sh monolog_init
   - travis_retry ./.travis.sh stash_init
   - travis_retry ./.travis.sh psr7_init
+  - travis_retry ./.travis.sh league_container_init
 
 script:
   - export NO_INTERACTION=1
@@ -46,6 +48,7 @@ script:
   - ./.travis.sh monolog_test
   - ./.travis.sh stash_test
   - ./.travis.sh psr7_test
+  - ./.travis.sh league_container_test
 
 after_success:
   - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info
