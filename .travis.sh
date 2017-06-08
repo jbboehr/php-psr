@@ -53,15 +53,15 @@ psr7_test)
 	fi
 	;;
 league_container_init)
-    rm -rf league-container
-    git clone -b ${LEAGUE_CONTAINER_VERSION:-master} https://github.com/thephpleague/container.git league-container
-    cd league-container
-    composer install
-    rm -rf vendor/psr
-    cd ..
+	rm -rf league-container
+	git clone -b ${LEAGUE_CONTAINER_VERSION:-master} https://github.com/thephpleague/container.git league-container
+	cd league-container
+	composer install
+	rm -rf vendor/psr
+	cd ..
 	;;
 league_container_test)
-    php -d extension=modules/psr.so ./league-container/vendor/bin/phpunit -c league-container
+	php -d extension=modules/psr.so ./league-container/vendor/bin/phpunit -c league-container
 	;;
 esac
 
