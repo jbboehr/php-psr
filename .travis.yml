@@ -41,6 +41,7 @@ before_script:
   - travis_retry ./.travis.sh monolog_init
   - travis_retry ./.travis.sh stash_init
   - travis_retry ./.travis.sh psr7_init
+  - travis_retry ./.travis.sh link_util_init
 
 script:
   - export NO_INTERACTION=1
@@ -50,6 +51,7 @@ script:
   - ./.travis.sh monolog_test
   - ./.travis.sh stash_test
   - ./.travis.sh psr7_test
+  - ./.travis.sh link_util_test
 
 after_success:
   - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info
