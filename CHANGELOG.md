@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 
 ### Added
+- PSR-11 Container support
 - PSR-13 Link support
 
 ### Removed

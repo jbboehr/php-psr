@@ -51,4 +51,5 @@ specs
 /Stash/
 /monolog/
 /psr7/
+/league-container/
 /link-util/
