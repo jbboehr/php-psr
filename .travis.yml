@@ -11,12 +11,12 @@ env:
     - GUZZLE_PSR7_VERSION=1.2.1
     - STASH_VERSION=v1.0.0-dev
     - LEAGUE_CONTAINER_VERSION=2.3.0
+    - LINK_UTIL_VERSION=1.0.0
 
 branches:
   only:
     - master
     - develop
-
 
 sudo: required
 
@@ -39,6 +39,7 @@ before_script:
   - travis_retry ./.travis.sh stash_init
   - travis_retry ./.travis.sh psr7_init
   - travis_retry ./.travis.sh league_container_init
+  - travis_retry ./.travis.sh link_util_init
 
 script:
   - export NO_INTERACTION=1
@@ -49,6 +50,7 @@ script:
   - ./.travis.sh stash_test
   - ./.travis.sh psr7_test
   - ./.travis.sh league_container_test
+  - ./.travis.sh link_util_test
 
 after_success:
   - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info

@@ -46,11 +46,10 @@ run-tests.php
 tmp-php.ini
 specs
 
+.idea
+/CMakeLists.txt
 /Stash/
 /monolog/
 /psr7/
-
-.idea
-/CMakeLists.txt
 /league-container/
-
+/link-util/
