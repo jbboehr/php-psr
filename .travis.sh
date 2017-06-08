@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# set -e
+set -ex
 
 case "$1" in
 monolog_init)
 	rm -rf monolog
-	git clone -b $MONOLOG_VERSION https://github.com/Seldaek/monolog.git
+	git clone -b ${MONOLOG_VERSION:-master} https://github.com/Seldaek/monolog.git
 	cd monolog
 	composer install
 	rm -f vendor/psr/log/Psr/Log/*.php
@@ -16,7 +16,7 @@ monolog_test)
 	;;
 stash_init)
 	rm -rf Stash
-	git clone -b v1.0.0-dev https://github.com/tedious/Stash.git
+	git clone -b ${STASH_VERSION:-master} https://github.com/tedious/Stash.git
 	cd Stash
 	composer install
 	rm -f vendor/psr/cache/src/*.php
@@ -27,7 +27,7 @@ stash_test)
 	;;
 psr7_init)
 	rm -rf psr7
-	git clone -b $GUZZLE_PSR7_VERSION https://github.com/guzzle/psr7.git
+	git clone -b ${GUZZLE_PSR7_VERSION:-master} https://github.com/guzzle/psr7.git
 	cd psr7
 	composer install
 	rm -f vendor/psr/http-message/src/*.php
@@ -46,6 +46,17 @@ league_container_init)
 	;;
 league_container_test)
 	php -d extension=modules/psr.so ./league-container/vendor/bin/phpunit -c league-container
+	;;
+link_util_init)
+	rm -rf link-util
+	git clone -b ${LINK_UTIL_VERSION:-master} https://github.com/php-fig/link-util.git
+	cd link-util
+	composer install
+	rm -rf vendor/psr/link
+	cd ..
+	;;
+link_util_test)
+	php -d extension=modules/psr.so ./link-util/vendor/bin/phpunit -c link-util/
 	;;
 psx_cache_init)
 	rm -rf psx-cache
