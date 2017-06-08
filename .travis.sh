@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set -e
+set -ex
 
 case "$1" in
 monolog_init)
@@ -54,15 +54,11 @@ psr7_test)
 	;;
 link_util_init)
     rm -rf link-util
-	if [ "$TRAVIS_PHP_VERSION" != "5.3" ] && [ "$TRAVIS_PHP_VERSION" != "5.4" ]; then
-		git clone -b ${LINK_UTIL_VERSION:-master} https://github.com/php-fig/link-util.git
-		cd link-util
-		composer install
-		rm -rf vendor/psr/link
-		cd ..
-	else
-		echo PSR12 does not support PHP 5.3 or 5.4
-	fi
+	git clone -b ${LINK_UTIL_VERSION:-master} https://github.com/php-fig/link-util.git
+	cd link-util
+	composer install
+	rm -rf vendor/psr/link
+	cd ..
 	;;
 link_util_test)
 	if [ "$TRAVIS_PHP_VERSION" != "5.3" ] && [ "$TRAVIS_PHP_VERSION" != "5.4" ]; then
