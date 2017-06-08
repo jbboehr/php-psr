@@ -8,8 +8,9 @@
 PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfaces, so they can be used [in an extension](https://github.com/jbboehr/php-handlebars/blob/v0.7.1/impl.c#L213-L215).
 
 - [PSR-3](http://www.php-fig.org/psr/psr-3/) - [psr/log](https://github.com/php-fig/log) - tested against [monolog](https://github.com/Seldaek/monolog)
-- [PSR-6](http://www.php-fig.org/psr/psr-6/) - [psr/cache](https://github.com/php-fig/cache) - tested against [Stash](https://github.com/tedious/Stash)
+- [PSR-6](http://www.php-fig.org/psr/psr-6/) - [psr/cache](https://github.com/php-fig/cache) - tested against [Stash](https://github.com/tedious/Stash) and [psx-cache](https://github.com/apioo/psx-cache)
 - [PSR-7](http://www.php-fig.org/psr/psr-7/) - [psr/http-message](https://github.com/php-fig/http-message) - tested against [guzzle/psr7](https://github.com/guzzle/psr7)
+- [PSR-16](http://www.php-fig.org/psr/psr-16/) - [psr/simple-cache](https://github.com/php-fig/simple-cache) - tested against [psx-cache](https://github.com/apioo/psx-cache)
 
 
 ## Installation

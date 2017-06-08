@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # set -e
 
@@ -50,6 +50,25 @@ psr7_test)
 		php -d extension=modules/psr.so ./psr7/vendor/bin/phpunit -c psr7/
 	else
 		echo PSR7 does not support PHP 5.3
+	fi
+	;;
+psx_cache_init)
+    rm -rf psx-cache
+	if [ "$TRAVIS_PHP_VERSION" != "5.3" ] && [ "$TRAVIS_PHP_VERSION" != "5.4" ]; then
+		git clone -b ${PSX_CACHE_VERSION:-master} https://github.com/apioo/psx-cache.git
+		cd psx-cache
+		composer install
+		rm -rf vendor/psr
+		cd ..
+	else
+		echo psx-cache does not support PHP 5.3 or PHP 5.4
+	fi
+	;;
+psx_cache_test)
+	if [ "$TRAVIS_PHP_VERSION" != "5.3" ] && [ "$TRAVIS_PHP_VERSION" != "5.4" ]; then
+		php -d extension=modules/psr.so ./psx-cache/vendor/bin/phpunit -c psx-cache/
+	else
+		echo psx-cache does not support PHP 5.3 or PHP 5.4
 	fi
 	;;
 esac
