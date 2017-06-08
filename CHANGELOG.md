@@ -6,7 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
-## Added
+### Added
+- PSR-11 Container support
 - PSR-16 Simple Cache support
 
 ### Removed

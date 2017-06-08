@@ -36,6 +36,17 @@ psr7_init)
 psr7_test)
 	php -d extension=modules/psr.so ./psr7/vendor/bin/phpunit -c psr7/
 	;;
+league_container_init)
+	rm -rf league-container
+	git clone -b ${LEAGUE_CONTAINER_VERSION:-master} https://github.com/thephpleague/container.git league-container
+	cd league-container
+	composer install
+	rm -rf vendor/psr
+	cd ..
+	;;
+league_container_test)
+	php -d extension=modules/psr.so ./league-container/vendor/bin/phpunit -c league-container
+	;;
 psx_cache_init)
 	rm -rf psx-cache
 	git clone -b ${PSX_CACHE_VERSION:-master} https://github.com/apioo/psx-cache.git
@@ -50,4 +61,3 @@ psx_cache_test)
 esac
 
 exit 0
-
