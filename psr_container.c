@@ -9,7 +9,7 @@
 
 /* {{{ ContainerExceptionInterface ------------------------------------------ */
 
-PHPAPI zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
 
 static zend_always_inline void php_psr_register_PsrContainerContainerExceptionInterface(INIT_FUNC_ARGS)
 {
@@ -21,7 +21,7 @@ static zend_always_inline void php_psr_register_PsrContainerContainerExceptionIn
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ ContainerInterface --------------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrContainerContainerInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrContainerContainerInterface_ce_ptr;
 
 static zend_function_entry PsrContainerContainerInterface_methods[] = {
         PHP_PSR_ABSTRACT_ME(PsrContainerContainerInterface, get)
@@ -39,7 +39,7 @@ static zend_always_inline void php_psr_register_PsrContainerContainerInterface(I
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ NotFoundException ---------------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_ptr;
 
 static zend_always_inline void php_psr_register_PsrContainerNotFoundExceptionInterface(INIT_FUNC_ARGS)
 {

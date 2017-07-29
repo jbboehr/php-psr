@@ -7,10 +7,10 @@
 
 #define PHP_PSR_LINK_VERSION "1.0.0"
 
-extern PHPAPI zend_class_entry * PsrLinkEvolvableLinkInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrLinkEvolvableLinkProviderInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrLinkLinkInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrLinkLinkProviderInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkProviderInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrLinkLinkInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrLinkLinkProviderInterface_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_link);
 

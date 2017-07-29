@@ -16,7 +16,7 @@
 
 /* {{{ CacheException ------------------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrCacheCacheException_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrCacheCacheException_ce_ptr;
 
 static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 {
@@ -28,7 +28,7 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ CacheItemInterface --------------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 
 static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey)
@@ -50,7 +50,7 @@ static zend_always_inline void php_psr_register_CacheItemInterface(INIT_FUNC_ARG
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ CacheItemPoolInterface ----------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
 
 static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem)
@@ -75,7 +75,7 @@ static zend_always_inline void php_psr_register_CacheItemPoolInterface(INIT_FUNC
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ InvalidArgumentException --------------------------------------------- */
 
-PHPAPI zend_class_entry * PsrCacheInvalidArgumentException_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrCacheInvalidArgumentException_ce_ptr;
 
 static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS)
 {

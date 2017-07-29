@@ -7,10 +7,10 @@
 
 #define PHP_PSR_CACHE_VERSION "1.0.0"
 
-extern PHPAPI zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrCacheInvalidArgumentException_ce_ptr;
-extern PHPAPI zend_class_entry * PsrCacheCacheException_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrCacheInvalidArgumentException_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrCacheCacheException_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_cache);
 
