@@ -7,13 +7,13 @@
 
 #define PHP_PSR_HTTP_MESSAGE_VERSION "1.0.0"
 
-extern PHPAPI zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageResponseInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageServerRequestInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageStreamInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageUploadedFileInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrHttpMessageUriInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageResponseInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageServerRequestInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageStreamInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageUploadedFileInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpMessageUriInterface_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_http_message);
 

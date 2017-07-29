@@ -7,9 +7,9 @@
 
 #define PHP_PSR_SIMPLE_CACHE_VERSION "1.0.0"
 
-extern PHPAPI zend_class_entry * PsrSimpleCacheCacheException_ce_ptr;
-extern PHPAPI zend_class_entry * PsrSimpleCacheCacheInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrSimpleCacheInvalidArgumentException_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrSimpleCacheCacheException_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrSimpleCacheCacheInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrSimpleCacheInvalidArgumentException_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_simple_cache);
 

@@ -10,6 +10,12 @@
 #include "TSRM.h"
 #endif
 
+#if defined(PHP_WIN32) && defined(PSR_EXPORTS)
+#define PHP_PSR_API __declspec(dllexport)
+#else
+#define PHP_PSR_API PHPAPI
+#endif
+
 #define PHP_PSR_NAME "psr"
 #define PHP_PSR_VERSION "0.3.0RC1"
 #define PHP_PSR_RELEASE "2017-07-28"
