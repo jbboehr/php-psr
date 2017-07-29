@@ -1,0 +1,9 @@
+// vim:ft=javascript
+
+ARG_ENABLE("psr", "enable psr support", "no");
+
+if (PHP_PSR != "no") {
+	EXTENSION("psr", "php_psr.c psr_cache.c psr_container.c psr_http_message.c psr_link.c psr_log.c psr_simple_cache.c");
+	AC_DEFINE("HAVE_PSR", 1, "Have PSR Support");
+}
+
