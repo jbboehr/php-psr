@@ -31,7 +31,7 @@ build_script:
 
     mkdir C:\projects\php-src\ext\psr
 
-    xcopy C:\projects\ext-psr C:\projects\php-src\ext\psr /s /e /y /q
+    xcopy C:\projects\php-psr C:\projects\php-src\ext\psr /s /e /y /q
 
     REM FIXME no PHP 7.2 deps downloads available yet - wget http://windows.php.net/downloads/php-sdk/deps-%PHP_VER%-%VC_VER%-%ARCH%.7z -q
     
@@ -45,13 +45,13 @@ build_script:
 
     buildconf.bat
 
-    configure.bat --disable-all --enable-cli --enable-cgi --enable-zts --enable-json --enable-psr=shared --with-prefix=C:\projects\ext-psr\bin --with-php-build=deps
+    configure.bat --disable-all --enable-cli --enable-cgi --enable-zts --enable-json --enable-psr=shared --with-prefix=C:\projects\php-psr\bin --with-php-build=deps
 
     nmake
 
     nmake install
 
-    cd C:\projects\ext-psr\bin
+    cd C:\projects\php-psr\bin
 
     echo [PHP] > php.ini
 
