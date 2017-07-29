@@ -2,6 +2,7 @@
 # php-psr
 
 [![Build Status](https://travis-ci.org/jbboehr/php-psr.svg?branch=master)](https://travis-ci.org/jbboehr/php-psr)
+[![Build status](https://ci.appveyor.com/api/projects/status/x1ymkqggy1mkl0ux/branch/master?svg=true)](https://ci.appveyor.com/project/jbboehr/php-psr/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jbboehr/php-psr/badge.svg?branch=master&service=github)](https://coveralls.io/github/jbboehr/php-psr?branch=master)
 [![License](https://img.shields.io/badge/license-BSD-brightgreen.svg)](LICENSE.md)
 
