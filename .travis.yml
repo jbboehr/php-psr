@@ -10,7 +10,8 @@ env:
   global:
     - MONOLOG_VERSION=1.17.2
     - GUZZLE_PSR7_VERSION=1.2.1
-    - STASH_VERSION=e9a6aaf
+# @FIXME Needed for PHP 7.2 fixes
+    - STASH_VERSION=master
     - PSX_CACHE_VERSION=v1.0.1
     - LEAGUE_CONTAINER_VERSION=2.3.0
     - LINK_UTIL_VERSION=1.0.0
