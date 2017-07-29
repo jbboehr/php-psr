@@ -1,6 +1,7 @@
 version: '{branch}.{build}'
 branches:
   only:
+  - master
   - appveyor
   - w32
 
