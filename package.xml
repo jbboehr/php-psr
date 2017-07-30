@@ -34,6 +34,7 @@
    <file name="LICENSE.md" role="doc"/>
    <file name="README.md" role="doc"/>
    <file name="config.m4" role="src"/>
+   <file name="config.w32" role="src"/>
    <file name="php5to7.h" role="src"/>
    <file name="php_psr.c" role="src"/>
    <file name="php_psr.h" role="src"/>
