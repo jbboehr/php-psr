@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - PSR-11 Container support
 - PSR-13 Link support
 - PSR-16 Simple Cache support
+- Windows support - Thanks to [Jan-E](https://github.com/Jan-E) for the appveyor configuration template!
 
 ### Removed
 - No longer test against PHP 5.5 or earlier

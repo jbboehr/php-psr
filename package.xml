@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
+         xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>psr</name>
+ <channel>pecl.php.net</channel>
+ <summary>PSR interfaces</summary>
+ <description>This extension provides the accepted PSR interfaces, so they can be used in an extension.
+
+  See http://www.php-fig.org/psr/
+ </description>
+ <lead>
+  <name>John Boehr</name>
+  <user>jbboehr</user>
+  <email>jbboehr@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-07-30</date>
+ <version>
+  <release>0.3.0RC3</release>
+  <api>0.3.0RC3</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
+ <notes>
+ - Windows support
+ </notes>
+ <contents>
+  <dir name="/">
+   <file name="CHANGELOG.md" role="doc"/>
+   <file name="LICENSE.md" role="doc"/>
+   <file name="README.md" role="doc"/>
+   <file name="config.m4" role="src"/>
+   <file name="config.w32" role="src"/>
+   <file name="php5to7.h" role="src"/>
+   <file name="php_psr.c" role="src"/>
+   <file name="php_psr.h" role="src"/>
+   <file name="psr_cache.c" role="src"/>
+   <file name="psr_cache.h" role="src"/>
+   <file name="psr_container.c" role="src"/>
+   <file name="psr_container.h" role="src"/>
+   <file name="psr_http_message.c" role="src"/>
+   <file name="psr_http_message.h" role="src"/>
+   <file name="psr_link.c" role="src"/>
+   <file name="psr_link.h" role="src"/>
+   <file name="psr_log.c" role="src"/>
+   <file name="psr_log.h" role="src"/>
+   <file name="psr_simple_cache.c" role="src"/>
+   <file name="psr_simple_cache.h" role="src"/>
+   <file name="tests/PsrLogAbstractLogger.phpt" role="test"/>
+   <file name="tests/PsrContainerContainerInterface.phpt" role="test"/>
+   <file name="tests/PsrLogLevel.phpt" role="test"/>
+   <file name="tests/PsrLogLoggerTrait.phpt" role="test"/>
+   <file name="tests/SampleCacheItemPool.inc" role="test"/>
+   <file name="tests/SampleMessage.inc" role="test"/>
+   <file name="tests/SampleRequest.inc" role="test"/>
+   <file name="tests/SampleUploadedFile.inc" role="test"/>
+   <file name="tests/PsrCacheCacheException.phpt" role="test"/>
+   <file name="tests/PsrSimpleCacheCacheInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageStreamInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageRequestInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageServerRequestInterface.phpt" role="test"/>
+   <file name="tests/PsrCacheCacheItemPoolInterface.phpt" role="test"/>
+   <file name="tests/PsrContainerContainerExceptionInterface.phpt" role="test"/>
+   <file name="tests/PsrLogNullLogger.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageUriInterface.phpt" role="test"/>
+   <file name="tests/PsrLinkLinkProviderInterface.phpt" role="test"/>
+   <file name="tests/PsrLogLoggerAwareTrait.phpt" role="test"/>
+   <file name="tests/PsrLogAbstractLogger_construct.phpt" role="test"/>
+   <file name="tests/SampleLogger2.inc" role="test"/>
+   <file name="tests/PsrContainerNotFoundExceptionInterface.phpt" role="test"/>
+   <file name="tests/PsrLinkEvolvableLinkInterface.phpt" role="test"/>
+   <file name="tests/PsrLinkEvolvableLinkProviderInterface.phpt" role="test"/>
+   <file name="tests/PsrLogInvalidArgumentException.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageMessageInterface.phpt" role="test"/>
+   <file name="tests/PsrCacheCacheItemInterface.phpt" role="test"/>
+   <file name="tests/PsrLogLoggerInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageUploadedFileInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageResponseInterface.phpt" role="test"/>
+   <file name="tests/SampleCacheItem.inc" role="test"/>
+   <file name="tests/SampleServerRequest.inc" role="test"/>
+   <file name="tests/SampleUri.inc" role="test"/>
+   <file name="tests/PsrLinkLinkInterface.phpt" role="test"/>
+   <file name="tests/SampleLoggerAware.inc" role="test"/>
+   <file name="tests/PsrLogLoggerAwareInterface.phpt" role="test"/>
+   <file name="tests/SampleLogger.inc" role="test"/>
+   <file name="tests/SampleResponse.inc" role="test"/>
+   <file name="tests/phpinfo.phpt" role="test"/>
+   <file name="tests/SampleStream.inc" role="test"/>
+   <file name="tests/PsrCacheInvalidArgumentException.phpt" role="test"/>
+   <file name="tests/PsrSimpleCacheCacheException.phpt" role="test"/>
+   <file name="tests/PsrSimpleCacheInvalidArgumentException.phpt" role="test"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.4.0</min>
+    <max>7.2.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>psr</providesextension>
+ <extsrcrelease/>
+</package>
