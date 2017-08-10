@@ -154,11 +154,16 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     // Make function params
     ZVAL_STRINGL(&fparams[0], level_str, level_len);
     ZVAL_ZVAL(&fparams[1], message, 0, 0);
-    ZVAL_ZVAL(&fparams[2], context, 0, 0);
+    if( context && Z_TYPE_P(context) == IS_ARRAY ) {
+        ZVAL_ZVAL(&fparams[2], context, 1, 0);
+    } else {
+        array_init(&fparams[2]);
+    }
 
     call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
 
     zval_ptr_dtor(&fparams[0]);
+    zval_ptr_dtor(&fparams[2]);
     zval_ptr_dtor(&fname);
 #endif
 }
