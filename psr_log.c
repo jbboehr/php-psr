@@ -105,11 +105,11 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
 {
     zval * _this_zval;
     zval * message;
-    zval * context;
+    zval * context = NULL;
     zend_class_entry * expected_ce = NULL; // PsrLogAbstractLogger_ce_ptr
 
 #ifndef FAST_ZPP
-    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oza", 
+    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oz|a", 
             &_this_zval, expected_ce, &message, &context) == FAILURE) {
         return;
     }
@@ -129,14 +129,19 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     // Alloc function name to call
 	MAKE_STD_ZVAL(fname);
     ZVAL_STRINGL(fname, "log", sizeof("log")-1, 1);
-    
+
     // Make function params
     MAKE_STD_ZVAL(fparams[0]);
     MAKE_STD_ZVAL(fparams[1]);
     MAKE_STD_ZVAL(fparams[2]);
     ZVAL_STRINGL(fparams[0], level_str, level_len, 1);
     ZVAL_ZVAL(fparams[1], message, 1, 0);
-    ZVAL_ZVAL(fparams[2], context, 1, 0);
+    if( context && Z_TYPE_P(context) == IS_ARRAY ) {
+        ZVAL_ZVAL(fparams[2], context, 1, 0);
+    } else {
+        MAKE_STD_ZVAL(fparams[2]);
+        array_init(fparams[2]);
+    }
 
     call_user_function(&Z_OBJCE_P(_this_zval)->function_table, &_this_zval, fname, return_value, 3, fparams TSRMLS_CC);
 
