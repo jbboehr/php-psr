@@ -23,7 +23,7 @@
 
 /* {{{ Psr\Log\InvalidArgumentException */
 
-PHPAPI zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogInvalidArgumentException_ce_ptr;
 
 static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS)
 {
@@ -35,7 +35,7 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
 /* }}} Psr\Log\InvalidArgumentException */
 /* {{{ Psr\Log\LogLevel */
 
-PHPAPI zend_class_entry * PsrLogLogLevel_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogLogLevel_ce_ptr;
 
 static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
 {
@@ -58,7 +58,7 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
 /* }}} Psr\Log\LogLevel */
 /* {{{ Psr\Log\LoggerInterface */
 
-PHPAPI zend_class_entry * PsrLogLoggerInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 
 static zend_function_entry PsrLogLoggerInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, emergency)
@@ -82,7 +82,7 @@ static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS) 
 /* }}} Psr\Log\LoggerInterface */
 /* {{{ Psr\Log\LoggerAwareInterface */
 
-PHPAPI zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
 
 static zend_function_entry PsrLogLoggerAwareInterface_methods[] = {
     PHP_PSR_ABSTRACT_ME(PsrLogLoggerAwareInterface, setLogger)
@@ -99,7 +99,7 @@ static zend_always_inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_A
 /* }}} Psr\Log\LoggerAwareInterface */
 /* {{{ Psr\Log\AbstractLogger */
 
-PHPAPI zend_class_entry * PsrLogAbstractLogger_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 
 static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t level_len, INTERNAL_FUNCTION_PARAMETERS)
 {
@@ -231,7 +231,7 @@ static zend_always_inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS)
 /* }}} Psr\Log\AbstractLogger */
 /* {{{ Psr\Log\NullLogger */
 
-PHPAPI zend_class_entry * PsrLogNullLogger_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogNullLogger_ce_ptr;
 
 PHP_METHOD(PsrLogNullLogger, log)
 {
@@ -255,7 +255,7 @@ static zend_always_inline void php_psr_register_NullLogger(INIT_FUNC_ARGS)
 
 #if PHP_API_VERSION >= 20100412
 
-PHPAPI zend_class_entry * PsrLogLoggerTrait_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogLoggerTrait_ce_ptr;
 
 static zend_function_entry PsrLogLoggerTrait_methods[] = {
     PHP_ME(PsrLogAbstractLogger, emergency, arginfo_PsrLogLoggerInterface_emergency, ZEND_ACC_PUBLIC | PHP_PSR_EXTRA_TRAIT_FLAGS)
@@ -285,7 +285,7 @@ static zend_always_inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS)
 
 #if PHP_API_VERSION >= 20100412
 
-PHPAPI zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 
 PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
 {

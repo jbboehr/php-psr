@@ -7,9 +7,9 @@
 
 #define PHP_PSR_CONTAINER_VERSION "1.0.0"
 
-extern PHPAPI zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrContainerContainerInterface_ce_ptr;
-extern PHPAPI zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrContainerContainerInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_container);
 

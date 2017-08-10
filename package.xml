@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2017-07-28</date>
+ <date>2017-07-30</date>
  <version>
-  <release>0.3.0RC1</release>
-  <api>0.3.0RC1</api>
+  <release>0.3.0RC3</release>
+  <api>0.3.0RC3</api>
  </version>
  <stability>
   <release>beta</release>
@@ -26,7 +26,7 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
-  - Initial PECL release
+ - Windows support
  </notes>
  <contents>
   <dir name="/">
@@ -34,6 +34,7 @@
    <file name="LICENSE.md" role="doc"/>
    <file name="README.md" role="doc"/>
    <file name="config.m4" role="src"/>
+   <file name="config.w32" role="src"/>
    <file name="php5to7.h" role="src"/>
    <file name="php_psr.c" role="src"/>
    <file name="php_psr.h" role="src"/>

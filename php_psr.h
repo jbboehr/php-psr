@@ -10,9 +10,15 @@
 #include "TSRM.h"
 #endif
 
+#if defined(PHP_WIN32) && defined(PSR_EXPORTS)
+#define PHP_PSR_API __declspec(dllexport)
+#else
+#define PHP_PSR_API PHPAPI
+#endif
+
 #define PHP_PSR_NAME "psr"
-#define PHP_PSR_VERSION "0.3.0RC1"
-#define PHP_PSR_RELEASE "2017-07-28"
+#define PHP_PSR_VERSION "0.3.0RC3"
+#define PHP_PSR_RELEASE "2017-07-30"
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
 #define PHP_PSR_ABSTRACT_ME(c, f) PHP_ABSTRACT_ME(c, f, arginfo_ ## c ## _ ## f)
