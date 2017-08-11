@@ -26,7 +26,7 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Windows support
+ - Fix TypeError when no argument is passed to methods in AbstractLogger
  </notes>
  <contents>
   <dir name="/">
