@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2017-07-30</date>
+ <date>2017-08-11</date>
  <version>
-  <release>0.3.0RC3</release>
-  <api>0.3.0RC3</api>
+  <release>0.3.0RC4</release>
+  <api>0.3.0RC4</api>
  </version>
  <stability>
   <release>beta</release>
