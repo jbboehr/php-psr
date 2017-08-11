@@ -15,6 +15,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Removed
 - No longer test against PHP 5.5 or earlier
 
+### Fixed 
+- TypeError when no argument is passed to methods in AbstractLogger
+
 ## [0.2.3] - 2016-05-05
 
 ### Changed
