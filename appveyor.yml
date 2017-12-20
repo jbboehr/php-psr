@@ -53,9 +53,9 @@ build_script:
 - if "%VC_VER%" == "vc15" set VSCOMNTOOLS=%VS140COMNTOOLS%
 - set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
 - set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
-- if "%platform%" == "x86" call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat"
+- if "%platform%" == "x86" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat"
 - if "%platform%" == "x64" "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-- if "%platform%" == "x64" call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
+- if "%platform%" == "x64" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
 - cmd: >-
     wget https://github.com/OSTC/php-sdk-binary-tools/archive/%PHP_SDK_BINARY_TOOLS_VER%.zip --no-check-certificate -q -O php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip
 
