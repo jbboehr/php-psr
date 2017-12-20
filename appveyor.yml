@@ -59,8 +59,8 @@ build_script:
 - if "%platform%" == "x86" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat"
 - if "%platform%" == "x64" "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
 - if "%platform%" == "x64" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
-- if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER="%platform%\Release"
-- if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER="%platform%\Release_TS"
+- if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release
+- if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release_TS
 - set RELEASE_ZIPBALL=psr_%platform%_%VC_VER%_%PHP_VER%_%APPVEYOR_BUILD_VERSION%
 - cmd: >-
     wget https://github.com/OSTC/php-sdk-binary-tools/archive/%PHP_SDK_BINARY_TOOLS_VER%.zip --no-check-certificate -q -O php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip
