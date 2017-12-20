@@ -43,12 +43,12 @@ build_script:
     7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects
 
     C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%ARCH%\phpize.bat
-	
-	move configure.js configure.js-tmp
-	
-	echo var PHP_SANITIZER="no"; var PHP_CONFIG_PROFILE="no"; >configure.js
-	
-	type configure.js-tmp >>configure.js
+    
+    move configure.js configure.js-tmp
+    
+    echo var PHP_SANITIZER="no"; var PHP_CONFIG_PROFILE="no"; >configure.js
+    
+    type configure.js-tmp >>configure.js
 
     configure.bat --disable-all --enable-psr --with-prefix=C:\projects\php
 
