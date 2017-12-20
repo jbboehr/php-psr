@@ -13,12 +13,17 @@ environment:
 
   matrix:
     - PHP_VER: 7.2
+      PHP_FULL_VER: 7.2.0
       VC_VER: vc15
 install:
 - cmd: cinst wget
 build_script:
 - cmd: >-
     "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+    
+    set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
+    
+    set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
 
     wget https://github.com/OSTC/php-sdk-binary-tools/archive/%PHP_SDK_BINARY_TOOLS_VER%.zip --no-check-certificate -q -O php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip
 
@@ -30,43 +35,25 @@ build_script:
 
     git clone https://github.com/php/php-src C:\projects\php-src -b PHP-%PHP_VER% --depth=1
 
-    mkdir C:\projects\php-src\ext\psr
-
-    xcopy C:\projects\php-psr C:\projects\php-src\ext\psr /s /e /y /q
-
-    REM FIXME no PHP 7.2 deps downloads available yet - wget http://windows.php.net/downloads/php-sdk/deps-%PHP_VER%-%VC_VER%-%ARCH%.7z -q
+    wget http://windows.php.net/downloads/releases/php-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip
     
-    wget http://windows.php.net/downloads/php-sdk/deps-master-%VC_VER%-%ARCH%.7z -q
+    7z x -y php-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects\php
 
-    REM FIXME no PHP 7.2 deps downloads available yet - 7z x -y deps-%PHP_VER%-%VC_VER%-%ARCH%.7z -oC:\projects\php-src
+    wget http://windows.php.net/downloads/releases/php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip
     
-    7z x -y deps-master-%VC_VER%-%ARCH%.7z -oC:\projects\php-src
+    7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects\php
 
-    cd C:\projects\php-src
+    wget http://windows.php.net/downloads/releases/php-test-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip
+    
+    7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects\php
+    
+    phpize.bat
 
-    buildconf.bat
-
-    configure.bat --disable-all --enable-cli --enable-cgi --enable-zts --enable-json --enable-psr=shared --with-prefix=C:\projects\php-psr\bin --with-php-build=deps
+    configure.bat --enable-psr
 
     nmake
-
-    nmake install
-
-    cd C:\projects\php-psr\bin
-
-    echo [PHP] > php.ini
-
-    echo extension_dir = "ext" >> php.ini
-
-    echo extension=php_psr.dll >> php.ini
-
-    set TEST_PHP_EXECUTABLE=%cd%\php.exe
-
-    php -v
-
-    php -m
 test_script:
-- cmd: php.exe /projects/php-src/run-tests.php /projects/php-src/ext/psr -q --show-diff
+- cmd: nmake test
 artifacts:
   - path: bin
     name: master
