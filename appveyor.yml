@@ -22,7 +22,7 @@ build_script:
 - cmd: >-
     "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
     
-    set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
+    set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php;C:\projects\php-devel
     
     set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
 
@@ -40,12 +40,10 @@ build_script:
 
     wget http://windows.php.net/downloads/releases/php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip
     
-    7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects\php
+    7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects
 
-    wget http://windows.php.net/downloads/releases/php-test-pack-%PHP_FULL_VER%.zip
-    
-    7z x -y php-test-pack-%PHP_FULL_VER%.zip -oC:\projects\php
-    
+    move C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%ARCH% C:\projects\php-devel
+
     phpize.bat
 
     configure.bat --enable-psr
