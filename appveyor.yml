@@ -22,7 +22,7 @@ build_script:
 - cmd: >-
     "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
     
-    set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php;C:\projects\php-devel
+    set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
     
     set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
 
@@ -42,11 +42,15 @@ build_script:
     
     7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects
 
-    move C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%ARCH% C:\projects\php-devel
+    C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%ARCH%\phpize.bat
+	
+	move configure.js configure.js-tmp
+	
+	echo var PHP_SANITIZER="no"; var PHP_CONFIG_PROFILE="no"; >configure.js
+	
+	type configure.js-tmp >>configure.js
 
-    phpize.bat
-
-    configure.bat --enable-psr
+    configure.bat --disable-all --enable-psr --with-prefix=C:\projects\php
 
     nmake
 test_script:
