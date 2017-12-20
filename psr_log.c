@@ -109,7 +109,7 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
     zend_class_entry * expected_ce = NULL; // PsrLogAbstractLogger_ce_ptr
 
 #ifndef FAST_ZPP
-    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oz|a", 
+    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oz|a",
             &_this_zval, expected_ce, &message, &context) == FAILURE) {
         return;
     }
@@ -155,7 +155,7 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
 
     // Alloc function name to call
     ZVAL_STRINGL(&fname, "log", sizeof("log")-1);
-    
+
     // Make function params
     ZVAL_STRINGL(&fparams[0], level_str, level_len);
     ZVAL_ZVAL(&fparams[1], message, 0, 0);
@@ -298,7 +298,7 @@ PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
     zval * logger;
 
 #ifndef FAST_ZPP
-    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "OO", 
+    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "OO",
             &_this_zval, NULL, &logger, PsrLogLoggerInterface_ce_ptr) == FAILURE) {
         return;
     }
@@ -355,6 +355,5 @@ PHP_MINIT_FUNCTION(psr_log)
  * c-basic-offset: 4
  * End:
  * vim600: fdm=marker
- * vim: noet sw=4 ts=4
+ * vim: et sw=4 ts=4
  */
-
