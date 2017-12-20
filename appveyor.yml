@@ -34,8 +34,6 @@ build_script:
     
     C:\projects\php-sdk\bin\phpsdk_setvars.bat
 
-    git clone https://github.com/php/php-src C:\projects\php-src -b PHP-%PHP_VER% --depth=1
-
     wget http://windows.php.net/downloads/releases/php-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip
     
     7z x -y php-%PHP_FULL_VER%-%PHP_TS%Win32-%VC_VER%-%ARCH%.zip -oC:\projects\php
