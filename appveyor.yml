@@ -59,8 +59,10 @@ build_script:
 - if "%platform%" == "x86" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat"
 - if "%platform%" == "x64" "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
 - if "%platform%" == "x64" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
-- if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release
-- if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release_TS
+- if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release
+- if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release_TS
+- if "%platform%" == "x64" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release
+- if "%platform%" == "x64" if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release_TS
 - set RELEASE_ZIPBALL=psr_%platform%_%VC_VER%_%PHP_VER%_%APPVEYOR_BUILD_VERSION%
 - cmd: >-
     wget https://github.com/OSTC/php-sdk-binary-tools/archive/%PHP_SDK_BINARY_TOOLS_VER%.zip --no-check-certificate -q -O php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip
@@ -68,23 +70,23 @@ build_script:
     7z x -y php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip -oC:\projects
 
     move C:\projects\php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER% C:\projects\php-sdk
-    
+
     C:\projects\php-sdk\bin\phpsdk_setvars.bat
 
     wget http://windows.php.net/downloads/releases/php-%PHP_FULL_VER%-%PHP_BUILD_TYPE%-%VC_VER%-%platform%.zip
-    
+
     7z x -y php-%PHP_FULL_VER%-%PHP_BUILD_TYPE%-%VC_VER%-%platform%.zip -oC:\projects\php
 
     wget http://windows.php.net/downloads/releases/php-devel-pack-%PHP_FULL_VER%-%PHP_BUILD_TYPE%-%VC_VER%-%platform%.zip
-    
+
     7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_BUILD_TYPE%-%VC_VER%-%platform%.zip -oC:\projects
 
     C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%platform%\phpize.bat
-    
+
     move configure.js configure.js-tmp
-    
+
     echo var PHP_SANITIZER="no"; var PHP_CONFIG_PROFILE="no"; >configure.js
-    
+
     type configure.js-tmp >>configure.js
 
     configure.bat --disable-all --enable-psr --with-prefix=C:\projects\php
