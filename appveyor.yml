@@ -18,6 +18,12 @@ environment:
   REPORT_EXIT_STATUS: 1
 
   matrix:
+    - PHP_VER: 7.0
+      PHP_FULL_VER: 7.0.26
+      VC_VER: vc15
+    - PHP_VER: 7.1
+      PHP_FULL_VER: 7.1.12
+      VC_VER: vc15
     - PHP_VER: 7.2
       PHP_FULL_VER: 7.2.0
       VC_VER: vc15
