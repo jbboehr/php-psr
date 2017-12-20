@@ -1,73 +1,193 @@
 version: '{branch}.{build}'
+
 branches:
-  only:
-  - master
-  - appveyor
-  - w32
+    only:
+        - master
+        - appveyor
+        - w32
 
 image: Visual Studio 2017
 
 environment:
-  PHP_SDK_BINARY_TOOLS_VER: php-sdk-2.0.7
-  ARCH: x64
+    # TODO: We use 7.1 here because latest available SDK is for 7.1
+    matrix:
+        - PHP_TARGET: 7.1
+          PHP_VC: 14
+          PHP_MAJOR: 7
+          PHP_TYPE: "Win32"
+        - PHP_TARGET: 7.1
+          PHP_VC: 14
+          PHP_MAJOR: 7
+          PHP_TYPE: "nts-Win32"
+    NO_INTERACTION: 1
+    PHP_SDK: c:\php-sdk
+    PHP_DEVPACK: c:\php-devpack
 
-  matrix:
-    - PHP_VER: 7.2
-      VC_VER: vc15
+matrix:
+    fast_finish: true
+    allow_failures:
+        - platform: x64
+
+clone_depth: 1
+clone_folder: c:\projects\psr
+
+os: Windows Server 2012 R2
+
+platform:
+    - x86
+    - x64
+
+init:
+    - SET PATH=C:\Program Files (x86)\MSBuild\%PHP_VC%.0\Bin;C:\Program Files\OpenSSL;C:\php;C:\php-sdk\bin;C:\php-devpack;%PATH%
+    - SET PATH=C:\Program Files (x86)\Microsoft Visual Studio %PHP_VC%.0\VC;C:\Program Files (x86)\Microsoft Visual Studio %PHP_VC%.0\VC\bin;%PATH%
+    - SET ANSICON=121x90 (121x90)
+
+build: false
+
 install:
-- cmd: cinst wget
+    # ==================================================
+    - echo Setting PHP version...
+    # ==================================================
+    - ps: appveyor DownloadFile 'http://windows.php.net/downloads/releases/sha1sum.txt'
+    - ps: |
+        $versions = type sha1sum.txt | where { $_ -match "php-(${env:PHP_TARGET}\.\d+)-src" } | foreach { $matches[1] }
+        $version = $versions.Split(' ')[-1]
+        $env:PHP_VERSION=${version}
+    - ps: $env:PHP_PLATFORM="${env:PHP_SDK}\phpdev\vc${env:PHP_VC}\${env:PLATFORM}"
+    - ps: $env:PHP_SRC="${env:PHP_PLATFORM}\php-${env:PHP_VERSION}-src"
+    - ps: >-
+        If ($env:PLATFORM -eq 'x86') {
+            If ($env:PHP_TYPE -Match "nts-Win32") {
+                $env:RELEASE_FOLDER="Release"
+                $env:PHP_CONFIGURE_FLAGS="--disable-all --enable-cli --enable-psr=shared --disable-zts"
+            } Else {
+                $env:RELEASE_FOLDER="Release_TS"
+                $env:PHP_CONFIGURE_FLAGS="--disable-all --enable-cli --enable-psr=shared"
+            }
+        } else {
+            If ($env:PHP_TYPE -Match "nts-Win32") {
+                $env:RELEASE_FOLDER="x64\Release"
+                $env:PHP_CONFIGURE_FLAGS="--disable-all --enable-cli --enable-psr=shared --disable-zts"
+            } Else {
+                $env:RELEASE_FOLDER="x64\Release_TS"
+                $env:PHP_CONFIGURE_FLAGS="--disable-all --enable-cli --enable-psr=shared"
+            }
+        }
+        If ($env:PHP_VC -eq '11') {
+            $env:VSCOMNTOOLS=$env:VS110COMNTOOLS
+        } elseif ($env:PHP_VC -eq '14') {
+            $env:VSCOMNTOOLS=$env:VS140COMNTOOLS
+        }
+        If ($env:PLATFORM -eq 'x64') {
+            $env:ARCH='x86_amd64'
+        } Else {
+            $env:ARCH='x86'
+        }
+
+        If ($env:PHP_TYPE -Match "nts-Win32") {
+            $env:RELEASE_ZIPBALL="psr_${env:PLATFORM}_vc${env:PHP_VC}_php${env:PHP_TARGET}-nts_${env:APPVEYOR_BUILD_VERSION}"
+        } Else {
+            $env:RELEASE_ZIPBALL="psr_${env:PLATFORM}_vc${env:PHP_VC}_php${env:PHP_TARGET}_${env:APPVEYOR_BUILD_VERSION}"
+        }
+    - ps: $env:PHP_DEPS_URL="http://windows.php.net/downloads/php-sdk/deps-${env:PHP_TARGET}-vc${env:PHP_VC}-${env:PLATFORM}.7z"
+    # ==================================================
+    - echo Initializing Build
+    # ==================================================
+    - mkdir %PHP_SDK% && cd %PHP_SDK%
+    - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/php-sdk/php-sdk-binary-tools-20110915.zip', 'C:\php-sdk.zip')
+    - 7z.exe x C:\php-sdk.zip | FIND /V "ing  "
+    - phpsdk_buildtree phpdev
+    - ps: Rename-Item ${env:PHP_SDK}\phpdev\vc9 ${env:PHP_SDK}\phpdev\vc${env:PHP_VC}
+    - mkdir %PHP_SRC%
+    # ==================================================
+    - echo Install PHP Dev pack
+    # ==================================================
+    - cd C:\
+    - ps: >-
+        If ($env:PHP_TYPE -Match "nts-Win32") {
+            $env:DEVEL_PACK_VERSION="${env:PHP_VERSION}-nts-Win32-VC${env:PHP_VC}-${env:PLATFORM}"
+        } Else {
+            $env:DEVEL_PACK_VERSION="${env:PHP_VERSION}-Win32-VC${env:PHP_VC}-${env:PLATFORM}"
+        }
+    # ==================================================
+    - echo Downloading PHP Dev pack source code [http://windows.php.net/downloads/releases/php-devel-pack-%DEVEL_PACK_VERSION%.zip]
+    # ==================================================
+    - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-devel-pack-' + ${env:DEVEL_PACK_VERSION} + '.zip', 'C:\php-dev.zip')
+    - 7z.exe x php-dev.zip | FIND /V "ing  "
+    - ps: Rename-Item "php-${env:PHP_VERSION}-devel-VC${env:PHP_VC}-${env:PLATFORM}" C:\php-devpack
+    # ==================================================
+    - echo Downloading and preparing PHP source code
+    # ==================================================
+    - git clone -b PHP-%PHP_TARGET% --depth 1 https://github.com/php/php-src %PHP_SRC%
+    - cd %PHP_PLATFORM%
+    - ps: (new-object net.webclient).DownloadFile(${env:PHP_DEPS_URL}, 'C:\php-sdk-deps.7z')
+    - 7z.exe x C:\php-sdk-deps.7z | FIND /V "ing  "
+    - cd %PHP_SDK%
+    - phpsdk_setvars
+    - '"%VSCOMNTOOLS%\VsDevCmd" %PLATFORM%'
+    - vcvarsall %ARCH%
+    # ==================================================
+    - echo Preparing extension to build
+    # ==================================================
+    - mkdir %PHP_SRC%\ext\psr
+    - xcopy /s /q c:\projects\psr\*.* %PHP_SRC%\ext\psr
+    - cd %PHP_SRC%\ext\psr
+    # ==================================================
+    - echo Build PHP with enabled PSR
+    # ==================================================
+    - cd %PHP_SRC%
+    - buildconf
+    - configure %PHP_CONFIGURE_FLAGS%
+    - nmake 2> compile-errors.log 1> compile.log
+    - echo extension=%PHP_SRC%\%RELEASE_FOLDER%\php_psr.dll >> C:\Windows\php.ini
+    - SET PATH=%PHP_SRC%\%RELEASE_FOLDER%;%PATH%
+    - php -v
+    - php --ri psr
+
 build_script:
-- cmd: >-
-    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+    # ==================================================
+    - echo Creating package to zip
+    # ==================================================
+    - mkdir %APPVEYOR_BUILD_FOLDER%\package
+    # dll
+    - cp %PHP_SRC%\%RELEASE_FOLDER%\php_psr.dll %APPVEYOR_BUILD_FOLDER%\package\
+    # docs
+    # TODO: We need a plain text version of docs
+    - cp %APPVEYOR_BUILD_FOLDER%\CHANGELOG.md %APPVEYOR_BUILD_FOLDER%\package\
+    - cp %APPVEYOR_BUILD_FOLDER%\LICENSE.md %APPVEYOR_BUILD_FOLDER%\package\
+    - cp %APPVEYOR_BUILD_FOLDER%\README.md %APPVEYOR_BUILD_FOLDER%\package\
 
-    wget https://github.com/OSTC/php-sdk-binary-tools/archive/%PHP_SDK_BINARY_TOOLS_VER%.zip --no-check-certificate -q -O php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip
+after_build:
+    # ==================================================
+    - echo Collect artifacts and zip
+    # ==================================================
+    - cd %APPVEYOR_BUILD_FOLDER%\package
+    - 7z a %RELEASE_ZIPBALL%.zip *
+    - mv %RELEASE_ZIPBALL%.zip %APPVEYOR_BUILD_FOLDER%\
 
-    7z x -y php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER%.zip -oC:\projects
-
-    move C:\projects\php-sdk-binary-tools-%PHP_SDK_BINARY_TOOLS_VER% C:\projects\php-sdk
-    
-    C:\projects\php-sdk\bin\phpsdk_setvars.bat
-
-    git clone https://github.com/php/php-src C:\projects\php-src -b PHP-%PHP_VER% --depth=1
-
-    mkdir C:\projects\php-src\ext\psr
-
-    xcopy C:\projects\php-psr C:\projects\php-src\ext\psr /s /e /y /q
-
-    REM FIXME no PHP 7.2 deps downloads available yet - wget http://windows.php.net/downloads/php-sdk/deps-%PHP_VER%-%VC_VER%-%ARCH%.7z -q
-    
-    wget http://windows.php.net/downloads/php-sdk/deps-master-%VC_VER%-%ARCH%.7z -q
-
-    REM FIXME no PHP 7.2 deps downloads available yet - 7z x -y deps-%PHP_VER%-%VC_VER%-%ARCH%.7z -oC:\projects\php-src
-    
-    7z x -y deps-master-%VC_VER%-%ARCH%.7z -oC:\projects\php-src
-
-    cd C:\projects\php-src
-
-    buildconf.bat
-
-    configure.bat --disable-all --enable-cli --enable-cgi --enable-zts --enable-json --enable-psr=shared --with-prefix=C:\projects\php-psr\bin --with-php-build=deps
-
-    nmake
-
-    nmake install
-
-    cd C:\projects\php-psr\bin
-
-    echo [PHP] > php.ini
-
-    echo extension_dir = "ext" >> php.ini
-
-    echo extension=php_psr.dll >> php.ini
-
-    set TEST_PHP_EXECUTABLE=%cd%\php.exe
-
-    php -v
-
-    php -m
 test_script:
-- cmd: php.exe /projects/php-src/run-tests.php /projects/php-src/ext/psr -q --show-diff
+    # TODO
+    # - cmd: php.exe c:\projects\psr\run-tests.php c:\projects\psr -q --show-diff
+
+on_failure:
+    - 'dir'
+    - ps: >-
+        If (Test-Path -Path ${env:PHP_SRC}\compile-errors.log) {
+            type ${env:PHP_SRC}\compile-errors.log
+        }
+
+        If (Test-Path -Path ${env:PHP_SRC}\compile.log) {
+            type ${env:PHP_SRC}\compile.log
+        }
+
+        If (Test-Path -Path ${env:PHP_SRC}\configure.js) {
+            type ${env:PHP_SRC}\configure.js
+        }
+
+on_success:
+    - 'dir'
+
 artifacts:
-  - path: bin
-    name: master
-    type: zip
+    - path: '.\*.zip'
+      type: zip
+      name: PSR
