@@ -81,6 +81,8 @@ build_script:
 
     7z x -y php-devel-pack-%PHP_FULL_VER%-%PHP_BUILD_TYPE%-%VC_VER%-%platform%.zip -oC:\projects
 
+    rm *.zip
+
     C:\projects\php-%PHP_FULL_VER%-devel-%VC_VER%-%platform%\phpize.bat
 
     move configure.js configure.js-tmp
