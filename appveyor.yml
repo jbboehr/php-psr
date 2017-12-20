@@ -5,7 +5,7 @@ branches:
   - appveyor
   - w32
 
-image: Visual Studio 2017
+image: Visual Studio 2015
 
 environment:
   PHP_SDK_BINARY_TOOLS_VER: php-sdk-2.0.7
@@ -20,8 +20,6 @@ install:
 - cmd: cinst wget
 build_script:
 - cmd: >-
-    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-    
     set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
     
     set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
