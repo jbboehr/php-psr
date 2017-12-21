@@ -81,6 +81,5 @@ PHP_MINIT_FUNCTION(psr_simple_cache)
  * c-basic-offset: 4
  * End:
  * vim600: fdm=marker
- * vim: noet sw=4 ts=4
+ * vim: et sw=4 ts=4
  */
-
