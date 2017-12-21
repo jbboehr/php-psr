@@ -1,0 +1,5 @@
+*.c   linguist-language=C
+*.h   linguist-language=C
+*.w32 linguist-language=JavaScript
+
+tests/* linguist-vendored
