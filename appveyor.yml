@@ -51,19 +51,10 @@ environment:
 install:
 - ps: cinst -y wget pscx
 - ps: >-
-    $pscxPath = "C:\Program Files (x86)\PowerShell Community Extensions\Pscx3\Pscx";
-
-    if (-not (Test-Path $pscxPath))
-    {
-        $pscxPath = $null;
-        Write-Host "Searching for the pscx powershell module.";
-        $pscxPath = (Get-ChildItem -Path "C:\Program Files\" -Filter "pscx.dll" -Recurse).FullName;
-        if (!$pscxPath) { $pscxPath = (Get-ChildItem -Path "C:\Program Files (x86)\" -Filter "pscx.dll" -Recurse).FullName; }
-        $pscxPath = Split-Path $pscxPath;
-        Write-Host "Found it at " + $pscxPath;
-    }
-
-    $env:PSModulePath = $env:PSModulePath + ";" + $pscxPath;
+    install-packageprovider nuget -force
+    import-packageprovider nuget -force
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    install-module pscx -scope CurrentUser -force
 - ps: . .\.ci\env.ps1
 - ps: . .\.ci\download.ps1
 
