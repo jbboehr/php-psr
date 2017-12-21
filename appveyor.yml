@@ -17,31 +17,31 @@ environment:
   WIN_SDK_SETENV: 'C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd'
 
   matrix:
-    - PHP_VER: 7.0
-      PHP_FULL_VER: 7.0.26
-      VC_VER: vc14
-      PHP_BUILD_TYPE: Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PHP_VER: 7.0
-      PHP_FULL_VER: 7.0.26
-      VC_VER: vc14
-      PHP_BUILD_TYPE: nts-Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PHP_VER: 7.1
-      PHP_FULL_VER: 7.1.12
-      VC_VER: vc14
-      PHP_BUILD_TYPE: Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PHP_VER: 7.1
-      PHP_FULL_VER: 7.1.12
-      VC_VER: vc14
-      PHP_BUILD_TYPE: nts-Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PHP_VER: 7.2
-      PHP_FULL_VER: 7.2.0
-      VC_VER: vc15
-      PHP_BUILD_TYPE: Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # - PHP_VER: 7.0
+    #   PHP_FULL_VER: 7.0.26
+    #   VC_VER: vc14
+    #   PHP_BUILD_TYPE: Win32
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    # - PHP_VER: 7.0
+    #   PHP_FULL_VER: 7.0.26
+    #   VC_VER: vc14
+    #   PHP_BUILD_TYPE: nts-Win32
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    # - PHP_VER: 7.1
+    #   PHP_FULL_VER: 7.1.12
+    #   VC_VER: vc14
+    #   PHP_BUILD_TYPE: Win32
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    # - PHP_VER: 7.1
+    #   PHP_FULL_VER: 7.1.12
+    #   VC_VER: vc14
+    #   PHP_BUILD_TYPE: nts-Win32
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    # - PHP_VER: 7.2
+    #   PHP_FULL_VER: 7.2.0
+    #   VC_VER: vc15
+    #   PHP_BUILD_TYPE: Win32
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PHP_VER: 7.2
       PHP_FULL_VER: 7.2.0
       VC_VER: vc15
@@ -53,7 +53,7 @@ install:
 - ps: install-packageprovider nuget -force
 - ps: import-packageprovider nuget -force
 - ps: Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-- ps: install-module pscx -AllowClobber
+- ps: install-module pscx
 - ps: . .\.ci\env.ps1
 - ps: . .\.ci\download.ps1
 
