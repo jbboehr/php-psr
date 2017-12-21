@@ -67,7 +67,7 @@ zend_module_entry psr_module_entry = {
 };
 
 #ifdef COMPILE_DL_PSR
-    ZEND_GET_MODULE(psr)      // Common for all PHP extensions which are build as shared modules  
+    ZEND_GET_MODULE(psr)      // Common for all PHP extensions which are build as shared modules
 #endif
 
 /*
@@ -76,6 +76,5 @@ zend_module_entry psr_module_entry = {
  * c-basic-offset: 4
  * End:
  * vim600: fdm=marker
- * vim: noet sw=4 ts=4
+ * vim: et sw=4 ts=4
  */
-

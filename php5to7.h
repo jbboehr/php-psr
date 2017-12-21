@@ -7,3 +7,11 @@ typedef size_t strsize_t;
 #define php5to7_register_internal_class_ex(class, parent) zend_register_internal_class_ex(class, parent)
 #endif
 
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: et sw=4 ts=4
+ */
