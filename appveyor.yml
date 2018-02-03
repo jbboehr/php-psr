@@ -17,38 +17,34 @@ environment:
 
   matrix:
     - PHP_VER: 7.0
-      PHP_FULL_VER: 7.0.26
       VC_VER: vc14
       PHP_BUILD_TYPE: Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PHP_VER: 7.0
-      PHP_FULL_VER: 7.0.26
       VC_VER: vc14
       PHP_BUILD_TYPE: nts-Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PHP_VER: 7.1
-      PHP_FULL_VER: 7.1.12
       VC_VER: vc14
       PHP_BUILD_TYPE: Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PHP_VER: 7.1
-      PHP_FULL_VER: 7.1.12
       VC_VER: vc14
       PHP_BUILD_TYPE: nts-Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PHP_VER: 7.2
-      PHP_FULL_VER: 7.2.0
       VC_VER: vc15
       PHP_BUILD_TYPE: Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PHP_VER: 7.2
-      PHP_FULL_VER: 7.2.0
       VC_VER: vc15
       PHP_BUILD_TYPE: nts-Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
 - cmd: cinst wget
+- ps: Import-Module .\appveyor.psm1
+- ps: SetupPhpVersionString
 
 build_script:
 - set VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
