@@ -1,9 +1,72 @@
+Function InitializeBuildVars {
+    switch ($Env:VC_VER) {
+        'vc14' {
+            If (-not (Test-Path $Env:VS120COMNTOOLS)) {
+                Throw'The VS120COMNTOOLS environment variable is not set. Check your VS installation'
+            }
+
+            $Env:VSCOMNTOOLS = $Env:VS120COMNTOOLS -replace '\\$', ''
+            Break
+        }
+        'vc15' {
+            If (-not (Test-Path $Env:VS140COMNTOOLS)) {
+                Throw'The VS140COMNTOOLS environment variable is not set. Check your VS installation'
+            }
+
+            $Env:VSCOMNTOOLS = $Env:VS140COMNTOOLS -replace '\\$', ''
+            Break
+        }
+        default {
+            Throw 'This script is designed to run with VS 14/15. Check your VS installation'
+        }
+    }
+
+    If ($Env:PLATFORM -eq 'x64') {
+        $Env:ARCH = 'x86_amd64'
+    } Else {
+        $Env:ARCH = 'x86'
+    }
+}
+
+Function AppendSessionPath {
+    $PathsCollection = @("C:\projects\php-sdk\bin")
+    $PathsCollection += "C:\projects\php\bin"
+    $PathsCollection += "C:\projects\php"
+
+    $CurrentPath = (Get-Item -Path ".\" -Verbose).FullName
+
+    ForEach ($PathItem In $PathsCollection) {
+        Set-Location Env:
+        $AllPaths = (Get-ChildItem Path).value.split(";") | Sort-Object -Unique
+
+        $AddToPath = $true
+
+        ForEach ($AddedPath In $AllPaths) {
+            If (-not "${AddedPath}") {
+                Continue
+            }
+
+            $AddedPath = $AddedPath -replace '\\$', ''
+
+            If ($PathItem -eq $AddedPath) {
+                $AddToPath = $false
+            }
+        }
+
+        If ($AddToPath) {
+            $Env:Path += ";${PathItem}"
+        }
+    }
+
+    Set-Location "${CurrentPath}"
+}
+
 Function SetupPhpVersionString {
     $RemoteUrl = 'http://windows.php.net/downloads/releases/sha1sum.txt'
     $DestinationPath = "${Env:Temp}\php-sha1sum.txt"
 
     If (-not [System.IO.File]::Exists($DestinationPath)) {
-        Write-Host "Downloading PHP SHA Sums: $RemoteUrl..."
+        Write-Host "Downloading PHP SHA Sums: ${RemoteUrl} ..."
         DownloadFile $RemoteUrl $DestinationPath
     }
 
@@ -20,8 +83,8 @@ Function DownloadFile {
         [Parameter(Mandatory=$true)][System.String] $DestinationPath
 	)
 
-    $Retrycount = 5
-    $Retrycount = 0
+    $RetryMax   = 5
+    $RetryCount = 0
     $Completed  = $false
 
     $WebClient = new-object System.Net.WebClient
@@ -31,12 +94,12 @@ Function DownloadFile {
             $WebClient.DownloadFile($RemoteUrl, $DestinationPath)
             $Completed = $true
         } Catch {
-            If ($Retrycount -ge $Retrycount) {
+            If ($RetryCount -ge $RetryMax) {
                 $ErrorMessage = $_.Exception.Message
                 Write-Host "Error downloadingig ${RemoteUrl}: $ErrorMessage"
                 $Completed = $true
             } Else {
-                $Retrycount++
+                $RetryCount++
             }
         }
     }

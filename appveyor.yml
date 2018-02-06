@@ -14,6 +14,7 @@ environment:
   PHP_SDK_BINARY_TOOLS_VER: php-sdk-2.0.7
   NO_INTERACTION: 1
   REPORT_EXIT_STATUS: 1
+  TEST_PHP_EXECUTABLE: C:\projects\php\bin\php.exe
 
   matrix:
     - PHP_VER: 7.0
@@ -45,16 +46,12 @@ install:
 - cmd: cinst wget
 - ps: Import-Module .\appveyor.psm1
 - ps: SetupPhpVersionString
+- ps: AppendSessionPath
 
 build_script:
-- set VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
-- if "%VC_VER%" == "vc14" set VSCOMNTOOLS=%VS120COMNTOOLS%
-- if "%VC_VER%" == "vc15" set VSCOMNTOOLS=%VS140COMNTOOLS%
-- set PATH=%PATH%;C:\projects\php-sdk\bin;C:\projects\php\bin;C:\projects\php
-- set TEST_PHP_EXECUTABLE=C:\projects\php\bin\php.exe
-- if "%platform%" == "x86" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat"
-- if "%platform%" == "x64" "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-- if "%platform%" == "x64" call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
+- ps: InitializeBuildVars
+- '"%VSCOMNTOOLS%\VsDevCmd" %PLATFORM%'
+- '"%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" %ARCH%'
 - if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release
 - if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release_TS
 - if "%platform%" == "x64" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release
