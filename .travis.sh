@@ -69,6 +69,28 @@ psx_cache_init)
 psx_cache_test)
 	php -d extension=modules/psr.so ./psx-cache/vendor/bin/phpunit -c psx-cache/
 	;;
+dispatch_init)
+	rm -rf dispatch
+	git clone -b ${DISPATCH_VERSION:-master} https://github.com/equip/dispatch.git
+	cd dispatch
+	composer install
+	rm -rf vendor/psr
+	cd ..
+	;;
+dispatch_test)
+	php -d extension=modules/psr.so ./dispatch/vendor/bin/phpunit -c dispatch/
+	;;
+request_handler_init)
+	rm -rf request-handler
+	git clone -b ${REQUEST_HANDLER_VERSION:-master} https://github.com/middlewares/request-handler.git
+	cd request-handler
+	composer install
+	rm -rf vendor/psr
+	cd ..
+	;;
+request_handler_test)
+	php -d extension=modules/psr.so ./request-handler/vendor/bin/phpunit -c request-handler/
+	;;
 esac
 
 exit 0
