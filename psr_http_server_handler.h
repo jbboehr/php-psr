@@ -4,15 +4,17 @@
 #include "php.h"
 #include "php_psr.h"
 
+#ifdef ZEND_ENGINE_3
 #define PHP_PSR_HTTP_SERVER_HANDLER_VERSION "1.0.0"
 
-extern PHP_PSR_API zend_class_entry * PsrHttpServerReqeustHandlerInterface_ce_ptr;
-
 extern PHP_MINIT_FUNCTION(psr_http_server_handler);
+
+extern PHP_PSR_API zend_class_entry * PsrHttpServerReqeustHandlerInterface_ce_ptr;
 
 PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpServerReqeustHandlerInterface, handle, 1, Psr\\Http\\Message\\ResponseInterface, 0)
     ZEND_ARG_OBJ_INFO(0, request, Psr\\Http\\Message\\ServerRequestInterface, 0)
 PHP_PSR_END_ARG_INFO()
+#endif
 
 #endif /* PSR_HTTP_SERVER_HANDLER_H */
 

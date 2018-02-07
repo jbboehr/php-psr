@@ -9,6 +9,8 @@
 
 /* {{{ MiddlewareInterface --------------------------------------------------- */
 
+#ifdef ZEND_ENGINE_3
+
 PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
 
 static zend_function_entry PsrHttpServerMiddlewareInterface_methods[] = {
@@ -23,12 +25,16 @@ static zend_always_inline void php_psr_register_PsrHttpServerMiddlewareInterface
     PsrHttpServerMiddlewareInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
+#endif
+
 /* }}} ---------------------------------------------------------------------- */
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_server_middleware)
 {
+#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpServerMiddlewareInterface(INIT_FUNC_ARGS_PASSTHRU);
+#endif
 
     return SUCCESS;
 }

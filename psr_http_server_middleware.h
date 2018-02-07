@@ -4,16 +4,18 @@
 #include "php.h"
 #include "php_psr.h"
 
+#ifdef ZEND_ENGINE_3
 #define PHP_PSR_HTTP_SERVER_MIDDLEWARE_VERSION "1.0.0"
 
-extern PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
-
 extern PHP_MINIT_FUNCTION(psr_http_server_middleware);
+
+extern PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
 
 PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpServerMiddlewareInterface, process, 2, Psr\\Http\\Message\\ResponseInterface, 0)
     ZEND_ARG_OBJ_INFO(0, request, Psr\\Http\\Message\\ServerRequestInterface, 0)
     ZEND_ARG_OBJ_INFO(0, handler, Psr\\Http\\Server\\RequestHandlerInterface, 0)
 PHP_PSR_END_ARG_INFO()
+#endif
 
 #endif /* PSR_HTTP_SERVER_MIDDLEWARE_H */
 
