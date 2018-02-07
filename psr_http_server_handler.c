@@ -7,22 +7,22 @@
 #include "php_psr.h"
 #include "psr_http_server_handler.h"
 
-/* {{{ ReqeustHandlerInterface --------------------------------------------------- */
+/* {{{ RequestHandlerInterface --------------------------------------------------- */
 
 #ifdef ZEND_ENGINE_3
 
-PHP_PSR_API zend_class_entry * PsrHttpServerReqeustHandlerInterface_ce_ptr;
+PHP_PSR_API zend_class_entry * PsrHttpServerRequestHandlerInterface_ce_ptr;
 
-static zend_function_entry PsrHttpServerReqeustHandlerInterface_methods[] = {
-        PHP_PSR_ABSTRACT_ME(PsrHttpServerReqeustHandlerInterface, handle)
+static zend_function_entry PsrHttpServerRequestHandlerInterface_methods[] = {
+        PHP_PSR_ABSTRACT_ME(PsrHttpServerRequestHandlerInterface, handle)
         PHP_FE_END
 };
 
-static zend_always_inline void php_psr_register_PsrHttpServerReqeustHandlerInterface(INIT_FUNC_ARGS)
+static zend_always_inline void php_psr_register_PsrHttpServerRequestHandlerInterface(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\RequestHandlerInterface", PsrHttpServerReqeustHandlerInterface_methods);
-    PsrHttpServerReqeustHandlerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\RequestHandlerInterface", PsrHttpServerRequestHandlerInterface_methods);
+    PsrHttpServerRequestHandlerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
 }
 
 #endif
@@ -33,7 +33,7 @@ static zend_always_inline void php_psr_register_PsrHttpServerReqeustHandlerInter
 PHP_MINIT_FUNCTION(psr_http_server_handler)
 {
 #ifdef ZEND_ENGINE_3
-    php_psr_register_PsrHttpServerReqeustHandlerInterface(INIT_FUNC_ARGS_PASSTHRU);
+    php_psr_register_PsrHttpServerRequestHandlerInterface(INIT_FUNC_ARGS_PASSTHRU);
 #endif
 
     return SUCCESS;
