@@ -17,5 +17,7 @@ PSR-6 Cache Version => %d.%d.%d
 PSR-7 Http Message Version => %d.%d.%d
 PSR-11 Container Version => %d.%d.%d
 PSR-13 Link Version => %d.%d.%d
+PSR-15 HTTP Handlers (Server Handler) => %d.%d.%d
+PSR-15 HTTP Handlers (Middleware) => %d.%d.%d
 PSR-16 Simple Cache Version => %d.%d.%d
 %A

@@ -13,6 +13,8 @@ PHP extension providing the accepted [PSR](http://www.php-fig.org/psr/) interfac
 - [PSR-7](http://www.php-fig.org/psr/psr-7/) - [psr/http-message](https://github.com/php-fig/http-message) - tested against [guzzle/psr7](https://github.com/guzzle/psr7)
 - [PSR-11](http://www.php-fig.org/psr/psr-11/) - [psr/container](https://github.com/php-fig/container) - tested against [league/container](https://github.com/thephpleague/container)
 - [PSR-13](http://www.php-fig.org/psr/psr-13/) - [psr/link](https://github.com/php-fig/link) - tested against [php-fig/link-util](https://github.com/php-fig/link-util)
+- [PSR-15](http://www.php-fig.org/psr/psr-15/) - [psr/http-server-handler](https://github.com/php-fig/http-server-handler) - tested against [equip/dispatch](https://github.com/equip/dispatch)
+- [PSR-15](http://www.php-fig.org/psr/psr-15/) - [psr/http-server-middleware](https://github.com/php-fig/http-server-middleware) - tested against [middleware/request-handler](https://github.com/middlewares/request-handler)
 - [PSR-16](http://www.php-fig.org/psr/psr-16/) - [psr/simple-cache](https://github.com/php-fig/simple-cache) - tested against [psx-cache](https://github.com/apioo/psx-cache)
 
 

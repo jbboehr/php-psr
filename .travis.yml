@@ -15,6 +15,8 @@ env:
     - PSX_CACHE_VERSION=v1.0.1
     - LEAGUE_CONTAINER_VERSION=2.3.0
     - LINK_UTIL_VERSION=1.0.0
+    - DISPATCH_VERSION=2.0.0
+    - REQUEST_HANDLER_VERSION=1.0.1
 
 branches:
   only:
@@ -44,6 +46,8 @@ before_script:
   - travis_retry ./.travis.sh league_container_init
   - travis_retry ./.travis.sh link_util_init
   - travis_retry ./.travis.sh psx_cache_init
+  - travis_retry ./.travis.sh dispatch_init
+  - travis_retry ./.travis.sh request_handler_init
 
 script:
   - export NO_INTERACTION=1
@@ -56,6 +60,8 @@ script:
   - ./.travis.sh league_container_test
   - ./.travis.sh link_util_test
   - ./.travis.sh psx_cache_test
+  - travis_retry ./.travis.sh dispatch_test
+  - ./.travis.sh request_handler_test
 
 after_success:
   - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info

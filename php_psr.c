@@ -19,6 +19,8 @@
 #include "psr_link.h"
 #include "psr_log.h"
 #include "psr_simple_cache.h"
+#include "psr_http_server_handler.h"
+#include "psr_http_server_middleware.h"
 
 static PHP_MINIT_FUNCTION(psr)
 {
@@ -28,6 +30,8 @@ static PHP_MINIT_FUNCTION(psr)
     PHP_MINIT(psr_link)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_simple_cache)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_http_server_handler)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_http_server_middleware)(INIT_FUNC_ARGS_PASSTHRU);
     return SUCCESS;
 }
 
@@ -42,6 +46,8 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "PSR-7 Http Message Version", PHP_PSR_HTTP_MESSAGE_VERSION);
     php_info_print_table_row(2, "PSR-11 Container Version", PHP_PSR_CONTAINER_VERSION);
     php_info_print_table_row(2, "PSR-13 Link Version", PHP_PSR_LOG_VERSION);
+    php_info_print_table_row(2, "PSR-15 HTTP Handlers (Server Handler)", PHP_PSR_HTTP_SERVER_HANDLER_VERSION);
+    php_info_print_table_row(2, "PSR-15 HTTP Handlers (Middleware)", PHP_PSR_HTTP_SERVER_MIDDLEWARE_VERSION);
     php_info_print_table_row(2, "PSR-16 Simple Cache Version", PHP_PSR_SIMPLE_CACHE_VERSION);
     php_info_print_table_end();
 }
