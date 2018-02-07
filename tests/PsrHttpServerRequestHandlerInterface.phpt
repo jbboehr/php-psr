@@ -4,6 +4,8 @@ Psr\Http\Server\RequestHandlerInterface
 <?php if( !extension_loaded('psr') ) die('skip '); ?>
 --FILE--
 <?php
+include __DIR__ . '/SampleMessage.inc';
+include __DIR__ . '/SampleRequest.inc';
 include __DIR__ . '/SampleServerRequest.inc';
 include __DIR__ . '/SampleResponse.inc';
 include __DIR__ . '/SampleRequestHandler.inc';
