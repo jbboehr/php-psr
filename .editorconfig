@@ -14,7 +14,7 @@ insert_final_newline = true
 [Makefile]
 indent_style = tab
 
-[*.{awk,w32,bat,mk,frag}]
+[*.{awk,w32,bat,mk,frag,psm1}]
 indent_style = tab
 
 [*.yml]
