@@ -7,7 +7,7 @@
 [![License][:badge-license:]][:ext-license:]
 
 This PHP extension provides the interfaces from the [PSR][:psr-fig:] standards as established by the [PHP-FIG][:php-fig:] group.
-You can use interfaces provided by this extension easily - see this [example][:example:].
+You can use interfaces provided by this extension in another extension easily - see this [example][:example:].
 
 ## Interfaces
 
@@ -21,9 +21,6 @@ You can use interfaces provided by this extension easily - see this [example][:e
 ## Installation
 
 ### Linux / macOS
-
-You can install the PSR extension from source.
-Building from source is straightforward. Follow these instructions to generate a binary extension for your platform:
 
 Prerequisite packages are:
 
@@ -60,18 +57,20 @@ sudo make install
 Add the extension to your *php.ini*:
 
 ```ini
-echo extension=psr.so
+echo extension=psr.so | tee -a /path/to/your/php.ini
 ```
 
 Finally, _restart the web server_.
 
 ### PECL / Windows
 
-You can also install this extension from [PECL][:pecl-psr:].
+You may also be able to install this extension via [PECL][:pecl-psr:]:
 
 ```bash
 pecl install psr
 ```
+
+or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-psr:] and placing it in the appropriate directory.
 
 ## License
 
@@ -110,3 +109,4 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:link-util:]: https://github.com/php-fig/link-util
 [:psr-16:]: https://www.php-fig.org/psr/psr-16
 [:psr-simple-cache:]: https://github.com/php-fig/simple-cache
+[:windows-psr:]: http://windows.php.net/downloads/pecl/releases/psr/
