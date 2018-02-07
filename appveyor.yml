@@ -61,11 +61,7 @@ build_script:
 - '"%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" %ARCH%'
 - phpsdk_setvars
 - phpize
-- if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release
-- if "%platform%" == "x86" if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\Release_TS
-- if "%platform%" == "x64" if "%PHP_BUILD_TYPE%" == "nts-Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release
-- if "%platform%" == "x64" if "%PHP_BUILD_TYPE%" == "Win32" set RELEASE_FOLDER=%APPVEYOR_BUILD_FOLDER%\%platform%\Release_TS
-- set RELEASE_ZIPBALL=psr_%platform%_%VC_VER%_%PHP_VER%_%APPVEYOR_BUILD_VERSION%
+- ps: InitializeReleaseVars
 - cmd: >-
     move configure.js configure.js-tmp
 
