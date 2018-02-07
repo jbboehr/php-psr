@@ -1,11 +1,12 @@
-# note: when using nix-shell, run "configurePhase" otherwise you'll have missing headers
+# when using nix-shell, run "configurePhase" otherwise you'll have missing headers
+# to use a specific version of php, run `nix-shell --arg php '(import <nixpkgs> {}).php56'`
 
-with import <nixpkgs> { };
+{ php ? (import <nixpkgs> {}).php, pkgs ? import <nixpkgs> {} }:
 
 let
   buildPecl = import <nixpkgs/pkgs/build-support/build-pecl.nix> {
     inherit php;
-    inherit stdenv autoreconfHook fetchurl;
+    inherit (pkgs) stdenv autoreconfHook fetchurl;
   };
 in
 
