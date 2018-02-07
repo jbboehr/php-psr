@@ -60,7 +60,7 @@ script:
   - ./.travis.sh league_container_test
   - ./.travis.sh link_util_test
   - ./.travis.sh psx_cache_test
-  - travis_retry ./.travis.sh dispatch_test
+  - ./.travis.sh dispatch_test
   - ./.travis.sh request_handler_test
 
 after_success:
