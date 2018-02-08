@@ -72,6 +72,11 @@ pecl install psr
 
 or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-psr:] and placing it in the appropriate directory.
 
+## Credits
+
+* [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
+* [@Jan-E][:github-jan-e:] - Original appveyor template
+
 ## License
 
 This project is open source software licensed under the Simplified BSD License.
@@ -110,3 +115,5 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-16:]: https://www.php-fig.org/psr/psr-16
 [:psr-simple-cache:]: https://github.com/php-fig/simple-cache
 [:windows-psr:]: http://windows.php.net/downloads/pecl/releases/psr/
+[:github-sergeyklay:]: https://github.com/sergeyklay
+[:github-jan-e:]: https://github.com/Jan-E
