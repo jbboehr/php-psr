@@ -15,9 +15,11 @@ $request->withStatus(400, 'BAD REQUEST');
 $request->getReasonPhrase();
 --EXPECT--
 bool(true)
-array(1) {
+array(2) {
   ["Psr\Http\Message\MessageInterface"]=>
   string(33) "Psr\Http\Message\MessageInterface"
+  ["Psr\Http\Message\ResponseInterface"]=>
+  string(34) "Psr\Http\Message\ResponseInterface"
 }
 bool(true)
 string(29) "SampleResponse::getStatusCode"

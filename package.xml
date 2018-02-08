@@ -44,6 +44,10 @@
    <file name="psr_container.h" role="src"/>
    <file name="psr_http_message.c" role="src"/>
    <file name="psr_http_message.h" role="src"/>
+   <file name="psr_http_server_handler.c" role="src"/>
+   <file name="psr_http_server_handler.h" role="src"/>
+   <file name="psr_http_server_middleware.c" role="src"/>
+   <file name="psr_http_server_middleware.h" role="src"/>
    <file name="psr_link.c" role="src"/>
    <file name="psr_link.h" role="src"/>
    <file name="psr_log.c" role="src"/>
@@ -93,6 +97,10 @@
    <file name="tests/PsrCacheInvalidArgumentException.phpt" role="test"/>
    <file name="tests/PsrSimpleCacheCacheException.phpt" role="test"/>
    <file name="tests/PsrSimpleCacheInvalidArgumentException.phpt" role="test"/>
+   <file name="tests/PsrHttpServerMiddlewareInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpServerRequestHandlerInterface.phpt" role="test"/>
+   <file name="tests/SampleRequestHandler.inc" role="test"/>
+   <file name="tests/SampleMiddleware.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>
