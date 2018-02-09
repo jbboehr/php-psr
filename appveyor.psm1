@@ -207,6 +207,20 @@ Function Expand-Item7zip {
 	}
 }
 
+Function PrintLogs {
+	If (Test-Path -Path "${Env:APPVEYOR_BUILD_FOLDER}\compile-errors.log") {
+		Get-Content -Path "${Env:APPVEYOR_BUILD_FOLDER}\compile-errors.log"
+	}
+
+	If (Test-Path -Path "${Env:APPVEYOR_BUILD_FOLDER}\compile.log") {
+		Get-Content -Path "${Env:APPVEYOR_BUILD_FOLDER}\compile.log"
+	}
+
+	If (Test-Path -Path "${Env:APPVEYOR_BUILD_FOLDER}\configure.js") {
+		Get-Content -Path "${Env:APPVEYOR_BUILD_FOLDER}\configure.js"
+	}
+}
+
 Function DownloadFile {
 	param(
 		[Parameter(Mandatory=$true)][System.String] $RemoteUrl,

@@ -7,11 +7,11 @@ branches:
   - w32
 
 platform:
-- x86
-- x64
+  - x86
+  - x64
 
 cache:
-- 'C:\Downloads -> appveyor.yml'
+  - 'C:\Downloads -> appveyor.yml'
 
 environment:
   PHP_SDK_BINARY_TOOLS_VER: 2.0.7
@@ -46,45 +46,40 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
-- ps: Import-Module .\appveyor.psm1
-- ps: SetupPhpVersionString
-- ps: AppendSessionPath
-- ps: EnsureRequiredDirectoriesPresent
-- ps: Ensure7ZipIsInstalled
-- ps: InstallSdk
-- ps: InstallPhp
-- ps: InstallPhpDevPack
+  - ps: Import-Module .\appveyor.psm1
+  - ps: SetupPhpVersionString
+  - ps: AppendSessionPath
+  - ps: EnsureRequiredDirectoriesPresent
+  - ps: Ensure7ZipIsInstalled
+  - ps: InstallSdk
+  - ps: InstallPhp
+  - ps: InstallPhpDevPack
 
 build_script:
-- ps: InitializeBuildVars
-- '"%VSCOMNTOOLS%\VsDevCmd" %PLATFORM%'
-- '"%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" %ARCH%'
-- phpsdk_setvars
-- phpize
-- ps: InitializeReleaseVars
-- cmd: >-
-    move configure.js configure.js-tmp
-
-    echo var PHP_SANITIZER="no"; var PHP_CONFIG_PROFILE="no"; >configure.js
-
-    type configure.js-tmp >>configure.js
-
-    configure.bat --disable-all --enable-psr --with-prefix=C:\projects\php
-
-    nmake
+  - ps: InitializeBuildVars
+  - '"%VSCOMNTOOLS%\VsDevCmd" %PLATFORM%'
+  - '"%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" %ARCH%'
+  - phpsdk_setvars
+  - phpize
+  - ps: InitializeReleaseVars
+  - cmd: configure.bat --disable-all --enable-psr --with-prefix=C:\projects\php
+  - cmd: nmake 2> compile-errors.log 1> compile.log
 
 test_script:
-- cmd: nmake test
+  - cmd: nmake test
 
 after_build:
-- echo Collect artifacts and zip
-- mkdir package
-- copy *.md package
-- copy %RELEASE_FOLDER%\php_psr.dll package
-- cd package
-- 7z a %RELEASE_ZIPBALL%.zip *
-- mv %RELEASE_ZIPBALL%.zip %APPVEYOR_BUILD_FOLDER%\
-- cd %APPVEYOR_BUILD_FOLDER%
+  - echo Collect artifacts and zip
+  - mkdir package
+  - copy *.md package
+  - copy %RELEASE_FOLDER%\php_psr.dll package
+  - cd package
+  - 7z a %RELEASE_ZIPBALL%.zip *
+  - mv %RELEASE_ZIPBALL%.zip %APPVEYOR_BUILD_FOLDER%\
+  - cd %APPVEYOR_BUILD_FOLDER%
+
+on_failure :
+  - ps: PrintLogs
 
 artifacts:
   - path: '.\*.zip'
