@@ -69,19 +69,12 @@ test_script:
   - cmd: nmake test
 
 after_build:
-  - echo Collect artifacts and zip
-  - mkdir package
-  - copy *.md package
-  - copy %RELEASE_FOLDER%\php_psr.dll package
-  - cd package
-  - 7z a %RELEASE_ZIPBALL%.zip *
-  - mv %RELEASE_ZIPBALL%.zip %APPVEYOR_BUILD_FOLDER%\
-  - cd %APPVEYOR_BUILD_FOLDER%
+  - ps: PrepareReleasePackage
 
 on_failure :
   - ps: PrintLogs
 
 artifacts:
-  - path: '.\*.zip'
+  - path: '.\$(RELEASE_ZIPBALL).zip'
     name: psr
     type: zip

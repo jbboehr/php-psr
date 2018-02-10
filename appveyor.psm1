@@ -136,10 +136,12 @@ Function InitializeBuildVars {
 }
 
 Function AppendSessionPath {
-	$PathsCollection = @("C:\Projects\php-sdk\bin")
-	$PathsCollection += "C:\Projects\php\bin"
-	$PathsCollection += "C:\Projects\php"
-	$PathsCollection += "C:\Projects\php-devpack"
+	[string[]] $PathsCollection = @(
+		"C:\Projects\php-sdk\bin",
+		"C:\Projects\php\bin",
+		"C:\Projects\php",
+		"C:\Projects\php-devpack"
+	)
 
 	$CurrentPath = (Get-Item -Path ".\" -Verbose).FullName
 
@@ -219,6 +221,31 @@ Function PrintLogs {
 	If (Test-Path -Path "${Env:APPVEYOR_BUILD_FOLDER}\configure.js") {
 		Get-Content -Path "${Env:APPVEYOR_BUILD_FOLDER}\configure.js"
 	}
+}
+
+Function PrepareReleasePackage {
+	$CurrentPath = (Get-Item -Path ".\" -Verbose).FullName
+	$PackagePath = "${Env:APPVEYOR_BUILD_FOLDER}\package"
+
+	If (-not (Test-Path $PackagePath)) {
+		New-Item -ItemType Directory -Force -Path $PackagePath | Out-Null
+	}
+
+	Copy-Item -Path (Join-Path -Path $Env:APPVEYOR_BUILD_FOLDER -ChildPath '\*') -Filter '*.md' -Destination "${PackagePath}" -Force
+	Copy-Item "${Env:RELEASE_FOLDER}\php_psr.dll" "${PackagePath}"
+
+	Set-Location "${PackagePath}"
+	$Result = (& 7z a "${Env:RELEASE_ZIPBALL}.zip" *.*)
+
+	$7zipExitCode = $LASTEXITCODE
+	If ($7zipExitCode -ne 0) {
+		Set-Location "${CurrentPath}"
+		Throw "An error occurred while creating release zippbal to [${Env:RELEASE_ZIPBALL}.zip]. 7Zip Exit Code was [${7zipExitCode}]"
+	}
+
+	Move-Item "${Env:RELEASE_ZIPBALL}.zip" -Destination "${Env:APPVEYOR_BUILD_FOLDER}"
+
+	Set-Location "${CurrentPath}"
 }
 
 Function DownloadFile {
