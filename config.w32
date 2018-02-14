@@ -4,6 +4,6 @@ ARG_ENABLE("psr", "Enable psr support", "no");
 
 if (PHP_PSR != "no") {
     AC_DEFINE("HAVE_PSR", 1, "Have PSR Support");
-    EXTENSION("psr", "php_psr.c psr_cache.c psr_container.c psr_http_message.c psr_link.c psr_log.c psr_simple_cache.c");
-    PHP_INSTALL_HEADERS("ext\\psr", "php_psr.h psr_cache.h psr_container.h psr_http_message.h psr_link.h psr_log.h psr_simple_cache.h")
+    EXTENSION("psr", "php_psr.c psr_cache.c psr_container.c psr_http_message.c psr_link.c psr_log.c psr_simple_cache.c psr_http_server_handler.c psr_http_server_middleware.c");
+    PHP_INSTALL_HEADERS("ext\\psr", "php_psr.h psr_cache.h psr_container.h psr_http_message.h psr_link.h psr_log.h psr_simple_cache.h psr_http_server_handler.h psr_http_server_middleware.h")
 }
