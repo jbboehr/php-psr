@@ -1,6 +1,8 @@
 <?php
 
-class SampleResponse extends SampleMessage
+use Psr\Http\Message\ResponseInterface;
+
+class SampleResponse extends SampleMessage implements ResponseInterface
 {
     public function getStatusCode()
     {

@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- PSR-15 HTTP Handlers support
+
 ## [0.3.0] - 2018-02-08
 
 ### Added

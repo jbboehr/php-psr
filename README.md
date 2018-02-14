@@ -16,6 +16,8 @@ You can use interfaces provided by this extension in another extension easily - 
 - [PSR-7][:psr-7:] - [psr/http-message][:psr-http-message:] - tested against [guzzle/psr7][:guzzle:]
 - [PSR-11][:psr-11:] - [psr/container][:psr-container:] - tested against [league/container][:league-container:]
 - [PSR-13][:psr-13:] - [psr/link][:psr-link:] - tested against [php-fig/link-util][:link-util:]
+- [PSR-15][:psr-15:] - [psr/http-server-handler][:psr-http-server-handler:] - tested against [equip/dispatch][:dispatch:]
+- [PSR-15][:psr-15:] - [psr/http-server-middleware][:psr-http-server-middleware:] - tested against [middleware/request-handler][:request-handler:]
 - [PSR-16][:psr-16:] - [psr/simple-cache][:psr-simple-cache:] - tested against [psx-cache][:psx-cache:]
 
 ## Installation
@@ -75,6 +77,7 @@ or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-ps
 ## Credits
 
 * [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
+* [@flyinghail][:github-flyinghail:] - PSR-15 support
 * [@Jan-E][:github-jan-e:] - Original appveyor template
 
 ## License
@@ -117,3 +120,9 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:windows-psr:]: http://windows.php.net/downloads/pecl/releases/psr/
 [:github-sergeyklay:]: https://github.com/sergeyklay
 [:github-jan-e:]: https://github.com/Jan-E
+[:github-flyinghail:]: https://github.com/flyinghail
+[:psr-15:]: http://www.php-fig.org/psr/psr-15
+[:psr-http-server-handler:]: https://github.com/php-fig/http-server-handler
+[:psr-http-server-middleware:]: https://github.com/php-fig/http-server-middleware
+[:dispatch:]: https://github.com/equip/dispatch
+[:request-handler:]: https://github.com/middlewares/request-handler
