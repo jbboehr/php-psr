@@ -180,11 +180,15 @@ Function SetupPhpVersionString {
 		DownloadFile $RemoteUrl $DestinationPath
 	}
 
-	$versions = Get-Content $DestinationPath | Where-Object {
+	$VersionString = Get-Content $DestinationPath | Where-Object {
 		$_ -match "php-($Env:PHP_VER\.\d+)-src"
 	} | ForEach-Object { $matches[1] }
 
-	$Env:PHP_FULL_VER = $versions.Split(' ')[-1]
+	If ($VersionString -NotMatch '\d+\.\d+\.\d+') {
+		Throw "Unable to obtain PHP version string using pattern 'php-($Env:PHP_MINOR\.\d+)-src'"
+	}
+
+	$Env:PHP_FULL_VER = $VersionString
 }
 
 Function Expand-Item7zip {
@@ -258,7 +262,8 @@ Function DownloadFile {
 	$RetryCount = 0
 	$Completed  = $false
 
-	$WebClient = new-object System.Net.WebClient
+	$WebClient = New-Object System.Net.WebClient
+	$WebClient.Headers.Add('User-Agent', 'AppVeyor PowerShell Script')
 
 	While (-not $Completed) {
 		Try {
