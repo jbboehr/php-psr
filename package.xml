@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2018-02-08</date>
+ <date>2018-03-05</date>
  <version>
-  <release>0.3.0</release>
-  <api>0.3.0</api>
+  <release>0.4.0</release>
+  <api>0.4.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,11 +26,7 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Fix TypeError when no argument is passed to methods in AbstractLogger
- - PSR-11 Container support
- - PSR-13 Link support
- - PSR-16 Simple Cache support
- - Windows support
+ - PSR-15 HTTP Handlers support
  </notes>
  <contents>
   <dir name="/">
