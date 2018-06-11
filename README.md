@@ -74,6 +74,30 @@ pecl install psr
 
 or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-psr:] and placing it in the appropriate directory.
 
+### Using with composer
+
+After enable psr extension edit `composer.json` like this:
+```json
+{
+    "name": "sample/app",
+    "require": {
+        "ext-psr": "*"
+    },
+    "provide": {
+        "psr/log": "^1",
+        "psr/cache": "^1",
+        "psr/http-message": "^1",
+        "psr/container": "^1",
+        "psr/link": "^1",
+        "psr/http-server-handler": "^1",
+        "psr/http-server-middleware": "^1",
+        "psr/simple-cache": "^1"
+    },
+}
+```
+
+This will use php extension instead of download from packagist.
+
 ## Credits
 
 * [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
