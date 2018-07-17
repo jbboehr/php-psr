@@ -76,7 +76,7 @@ or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-ps
 
 ### Using with composer
 
-After enable psr extension edit `composer.json` like this:
+After enabling the psr extension edit `composer.json` like this:
 ```json
 {
     "name": "sample/app",
@@ -96,7 +96,7 @@ After enable psr extension edit `composer.json` like this:
 }
 ```
 
-This will use php extension instead of download from packagist.
+This will use this PHP extension instead of downloading from packagist.
 
 ## Credits
 
