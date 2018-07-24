@@ -76,7 +76,8 @@ or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-ps
 
 ### Using with composer
 
-After enabling the psr extension edit `composer.json` like this:
+In your project, you can prevent the installation of the unnecessary composer packages provided by this extension by adding the following to your `composer.json`. You will need to make sure the extension is installed and enabled in your PHP configuration. You may also want to consider leaving them installed to provide stubs to your IDE. This configuration is not suitable for a library published to packagist.
+
 ```json
 {
     "name": "sample/app",
