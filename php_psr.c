@@ -21,6 +21,7 @@
 #include "psr_simple_cache.h"
 #include "psr_http_server_handler.h"
 #include "psr_http_server_middleware.h"
+#include "psr_http_factory.h"
 
 static PHP_MINIT_FUNCTION(psr)
 {
@@ -33,6 +34,7 @@ static PHP_MINIT_FUNCTION(psr)
 #ifdef ZEND_ENGINE_3
     PHP_MINIT(psr_http_server_handler)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_server_middleware)(INIT_FUNC_ARGS_PASSTHRU);
+    PHP_MINIT(psr_http_factory)(INIT_FUNC_ARGS_PASSTHRU);
 #endif
     return SUCCESS;
 }
@@ -53,6 +55,9 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "PSR-15 HTTP Handlers (Middleware)", PHP_PSR_HTTP_SERVER_MIDDLEWARE_VERSION);
 #endif
     php_info_print_table_row(2, "PSR-16 Simple Cache Version", PHP_PSR_SIMPLE_CACHE_VERSION);
+#ifdef ZEND_ENGINE_3
+    php_info_print_table_row(2, "PSR-17 HTTP Factories", PHP_PSR_HTTP_FACTORY_VERSION);
+#endif
     php_info_print_table_end();
 }
 

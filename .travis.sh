@@ -91,6 +91,17 @@ request_handler_init)
 request_handler_test)
 	php -d extension=modules/psr.so ./request-handler/vendor/bin/phpunit -c request-handler/
 	;;
+http_factory_guzzle_init)
+	rm -rf http-factory-guzzle
+	git clone -b ${HTTP_FACTORY_GUZZLE_VERSION:-master} https://github.com/http-interop/http-factory-guzzle.git
+	cd http-factory-guzzle
+	composer install
+	rm -rf vendor/psr
+	cd ..
+	;;
+http_factory_guzzle_test)
+	php -d extension=modules/psr.so ./http-factory-guzzle/vendor/bin/phpunit -c http-factory-guzzle/
+	;;
 esac
 
 exit 0
