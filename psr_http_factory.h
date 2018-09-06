@@ -43,7 +43,7 @@ PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpMessageStreamFactoryInterface, cre
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpMessageStreamFactoryInterface, createStreamFromResource, 1, Psr\\Http\\Message\\StreamInterface, 0)
-    ZEND_ARG_TYPE_INFO(0, resouce, IS_STRING, 0)
+    ZEND_ARG_INFO(0, resouce)
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpMessageUploadedFileFactoryInterface, createUploadedFile, 1, Psr\\Http\\Message\\UploadedFileInterface, 0)
