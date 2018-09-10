@@ -42,6 +42,8 @@
    <file name="psr_cache.h" role="src"/>
    <file name="psr_container.c" role="src"/>
    <file name="psr_container.h" role="src"/>
+   <file name="psr_http_factory.c" role="src"/>
+   <file name="psr_http_factory.h" role="src"/>
    <file name="psr_http_message.c" role="src"/>
    <file name="psr_http_message.h" role="src"/>
    <file name="psr_http_server_handler.c" role="src"/>
@@ -101,6 +103,18 @@
    <file name="tests/PsrHttpServerRequestHandlerInterface.phpt" role="test"/>
    <file name="tests/SampleRequestHandler.inc" role="test"/>
    <file name="tests/SampleMiddleware.inc" role="test"/>
+   <file name="tests/PsrHttpMessageRequestFactoryInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageResponseFactoryInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageServerRequestFactoryInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageStreamFactoryInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageUploadedFileFactoryInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpMessageUriFactoryInterface.phpt" role="test"/>
+   <file name="tests/SampleRequestFactory.inc" role="test"/>
+   <file name="tests/SampleResponseFactory.inc" role="test"/>
+   <file name="tests/SampleServerRequestFactory.inc" role="test"/>
+   <file name="tests/SampleStreamFactory.inc" role="test"/>
+   <file name="tests/SampleUploadedFileFactory.inc" role="test"/>
+   <file name="tests/SampleUriFactory.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>

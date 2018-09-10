@@ -19,6 +19,7 @@ You can use interfaces provided by this extension in another extension easily - 
 - [PSR-15][:psr-15:] - [psr/http-server-handler][:psr-http-server-handler:] - tested against [equip/dispatch][:dispatch:]
 - [PSR-15][:psr-15:] - [psr/http-server-middleware][:psr-http-server-middleware:] - tested against [middleware/request-handler][:request-handler:]
 - [PSR-16][:psr-16:] - [psr/simple-cache][:psr-simple-cache:] - tested against [psx-cache][:psx-cache:]
+- [PSR-17][:psr-17:] - [psr/http-factory][:psr-http-factory:] - tested against [http-interop/http-factory-guzzle][:http-factory-guzzle:]
 
 ## Installation
 
@@ -92,7 +93,8 @@ In your project, you can prevent the installation of the unnecessary composer pa
         "psr/link": "^1",
         "psr/http-server-handler": "^1",
         "psr/http-server-middleware": "^1",
-        "psr/simple-cache": "^1"
+        "psr/simple-cache": "^1",
+        "psr/http-factory": "^1"
     },
 }
 ```
@@ -151,3 +153,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-http-server-middleware:]: https://github.com/php-fig/http-server-middleware
 [:dispatch:]: https://github.com/equip/dispatch
 [:request-handler:]: https://github.com/middlewares/request-handler
+[:psr-17:]: https://www.php-fig.org/psr/psr-17
+[:psr-http-factory:]: https://github.com/php-fig/http-factory
+[:http-factory-guzzle:]: https://github.com/http-interop/http-factory-guzzle
