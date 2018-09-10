@@ -6,8 +6,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [0.5.0] - 2018-09-10
+
 ### Added
 - PSR-17 HTTP Factories support
+- Whitelist PHP 7.3
 
 ## [0.4.0] - 2018-03-05
 
@@ -67,7 +70,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - PSR-7 [psr/http-message](https://github.com/php-fig/http-message) v1.0.0 interfaces
 
 
-[Unreleased]: https://github.com/jbboehr/php-psr/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/jbboehr/php-psr/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/jbboehr/php-psr/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/jbboehr/php-psr/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/jbboehr/php-psr/compare/v0.2.3...v0.3.0
 [0.2.3]: https://github.com/jbboehr/php-psr/compare/v0.2.2...v0.2.3

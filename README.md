@@ -104,7 +104,7 @@ This will use this PHP extension instead of downloading from packagist.
 ## Credits
 
 * [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
-* [@flyinghail][:github-flyinghail:] - PSR-15 support
+* [@flyinghail][:github-flyinghail:] - PSR-15 and PSR-17 support
 * [@Jan-E][:github-jan-e:] - Original appveyor template
 
 ## License
