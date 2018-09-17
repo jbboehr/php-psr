@@ -5,6 +5,7 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - 7.3
 
 env:
   global:
@@ -26,7 +27,7 @@ branches:
 
 sudo: required
 
-dist: trusty
+dist: xenial
 
 before_install:
   - travis_retry sudo apt-get update -y
