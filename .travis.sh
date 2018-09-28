@@ -7,7 +7,7 @@ monolog_init)
 	rm -rf monolog
 	git clone -b ${MONOLOG_VERSION:-master} https://github.com/Seldaek/monolog.git
 	cd monolog
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -f vendor/psr/log/Psr/Log/*.php
 	cd ..
 	;;
@@ -18,7 +18,7 @@ stash_init)
 	rm -rf Stash
 	git clone -b ${STASH_VERSION:-master} https://github.com/tedious/Stash.git
 	cd Stash
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -f vendor/psr/cache/src/*.php
 	cd ..
 	;;
@@ -29,7 +29,7 @@ psr7_init)
 	rm -rf psr7
 	git clone -b ${GUZZLE_PSR7_VERSION:-master} https://github.com/guzzle/psr7.git
 	cd psr7
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -f vendor/psr/http-message/src/*.php
 	cd ..
 	;;
@@ -40,7 +40,7 @@ league_container_init)
 	rm -rf league-container
 	git clone -b ${LEAGUE_CONTAINER_VERSION:-master} https://github.com/thephpleague/container.git league-container
 	cd league-container
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr
 	cd ..
 	;;
@@ -51,7 +51,7 @@ link_util_init)
 	rm -rf link-util
 	git clone -b ${LINK_UTIL_VERSION:-master} https://github.com/php-fig/link-util.git
 	cd link-util
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr/link
 	cd ..
 	;;
@@ -62,7 +62,7 @@ psx_cache_init)
 	rm -rf psx-cache
 	git clone -b ${PSX_CACHE_VERSION:-master} https://github.com/apioo/psx-cache.git
 	cd psx-cache
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr
 	cd ..
 	;;
@@ -73,7 +73,7 @@ dispatch_init)
 	rm -rf dispatch
 	git clone -b ${DISPATCH_VERSION:-master} https://github.com/equip/dispatch.git
 	cd dispatch
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr
 	cd ..
 	;;
@@ -84,7 +84,7 @@ request_handler_init)
 	rm -rf request-handler
 	git clone -b ${REQUEST_HANDLER_VERSION:-master} https://github.com/middlewares/request-handler.git
 	cd request-handler
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr
 	cd ..
 	;;
@@ -95,7 +95,7 @@ http_factory_guzzle_init)
 	rm -rf http-factory-guzzle
 	git clone -b ${HTTP_FACTORY_GUZZLE_VERSION:-master} https://github.com/http-interop/http-factory-guzzle.git
 	cd http-factory-guzzle
-	composer install
+	composer install $DEFAULT_COMPOSER_FLAGS
 	rm -rf vendor/psr
 	cd ..
 	;;
