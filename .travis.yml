@@ -5,6 +5,13 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - 7.3.0RC1
+
+addons:
+  apt:
+    packages:
+      # See: https://github.com/travis-ci/travis-ci/issues/9717
+      - libzip4
 
 env:
   global:
@@ -18,6 +25,7 @@ env:
     - DISPATCH_VERSION=2.0.0
     - REQUEST_HANDLER_VERSION=v1.0.1
     - HTTP_FACTORY_GUZZLE_VERSION=1.0.0
+    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
 branches:
   only:
@@ -26,13 +34,20 @@ branches:
 
 sudo: required
 
-dist: trusty
+dist: xenial
 
 before_install:
   - travis_retry sudo apt-get update -y
   - travis_retry sudo apt-get install -y lcov
   - travis_retry gem install coveralls-lcov
-
+  - export PHP_MAJOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 1)"
+  - export PHP_MINOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 2)"
+  # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
+  # We'll remove this in the future
+  - |
+      if [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.3" ]; then
+        export DEFAULT_COMPOSER_FLAGS="$DEFAULT_COMPOSER_FLAGS --ignore-platform-reqs"
+      fi
 install:
   - phpize
   - ./configure CFLAGS="--coverage -fprofile-arcs -ftest-coverage $CFLAGS" LDFLAGS="--coverage"
