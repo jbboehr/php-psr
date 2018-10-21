@@ -45,7 +45,7 @@ before_install:
   # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
   # We'll remove this in the future
   - |
-      if [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.3" ]; then
+      if [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.3" ] || [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.4" ]; then
         export DEFAULT_COMPOSER_FLAGS="$DEFAULT_COMPOSER_FLAGS --ignore-platform-reqs"
       fi
 install:
