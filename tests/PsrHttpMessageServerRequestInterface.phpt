@@ -8,7 +8,9 @@ include __DIR__ . '/SampleMessage.inc';
 include __DIR__ . '/SampleRequest.inc';
 include __DIR__ . '/SampleServerRequest.inc';
 var_dump(interface_exists('\\Psr\\Http\\Message\\ServerRequestInterface', false));
-var_dump(class_implements('SampleServerRequest', false));
+$ifaces = class_implements('SampleServerRequest', false);
+ksort($ifaces);
+var_dump($ifaces);
 $request = new SampleServerRequest();
 var_dump($request instanceof \Psr\Http\Message\MessageInterface);
 var_dump($request instanceof \Psr\Http\Message\RequestInterface);
@@ -29,10 +31,10 @@ $request->withoutAttribute('bar');
 --EXPECT--
 bool(true)
 array(3) {
-  ["Psr\Http\Message\RequestInterface"]=>
-  string(33) "Psr\Http\Message\RequestInterface"
   ["Psr\Http\Message\MessageInterface"]=>
   string(33) "Psr\Http\Message\MessageInterface"
+  ["Psr\Http\Message\RequestInterface"]=>
+  string(33) "Psr\Http\Message\RequestInterface"
   ["Psr\Http\Message\ServerRequestInterface"]=>
   string(39) "Psr\Http\Message\ServerRequestInterface"
 }
