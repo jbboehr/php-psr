@@ -8,6 +8,8 @@ include __DIR__ . '/SampleMessage.inc';
 include __DIR__ . '/SampleRequest.inc';
 include __DIR__ . '/SampleServerRequest.inc';
 var_dump(interface_exists('\\Psr\\Http\\Message\\ServerRequestInterface', false));
+var_dump(is_subclass_of('\\Psr\\Http\\Message\\ServerRequestInterface', '\\Psr\\Http\\Message\\MessageInterface'));
+var_dump(is_subclass_of('\\Psr\\Http\\Message\\ServerRequestInterface', '\\Psr\\Http\\Message\\RequestInterface'));
 $ifaces = class_implements('SampleServerRequest', false);
 ksort($ifaces);
 var_dump($ifaces);
@@ -29,6 +31,8 @@ $request->getAttribute('attr', 'bar');
 $request->withAttribute('foo', 'baz');
 $request->withoutAttribute('bar');
 --EXPECT--
+bool(true)
+bool(true)
 bool(true)
 array(3) {
   ["Psr\Http\Message\MessageInterface"]=>

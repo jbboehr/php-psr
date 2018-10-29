@@ -7,6 +7,7 @@ Psr\Http\Message\ResponseInterface
 include __DIR__ . '/SampleMessage.inc';
 include __DIR__ . '/SampleResponse.inc';
 var_dump(interface_exists('\\Psr\\Http\\Message\\ResponseInterface', false));
+var_dump(is_subclass_of('\\Psr\\Http\\Message\\ResponseInterface', '\\Psr\\Http\\Message\\MessageInterface'));
 var_dump(class_implements('SampleResponse', false));
 $request = new SampleResponse();
 var_dump($request instanceof \Psr\Http\Message\MessageInterface);
@@ -14,6 +15,7 @@ $request->getStatusCode();
 $request->withStatus(400, 'BAD REQUEST');
 $request->getReasonPhrase();
 --EXPECT--
+bool(true)
 bool(true)
 array(2) {
   ["Psr\Http\Message\MessageInterface"]=>

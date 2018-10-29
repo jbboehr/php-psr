@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Fixed 
+- `Psr\Http\Message\ServerRequestInterface` did not actually extend `Psr\Http\Message\RequestInterface`
+
 ## [0.5.0] - 2018-09-10
 
 ### Added
