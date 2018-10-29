@@ -8,6 +8,7 @@ include __DIR__ . '/SampleMessage.inc';
 include __DIR__ . '/SampleRequest.inc';
 include __DIR__ . '/SampleUri.inc';
 var_dump(interface_exists('\\Psr\\Http\\Message\\RequestInterface', false));
+var_dump(is_subclass_of('\\Psr\\Http\\Message\\RequestInterface', '\\Psr\\Http\\Message\\MessageInterface'));
 var_dump(class_implements('SampleRequest', false));
 $request = new SampleRequest();
 var_dump($request instanceof \Psr\Http\Message\MessageInterface);
@@ -19,6 +20,7 @@ $request->getUri();
 $request->withUri(new SampleUri());
 $request->withUri(new SampleUri(), true);
 --EXPECTF--
+bool(true)
 bool(true)
 array(2) {
   ["Psr\Http\Message\MessageInterface"]=>

@@ -111,6 +111,7 @@ static zend_always_inline void php_register_PsrHttpMessageServerRequestInterface
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ServerRequestInterface", PsrHttpMessageServerRequestInterface_methods);
     PsrHttpMessageServerRequestInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    zend_class_implements(PsrHttpMessageServerRequestInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageRequestInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Message\ServerRequestInterface */
