@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [0.5.1] - 2018-10-29
+
 ### Fixed 
 - `Psr\Http\Message\ServerRequestInterface` did not actually extend `Psr\Http\Message\RequestInterface`
 
@@ -73,7 +75,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - PSR-7 [psr/http-message](https://github.com/php-fig/http-message) v1.0.0 interfaces
 
 
-[Unreleased]: https://github.com/jbboehr/php-psr/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/jbboehr/php-psr/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/jbboehr/php-psr/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/jbboehr/php-psr/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/jbboehr/php-psr/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/jbboehr/php-psr/compare/v0.2.3...v0.3.0
