@@ -1,0 +1,38 @@
+
+#ifndef PSR_HTTP_CLIENT_H
+#define PSR_HTTP_CLIENT_H
+
+#include "php.h"
+#include "php_psr.h"
+
+#ifdef ZEND_ENGINE_3
+#define PHP_PSR_HTTP_CLIENT_VERSION "1.0.0"
+
+extern PHP_PSR_API zend_class_entry * PsrHttpClientClientInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpClientClientExceptionInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpClientNetworkExceptionInterface_ce_ptr;
+extern PHP_PSR_API zend_class_entry * PsrHttpClientRequestExceptionInterface_ce_ptr;
+
+extern PHP_MINIT_FUNCTION(psr_http_client);
+
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientClientInterface, sendRequest, 1, Psr\\Http\\Message\\ResponseInterface, 0)
+    ZEND_ARG_OBJ_INFO(0, request, Psr\\Http\\Message\\RequestInterface, 0)
+PHP_PSR_END_ARG_INFO()
+
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientNetworkExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
+PHP_PSR_END_ARG_INFO()
+
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientRequestExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
+PHP_PSR_END_ARG_INFO()
+#endif
+
+#endif /* PSR_HTTP_CLIENT_H */
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * End:
+ * vim600: fdm=marker
+ * vim: et sw=4 ts=4
+ */

@@ -102,6 +102,17 @@ http_factory_guzzle_init)
 http_factory_guzzle_test)
 	php -d extension=modules/psr.so ./http-factory-guzzle/vendor/bin/phpunit -c http-factory-guzzle/
 	;;
+guzzle_psr18_adapter_init)
+	rm -rf guzzle-psr18-adapter
+	git clone -b ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION:-master} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
+	cd guzzle-psr18-adapter
+	composer install $DEFAULT_COMPOSER_FLAGS
+	rm -rf vendor/psr
+	cd ..
+	;;
+guzzle_psr18_adapter_test)
+	php -d extension=modules/psr.so ./guzzle-psr18-adapter/vendor/bin/phpunit -c guzzle-psr18-adapter/
+	;;
 esac
 
 exit 0
