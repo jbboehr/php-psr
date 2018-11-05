@@ -49,7 +49,7 @@ before_install:
       fi
 install:
   - phpize
-  - ./configure CFLAGS="--coverage -fprofile-arcs -ftest-coverage $CFLAGS" LDFLAGS="--coverage"
+  - ./configure CFLAGS="-fprofile-arcs -ftest-coverage $CFLAGS" LDFLAGS="--coverage"
   - make clean all
 
 before_script:
