@@ -50,7 +50,7 @@ If you have specific PHP versions running:
 ```bash
 git clone https://github.com/jbboehr/php-psr.git
 cd php-psr
-phpize
+/usr/local/bin/phpize
 ./configure --with-php-config=/usr/local/bin/php-config
 make
 make test
