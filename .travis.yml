@@ -30,12 +30,14 @@ env:
     - DISPATCH_VERSION=2.0.0
     - REQUEST_HANDLER_VERSION=v1.3.0
     - HTTP_FACTORY_GUZZLE_VERSION=1.0.0
+    - HTTP_GUZZLE_PSR18_ADAPTER_VERSION=v1.0.1
     - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
 branches:
   only:
     - master
     - develop
+    - travis
 
 before_install:
   - travis_retry gem install coveralls-lcov
@@ -64,6 +66,7 @@ before_script:
   - travis_retry ./.travis.sh dispatch_init
   - travis_retry ./.travis.sh request_handler_init
   - travis_retry ./.travis.sh http_factory_guzzle_init
+  - travis_retry ./.travis.sh guzzle_psr18_adapter_init
 
 script:
   - export NO_INTERACTION=1
@@ -79,6 +82,7 @@ script:
   - ./.travis.sh dispatch_test
   - ./.travis.sh request_handler_test
   - ./.travis.sh http_factory_guzzle_test
+  - ./.travis.sh guzzle_psr18_adapter_test
 
 after_success:
   - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info

@@ -42,6 +42,8 @@
    <file name="psr_cache.h" role="src"/>
    <file name="psr_container.c" role="src"/>
    <file name="psr_container.h" role="src"/>
+   <file name="psr_http_client.c" role="src"/>
+   <file name="psr_http_client.h" role="src"/>
    <file name="psr_http_factory.c" role="src"/>
    <file name="psr_http_factory.h" role="src"/>
    <file name="psr_http_message.c" role="src"/>
@@ -115,6 +117,11 @@
    <file name="tests/SampleStreamFactory.inc" role="test"/>
    <file name="tests/SampleUploadedFileFactory.inc" role="test"/>
    <file name="tests/SampleUriFactory.inc" role="test"/>
+   <file name="tests/PsrHttpClientClientExceptionInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpClientClientInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpClientNetworkExceptionInterface.phpt" role="test"/>
+   <file name="tests/PsrHttpClientRequestExceptionInterface.phpt" role="test"/>
+   <file name="tests/SampleClient.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>

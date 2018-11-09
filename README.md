@@ -20,6 +20,7 @@ You can use interfaces provided by this extension in another extension easily - 
 - [PSR-15][:psr-15:] - [psr/http-server-middleware][:psr-http-server-middleware:] - tested against [middleware/request-handler][:request-handler:]
 - [PSR-16][:psr-16:] - [psr/simple-cache][:psr-simple-cache:] - tested against [psx-cache][:psx-cache:]
 - [PSR-17][:psr-17:] - [psr/http-factory][:psr-http-factory:] - tested against [http-interop/http-factory-guzzle][:http-factory-guzzle:]
+- [PSR-18][:psr-18:] - [psr/http-client][:psr-http-client:] - tested against [ricardofiorani/guzzle-psr18-adapter][:guzzle-psr18-adapter:]
 
 ## Installation
 
@@ -94,7 +95,8 @@ In your project, you can prevent the installation of the unnecessary composer pa
         "psr/http-server-handler": "^1",
         "psr/http-server-middleware": "^1",
         "psr/simple-cache": "^1",
-        "psr/http-factory": "^1"
+        "psr/http-factory": "^1",
+        "psr/http-client": "^1"
     },
 }
 ```
@@ -156,3 +158,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-17:]: https://www.php-fig.org/psr/psr-17
 [:psr-http-factory:]: https://github.com/php-fig/http-factory
 [:http-factory-guzzle:]: https://github.com/http-interop/http-factory-guzzle
+[:psr-18:]: https://www.php-fig.org/psr/psr-18
+[:psr-http-client:]: https://github.com/php-fig/http-client
+[:guzzle-psr18-adapter:]: https://github.com/ricardofiorani/guzzle-psr18-adapter

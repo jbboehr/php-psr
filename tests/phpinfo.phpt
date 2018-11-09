@@ -21,4 +21,5 @@ PSR-15 HTTP Handlers (Server Handler) => %d.%d.%d
 PSR-15 HTTP Handlers (Middleware) => %d.%d.%d
 PSR-16 Simple Cache Version => %d.%d.%d
 PSR-17 HTTP Factories => %d.%d.%d
+PSR-18 HTTP Client => %d.%d.%d
 %A
