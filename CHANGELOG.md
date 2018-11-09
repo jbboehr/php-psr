@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+### Added
+- PSR-18 HTTP Client support
+
 ## [0.5.1] - 2018-10-29
 
 ### Fixed 
