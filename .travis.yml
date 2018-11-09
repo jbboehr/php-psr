@@ -37,6 +37,7 @@ branches:
   only:
     - master
     - develop
+    - travis
 
 before_install:
   - travis_retry gem install coveralls-lcov
