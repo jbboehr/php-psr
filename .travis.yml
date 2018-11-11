@@ -13,6 +13,27 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: 'master'
+  include:
+    - language: nix
+      php:
+      before_install: nix-env -iA cachix -f https://github.com/NixOS/nixpkgs/tarball/889c72032f8595fcd7542c6032c208f6b8033db6
+      install:
+      before_script:
+      script: nix-build --argstr phpPsrVersion $TRAVIS_BRANCH --arg php "(import <nixpkgs> {}).$NIX_PHP_ATTR" | tee result.txt
+      after_success: cat result.txt | cachix push jbboehr-ci
+      after_failure:
+      env:
+        - NIX_PHP_ATTR=php71
+    - language: nix
+      php:
+      before_install: nix-env -iA cachix -f https://github.com/NixOS/nixpkgs/tarball/889c72032f8595fcd7542c6032c208f6b8033db6
+      install:
+      before_script:
+      script: nix-build --argstr phpPsrVersion $TRAVIS_BRANCH --arg php "(import <nixpkgs> {}).$NIX_PHP_ATTR" | tee result.txt
+      after_success: cat result.txt | cachix push jbboehr-ci
+      after_failure:
+      env:
+        - NIX_PHP_ATTR=php72
 
 addons:
   apt:
@@ -32,6 +53,7 @@ env:
     - HTTP_FACTORY_GUZZLE_VERSION=1.0.0
     - HTTP_GUZZLE_PSR18_ADAPTER_VERSION=v1.0.1
     - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
+    - secure: "VCrvkI8wkGdbtss+gYURvoBa9RKAyqV7O8/MxZuiSGJholep4Q9RPYnZpgI4voYxNuKRLbfO1EomtUYzQJxAL8AEH2//8rl9UykfX/Gp+XuramFsbfZEojLTxT3wmWSSvbd92sFw73iiWpstcRvv3pVdWpM6Kb47wERCt5F4WnU="
 
 branches:
   only:
