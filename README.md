@@ -76,6 +76,27 @@ pecl install psr
 
 or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-psr:] and placing it in the appropriate directory.
 
+### Nix/NixOS
+
+```bash
+nix-env -i -f https://github.com/jbboehr/php-psr/archive/master.tar.gz
+```
+
+with a custom version of PHP:
+
+```bash
+nix-env -i -f https://github.com/jbboehr/php-psr/archive/master.tar.gz --arg php '(import <nixpkgs> {}).php71'
+```
+
+or, in a `.nix` file:
+
+```nix
+(import <nixpkgs> {}).callPackage (import (fetchTarball {
+  url = https://github.com/jbboehr/php-psr/archive/1a840ef776e6dec08532715c023e03fbf82bc1e9.tar.gz;
+  sha256 = "058gd1mdhvk62zqmndlb68whcgdwfdj236ipjgysbiw8ldrxxcj8";
+})) {}
+```
+
 ### Using with composer
 
 In your project, you can prevent the installation of the unnecessary composer packages provided by this extension by adding the following to your `composer.json`. You will need to make sure the extension is installed and enabled in your PHP configuration. You may also want to consider leaving them installed to provide stubs to your IDE. This configuration is not suitable for a library published to packagist.
