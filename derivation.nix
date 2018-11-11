@@ -13,10 +13,10 @@ in
 
 buildPecl rec {
   name = "psr-${version}";
-  version = orDefault phpPsrVersion "v0.5.1";
+  version = orDefault phpPsrVersion "v0.6.0";
   src = orDefault phpPsrSrc (fetchurl {
     url = "https://github.com/jbboehr/php-psr/archive/${version}.tar.gz";
-    sha256 = orDefault phpPsrSha256 "063lrr2869zpzyxiag6af1jvxhg4ivqbljrfyqgbflcq2c9vn975";
+    sha256 = orDefault phpPsrSha256 "11hajfnqksq7bs1mzq03s6rsa8j1ja7rnyvrlxrl53kvblbrc9yw";
   });
 
   makeFlags = ["phpincludedir=$(out)/include/php/ext/psr"];
