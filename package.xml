@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2018-10-29</date>
+ <date>2018-11-11</date>
  <version>
-  <release>0.5.1</release>
-  <api>0.5.1</api>
+  <release>0.6.0</release>
+  <api>0.6.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,7 +26,9 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Fix Psr\Http\Message\ServerRequestInterface not actually extending `Psr\Http\Message\RequestInterface`
+ - Added PSR-18 support (@flyinghail)
+ - Documentation/CI improvements (@sergeyklay)
+ - Set minimum PHP version to 5.6
  </notes>
  <contents>
   <dir name="/">
@@ -127,7 +129,7 @@
  <dependencies>
   <required>
    <php>
-    <min>5.4.0</min>
+    <min>5.6.0</min>
     <max>7.3.99</max>
    </php>
    <pearinstaller>
