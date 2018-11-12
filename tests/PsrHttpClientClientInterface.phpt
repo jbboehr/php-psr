@@ -1,7 +1,7 @@
 --TEST--
 Psr\Http\Client\ClientInterface
 --SKIPIF--
-<?php if( !extension_loaded('psr') ) die('skip '); ?>
+<?php if( !extension_loaded('psr') || PHP_MAJOR_VERSION < 7 ) die('skip '); ?>
 --FILE--
 <?php
 include __DIR__ . '/SampleMessage.inc';
