@@ -49,11 +49,5 @@ specs
 
 .idea
 CMakeLists.txt
-/Stash/
-/monolog/
-/psr7/
-/psx-cache/
-/league-container/
-/link-util/
-/dispatch/
-/request-handler/
+cmake-build-debug/
+/third-party/

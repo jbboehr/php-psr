@@ -1,39 +1,44 @@
 sudo: false
 
-language: php
-
-php:
-  - '7.0'
-  - '7.1'
-  - '7.2'
-  - '7.3'
-  - 'master'
-
 matrix:
   fast_finish: true
   allow_failures:
-    - php: 'master'
+  - php: 'master'
   include:
-    - language: nix
-      php:
-      before_install: nix-env -iA cachix -f https://github.com/NixOS/nixpkgs/tarball/889c72032f8595fcd7542c6032c208f6b8033db6
-      install:
-      before_script:
-      script: nix-build --argstr phpPsrVersion $TRAVIS_BRANCH --arg php "(import <nixpkgs> {}).$NIX_PHP_ATTR" | tee result.txt
-      after_success: cat result.txt | cachix push jbboehr-ci
-      after_failure:
-      env:
-        - NIX_PHP_ATTR=php71
-    - language: nix
-      php:
-      before_install: nix-env -iA cachix -f https://github.com/NixOS/nixpkgs/tarball/889c72032f8595fcd7542c6032c208f6b8033db6
-      install:
-      before_script:
-      script: nix-build --argstr phpPsrVersion $TRAVIS_BRANCH --arg php "(import <nixpkgs> {}).$NIX_PHP_ATTR" | tee result.txt
-      after_success: cat result.txt | cachix push jbboehr-ci
-      after_failure:
-      env:
-        - NIX_PHP_ATTR=php72
+  - language: php
+    php: '5.6'
+    env:
+    - COVERAGE=false
+  - language: php
+    php: '7.0'
+  - language: php
+    php: '7.1'
+  - language: php
+    php: '7.2'
+  - language: php
+    php: '7.3'
+  - language: php
+    php: 'master'
+  - language: nix
+    env:
+    - NIX_CHANNEL=18.03
+    - NIX_PHP_ATTR=php56
+  - language: nix
+    env:
+    - NIX_CHANNEL=18.03
+    - NIX_PHP_ATTR=php70
+  - language: nix
+    env:
+    - NIX_CHANNEL=18.09
+    - NIX_PHP_ATTR=php71
+  - language: nix
+    env:
+    - NIX_CHANNEL=18.09
+    - NIX_PHP_ATTR=php72
+  - language: nix
+    env:
+    - NIX_CHANNEL=unstable
+    - NIX_PHP_ATTR=php
 
 addons:
   apt:
@@ -42,18 +47,7 @@ addons:
 
 env:
   global:
-    - MONOLOG_VERSION=1.23.0
-    - GUZZLE_PSR7_VERSION=1.4.2
-    - STASH_VERSION=v0.15.1
-    - PSX_CACHE_VERSION=v1.0.1
-    - LEAGUE_CONTAINER_VERSION=3.2.2
-    - LINK_UTIL_VERSION=1.0.0
-    - DISPATCH_VERSION=2.0.0
-    - REQUEST_HANDLER_VERSION=v1.3.0
-    - HTTP_FACTORY_GUZZLE_VERSION=1.0.0
-    - HTTP_GUZZLE_PSR18_ADAPTER_VERSION=v1.0.1
-    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
-    - secure: "VCrvkI8wkGdbtss+gYURvoBa9RKAyqV7O8/MxZuiSGJholep4Q9RPYnZpgI4voYxNuKRLbfO1EomtUYzQJxAL8AEH2//8rl9UykfX/Gp+XuramFsbfZEojLTxT3wmWSSvbd92sFw73iiWpstcRvv3pVdWpM6Kb47wERCt5F4WnU="
+    secure: "VCrvkI8wkGdbtss+gYURvoBa9RKAyqV7O8/MxZuiSGJholep4Q9RPYnZpgI4voYxNuKRLbfO1EomtUYzQJxAL8AEH2//8rl9UykfX/Gp+XuramFsbfZEojLTxT3wmWSSvbd92sFw73iiWpstcRvv3pVdWpM6Kb47wERCt5F4WnU="
 
 branches:
   only:
@@ -62,56 +56,10 @@ branches:
     - travis
 
 before_install:
-  - travis_retry gem install coveralls-lcov
-  - export PHP_MAJOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 1)"
-  - export PHP_MINOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 2)"
-  # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
-  # We'll remove this in the future
-  - |
-      if [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.3" ] || [ "${PHP_MAJOR}.${PHP_MINOR}" = "7.4" ]; then
-        export DEFAULT_COMPOSER_FLAGS="$DEFAULT_COMPOSER_FLAGS --ignore-platform-reqs"
-      fi
-install:
-  - phpize
-  - ./configure CFLAGS="-fprofile-arcs -ftest-coverage $CFLAGS" LDFLAGS="--coverage"
-  - make clean all
-
-before_script:
-  - lcov --directory . --zerocounters
-  - lcov --directory . --capture --compat-libtool --initial --output-file coverage.info
-  - travis_retry ./.travis.sh monolog_init
-  - travis_retry ./.travis.sh stash_init
-  - travis_retry ./.travis.sh psr7_init
-  - travis_retry ./.travis.sh league_container_init
-  - travis_retry ./.travis.sh link_util_init
-  - travis_retry ./.travis.sh psx_cache_init
-  - travis_retry ./.travis.sh dispatch_init
-  - travis_retry ./.travis.sh request_handler_init
-  - travis_retry ./.travis.sh http_factory_guzzle_init
-  - travis_retry ./.travis.sh guzzle_psr18_adapter_init
-
-script:
-  - export NO_INTERACTION=1
-  - export REPORT_EXIT_STATUS=1
-  - export TEST_PHP_EXECUTABLE=`which php`
-  - php run-tests.php -d extension=psr.so -d extension_dir=modules -n ./tests/*.phpt
-  - ./.travis.sh monolog_test
-  - ./.travis.sh stash_test
-  - ./.travis.sh psr7_test
-  - ./.travis.sh league_container_test
-  - ./.travis.sh link_util_test
-  - ./.travis.sh psx_cache_test
-  - ./.travis.sh dispatch_test
-  - ./.travis.sh request_handler_test
-  - ./.travis.sh http_factory_guzzle_test
-  - ./.travis.sh guzzle_psr18_adapter_test
-
-after_success:
-  - lcov --no-checksum --directory . --capture --compat-libtool --output-file coverage.info
-  - lcov --remove coverage.info "/usr*" --remove coverage.info "*/.phpenv/*" --remove coverage.info "/home/travis/build/include/*" --compat-libtool --output-file coverage.info
-  - coveralls-lcov coverage.info
-
-after_failure:
-  - for i in `find tests -name "*.out" 2>/dev/null`; do echo "-- START ${i}"; cat $i; echo "-- END"; done
-  - for i in `find tests -name "*.mem" 2>/dev/null`; do echo "-- START ${i}"; cat $i; echo "-- END"; done
-
+  - source ./.ci/travis_env.sh
+  - before_install
+install: install
+before_script: before_script
+script: script
+after_success: after_success
+after_failure: after_failure
