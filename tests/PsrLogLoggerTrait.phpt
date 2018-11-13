@@ -1,7 +1,7 @@
 --TEST--
 Psr\Log\LoggerTrait
 --SKIPIF--
-<?php if( !extension_loaded('psr') || PHP_VERSION_ID < 50400 ) die('skip '); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\Log\LoggerTrait;

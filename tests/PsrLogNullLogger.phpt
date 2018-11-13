@@ -1,7 +1,7 @@
 --TEST--
 Psr\Log\NullLogger
 --SKIPIF--
-<?php if( !extension_loaded('psr') ) die('skip '); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\Log\NullLogger;

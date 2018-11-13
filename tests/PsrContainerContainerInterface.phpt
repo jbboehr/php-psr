@@ -1,7 +1,7 @@
 --TEST--
 Psr\Container\ContainerInterface
 --SKIPIF--
-<?php if( !extension_loaded('psr') ) die('skip '); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\Container\ContainerInterface;

@@ -124,6 +124,9 @@
    <file name="tests/PsrHttpClientNetworkExceptionInterface.phpt" role="test"/>
    <file name="tests/PsrHttpClientRequestExceptionInterface.phpt" role="test"/>
    <file name="tests/SampleClient.inc" role="test"/>
+   <file name="tests/skip.inc" role="test"/>
+   <file name="tests/skip_for_php5.inc" role="test"/>
+   <file name="tests/skip_for_php7.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>

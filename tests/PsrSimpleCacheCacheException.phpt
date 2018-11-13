@@ -1,7 +1,7 @@
 --TEST--
 Psr\SimpleCache\CacheException
 --SKIPIF--
-<?php if( !extension_loaded('psr') ) die('skip '); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\SimpleCache\CacheException;
