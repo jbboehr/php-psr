@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2018-11-11</date>
+ <date>2018-11-13</date>
  <version>
-  <release>0.6.0</release>
-  <api>0.6.0</api>
+  <release>0.6.1</release>
+  <api>0.6.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,9 +26,7 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Added PSR-18 support (@flyinghail)
- - Documentation/CI improvements (@sergeyklay)
- - Set minimum PHP version to 5.6
+ - Fixed test failures on PHP 5.6
  </notes>
  <contents>
   <dir name="/">
