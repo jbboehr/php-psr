@@ -1,7 +1,7 @@
 --TEST--
 Psr\Http\Client\ClientExceptionInterface
 --SKIPIF--
-<?php if( !extension_loaded('psr') || PHP_MAJOR_VERSION < 7 ) die('skip '); ?>
+<?php include('skip_for_php5.inc'); ?>
 --FILE--
 <?php
 use Psr\Http\Client\ClientExceptionInterface;

@@ -1,7 +1,7 @@
 --TEST--
 psr phpinfo
 --SKIPIF--
-<?php if( !extension_loaded('psr') || PHP_MAJOR_VERSION >= 7 ) die('skip '); ?>
+<?php include('skip_for_php7.inc'); ?>
 --FILE--
 <?php
 phpinfo(INFO_MODULES);

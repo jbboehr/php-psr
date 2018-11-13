@@ -1,7 +1,7 @@
 --TEST--
 Psr\Log\LoggerInterface
 --SKIPIF--
-<?php if( !extension_loaded('psr') ) die('skip '); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 include __DIR__ . '/SampleLogger.inc';
