@@ -11,16 +11,18 @@ You can use interfaces provided by this extension in another extension easily - 
 
 ## Interfaces
 
-- [PSR-3][:psr-3:] - [psr/log][:psr-log:] - tested against [monolog][:monolog:]
-- [PSR-6][:psr-6:] - [psr/cache][:psr-cache:] - tested against [Stash][:stash:] and [psx-cache][:psx-cache:]
-- [PSR-7][:psr-7:] - [psr/http-message][:psr-http-message:] - tested against [guzzle/psr7][:guzzle:]
-- [PSR-11][:psr-11:] - [psr/container][:psr-container:] - tested against [league/container][:league-container:]
-- [PSR-13][:psr-13:] - [psr/link][:psr-link:] - tested against [php-fig/link-util][:link-util:]
-- [PSR-15][:psr-15:] - [psr/http-server-handler][:psr-http-server-handler:] - tested against [equip/dispatch][:dispatch:]
-- [PSR-15][:psr-15:] - [psr/http-server-middleware][:psr-http-server-middleware:] - tested against [middleware/request-handler][:request-handler:]
-- [PSR-16][:psr-16:] - [psr/simple-cache][:psr-simple-cache:] - tested against [psx-cache][:psx-cache:]
-- [PSR-17][:psr-17:] - [psr/http-factory][:psr-http-factory:] - tested against [http-interop/http-factory-guzzle][:http-factory-guzzle:]
-- [PSR-18][:psr-18:] - [psr/http-client][:psr-http-client:] - tested against [ricardofiorani/guzzle-psr18-adapter][:guzzle-psr18-adapter:]
+| PSR | Reference | Tested against |
+| --- | --- | --- |
+| [PSR-3][:psr-3:] | [psr/log][:psr-log:] | [monolog][:monolog:] |
+| [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [Stash][:stash:] and [psx-cache][:psx-cache:] |
+| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
+| [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
+| [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
+| [PSR-15][:psr-15:] | [psr/http-server-handler][:psr-http-server-handler:] | [equip/dispatch][:dispatch:] |
+| [PSR-15][:psr-15:] | [psr/http-server-middleware][:psr-http-server-middleware:] | [middleware/request-handler][:request-handler:] |
+| [PSR-16][:psr-16:] | [psr/simple-cache][:psr-simple-cache:] | [psx-cache][:psx-cache:] |
+| [PSR-17][:psr-17:] | [psr/http-factory][:psr-http-factory:] | [http-interop/http-factory-guzzle][:http-factory-guzzle:] |
+| [PSR-18][:psr-18:] | [psr/http-client][:psr-http-client:] | [ricardofiorani/guzzle-psr18-adapter][:guzzle-psr18-adapter:] |
 
 ## Installation
 
