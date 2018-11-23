@@ -1,5 +1,3 @@
-sudo: false
-
 matrix:
   fast_finish: true
   allow_failures:
