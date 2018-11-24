@@ -13,7 +13,7 @@ You can use interfaces provided by this extension in another extension easily - 
 
 | PSR | Reference | Tested against |
 | --- | --- | --- |
-| [PSR-3][:psr-3:] | [psr/log][:psr-log:] | [monolog][:monolog:] |
+| [PSR-3][:psr-3:] | [psr/log][:psr-log:] [*](#psrlogunimpl) | [monolog][:monolog:] |
 | [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [Stash][:stash:] and [psx-cache][:psx-cache:] |
 | [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
 | [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
@@ -102,6 +102,8 @@ or, in a `.nix` file:
 ### Using with composer
 
 In your project, you can prevent the installation of the unnecessary composer packages provided by this extension by adding the following to your `composer.json`. You will need to make sure the extension is installed and enabled in your PHP configuration. You may also want to consider leaving them installed to provide stubs to your IDE. This configuration is not suitable for a library published to packagist.
+
+<a name="psrlogunimpl">Note:</a> `LoggerInterfaceTest` and `TestLogger` from `psr/log` are not implemented. If you use these classes, you should keep `psr/log` installed.
 
 ```json
 {
