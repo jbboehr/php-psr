@@ -103,7 +103,7 @@ or, in a `.nix` file:
 
 In your project, you can prevent the installation of the unnecessary composer packages provided by this extension by adding the following to your `composer.json`. You will need to make sure the extension is installed and enabled in your PHP configuration. You may also want to consider leaving them installed to provide stubs to your IDE. This configuration is not suitable for a library published to packagist.
 
-<a name="psrlogunimpl">Note:</a> `LoggerInterfaceTest` and `TestLogger` from `psr/log` are not implemented. If you use these classes, you should keep `psr/log` installed.
+<a name="psrlogunimpl">Note:</a> `LoggerInterfaceTest` and `TestLogger` from `psr/log` are not implemented. If you use these classes, you should keep `psr/log` installed ([discussion](https://github.com/jbboehr/php-psr/issues/57)).
 
 ```json
 {
