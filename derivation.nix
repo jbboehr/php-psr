@@ -12,6 +12,7 @@ let
 in
 
 buildPecl rec {
+  pname = "psr";
   name = "psr-${version}";
   version = orDefault phpPsrVersion "v0.6.0";
   src = orDefault phpPsrSrc (fetchurl {
