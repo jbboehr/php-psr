@@ -20,14 +20,6 @@ environment:
   TEST_PHP_EXECUTABLE: C:\projects\php\php.exe
 
   matrix:
-    - PHP_VER: 7.0
-      VC_VER: vc14
-      PHP_BUILD_TYPE: Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PHP_VER: 7.0
-      VC_VER: vc14
-      PHP_BUILD_TYPE: nts-Win32
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PHP_VER: 7.1
       VC_VER: vc14
       PHP_BUILD_TYPE: Win32
@@ -41,6 +33,14 @@ environment:
       PHP_BUILD_TYPE: Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PHP_VER: 7.2
+      VC_VER: vc15
+      PHP_BUILD_TYPE: nts-Win32
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - PHP_VER: 7.3
+      VC_VER: vc15
+      PHP_BUILD_TYPE: Win32
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - PHP_VER: 7.3
       VC_VER: vc15
       PHP_BUILD_TYPE: nts-Win32
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
