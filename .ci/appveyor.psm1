@@ -172,8 +172,8 @@ Function AppendSessionPath {
 }
 
 Function SetupPhpVersionString {
-	$RemoteUrl = 'http://windows.php.net/downloads/releases/sha1sum.txt'
-	$DestinationPath = "${Env:Temp}\php-sha1sum.txt"
+	$RemoteUrl = 'http://windows.php.net/downloads/releases/sha256sum.txt'
+	$DestinationPath = "${Env:Temp}\php-sha256sum.txt"
 
 	If (-not [System.IO.File]::Exists($DestinationPath)) {
 		Write-Host "Downloading PHP SHA Sums: ${RemoteUrl} ..."
