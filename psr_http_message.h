@@ -78,7 +78,7 @@ PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageRequestInterface, getUri, 0)
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrHttpMessageRequestInterface, withUri, 1)
-    ZEND_ARG_OBJ_INFO(0, logger, Psr\\Http\\Message\\UriInterface, 0)
+    ZEND_ARG_OBJ_INFO(0, uri, Psr\\Http\\Message\\UriInterface, 0)
     ZEND_ARG_INFO(0, preserveHost)
 PHP_PSR_END_ARG_INFO()
 
