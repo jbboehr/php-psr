@@ -2,6 +2,10 @@ matrix:
   fast_finish: true
   allow_failures:
   - php: 'master'
+  - language: nix
+    env:
+    - NIX_CHANNEL=unstable
+    - NIX_PHP_ATTR=php
   include:
   - language: php
     php: '5.6'
