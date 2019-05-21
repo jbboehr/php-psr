@@ -25,7 +25,7 @@
 #define PHP_PSR_BEGIN_ARG_INFO(c, f, n) ZEND_BEGIN_ARG_INFO_EX(arginfo_ ## c ## _ ## f, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, n)
 #define PHP_PSR_END_ARG_INFO ZEND_END_ARG_INFO
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
-        zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1 TSRMLS_CC);
+        zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1);
 
 #ifdef ZEND_ENGINE_3
 #ifdef ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX

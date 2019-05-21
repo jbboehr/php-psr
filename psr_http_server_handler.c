@@ -22,7 +22,7 @@ static zend_always_inline void php_psr_register_PsrHttpServerRequestHandlerInter
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\RequestHandlerInterface", PsrHttpServerRequestHandlerInterface_methods);
-    PsrHttpServerRequestHandlerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpServerRequestHandlerInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 #endif

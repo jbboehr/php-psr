@@ -15,7 +15,7 @@ static zend_always_inline void php_psr_register_PsrContainerContainerExceptionIn
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Container\\ContainerExceptionInterface", NULL);
-    PsrContainerContainerExceptionInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrContainerContainerExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -33,7 +33,7 @@ static zend_always_inline void php_psr_register_PsrContainerContainerInterface(I
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Container\\ContainerInterface", PsrContainerContainerInterface_methods);
-    PsrContainerContainerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrContainerContainerInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -45,8 +45,8 @@ static zend_always_inline void php_psr_register_PsrContainerNotFoundExceptionInt
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Container\\NotFoundExceptionInterface", NULL);
-    PsrContainerNotFoundExceptionInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrContainerNotFoundExceptionInterface_ce_ptr TSRMLS_CC, 1, PsrContainerContainerExceptionInterface_ce_ptr);
+    PsrContainerNotFoundExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrContainerNotFoundExceptionInterface_ce_ptr, 1, PsrContainerContainerExceptionInterface_ce_ptr);
 }
 
 /* }}} ---------------------------------------------------------------------- */
