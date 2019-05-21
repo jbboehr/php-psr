@@ -37,7 +37,7 @@ static zend_always_inline void php_register_PsrHttpMessageMessageInterface(INIT_
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\MessageInterface", PsrHttpMessageMessageInterface_methods);
-    PsrHttpMessageMessageInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageMessageInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\MessageInterface */
@@ -59,9 +59,9 @@ static zend_always_inline void php_register_PsrHttpMessageRequestInterface(INIT_
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\RequestInterface", PsrHttpMessageRequestInterface_methods);
-    PsrHttpMessageRequestInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageRequestInterface_ce_ptr = zend_register_internal_interface(&ce);
     // @todo make sure this is right
-    zend_class_implements(PsrHttpMessageRequestInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageMessageInterface_ce_ptr);
+    zend_class_implements(PsrHttpMessageRequestInterface_ce_ptr, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Message\RequestInterface */
@@ -80,8 +80,8 @@ static zend_always_inline void php_register_PsrHttpMessageResponseInterface(INIT
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ResponseInterface", PsrHttpMessageResponseInterface_methods);
-    PsrHttpMessageResponseInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrHttpMessageResponseInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageMessageInterface_ce_ptr);
+    PsrHttpMessageResponseInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrHttpMessageResponseInterface_ce_ptr, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Message\ResponseInterface */
@@ -110,8 +110,8 @@ static zend_always_inline void php_register_PsrHttpMessageServerRequestInterface
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ServerRequestInterface", PsrHttpMessageServerRequestInterface_methods);
-    PsrHttpMessageServerRequestInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrHttpMessageServerRequestInterface_ce_ptr TSRMLS_CC, 1, PsrHttpMessageRequestInterface_ce_ptr);
+    PsrHttpMessageServerRequestInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrHttpMessageServerRequestInterface_ce_ptr, 1, PsrHttpMessageRequestInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Message\ServerRequestInterface */
@@ -142,7 +142,7 @@ static zend_always_inline void php_register_PsrHttpMessageStreamInterface(INIT_F
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\StreamInterface", PsrHttpMessageStreamInterface_methods);
-    PsrHttpMessageStreamInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageStreamInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\StreamInterface */
@@ -164,7 +164,7 @@ static zend_always_inline void php_register_PsrHttpMessageUploadedFileInterface(
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UploadedFileInterface", PsrHttpMessageUploadedFileInterface_methods);
-    PsrHttpMessageUploadedFileInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageUploadedFileInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\UploadedFileInterface */
@@ -196,7 +196,7 @@ static zend_always_inline void php_register_PsrHttpMessageUriInterface(INIT_FUNC
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UriInterface", PsrHttpMessageUriInterface_methods);
-    PsrHttpMessageUriInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageUriInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\UriInterface */
