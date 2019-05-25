@@ -12,7 +12,6 @@
 
 #include "php_psr.h"
 #include "psr_http_message.h"
-#include "php5to7.h"
 
 /* {{{ Psr\Http\Message\MessageInterface */
 

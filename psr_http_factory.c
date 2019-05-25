@@ -7,7 +7,6 @@
 #include "php_psr.h"
 #include "psr_http_factory.h"
 
-#ifdef ZEND_ENGINE_3
 /* {{{ Psr\Http\Message\RequestFactoryInterface */
 
 PHP_PSR_API zend_class_entry * PsrHttpMessageRequestFactoryInterface_ce_ptr;
@@ -112,19 +111,16 @@ static zend_always_inline void php_psr_register_PsrHttpMessageUriFactoryInterfac
 }
 
 /* }}} Psr\Http\Message\UriFactoryInterface */
-#endif
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_factory)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpMessageRequestFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageResponseFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageServerRequestFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageStreamFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageUploadedFileFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageUriFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

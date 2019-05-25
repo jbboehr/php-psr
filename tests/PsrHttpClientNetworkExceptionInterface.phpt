@@ -1,7 +1,7 @@
 --TEST--
 Psr\Http\Client\NetworkExceptionInterface
 --SKIPIF--
-<?php include('skip_for_php5.inc'); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\Http\Message\RequestInterface;

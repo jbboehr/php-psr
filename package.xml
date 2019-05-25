@@ -35,7 +35,6 @@
    <file name="README.md" role="doc"/>
    <file name="config.m4" role="src"/>
    <file name="config.w32" role="src"/>
-   <file name="php5to7.h" role="src"/>
    <file name="php_psr.c" role="src"/>
    <file name="php_psr.h" role="src"/>
    <file name="psr_cache.c" role="src"/>
@@ -123,14 +122,12 @@
    <file name="tests/PsrHttpClientRequestExceptionInterface.phpt" role="test"/>
    <file name="tests/SampleClient.inc" role="test"/>
    <file name="tests/skip.inc" role="test"/>
-   <file name="tests/skip_for_php5.inc" role="test"/>
-   <file name="tests/skip_for_php7.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>5.6.0</min>
+    <min>7.0.0</min>
     <max>7.3.99</max>
    </php>
    <pearinstaller>

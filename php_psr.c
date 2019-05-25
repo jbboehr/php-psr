@@ -10,8 +10,6 @@
 #include "zend_API.h"
 #include "zend_interfaces.h"
 
-#include "php5to7.h"
-
 #include "php_psr.h"
 #include "psr_cache.h"
 #include "psr_container.h"
@@ -32,12 +30,10 @@ static PHP_MINIT_FUNCTION(psr)
     PHP_MINIT(psr_link)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_log)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_simple_cache)(INIT_FUNC_ARGS_PASSTHRU);
-#ifdef ZEND_ENGINE_3
     PHP_MINIT(psr_http_server_handler)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_server_middleware)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_factory)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_client)(INIT_FUNC_ARGS_PASSTHRU);
-#endif
     return SUCCESS;
 }
 
@@ -52,15 +48,11 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "PSR-7 Http Message Version", PHP_PSR_HTTP_MESSAGE_VERSION);
     php_info_print_table_row(2, "PSR-11 Container Version", PHP_PSR_CONTAINER_VERSION);
     php_info_print_table_row(2, "PSR-13 Link Version", PHP_PSR_LOG_VERSION);
-#ifdef ZEND_ENGINE_3
     php_info_print_table_row(2, "PSR-15 HTTP Handlers (Server Handler)", PHP_PSR_HTTP_SERVER_HANDLER_VERSION);
     php_info_print_table_row(2, "PSR-15 HTTP Handlers (Middleware)", PHP_PSR_HTTP_SERVER_MIDDLEWARE_VERSION);
-#endif
     php_info_print_table_row(2, "PSR-16 Simple Cache Version", PHP_PSR_SIMPLE_CACHE_VERSION);
-#ifdef ZEND_ENGINE_3
     php_info_print_table_row(2, "PSR-17 HTTP Factories", PHP_PSR_HTTP_FACTORY_VERSION);
     php_info_print_table_row(2, "PSR-18 HTTP Client", PHP_PSR_HTTP_CLIENT_VERSION);
-#endif
     php_info_print_table_end();
 }
 

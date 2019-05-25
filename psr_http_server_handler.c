@@ -7,9 +7,7 @@
 #include "php_psr.h"
 #include "psr_http_server_handler.h"
 
-/* {{{ RequestHandlerInterface --------------------------------------------------- */
-
-#ifdef ZEND_ENGINE_3
+/* {{{ RequestHandlerInterface ---------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrHttpServerRequestHandlerInterface_ce_ptr;
 
@@ -25,16 +23,12 @@ static zend_always_inline void php_psr_register_PsrHttpServerRequestHandlerInter
     PsrHttpServerRequestHandlerInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
-#endif
-
 /* }}} ---------------------------------------------------------------------- */
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_server_handler)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpServerRequestHandlerInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

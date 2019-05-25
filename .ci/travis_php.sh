@@ -23,7 +23,7 @@ export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-sug
 
 # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
 # We'll remove this in the future
-if [[ "${PHP_MAJOR_MINOR}" = "7.3" ]] || [[ "${PHP_MAJOR_MINOR}" = "7.4" ]]; then
+if [[ "${PHP_MAJOR_MINOR}" = "7.3" ]] || [[ "${PHP_MAJOR_MINOR}" = "7.4" ]] || [[ "${PHP_MAJOR_MINOR}" = "8.0" ]]; then
     export DEFAULT_COMPOSER_FLAGS="${DEFAULT_COMPOSER_FLAGS} --ignore-platform-reqs"
 fi
 
@@ -68,20 +68,18 @@ function before_install() (
     fi
 
     # install all libraries we test against
-	if [[ "${PHP_MAJOR_MINOR}" != "5.6" ]]; then
-        init_repository monolog ${MONOLOG_VERSION} https://github.com/Seldaek/monolog.git
-        init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
-        init_repository psr7 ${GUZZLE_PSR7_VERSION} https://github.com/guzzle/psr7.git
-        init_repository league-container ${LEAGUE_CONTAINER_VERSION} https://github.com/thephpleague/container.git
-        init_repository link-util ${LINK_UTIL_VERSION} https://github.com/php-fig/link-util.git
-        init_repository psx-cache ${PSX_CACHE_VERSION} https://github.com/apioo/psx-cache.git
-        init_repository dispatch ${DISPATCH_VERSION} https://github.com/equip/dispatch.git
-        init_repository request-handler ${REQUEST_HANDLER_VERSION} https://github.com/middlewares/request-handler.git
-        init_repository http-factory-guzzle ${HTTP_FACTORY_GUZZLE_VERSION} https://github.com/http-interop/http-factory-guzzle.git
-        if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
-            init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
-        fi
-	fi
+    init_repository monolog ${MONOLOG_VERSION} https://github.com/Seldaek/monolog.git
+    init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
+    init_repository psr7 ${GUZZLE_PSR7_VERSION} https://github.com/guzzle/psr7.git
+    init_repository league-container ${LEAGUE_CONTAINER_VERSION} https://github.com/thephpleague/container.git
+    init_repository link-util ${LINK_UTIL_VERSION} https://github.com/php-fig/link-util.git
+    init_repository psx-cache ${PSX_CACHE_VERSION} https://github.com/apioo/psx-cache.git
+    init_repository dispatch ${DISPATCH_VERSION} https://github.com/equip/dispatch.git
+    init_repository request-handler ${REQUEST_HANDLER_VERSION} https://github.com/middlewares/request-handler.git
+    init_repository http-factory-guzzle ${HTTP_FACTORY_GUZZLE_VERSION} https://github.com/http-interop/http-factory-guzzle.git
+    if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
+        init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
+    fi
 )
 
 function install() (
@@ -113,20 +111,18 @@ function script() (
     php run-tests.php -d extension=psr.so -d extension_dir=modules -n ./tests/*.phpt
 
     # run tests for all libraries we test against
-	if [[ "${PHP_MAJOR_MINOR}" != "5.6" ]]; then
-        test_repository monolog
-        test_repository stash
-        test_repository psr7
-        test_repository league-container
-        test_repository link-util
-        test_repository psx-cache
-        test_repository dispatch
-        test_repository request-handler
-        test_repository http-factory-guzzle
-        if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
-            test_repository guzzle-psr18-adapter
-        fi
-	fi
+    test_repository monolog
+    test_repository stash
+    test_repository psr7
+    test_repository league-container
+    test_repository link-util
+    test_repository psx-cache
+    test_repository dispatch
+    test_repository request-handler
+    test_repository http-factory-guzzle
+    if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
+        test_repository guzzle-psr18-adapter
+    fi
 )
 
 function after_success() (

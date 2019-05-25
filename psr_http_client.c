@@ -8,7 +8,6 @@
 #include "php_psr.h"
 #include "psr_http_client.h"
 
-#ifdef ZEND_ENGINE_3
 /* {{{ Psr\Http\Client\ClientInterface */
 
 PHP_PSR_API zend_class_entry * PsrHttpClientClientInterface_ce_ptr;
@@ -75,17 +74,14 @@ static zend_always_inline void php_psr_register_PsrHttpClientRequestExceptionInt
 }
 
 /* }}} Psr\Http\Client\RequestExceptionInterface */
-#endif
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_client)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpClientClientInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientClientExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientNetworkExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientRequestExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

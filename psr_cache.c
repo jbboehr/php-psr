@@ -12,7 +12,6 @@
 
 #include "php_psr.h"
 #include "psr_cache.h"
-#include "php5to7.h"
 
 /* {{{ CacheException ------------------------------------------------------- */
 

@@ -13,11 +13,8 @@ extern PHP_PSR_API zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrLogNullLogger_ce_ptr;
-
-#if PHP_API_VERSION >= 20100412
 extern PHP_PSR_API zend_class_entry * PsrLogLoggerTrait_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
-#endif
 
 extern PHP_MINIT_FUNCTION(psr_log);
 
