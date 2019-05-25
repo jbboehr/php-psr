@@ -8,8 +8,6 @@ matrix:
     - NIX_PHP_ATTR=php
   include:
   - language: php
-    php: '7.0'
-  - language: php
     php: '7.1'
   - language: php
     php: '7.2'
@@ -17,10 +15,6 @@ matrix:
     php: '7.3'
   - language: php
     php: 'master'
-  - language: nix
-    env:
-    - NIX_CHANNEL=18.03
-    - NIX_PHP_ATTR=php70
   - language: nix
     env:
     - NIX_CHANNEL=18.09

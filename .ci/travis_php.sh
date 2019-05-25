@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-export MONOLOG_VERSION=1.23.0
-export STASH_VERSION=v0.15.1
-export PSX_CACHE_VERSION=v1.0.1
-export GUZZLE_PSR7_VERSION=1.4.2
+export MONOLOG_VERSION=2.0.0-beta1
+export STASH_VERSION=v0.15.2
+export PSX_CACHE_VERSION=v1.0.2
+export GUZZLE_PSR7_VERSION=1.5.2
 export LEAGUE_CONTAINER_VERSION=3.2.2
 export LINK_UTIL_VERSION=1.0.0
 export DISPATCH_VERSION=2.0.0
@@ -77,9 +77,7 @@ function before_install() (
     init_repository dispatch ${DISPATCH_VERSION} https://github.com/equip/dispatch.git
     init_repository request-handler ${REQUEST_HANDLER_VERSION} https://github.com/middlewares/request-handler.git
     init_repository http-factory-guzzle ${HTTP_FACTORY_GUZZLE_VERSION} https://github.com/http-interop/http-factory-guzzle.git
-    if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
-        init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
-    fi
+    init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
 )
 
 function install() (
@@ -120,9 +118,7 @@ function script() (
     test_repository dispatch
     test_repository request-handler
     test_repository http-factory-guzzle
-    if [[ "${PHP_MAJOR_MINOR}" != "7.0" ]]; then
-        test_repository guzzle-psr18-adapter
-    fi
+    test_repository guzzle-psr18-adapter
 )
 
 function after_success() (
