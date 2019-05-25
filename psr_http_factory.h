@@ -5,7 +5,6 @@
 #include "php.h"
 #include "php_psr.h"
 
-#ifdef ZEND_ENGINE_3
 #define PHP_PSR_HTTP_FACTORY_VERSION "1.0.0"
 
 extern PHP_PSR_API zend_class_entry * PsrHttpMessageRequestFactoryInterface_ce_ptr;
@@ -57,7 +56,6 @@ PHP_PSR_END_ARG_INFO()
 PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpMessageUriFactoryInterface, createUri, 0, Psr\\Http\\Message\\UriInterface, 0)
     ZEND_ARG_TYPE_INFO(0, uri, IS_STRING, 0)
 PHP_PSR_END_ARG_INFO()
-#endif
 
 #endif /* PSR_HTTP_FACTORY_H */
 

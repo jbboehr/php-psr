@@ -12,14 +12,9 @@
 
 #include "php_psr.h"
 #include "psr_log.h"
-#include "php5to7.h"
 
-#ifdef ZEND_ENGINE_3
 /* Needed to work around https://bugs.php.net/bug.php?id=69579 */
 #define PHP_PSR_EXTRA_TRAIT_FLAGS ZEND_ACC_ARENA_ALLOCATED
-#else
-#define PHP_PSR_EXTRA_TRAIT_FLAGS 0
-#endif
 
 /* {{{ Psr\Log\InvalidArgumentException */
 
@@ -29,7 +24,7 @@ static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FU
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\InvalidArgumentException", NULL);
-    PsrLogInvalidArgumentException_ce_ptr = php5to7_register_internal_class_ex(&ce, spl_ce_InvalidArgumentException);
+    PsrLogInvalidArgumentException_ce_ptr = zend_register_internal_class_ex(&ce, spl_ce_InvalidArgumentException);
 }
 
 /* }}} Psr\Log\InvalidArgumentException */
@@ -42,7 +37,7 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
     zend_class_entry ce;
 
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LogLevel", NULL);
-    PsrLogLogLevel_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
+    PsrLogLogLevel_ce_ptr = zend_register_internal_class(&ce);
 
     REGISTER_PSR_CLASS_CONST_STRING(PsrLogLogLevel_ce_ptr, "EMERGENCY", "emergency");
     REGISTER_PSR_CLASS_CONST_STRING(PsrLogLogLevel_ce_ptr, "ALERT", "alert");
@@ -76,7 +71,7 @@ static zend_function_entry PsrLogLoggerInterface_methods[] = {
 static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS) {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerInterface", PsrLogLoggerInterface_methods);
-    PsrLogLoggerInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrLogLoggerInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Log\LoggerInterface */
@@ -93,7 +88,7 @@ static zend_always_inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_A
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareInterface", PsrLogLoggerAwareInterface_methods);
-    PsrLogLoggerAwareInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrLogLoggerAwareInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Log\LoggerAwareInterface */
@@ -101,57 +96,20 @@ static zend_always_inline void php_psr_register_LoggerAwareInterface(INIT_FUNC_A
 
 PHP_PSR_API zend_class_entry * PsrLogAbstractLogger_ce_ptr;
 
-static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t level_len, INTERNAL_FUNCTION_PARAMETERS)
+static void php_psr_PsrLogAbstractLogger_log(const char * level_str, size_t level_len, INTERNAL_FUNCTION_PARAMETERS)
 {
-    zval * _this_zval;
+    zval * _this_zval = getThis();
     zval * message;
     zval * context = NULL;
     zend_class_entry * expected_ce = NULL; // PsrLogAbstractLogger_ce_ptr
+    zval fname = {0};
+    zval fparams[3];
 
-#ifndef FAST_ZPP
-    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oz|a",
-            &_this_zval, expected_ce, &message, &context) == FAILURE) {
-        return;
-    }
-#else
-	_this_zval = getThis();
 	ZEND_PARSE_PARAMETERS_START(1, 2)
 		Z_PARAM_ZVAL(message)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_ARRAY(context)
 	ZEND_PARSE_PARAMETERS_END();
-#endif
-
-#if PHP_MAJOR_VERSION < 7
-    zval * fname;
-    zval * fparams[3];
-
-    // Alloc function name to call
-	MAKE_STD_ZVAL(fname);
-    ZVAL_STRINGL(fname, "log", sizeof("log")-1, 1);
-
-    // Make function params
-    MAKE_STD_ZVAL(fparams[0]);
-    MAKE_STD_ZVAL(fparams[1]);
-    MAKE_STD_ZVAL(fparams[2]);
-    ZVAL_STRINGL(fparams[0], level_str, level_len, 1);
-    ZVAL_ZVAL(fparams[1], message, 1, 0);
-    if( context && Z_TYPE_P(context) == IS_ARRAY ) {
-        ZVAL_ZVAL(fparams[2], context, 1, 0);
-    } else {
-        MAKE_STD_ZVAL(fparams[2]);
-        array_init(fparams[2]);
-    }
-
-    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, &_this_zval, fname, return_value, 3, fparams TSRMLS_CC);
-
-    zval_ptr_dtor(&fparams[0]);
-    zval_ptr_dtor(&fparams[1]);
-    zval_ptr_dtor(&fparams[2]);
-	zval_ptr_dtor(&fname);
-#else
-    zval fname = {0};
-    zval fparams[3];
 
     // Alloc function name to call
     ZVAL_STRINGL(&fname, "log", sizeof("log")-1);
@@ -165,12 +123,11 @@ static void php_psr_PsrLogAbstractLogger_log(const char * level_str, strsize_t l
         array_init(&fparams[2]);
     }
 
-    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams TSRMLS_CC);
+    call_user_function(&Z_OBJCE_P(_this_zval)->function_table, _this_zval, &fname, return_value, 3, fparams);
 
     zval_ptr_dtor(&fparams[0]);
     zval_ptr_dtor(&fparams[2]);
     zval_ptr_dtor(&fname);
-#endif
 }
 
 PHP_METHOD(PsrLogAbstractLogger, emergency)
@@ -229,8 +186,8 @@ static zend_always_inline void php_psr_register_AbstractLogger(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\AbstractLogger", PsrLogAbstractLogger_methods);
-    PsrLogAbstractLogger_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
-    zend_class_implements(PsrLogAbstractLogger_ce_ptr TSRMLS_CC, 1, PsrLogLoggerInterface_ce_ptr);
+    PsrLogAbstractLogger_ce_ptr = zend_register_internal_class(&ce);
+    zend_class_implements(PsrLogAbstractLogger_ce_ptr, 1, PsrLogLoggerInterface_ce_ptr);
 }
 
 /* }}} Psr\Log\AbstractLogger */
@@ -252,13 +209,11 @@ static zend_always_inline void php_psr_register_NullLogger(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\NullLogger", PsrLogNullLogger_methods);
-    PsrLogNullLogger_ce_ptr = php5to7_register_internal_class_ex(&ce, PsrLogAbstractLogger_ce_ptr);
+    PsrLogNullLogger_ce_ptr = zend_register_internal_class_ex(&ce, PsrLogAbstractLogger_ce_ptr);
 }
 
 /* }}} Psr\Log\NullLogger */
 /* {{{ Psr\Log\LoggerTrait */
-
-#if PHP_API_VERSION >= 20100412
 
 PHP_PSR_API zend_class_entry * PsrLogLoggerTrait_ce_ptr;
 
@@ -279,37 +234,25 @@ static zend_always_inline void php_psr_register_LoggerTrait(INIT_FUNC_ARGS)
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerTrait", PsrLogLoggerTrait_methods);
-    PsrLogLoggerTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
+    PsrLogLoggerTrait_ce_ptr = zend_register_internal_class(&ce);
     PsrLogLoggerTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
 }
 
-#endif
-
 /* }}} Psr\Log\LoggerTrait */
 /* {{{ Psr\Log\LoggerAwareTrait */
-
-#if PHP_API_VERSION >= 20100412
 
 PHP_PSR_API zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 
 PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
 {
-    zval * _this_zval;
+    zval * _this_zval = getThis();
     zval * logger;
 
-#ifndef FAST_ZPP
-    if( zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "OO",
-            &_this_zval, NULL, &logger, PsrLogLoggerInterface_ce_ptr) == FAILURE) {
-        return;
-    }
-#else
-	_this_zval = getThis();
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_OBJECT_OF_CLASS(logger, PsrLogLoggerInterface_ce_ptr)
 	ZEND_PARSE_PARAMETERS_END();
-#endif
 
-    zend_update_property(Z_OBJCE_P(_this_zval), _this_zval, "logger", sizeof("logger")-1, logger TSRMLS_CC);
+    zend_update_property(Z_OBJCE_P(_this_zval), _this_zval, "logger", sizeof("logger")-1, logger);
 }
 
 static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {
@@ -322,12 +265,10 @@ static zend_always_inline void php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS)
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Log\\LoggerAwareTrait", PsrLogLoggerAwareTrait_methods);
     //ce.ce_flags |= ZEND_ACC_TRAIT;
-    PsrLogLoggerAwareTrait_ce_ptr = zend_register_internal_class(&ce TSRMLS_CC);
+    PsrLogLoggerAwareTrait_ce_ptr = zend_register_internal_class(&ce);
     PsrLogLoggerAwareTrait_ce_ptr->ce_flags |= ZEND_ACC_TRAIT;
-    zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED TSRMLS_CC);
+    zend_declare_property_null(PsrLogLoggerAwareTrait_ce_ptr, "logger", sizeof("logger")-1, ZEND_ACC_PROTECTED);
 }
-
-#endif
 
 /* }}} Psr\Log\LoggerAwareTrait */
 
@@ -340,10 +281,8 @@ PHP_MINIT_FUNCTION(psr_log)
     php_psr_register_LoggerAwareInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_AbstractLogger(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_NullLogger(INIT_FUNC_ARGS_PASSTHRU);
-#if PHP_API_VERSION >= 20100412
     php_psr_register_LoggerTrait(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_LoggerAwareTrait(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

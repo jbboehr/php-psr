@@ -1,7 +1,7 @@
 --TEST--
 psr phpinfo
 --SKIPIF--
-<?php include('skip_for_php5.inc'); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 phpinfo(INFO_MODULES);

@@ -1,7 +1,7 @@
 --TEST--
 Psr\Http\Client\ClientExceptionInterface
 --SKIPIF--
-<?php include('skip_for_php5.inc'); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 use Psr\Http\Client\ClientExceptionInterface;

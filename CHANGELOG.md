@@ -4,6 +4,14 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
+### Added
+- Preliminary PHP 8 (master) support
+
+### Removed
+- PHP 5 support
+
 ## [0.6.1] - 2018-11-13
 
 ### Fixed 

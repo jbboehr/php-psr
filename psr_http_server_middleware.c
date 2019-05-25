@@ -7,9 +7,7 @@
 #include "php_psr.h"
 #include "psr_http_server_middleware.h"
 
-/* {{{ MiddlewareInterface --------------------------------------------------- */
-
-#ifdef ZEND_ENGINE_3
+/* {{{ MiddlewareInterface -------------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
 
@@ -22,19 +20,15 @@ static zend_always_inline void php_psr_register_PsrHttpServerMiddlewareInterface
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\MiddlewareInterface", PsrHttpServerMiddlewareInterface_methods);
-    PsrHttpServerMiddlewareInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpServerMiddlewareInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
-
-#endif
 
 /* }}} ---------------------------------------------------------------------- */
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_server_middleware)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpServerMiddlewareInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

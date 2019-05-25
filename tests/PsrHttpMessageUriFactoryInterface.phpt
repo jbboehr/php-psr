@@ -1,7 +1,7 @@
 --TEST--
 Psr\Http\Message\UriFactoryInterface
 --SKIPIF--
-<?php include('skip_for_php5.inc'); ?>
+<?php include('skip.inc'); ?>
 --FILE--
 <?php
 include __DIR__ . '/SampleUri.inc';

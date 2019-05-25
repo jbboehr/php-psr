@@ -25,8 +25,8 @@ static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkInterface(IN
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Link\\EvolvableLinkInterface", PsrLinkEvolvableLinkInterface_methods);
-    PsrLinkEvolvableLinkInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrLinkEvolvableLinkInterface_ce_ptr TSRMLS_CC, 1, PsrLinkLinkInterface_ce_ptr);
+    PsrLinkEvolvableLinkInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrLinkEvolvableLinkInterface_ce_ptr, 1, PsrLinkLinkInterface_ce_ptr);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -44,8 +44,8 @@ static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkProviderInte
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Link\\EvolvableLinkProviderInterface", PsrLinkEvolvableLinkProviderInterface_methods);
-    PsrLinkEvolvableLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrLinkEvolvableLinkProviderInterface_ce_ptr TSRMLS_CC, 1, PsrLinkLinkProviderInterface_ce_ptr);
+    PsrLinkEvolvableLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrLinkEvolvableLinkProviderInterface_ce_ptr, 1, PsrLinkLinkProviderInterface_ce_ptr);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -65,7 +65,7 @@ static zend_always_inline void php_psr_register_PsrLinkLinkInterface(INIT_FUNC_A
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Link\\LinkInterface", PsrLinkLinkInterface_methods);
-    PsrLinkLinkInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrLinkLinkInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -83,7 +83,7 @@ static zend_always_inline void php_psr_register_PsrLinkLinkProviderInterface(INI
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Link\\LinkProviderInterface", PsrLinkLinkProviderInterface_methods);
-    PsrLinkLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrLinkLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} ---------------------------------------------------------------------- */

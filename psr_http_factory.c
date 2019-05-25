@@ -7,7 +7,6 @@
 #include "php_psr.h"
 #include "psr_http_factory.h"
 
-#ifdef ZEND_ENGINE_3
 /* {{{ Psr\Http\Message\RequestFactoryInterface */
 
 PHP_PSR_API zend_class_entry * PsrHttpMessageRequestFactoryInterface_ce_ptr;
@@ -21,7 +20,7 @@ static zend_always_inline void php_psr_register_PsrHttpMessageRequestFactoryInte
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\RequestFactoryInterface", PsrHttpMessageRequestFactoryInterface_methods);
-    PsrHttpMessageRequestFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageRequestFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\RequestFactoryInterface */
@@ -38,7 +37,7 @@ static zend_always_inline void php_psr_register_PsrHttpMessageResponseFactoryInt
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ResponseFactoryInterface", PsrHttpMessageResponseFactoryInterface_methods);
-    PsrHttpMessageResponseFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageResponseFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\ResponseFactoryInterface */
@@ -55,7 +54,7 @@ static zend_always_inline void php_psr_register_PsrHttpMessageServerRequestFacto
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ServerRequestFactoryInterface", PsrHttpMessageServerRequestFactoryInterface_methods);
-    PsrHttpMessageServerRequestFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageServerRequestFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\ServerRequestFactoryInterface */
@@ -74,7 +73,7 @@ static zend_always_inline void php_psr_register_PsrHttpMessageStreamFactoryInter
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\StreamFactoryInterface", PsrHttpMessageStreamFactoryInterface_methods);
-    PsrHttpMessageStreamFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageStreamFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\StreamFactoryInterface */
@@ -91,7 +90,7 @@ static zend_always_inline void php_psr_register_PsrHttpMessageUploadedFileFactor
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UploadedFileFactoryInterface", PsrHttpMessageUploadedFileFactoryInterface_methods);
-    PsrHttpMessageUploadedFileFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageUploadedFileFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\UploadedFileFactoryInterface */
@@ -108,23 +107,20 @@ static zend_always_inline void php_psr_register_PsrHttpMessageUriFactoryInterfac
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UriFactoryInterface", PsrHttpMessageUriFactoryInterface_methods);
-    PsrHttpMessageUriFactoryInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpMessageUriFactoryInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Message\UriFactoryInterface */
-#endif
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_factory)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpMessageRequestFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageResponseFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageServerRequestFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageStreamFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageUploadedFileFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpMessageUriFactoryInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

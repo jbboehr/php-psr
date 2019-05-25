@@ -8,7 +8,6 @@
 #include "php_psr.h"
 #include "psr_http_client.h"
 
-#ifdef ZEND_ENGINE_3
 /* {{{ Psr\Http\Client\ClientInterface */
 
 PHP_PSR_API zend_class_entry * PsrHttpClientClientInterface_ce_ptr;
@@ -22,7 +21,7 @@ static zend_always_inline void php_psr_register_PsrHttpClientClientInterface(INI
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\ClientInterface", PsrHttpClientClientInterface_methods);
-    PsrHttpClientClientInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpClientClientInterface_ce_ptr = zend_register_internal_interface(&ce);
 }
 
 /* }}} Psr\Http\Client\ClientInterface */
@@ -34,7 +33,7 @@ static zend_always_inline void php_psr_register_PsrHttpClientClientExceptionInte
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\ClientExceptionInterface", NULL);
-    PsrHttpClientClientExceptionInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
+    PsrHttpClientClientExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
     zend_class_implements(PsrHttpClientClientExceptionInterface_ce_ptr, 1, zend_ce_throwable);
 }
 
@@ -52,8 +51,8 @@ static zend_always_inline void php_psr_register_PsrHttpClientNetworkExceptionInt
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\NetworkExceptionInterface", PsrHttpClientNetworkExceptionInterface_methods);
-    PsrHttpClientNetworkExceptionInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrHttpClientNetworkExceptionInterface_ce_ptr TSRMLS_CC, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
+    PsrHttpClientNetworkExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrHttpClientNetworkExceptionInterface_ce_ptr, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Client\NetworkExceptionInterface */
@@ -70,22 +69,19 @@ static zend_always_inline void php_psr_register_PsrHttpClientRequestExceptionInt
 {
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\RequestExceptionInterface", PsrHttpClientRequestExceptionInterface_methods);
-    PsrHttpClientRequestExceptionInterface_ce_ptr = zend_register_internal_interface(&ce TSRMLS_CC);
-    zend_class_implements(PsrHttpClientRequestExceptionInterface_ce_ptr TSRMLS_CC, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
+    PsrHttpClientRequestExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrHttpClientRequestExceptionInterface_ce_ptr, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
 }
 
 /* }}} Psr\Http\Client\RequestExceptionInterface */
-#endif
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_http_client)
 {
-#ifdef ZEND_ENGINE_3
     php_psr_register_PsrHttpClientClientInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientClientExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientNetworkExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrHttpClientRequestExceptionInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }
