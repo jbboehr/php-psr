@@ -62,6 +62,11 @@ function test_repository() (
 function before_install() (
     set -e -o pipefail
 
+    if [[ "${CORE_DUMP}" = "true" ]]; then
+        ulimit -c unlimited -S || true
+        echo '/tmp/core.%e.%p.%t' | sudo tee /proc/sys/kernel/core_pattern
+    fi
+
     # Don't install this unless we're actually on travis
     if [[ "${COVERAGE}" = "true" ]] && [[ "${TRAVIS}" = "true" ]]; then
         gem install coveralls-lcov
@@ -141,9 +146,11 @@ function after_success() (
 function after_failure() (
     set -e -o pipefail
 
-		for i in core core*; do
-			if [ -f "$i" -a "$(file "$i" | grep -o 'core file')" ]; then
-				gdb -q $(phpenv which php) "$i" <<EOF
+    if [[ "${CORE_DUMP}" = "true" ]]; then
+      echo "=== Core dump after failure ==="
+		  for i in core /tmp/core*; do
+			  if [ -f "$i" -a "$(file "$i" | grep -o 'core file')" ]; then
+				  gdb -q $(phpenv which php) "$i" <<EOF
 set pagination 0
 backtrace full
 info registers
@@ -151,8 +158,9 @@ x/16i \$pc
 thread apply all backtrace
 quit
 EOF
-			fi
-		done
+			  fi
+		  done
+    fi
 
     for i in `find tests -name "*.out" 2>/dev/null`; do
         echo "-- START ${i}";
