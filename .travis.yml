@@ -14,6 +14,8 @@ matrix:
   - language: php
     php: '7.3'
   - language: php
+    php: '7.4snapshot'
+  - language: php
     php: 'master'
   - language: nix
     env:
