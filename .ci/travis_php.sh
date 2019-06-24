@@ -141,6 +141,19 @@ function after_success() (
 function after_failure() (
     set -e -o pipefail
 
+		for i in core core*; do
+			if [ -f "$i" -a "$(file "$i" | grep -o 'core file')" ]; then
+				gdb -q $(phpenv which php) "$i" <<EOF
+set pagination 0
+backtrace full
+info registers
+x/16i \$pc
+thread apply all backtrace
+quit
+EOF
+			fi
+		done
+
     for i in `find tests -name "*.out" 2>/dev/null`; do
         echo "-- START ${i}";
         cat ${i};
