@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 - Preliminary PHP 8 (master) support
+- PSR-14 Event Dispatcher support
 
 ### Removed
 - PHP 5 support

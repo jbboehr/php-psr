@@ -10,12 +10,11 @@ export DISPATCH_VERSION=2.0.0
 export REQUEST_HANDLER_VERSION=v1.3.0
 export HTTP_FACTORY_GUZZLE_VERSION=1.0.0
 export HTTP_GUZZLE_PSR18_ADAPTER_VERSION=v1.0.1
+export TUKIO_VERSION=1.0.0
 
 export COVERAGE=${COVERAGE:-true}
 
-export PHP_MAJOR=$(php -r 'echo phpversion();' | cut -d '.' -f 1)
-export PHP_MINOR=$(php -r 'echo phpversion();' | cut -d '.' -f 2)
-export PHP_MAJOR_MINOR="${PHP_MAJOR}.${PHP_MINOR}"
+export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
 
 export PHP_WITH_EXT="`which php` -d extension=`pwd`/modules/psr.so"
 
@@ -23,7 +22,7 @@ export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-sug
 
 # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
 # We'll remove this in the future
-if [[ "${PHP_MAJOR_MINOR}" = "7.3" ]] || [[ "${PHP_MAJOR_MINOR}" = "7.4" ]] || [[ "${PHP_MAJOR_MINOR}" = "8.0" ]]; then
+if [[ ${PHP_VERSION_ID} -ge 70300 ]]; then
     export DEFAULT_COMPOSER_FLAGS="${DEFAULT_COMPOSER_FLAGS} --ignore-platform-reqs"
 fi
 
@@ -78,6 +77,9 @@ function before_install() (
     init_repository request-handler ${REQUEST_HANDLER_VERSION} https://github.com/middlewares/request-handler.git
     init_repository http-factory-guzzle ${HTTP_FACTORY_GUZZLE_VERSION} https://github.com/http-interop/http-factory-guzzle.git
     init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
+    if [[ ${PHP_VERSION_ID} -ge 70200 ]]; then
+        init_repository tukio ${TUKIO_VERSION} https://github.com/Crell/Tukio.git
+    fi
 )
 
 function install() (
@@ -119,6 +121,9 @@ function script() (
     test_repository request-handler
     test_repository http-factory-guzzle
     test_repository guzzle-psr18-adapter
+    if [[ ${PHP_VERSION_ID} -ge 70200 ]]; then
+        test_repository tukio
+    fi
 )
 
 function after_success() (
