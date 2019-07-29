@@ -18,6 +18,7 @@ You can use interfaces provided by this extension in another extension easily - 
 | [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
 | [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
 | [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
+| [PSR-14][:psr-14:] | [psr/event-dispatcher][:psr-event-dispatcher:] | [tukio][:tukio:] |
 | [PSR-15][:psr-15:] | [psr/http-server-handler][:psr-http-server-handler:] | [equip/dispatch][:dispatch:] |
 | [PSR-15][:psr-15:] | [psr/http-server-middleware][:psr-http-server-middleware:] | [middleware/request-handler][:request-handler:] |
 | [PSR-16][:psr-16:] | [psr/simple-cache][:psr-simple-cache:] | [psx-cache][:psx-cache:] |
@@ -117,6 +118,7 @@ In your project, you can prevent the installation of the unnecessary composer pa
         "psr/http-message": "^1",
         "psr/container": "^1",
         "psr/link": "^1",
+        "psr/event-dispatcher": "^1",
         "psr/http-server-handler": "^1",
         "psr/http-server-middleware": "^1",
         "psr/simple-cache": "^1",
@@ -131,7 +133,7 @@ This will use this PHP extension instead of downloading from packagist.
 ## Credits
 
 * [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
-* [@flyinghail][:github-flyinghail:] - PSR-15, PSR-17, and PSR-18 support
+* [@flyinghail][:github-flyinghail:] - PSR-14, PSR-15, PSR-17, and PSR-18 support
 * [@Jan-E][:github-jan-e:] - Original appveyor template
 
 ## License
@@ -186,3 +188,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-18:]: https://www.php-fig.org/psr/psr-18
 [:psr-http-client:]: https://github.com/php-fig/http-client
 [:guzzle-psr18-adapter:]: https://github.com/ricardofiorani/guzzle-psr18-adapter
+[:psr-14:]: http://www.php-fig.org/psr/psr-14
+[:psr-event-dispatcher:]: https://github.com/php-fig/event-dispatcher
+[:tukio:]: https://github.com/Crell/Tukio.git

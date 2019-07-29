@@ -41,6 +41,8 @@
    <file name="psr_cache.h" role="src"/>
    <file name="psr_container.c" role="src"/>
    <file name="psr_container.h" role="src"/>
+   <file name="psr_event_dispatcher.c" role="src"/>
+   <file name="psr_event_dispatcher.h" role="src"/>
    <file name="psr_http_client.c" role="src"/>
    <file name="psr_http_client.h" role="src"/>
    <file name="psr_http_factory.c" role="src"/>
@@ -122,6 +124,14 @@
    <file name="tests/PsrHttpClientRequestExceptionInterface.phpt" role="test"/>
    <file name="tests/SampleClient.inc" role="test"/>
    <file name="tests/skip.inc" role="test"/>
+   <file name="tests/skip_lt_php72.inc" role="test"/>
+   <file name="tests/phpinfo_lt_php72.phpt" role="test"/>
+   <file name="tests/PsrEventDispatcherEventDispatcherInterface.phpt" role="test"/>
+   <file name="tests/PsrEventDispatcherListenerProviderInterface.phpt" role="test"/>
+   <file name="tests/PsrEventDispatcherStoppableEventInterface.phpt" role="test"/>
+   <file name="tests/SampleEventDispatcher.inc" role="test"/>
+   <file name="tests/SampleListenerProvider.inc" role="test"/>
+   <file name="tests/SampleStoppableEvent.inc" role="test"/>
   </dir>
  </contents>
  <dependencies>
