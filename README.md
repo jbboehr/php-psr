@@ -79,7 +79,7 @@ pecl install psr
 
 or by downloading a DLL from [PECL][:pecl-psr:] or [windows.php.net][:windows-psr:] and placing it in the appropriate directory.
 
-### Nix/NixOS
+### Nix / NixOS
 
 ```bash
 nix-env -i -f https://github.com/jbboehr/php-psr/archive/master.tar.gz
@@ -95,8 +95,8 @@ or, in a `.nix` file:
 
 ```nix
 (import <nixpkgs> {}).callPackage (import (fetchTarball {
-  url = https://github.com/jbboehr/php-psr/archive/v0.6.0.tar.gz;
-  sha256 = "1zslwrjpzsvvnr5igy0j6z7hgjvrflzk7j20v6w0pc2v124g5ykk";
+  url = https://github.com/jbboehr/php-psr/archive/v0.7.0.tar.gz;
+  sha256 = "0sgdls1c9hzza3y8279gspkhmr0zdn46qmx5bfzahkgzrz11fimg";
 })) {}
 ```
 
