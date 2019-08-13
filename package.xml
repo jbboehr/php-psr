@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2018-11-13</date>
+ <date>2019-08-12</date>
  <version>
-  <release>0.6.1</release>
-  <api>0.6.1</api>
+  <release>0.7.0</release>
+  <api>0.7.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,7 +26,9 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Fixed test failures on PHP 5.6
+ - Preliminary PHP 7.4 and 8.0 (master) support
+ - PSR-14 Event Dispatcher support (@flyinghail)
+ - Removed PHP 5 support
  </notes>
  <contents>
   <dir name="/">
