@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export MONOLOG_VERSION=2.0.0-beta1
+export MONOLOG_VERSION=1.24.0
 export STASH_VERSION=v0.15.2
 export PSX_CACHE_VERSION=v1.0.2
 export GUZZLE_PSR7_VERSION=1.5.2

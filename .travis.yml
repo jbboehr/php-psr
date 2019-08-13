@@ -1,6 +1,7 @@
 matrix:
   fast_finish: true
   allow_failures:
+  - php: '7.4snapshot'
   - php: 'master'
   - language: nix
     env:
@@ -14,6 +15,8 @@ matrix:
   - language: php
     php: '7.3'
   - language: php
+    php: '7.4snapshot'
+  - language: php
     php: 'master'
   - language: nix
     env:
@@ -25,6 +28,10 @@ matrix:
     - NIX_PHP_ATTR=php72
   - language: nix
     env:
+    - NIX_CHANNEL=19.03
+    - NIX_PHP_ATTR=php73
+  - language: nix
+    env:
     - NIX_CHANNEL=unstable
     - NIX_PHP_ATTR=php
 
@@ -32,6 +39,7 @@ addons:
   apt:
     packages:
       - lcov
+      - valgrind
 
 env:
   global:
