@@ -1,4 +1,8 @@
 { php, stdenv, autoreconfHook, fetchurl,
+  buildPecl ? import <nixpkgs/pkgs/build-support/build-pecl.nix> {
+    # re2c is required for nixpkgs master, must not be specified for <= 19.03
+    inherit php stdenv autoreconfHook fetchurl;
+  },
   phpPsrVersion ? null,
   phpPsrSrc ? null,
   phpPsrSha256 ? null
@@ -6,9 +10,6 @@
 
 let
   orDefault = x: y: (if (!isNull x) then x else y);
-  buildPecl = import <nixpkgs/pkgs/build-support/build-pecl.nix> {
-    inherit php stdenv autoreconfHook fetchurl;
-  };
 in
 
 buildPecl rec {
