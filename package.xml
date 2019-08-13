@@ -138,7 +138,7 @@
   <required>
    <php>
     <min>7.0.0</min>
-    <max>7.3.99</max>
+    <max>7.4.99</max>
    </php>
    <pearinstaller>
     <min>1.4.1</min>
