@@ -16,7 +16,8 @@ export COVERAGE=${COVERAGE:-true}
 
 export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
 
-export PHP_WITH_EXT="`which php` -d error_reporting='E_ALL & ~E_DEPRECATED' -d extension=`pwd`/modules/psr.so"
+# error_reporting='E_ALL & ~E_DEPRECATED'
+export PHP_WITH_EXT="`which php` -d error_reporting=24575 -d extension=`pwd`/modules/psr.so"
 
 export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
