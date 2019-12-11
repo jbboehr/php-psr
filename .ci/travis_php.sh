@@ -4,7 +4,7 @@ export MONOLOG_VERSION=1.24.0
 export STASH_VERSION=v0.15.2
 export PSX_CACHE_VERSION=v1.0.2
 export GUZZLE_PSR7_VERSION=1.5.2
-export LEAGUE_CONTAINER_VERSION=3.2.2
+export LEAGUE_CONTAINER_VERSION=3.3.0
 export LINK_UTIL_VERSION=1.0.0
 export DISPATCH_VERSION=2.0.0
 export REQUEST_HANDLER_VERSION=v1.3.0
@@ -16,7 +16,8 @@ export COVERAGE=${COVERAGE:-true}
 
 export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
 
-export PHP_WITH_EXT="`which php` -d extension=`pwd`/modules/psr.so"
+# error_reporting='E_ALL & ~E_DEPRECATED'
+export PHP_WITH_EXT="`which php` -d error_reporting=24575 -d extension=`pwd`/modules/psr.so"
 
 export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
@@ -68,7 +69,9 @@ function before_install() (
 
     # install all libraries we test against
     init_repository monolog ${MONOLOG_VERSION} https://github.com/Seldaek/monolog.git
-    init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
+    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
+        init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
+    fi
     init_repository psr7 ${GUZZLE_PSR7_VERSION} https://github.com/guzzle/psr7.git
     init_repository league-container ${LEAGUE_CONTAINER_VERSION} https://github.com/thephpleague/container.git
     init_repository link-util ${LINK_UTIL_VERSION} https://github.com/php-fig/link-util.git
@@ -112,7 +115,9 @@ function script() (
 
     # run tests for all libraries we test against
     test_repository monolog
-    test_repository stash
+    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
+        test_repository stash
+    fi
     test_repository psr7
     test_repository league-container
     test_repository link-util

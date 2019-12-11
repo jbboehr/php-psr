@@ -22,10 +22,6 @@ function script() (
 
     NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-${NIX_CHANNEL}.tar.gz
     nix-build --argstr phpPsrVersion ${TRAVIS_BRANCH} --arg php "(import <nixpkgs> {}).${NIX_PHP_ATTR}" | tee result.txt
-
-    # test the pecl packaging
-    pecl_tgz=$(nix-shell -p ${NIX_PHP_ATTR} --command 'pecl package' | grep -v Warning | awk '{print $2}')
-    nix-build --arg php "(import <nixpkgs> {}).${NIX_PHP_ATTR}" --arg phpPsrSrc "./${pecl_tgz}"
 )
 
 function after_success() (
