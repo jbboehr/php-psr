@@ -68,7 +68,9 @@ function before_install() (
 
     # install all libraries we test against
     init_repository monolog ${MONOLOG_VERSION} https://github.com/Seldaek/monolog.git
-    init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
+    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
+        init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
+    fi
     init_repository psr7 ${GUZZLE_PSR7_VERSION} https://github.com/guzzle/psr7.git
     init_repository league-container ${LEAGUE_CONTAINER_VERSION} https://github.com/thephpleague/container.git
     init_repository link-util ${LINK_UTIL_VERSION} https://github.com/php-fig/link-util.git
