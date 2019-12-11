@@ -114,7 +114,9 @@ function script() (
 
     # run tests for all libraries we test against
     test_repository monolog
-    test_repository stash
+    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
+        test_repository stash
+    fi
     test_repository psr7
     test_repository league-container
     test_repository link-util
