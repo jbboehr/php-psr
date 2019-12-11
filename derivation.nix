@@ -25,6 +25,6 @@ buildPecl rec {
 
   doCheck = true;
   checkTarget = "test";
-  checkFlagsArray = ["REPORT_EXIT_STATUS=1" "NO_INTERACTION=1" "TEST_PHP_DETAILED=1"];
+  checkFlags = ["REPORT_EXIT_STATUS=1" "NO_INTERACTION=1"]; # "TEST_PHP_DETAILED=1"
 }
 
