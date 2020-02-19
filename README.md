@@ -135,6 +135,7 @@ This will use this PHP extension instead of downloading from packagist.
 * [@sergeyklay][:github-sergeyklay:] - Appveyor and documentation improvements
 * [@flyinghail][:github-flyinghail:] - PSR-14, PSR-15, PSR-17, and PSR-18 support
 * [@Jan-E][:github-jan-e:] - Original appveyor template
+* [All Contributors](https://github.com/jbboehr/php-psr/graphs/contributors)
 
 ## License
 

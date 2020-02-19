@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2019-08-12</date>
+ <date>2020-02-18</date>
  <version>
-  <release>0.7.0</release>
-  <api>0.7.0</api>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,9 +26,7 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Preliminary PHP 7.4 and 8.0 (master) support
- - PSR-14 Event Dispatcher support (@flyinghail)
- - Removed PHP 5 support
+ - Drop max PHP version constraint
  </notes>
  <contents>
   <dir name="/">
@@ -140,7 +138,6 @@
   <required>
    <php>
     <min>7.0.0</min>
-    <max>7.4.99</max>
    </php>
    <pearinstaller>
     <min>1.4.1</min>
