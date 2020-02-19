@@ -95,8 +95,8 @@ or, in a `.nix` file:
 
 ```nix
 (import <nixpkgs> {}).callPackage (import (fetchTarball {
-  url = https://github.com/jbboehr/php-psr/archive/v0.7.0.tar.gz;
-  sha256 = "0sgdls1c9hzza3y8279gspkhmr0zdn46qmx5bfzahkgzrz11fimg";
+  url = https://github.com/jbboehr/php-psr/archive/v1.0.0.tar.gz;
+  sha256 = "12237b392rz224r4d8p6pwnldpl2bfrvpcim5947avjd49sn8ss4";
 })) {}
 ```
 

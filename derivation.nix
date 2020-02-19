@@ -15,10 +15,10 @@ in
 buildPecl rec {
   pname = "psr";
   name = "psr-${version}";
-  version = orDefault phpPsrVersion "v0.7.0";
+  version = orDefault phpPsrVersion "v1.0.0";
   src = orDefault phpPsrSrc (fetchurl {
     url = "https://github.com/jbboehr/php-psr/archive/${version}.tar.gz";
-    sha256 = orDefault phpPsrSha256 "01gqgi80llcb2s81mbj1vlcbsjqpm0gzk33jh1f6x32g843sr2k4";
+    sha256 = orDefault phpPsrSha256 "12237b392rz224r4d8p6pwnldpl2bfrvpcim5947avjd49sn8ss4";
   });
 
   makeFlags = ["phpincludedir=$(out)/include/php/ext/psr"];
