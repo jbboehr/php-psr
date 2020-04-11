@@ -62,7 +62,7 @@ builtins.mapAttrs (k: _v:
 
     php74 = let
         path = builtins.fetchTarball {
-           url = https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
+           url = https://github.com/NixOS/nixpkgs/archive/release-20.03.tar.gz;
            name = "nixpkgs-unstable";
         };
         pkgs = import (path) { system = k; };
@@ -72,17 +72,17 @@ builtins.mapAttrs (k: _v:
         buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
     };
 
-    php = let
-        path = builtins.fetchTarball {
-           url = https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
-           name = "nixpkgs-unstable";
-        };
-        pkgs = import (path) { system = k; };
-        php = pkgs.php;
-    in generatePsrTestsForPlatform {
-        inherit pkgs php phpPsrSrc;
-        buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
-    };
+    # php = let
+    #     path = builtins.fetchTarball {
+    #        url = https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
+    #        name = "nixpkgs-unstable";
+    #     };
+    #     pkgs = import (path) { system = k; };
+    #     php = pkgs.php;
+    # in generatePsrTestsForPlatform {
+    #     inherit pkgs php phpPsrSrc;
+    #     buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+    # };
   }
 ) {
   x86_64-linux = {};
