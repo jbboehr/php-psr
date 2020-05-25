@@ -13,76 +13,56 @@ let
             cp $pecl_tgz $out
         '';
 
-    generatePsrTestsForPlatform = { pkgs, php, buildPecl, phpPsrSrc }:
+    generateTestsForPlatform = { pkgs, path, phpAttr, dist }:
         pkgs.recurseIntoAttrs {
-            psr = pkgs.callPackage ./derivation.nix {
-               inherit php buildPecl phpPsrSrc;
+            psr = let
+                php = pkgs.${phpAttr};
+            in pkgs.callPackage ./default.nix {
+                inherit php;
+                phpPsrSrc = dist;
+                buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+            };
+            psr-32bit = let
+                php = pkgs.pkgsi686Linux.${phpAttr};
+            in pkgs.pkgsi686Linux.callPackage ./default.nix {
+                inherit php;
+                phpPsrSrc = dist;
+                buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
             };
         };
 in
 builtins.mapAttrs (k: _v:
   let
     path = builtins.fetchTarball {
-       url = https://github.com/NixOS/nixpkgs/archive/release-19.09.tar.gz;
-       name = "nixpkgs-19.09";
+        url = https://github.com/NixOS/nixpkgs/archive/release-20.03.tar.gz;
+        name = "nixpkgs-20.03";
     };
     pkgs = import (path) { system = k; };
 
-    phpPsrSrc = generatePsrDrv {
+    dist = generatePsrDrv {
         inherit pkgs;
         inherit (pkgs) php;
     };
   in
   pkgs.recurseIntoAttrs {
-    php71 = let
-        path = builtins.fetchTarball {
-           url = https://github.com/NixOS/nixpkgs/archive/release-19.03.tar.gz;
-           name = "nixpkgs-19.03";
-        };
-        pkgs = import (path) { system = k; };
-        php = pkgs.php71;
-    in generatePsrTestsForPlatform {
-        inherit pkgs php phpPsrSrc;
-        buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
-    };
-
-    php72 = let
-        php = pkgs.php72;
-    in generatePsrTestsForPlatform {
-        inherit pkgs php phpPsrSrc;
-        buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+    php72 = generateTestsForPlatform {
+        inherit pkgs path dist;
+        phpAttr = "php72";
     };
 
     php73 = let
         php = pkgs.php73;
-    in generatePsrTestsForPlatform {
-        inherit pkgs php phpPsrSrc;
-        buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+    in generateTestsForPlatform {
+        inherit pkgs path dist;
+        phpAttr = "php73";
     };
 
     php74 = let
-        path = builtins.fetchTarball {
-           url = https://github.com/NixOS/nixpkgs/archive/release-20.03.tar.gz;
-           name = "nixpkgs-unstable";
-        };
-        pkgs = import (path) { system = k; };
         php = pkgs.php74;
-    in generatePsrTestsForPlatform {
-        inherit pkgs php phpPsrSrc;
-        buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+    in generateTestsForPlatform {
+        inherit pkgs path dist;
+        phpAttr = "php74";
     };
-
-    # php = let
-    #     path = builtins.fetchTarball {
-    #        url = https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
-    #        name = "nixpkgs-unstable";
-    #     };
-    #     pkgs = import (path) { system = k; };
-    #     php = pkgs.php;
-    # in generatePsrTestsForPlatform {
-    #     inherit pkgs php phpPsrSrc;
-    #     buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
-    # };
   }
 ) {
   x86_64-linux = {};
