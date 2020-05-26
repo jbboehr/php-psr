@@ -5,8 +5,7 @@ export NIX_PHP_ATTR=${NIX_PHP_ATTR:-php}
 export NIX_CHANNEL=${NIX_CHANNEL:-unstable}
 
 function before_install() (
-    set -e -o pipefail
-    nix-env -iA cachix -f https://github.com/NixOS/nixpkgs/tarball/889c72032f8595fcd7542c6032c208f6b8033db6
+    return 0
 )
 
 function install() {
@@ -21,12 +20,11 @@ function script() (
     set -e -o pipefail
 
     NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-${NIX_CHANNEL}.tar.gz
-    nix-build --argstr phpPsrVersion ${TRAVIS_BRANCH} --arg php "(import <nixpkgs> {}).${NIX_PHP_ATTR}" | tee result.txt
+    nix-build --argstr phpPsrVersion ${TRAVIS_BRANCH} --arg php "(import <nixpkgs> {}).${NIX_PHP_ATTR}"
 )
 
 function after_success() (
-    set -e -o pipefail
-    cat result.txt | cachix push jbboehr-ci
+    return 0
 )
 
 function after_failure() {

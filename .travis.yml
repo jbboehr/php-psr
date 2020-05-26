@@ -1,12 +1,7 @@
 matrix:
   fast_finish: true
   allow_failures:
-  - php: '7.4snapshot'
   - php: 'master'
-  - language: nix
-    env:
-    - NIX_CHANNEL=unstable
-    - NIX_PHP_ATTR=php74
   - language: nix
     env:
     - NIX_CHANNEL=unstable
@@ -24,20 +19,16 @@ matrix:
     php: 'master'
   - language: nix
     env:
-    - NIX_CHANNEL=18.09
+    - NIX_CHANNEL=19.03
     - NIX_PHP_ATTR=php71
   - language: nix
     env:
-    - NIX_CHANNEL=18.09
+    - NIX_CHANNEL=20.03
     - NIX_PHP_ATTR=php72
   - language: nix
     env:
-    - NIX_CHANNEL=19.03
+    - NIX_CHANNEL=20.03
     - NIX_PHP_ATTR=php73
-  - language: nix
-    env:
-    - NIX_CHANNEL=unstable
-    - NIX_PHP_ATTR=php74
   - language: nix
     env:
     - NIX_CHANNEL=unstable
@@ -48,10 +39,6 @@ addons:
     packages:
       - lcov
       - valgrind
-
-env:
-  global:
-    secure: "VCrvkI8wkGdbtss+gYURvoBa9RKAyqV7O8/MxZuiSGJholep4Q9RPYnZpgI4voYxNuKRLbfO1EomtUYzQJxAL8AEH2//8rl9UykfX/Gp+XuramFsbfZEojLTxT3wmWSSvbd92sFw73iiWpstcRvv3pVdWpM6Kb47wERCt5F4WnU="
 
 branches:
   only:
