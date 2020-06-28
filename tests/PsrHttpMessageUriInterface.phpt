@@ -4,9 +4,10 @@ Psr\Http\Message\UriInterface
 <?php include('skip.inc'); ?>
 --FILE--
 <?php
+use Psr\Http\Message\UriInterface;
 include __DIR__ . '/SampleUri.inc';
-var_dump(interface_exists('\\Psr\\Http\\Message\\UriInterface', false));
-var_dump(class_implements('SampleUri', false));
+var_dump(interface_exists(UriInterface::class, false));
+var_dump(is_subclass_of(SampleUri::class, UriInterface::class));
 $uri = new SampleUri();
 $uri->getScheme();
 $uri->getAuthority();
@@ -26,10 +27,7 @@ $uri->withFragment('');
 $uri->__toString();
 --EXPECT--
 bool(true)
-array(1) {
-  ["Psr\Http\Message\UriInterface"]=>
-  string(29) "Psr\Http\Message\UriInterface"
-}
+bool(true)
 string(20) "SampleUri::getScheme"
 string(23) "SampleUri::getAuthority"
 string(22) "SampleUri::getUserInfo"

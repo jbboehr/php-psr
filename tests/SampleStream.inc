@@ -7,6 +7,7 @@ class SampleStream implements StreamInterface
     public function __toString()
     {
         var_dump(__METHOD__);
+        return __METHOD__;
     }
 
     public function close()

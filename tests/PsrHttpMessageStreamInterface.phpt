@@ -4,9 +4,10 @@ Psr\Http\Message\StreamInterface
 <?php include('skip.inc'); ?>
 --FILE--
 <?php
+use Psr\Http\Message\StreamInterface;
 include __DIR__ . '/SampleStream.inc';
-var_dump(interface_exists('\\Psr\\Http\\Message\\StreamInterface', false));
-var_dump(class_implements('SampleStream', false));
+var_dump(interface_exists(StreamInterface::class, false));
+var_dump(is_subclass_of(SampleStream::class, StreamInterface::class));
 $stream = new SampleStream();
 $stream->__toString();
 $stream->close();
@@ -25,10 +26,7 @@ $stream->getContents();
 $stream->getMetadata();
 --EXPECTF--
 bool(true)
-array(1) {
-  ["Psr\Http\Message\StreamInterface"]=>
-  string(32) "Psr\Http\Message\StreamInterface"
-}
+bool(true)
 string(24) "SampleStream::__toString"
 string(19) "SampleStream::close"
 string(20) "SampleStream::detach"

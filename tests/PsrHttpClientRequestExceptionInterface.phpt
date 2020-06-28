@@ -8,7 +8,8 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Client\RequestExceptionInterface;
 include __DIR__ . '/SampleMessage.inc';
 include __DIR__ . '/SampleRequest.inc';
-var_dump(class_implements('Psr\Http\Client\RequestExceptionInterface', false));
+var_dump(is_subclass_of(RequestExceptionInterface::class, Psr\Http\Client\ClientExceptionInterface::class));
+var_dump(is_subclass_of(RequestExceptionInterface::class, Throwable::class));
 class MyException extends Exception implements RequestExceptionInterface {
     public function getRequest(): RequestInterface {
         var_dump(__METHOD__);
@@ -27,12 +28,8 @@ try {
     var_dump($e->getRequest());
 }
 --EXPECTF--
-array(2) {
-  ["Psr\Http\Client\ClientExceptionInterface"]=>
-  string(40) "Psr\Http\Client\ClientExceptionInterface"
-  ["Throwable"]=>
-  string(9) "Throwable"
-}
+bool(true)
+bool(true)
 bool(true)
 bool(true)
 bool(true)

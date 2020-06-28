@@ -5,7 +5,7 @@ Psr\Http\Client\ClientExceptionInterface
 --FILE--
 <?php
 use Psr\Http\Client\ClientExceptionInterface;
-var_dump(class_implements('Psr\Http\Client\ClientExceptionInterface', false));
+var_dump(is_subclass_of(ClientExceptionInterface::class, Throwable::class));
 class MyException extends Exception implements ClientExceptionInterface {}
 $ex = new MyException('test');
 var_dump($ex instanceof ClientExceptionInterface);
@@ -17,10 +17,7 @@ try {
     var_dump($e->getMessage());
 }
 --EXPECT--
-array(1) {
-  ["Throwable"]=>
-  string(9) "Throwable"
-}
+bool(true)
 bool(true)
 bool(true)
 bool(true)
