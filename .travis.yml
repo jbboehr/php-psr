@@ -1,14 +1,11 @@
+dist: bionic
+
 matrix:
   fast_finish: true
   allow_failures:
   - php: 'master'
-  - language: nix
-    env:
-    - NIX_CHANNEL=unstable
-    - NIX_PHP_ATTR=php
+  - arch: ppc64le
   include:
-  - language: php
-    php: '7.1'
   - language: php
     php: '7.2'
   - language: php
@@ -17,22 +14,16 @@ matrix:
     php: '7.4'
   - language: php
     php: 'master'
-  - language: nix
-    env:
-    - NIX_CHANNEL=19.03
-    - NIX_PHP_ATTR=php71
-  - language: nix
-    env:
-    - NIX_CHANNEL=20.03
-    - NIX_PHP_ATTR=php72
-  - language: nix
-    env:
-    - NIX_CHANNEL=20.03
-    - NIX_PHP_ATTR=php73
-  - language: nix
-    env:
-    - NIX_CHANNEL=unstable
-    - NIX_PHP_ATTR=php
+# arches
+  - language: php
+    php: '7.4'
+    arch: arm64
+  - language: php
+    php: '7.4'
+    arch: ppc64le
+  - language: php
+    php: '7.4'
+    arch: s390x
 
 addons:
   apt:
