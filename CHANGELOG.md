@@ -4,6 +4,12 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
+### Fixed 
+- Test failures on PHP 8.0.0alpha1
+- Compile failures with clang
+
 ## [1.0.0] - 2020-02-18
 
 ### Changed
