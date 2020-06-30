@@ -59,3 +59,4 @@ third-party/
 **/*.nix
 **/*Dockerfile
 **/.dockerignore
+**/nix/**

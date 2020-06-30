@@ -1,10 +1,15 @@
 
 # php-psr
 
-[![Build Status][:badge-travis:]][:build-travis:]
-[![Build status][:badge-appveyor:]][:build-appveyor:]
+[![Travis Build Status][:badge-travis:]][:build-travis:]
+[![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
+[![GitHub Linux Build Status](https://github.com/jbboehr/php-psr/workflows/linux/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Alinux)
+[![GitHub OSX Build Status](https://github.com/jbboehr/php-psr/workflows/osx/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aosx)
+[![GitHub Docker Build Status](https://github.com/jbboehr/php-psr/workflows/docker/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Adocker)
 [![Coverage Status][:badge-coveralls:]][:build-coveralls:]
 [![License][:badge-license:]][:ext-license:]
+
+
 
 This PHP extension provides the interfaces from the [PSR][:psr-fig:] standards as established by the [PHP-FIG][:php-fig:] group.
 You can use interfaces provided by this extension in another extension easily - see this [example][:example:].
@@ -14,14 +19,14 @@ You can use interfaces provided by this extension in another extension easily - 
 | PSR | Reference | Tested against |
 | --- | --- | --- |
 | [PSR-3][:psr-3:] | [psr/log][:psr-log:] [*](#psrlogunimpl) | [monolog][:monolog:] |
-| [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [Stash][:stash:] and [psx-cache][:psx-cache:] |
+| [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [psx-cache][:psx-cache:], [laminas-cache](https://github.com/laminas/laminas-cache) |
 | [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
 | [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
 | [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
 | [PSR-14][:psr-14:] | [psr/event-dispatcher][:psr-event-dispatcher:] | [tukio][:tukio:] |
 | [PSR-15][:psr-15:] | [psr/http-server-handler][:psr-http-server-handler:] | [equip/dispatch][:dispatch:] |
 | [PSR-15][:psr-15:] | [psr/http-server-middleware][:psr-http-server-middleware:] | [middleware/request-handler][:request-handler:] |
-| [PSR-16][:psr-16:] | [psr/simple-cache][:psr-simple-cache:] | [psx-cache][:psx-cache:] |
+| [PSR-16][:psr-16:] | [psr/simple-cache][:psr-simple-cache:] | [psx-cache][:psx-cache:], [laminas-cache](https://github.com/laminas/laminas-cache) |
 | [PSR-17][:psr-17:] | [psr/http-factory][:psr-http-factory:] | [http-interop/http-factory-guzzle][:http-factory-guzzle:] |
 | [PSR-18][:psr-18:] | [psr/http-client][:psr-http-client:] | [ricardofiorani/guzzle-psr18-adapter][:guzzle-psr18-adapter:] |
 
@@ -161,7 +166,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:monolog:]: https://github.com/Seldaek/monolog
 [:psr-6:]: https://www.php-fig.org/psr/psr-6
 [:psr-cache:]: https://github.com/php-fig/cache
-[:stash:]: https://github.com/tedious/Stash
 [:psx-cache:]: https://github.com/apioo/psx-cache
 [:psr-7:]: https://www.php-fig.org/psr/psr-7
 [:psr-http-message:]: https://github.com/php-fig/http-message

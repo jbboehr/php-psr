@@ -30,6 +30,7 @@ addons:
     packages:
       - lcov
       - valgrind
+      - jq
 
 branches:
   only:
@@ -37,8 +38,13 @@ branches:
     - develop
     - travis
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+    - third-party
+
 before_install:
-  - source ./.ci/travis_env.sh
+  - source ./.ci/travis_php.sh
   - before_install
 install: install
 before_script: before_script

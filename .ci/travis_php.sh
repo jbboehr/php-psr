@@ -1,24 +1,15 @@
 #!/usr/bin/env bash
 
-export MONOLOG_VERSION=2.1.0
-export STASH_VERSION=v0.15.2
-export PSX_CACHE_VERSION=v1.0.2
-export GUZZLE_PSR7_VERSION=1.5.2
-export LEAGUE_CONTAINER_VERSION=3.3.0
-export LINK_UTIL_VERSION=1.0.0
-export DISPATCH_VERSION=2.0.0
-export REQUEST_HANDLER_VERSION=v1.3.0
-export HTTP_FACTORY_GUZZLE_VERSION=1.0.0
-export HTTP_GUZZLE_PSR18_ADAPTER_VERSION=v1.0.1
-export TUKIO_VERSION=1.0.0
+set -o errexit -o pipefail
 
+source .ci/deps.sh
+source .ci/fold.sh
+
+export PS4=' \e[33m$(date +"%H:%M:%S"): $BASH_SOURCE@$LINENO ${FUNCNAME[0]} -> \e[0m'
 export COVERAGE=${COVERAGE:-true}
-
 export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
-
 # error_reporting='E_ALL & ~E_DEPRECATED'
 export PHP_WITH_EXT="`which php` -d error_reporting=24575 -d extension=`pwd`/modules/psr.so"
-
 export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
 # friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
@@ -31,62 +22,86 @@ export NO_INTERACTION=1
 export REPORT_EXIT_STATUS=1
 export TEST_PHP_EXECUTABLE=`which php`
 
+# we needed this for the tests we are now removing in laminas, so we can disable it for now
+# make a temp directory with a php.ini - phpunit's process isolation ignore flags to PHP
+# export PHP_INI_SCAN_DIR=$(mktemp -d)
+# echo error_reporting=24575 | tee -a ${PHP_INI_SCAN_DIR}/php.ini
+# echo memory_limit=256M | tee -a ${PHP_INI_SCAN_DIR}/php.ini
+# echo extension=`pwd`/modules/psr.so | tee -a ${PHP_INI_SCAN_DIR}/php.ini
+
 function init_repository() (
-    set -e -o pipefail
+    set -o errexit -o pipefail -o xtrace
 
     local dir=third-party/${1}
     local ver=${2}
     local repo=${3}
-    echo "Downloading ${1}"
-	rm -rf ${dir}
-	mkdir -p ${dir}
-	git clone -b ${ver} ${repo} ${dir}
-	cd ${dir}
-	composer install ${DEFAULT_COMPOSER_FLAGS}
-	# monolog requires the test class, so don't delete everything
-	#rm -rf vendor/psr
-	find vendor/psr/ -type f -not -iname "*test*" -delete
+    mkdir -p ${dir}
+    if [ ! -d ${dir}/.git ]; then
+        rm -rf ${dir}
+        git clone -b ${ver} ${repo} ${dir}
+        cd ${dir}
+    else
+        cd ${dir}
+        git fetch origin
+        git checkout --force ${ver}
+    fi
+    composer install ${DEFAULT_COMPOSER_FLAGS}
+    # remove their installed psr dependencies (except testing classes)
+    # monolog requires the test class, so don't delete everything
+    find vendor/psr/ -type f -not -iname "*test*" -delete
+    # remove some tests from laminas that are really slow
+    rm -f test/Storage/Adapter/FilesystemTest.php test/Storage/Adapter/MemoryTest.php
 )
 
 function test_repository() (
-    set -e -o pipefail
+    set -o errexit -o pipefail -o xtrace
 
-    local dir=third-party/${1}
-    echo "Testing ${1}"
-    cd ${dir}
-    pwd
+    cd third-party/${1}
     echo ${PHP_WITH_EXT} ./vendor/bin/phpunit
     ${PHP_WITH_EXT} ./vendor/bin/phpunit
 )
 
-function before_install() (
-    set -e -o pipefail
+function install_coveralls_lcov() (
+    set -o errexit -o pipefail -o xtrace
 
     # Don't install this unless we're actually on travis
     if [[ "${COVERAGE}" = "true" ]] && [[ "${TRAVIS}" = "true" ]]; then
         gem install coveralls-lcov
     fi
+)
+
+function checkout_third_party_repos() (
+    set -o errexit -o pipefail -o xtrace
 
     # install all libraries we test against
-    init_repository monolog ${MONOLOG_VERSION} https://github.com/Seldaek/monolog.git
-    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
-        init_repository stash ${STASH_VERSION} https://github.com/tedious/Stash.git
-    fi
-    init_repository psr7 ${GUZZLE_PSR7_VERSION} https://github.com/guzzle/psr7.git
-    init_repository league-container ${LEAGUE_CONTAINER_VERSION} https://github.com/thephpleague/container.git
-    init_repository link-util ${LINK_UTIL_VERSION} https://github.com/php-fig/link-util.git
-    init_repository psx-cache ${PSX_CACHE_VERSION} https://github.com/apioo/psx-cache.git
-    init_repository dispatch ${DISPATCH_VERSION} https://github.com/equip/dispatch.git
-    init_repository request-handler ${REQUEST_HANDLER_VERSION} https://github.com/middlewares/request-handler.git
-    init_repository http-factory-guzzle ${HTTP_FACTORY_GUZZLE_VERSION} https://github.com/http-interop/http-factory-guzzle.git
-    init_repository guzzle-psr18-adapter ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} https://github.com/ricardofiorani/guzzle-psr18-adapter.git
-    if [[ ${PHP_VERSION_ID} -ge 70200 ]]; then
-        init_repository tukio ${TUKIO_VERSION} https://github.com/Crell/Tukio.git
+    init_repository ${MONOLOG_SHORTNAME} ${MONOLOG_VERSION} ${MONOLOG_REPO}
+    init_repository ${GUZZLE_PSR7_SHORTNAME} ${GUZZLE_PSR7_VERSION} ${GUZZLE_PSR7_REPO}
+    init_repository ${LEAGUE_CONTAINER_SHORTNAME} ${LEAGUE_CONTAINER_VERSION} ${LEAGUE_CONTAINER_REPO}
+    init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
+    init_repository ${PSX_CACHE_SHORTNAME} ${PSX_CACHE_VERSION} ${PSX_CACHE_REPO}
+    init_repository ${DISPATCH_SHORTNAME} ${DISPATCH_VERSION} ${DISPATCH_REPO}
+    init_repository ${REQUEST_HANDLER_SHORTNAME} ${REQUEST_HANDLER_VERSION} ${REQUEST_HANDLER_REPO}
+    init_repository ${HTTP_FACTORY_GUZZLE_SHORTNAME} ${HTTP_FACTORY_GUZZLE_VERSION} ${HTTP_FACTORY_GUZZLE_REPO}
+    init_repository ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME} ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} ${HTTP_GUZZLE_PSR18_ADAPTER_REPO}
+    init_repository ${TUKIO_SHORTNAME} ${TUKIO_VERSION} ${TUKIO_REPO}
+    if [[ -z "${TRAVIS_ARCH}" ]] || [[ "${TRAVIS_ARCH}" == "amd64" ]]; then
+        # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
+        init_repository ${LAMINAS_CACHE_SHORTNAME} ${LAMINAS_CACHE_VERSION} ${LAMINAS_CACHE_REPO}
     fi
 )
 
-function install() (
-    set -e -o pipefail
+function before_install() (
+    set -o errexit -o pipefail
+
+    # Don't install this unless we're actually on travis
+    if [[ "${COVERAGE}" = "true" ]] && [[ "${TRAVIS}" = "true" ]]; then
+        cifold "install coveralls-lcov" install_coveralls_lcov
+    fi
+    cifold "checkout all third-party test repos" checkout_third_party_repos
+)
+
+function build_php_psr() (
+    set -o errexit -o pipefail -o xtrace
 
     phpize
     if [[ "${COVERAGE}" = "true" ]]; then
@@ -97,8 +112,14 @@ function install() (
     make clean all
 )
 
-function before_script() (
-    set -e -o pipefail
+function install() (
+    set -o errexit -o pipefail
+
+    cifold "main build step" build_php_psr
+)
+
+function initialize_coverage() (
+    set -o errexit -o pipefail -o xtrace
 
     if [[ "${COVERAGE}" = "true" ]]; then
         echo "Initializing coverage"
@@ -107,32 +128,42 @@ function before_script() (
     fi
 )
 
-function script() (
-    set -e -o pipefail
+function before_script() (
+    set -o errexit -o pipefail
 
-    echo "Running main test suite"
-    php run-tests.php -d extension=psr.so -d extension_dir=modules -n ./tests/*.phpt
+    cifold "initialize coverage" initialize_coverage
+)
+
+function test_php_psr() (
+    set -o errexit -o pipefail -o xtrace
+
+    php run-tests.php -d extension=psr.so -d extension_dir=modules -n ./tests
+)
+
+function script() (
+    set -o errexit -o pipefail
+
+    cifold "main test suite" test_php_psr
 
     # run tests for all libraries we test against
-    test_repository monolog
-    if [[ ${PHP_VERSION_ID} -lt 70400 ]]; then
-        test_repository stash
-    fi
-    test_repository psr7
-    test_repository league-container
-    test_repository link-util
-    test_repository psx-cache
-    test_repository dispatch
-    test_repository request-handler
-    test_repository http-factory-guzzle
-    test_repository guzzle-psr18-adapter
-    if [[ ${PHP_VERSION_ID} -ge 70200 ]]; then
-        test_repository tukio
+    cifold "test ${MONOLOG_SHORTNAME}" test_repository ${MONOLOG_SHORTNAME}
+    cifold "test ${GUZZLE_PSR7_SHORTNAME}" test_repository ${GUZZLE_PSR7_SHORTNAME}
+    cifold "test ${LEAGUE_CONTAINER_SHORTNAME}" test_repository ${LEAGUE_CONTAINER_SHORTNAME}
+    cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
+    cifold "test ${PSX_CACHE_SHORTNAME}" test_repository ${PSX_CACHE_SHORTNAME}
+    cifold "test ${DISPATCH_SHORTNAME}" test_repository ${DISPATCH_SHORTNAME}
+    cifold "test ${REQUEST_HANDLER_SHORTNAME}" test_repository ${REQUEST_HANDLER_SHORTNAME}
+    cifold "test ${HTTP_FACTORY_GUZZLE_SHORTNAME}" test_repository ${HTTP_FACTORY_GUZZLE_SHORTNAME}
+    cifold "test ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME}" test_repository ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME}
+    cifold "test ${TUKIO_SHORTNAME}" test_repository ${TUKIO_SHORTNAME}
+    if [[ -z "${TRAVIS_ARCH}" ]] || [[ "${TRAVIS_ARCH}" == "amd64" ]]; then
+        # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
+        cifold "test ${LAMINAS_CACHE_SHORTNAME}" test_repository ${LAMINAS_CACHE_SHORTNAME}
     fi
 )
 
-function after_success() (
-    set -e -o pipefail
+function upload_coverage() (
+    set -o errexit -o pipefail -o xtrace
 
     if [[ "${COVERAGE}" = "true" ]]; then
         echo "Processing coverage"
@@ -148,8 +179,16 @@ function after_success() (
     fi
 )
 
-function after_failure() (
-    set -e -o pipefail
+function after_success() (
+    set -o errexit -o pipefail
+
+    if [[ "${COVERAGE}" = "true" ]]; then
+        cifold "upload coverage" upload_coverage
+    fi
+)
+
+function dump_logs() (
+    #set -o errexit -o pipefail -o xtrace
 
     for i in `find tests -name "*.out" 2>/dev/null`; do
         echo "-- START ${i}";
@@ -163,8 +202,14 @@ function after_failure() (
     done
 )
 
+function after_failure() (
+    set -o errexit -o pipefail
+
+    cifold "dump logs" dump_logs
+)
+
 function run_all() (
-    set -e
+    set -o errexit -o pipefail
     trap after_failure ERR
     before_install
     install
@@ -172,3 +217,7 @@ function run_all() (
     script
     after_success
 )
+
+if [ "$1" == "run-all-now" ]; then
+    run_all
+fi

@@ -51,3 +51,4 @@ specs
 CMakeLists.txt
 cmake-build-debug/
 /third-party/
+/result*

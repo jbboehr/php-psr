@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 
-set -ex -o pipefail
+set -e -o pipefail
+source .ci/fold.sh
 
 # config
 export PHP_VERSION=${PHP_VERSION:-"7.4"}
 export COVERAGE=${COVERAGE:-false}
-
-# install deps
 export DEBIAN_FRONTEND=noninteractive
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install -y composer php${PHP_VERSION}-dev
+export SUDO=sudo
+
+function install_apt_packages() (
+    ${SUDO} add-apt-repository ppa:ondrej/php
+    ${SUDO} apt-get update
+    ${SUDO} apt-get install -y composer jq php${PHP_VERSION}-dev
+)
+
+cifold "install apt packages" install_apt_packages
 
 # source and execute script used in travis
 source .ci/travis_php.sh
