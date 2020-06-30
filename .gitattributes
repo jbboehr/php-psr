@@ -1,16 +1,17 @@
 *.c                     linguist-language=C
 *.h                     linguist-language=C
 *.w32                   linguist-language=JavaScript
-.ci                     export-ignore linguist-documentation=true
-.github                 export-ignore linguist-documentation=true
+.ci/**                  linguist-documentation=true
+.github/**              export-ignore linguist-documentation=true
 .travis.yml             export-ignore linguist-documentation=true
 appveyor.yml            export-ignore linguist-documentation=true
-nix/                    linguist-documentation=true
-nix/deps/               linguist-generated=true
+nix/**                  linguist-documentation=true
+nix/deps/**             linguist-generated=true
 nix/composer-env.nix    linguist-vendored=true
 # herculesci currently respects export-ignore so we can't do this
 # issue: https://github.com/hercules-ci/support/issues/46
-# nix/deps/               export-ignore linguist-generated=true
+# .ci/**                  export-ignore linguist-documentation=true
+# nix/deps/**             export-ignore linguist-generated=true
 # nix/update-deps.sh      export-ignore
 # nix/composer-env.nix    export-ignore linguist-vendored=true
 # nix/deps.nix            export-ignore
