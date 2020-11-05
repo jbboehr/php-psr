@@ -3,7 +3,6 @@
 *.w32                   linguist-language=JavaScript
 .ci/**                  linguist-documentation=true
 .github/**              export-ignore linguist-documentation=true
-.travis.yml             export-ignore linguist-documentation=true
 appveyor.yml            export-ignore linguist-documentation=true
 nix/**                  linguist-documentation=true
 nix/deps/**             linguist-generated=true

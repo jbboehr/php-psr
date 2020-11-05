@@ -11,27 +11,23 @@ on:
     - master
 
 jobs:
-  php72:
-    runs-on: ubuntu-latest
+  linux:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        PHP_VERSION: ["7.2", "7.3", "7.4"]
+        COVERAGE: ["true", "false"]
     steps:
     - uses: actions/checkout@v2
     - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
       env:
-        PHP_VERSION: "7.2"
+        PHP_VERSION: ${{ matrix.PHP_VERSION }}
+        COVERAGE: ${{ matrix.COVERAGE }}
       run: bash ./.github/workflows/linux.sh
-  php73:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
-      env:
-        PHP_VERSION: "7.3"
-      run: bash ./.github/workflows/linux.sh
-  php74:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
-      env:
-        PHP_VERSION: "7.4"
-      run: bash ./.github/workflows/linux.sh
+    - name: Coveralls
+      if: ${{ matrix.COVERAGE == 'true' }}
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage.info

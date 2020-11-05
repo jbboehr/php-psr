@@ -1,7 +1,6 @@
 
 # php-psr
 
-[![Travis Build Status][:badge-travis:]][:build-travis:]
 [![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
 [![GitHub Linux Build Status](https://github.com/jbboehr/php-psr/workflows/linux/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Alinux)
 [![GitHub OSX Build Status](https://github.com/jbboehr/php-psr/workflows/osx/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aosx)
@@ -152,11 +151,9 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-fig:]: https://www.php-fig.org/psr
 [:php-fig:]: https://www.php-fig.org
 [:pecl-psr:]: https://pecl.php.net/package/psr
-[:badge-travis:]: https://travis-ci.org/jbboehr/php-psr.svg?branch=master
 [:badge-appveyor:]: https://ci.appveyor.com/api/projects/status/x1ymkqggy1mkl0ux/branch/master?svg=true
 [:badge-coveralls:]: https://coveralls.io/repos/jbboehr/php-psr/badge.svg?branch=master&service=github
 [:badge-license:]: https://img.shields.io/badge/license-BSD-brightgreen.svg
-[:build-travis:]: https://travis-ci.org/jbboehr/php-psr
 [:build-appveyor:]: https://ci.appveyor.com/project/jbboehr/php-psr/branch/master
 [:build-coveralls:]: https://coveralls.io/github/jbboehr/php-psr?branch=master
 [:ext-license:]: https://github.com/jbboehr/php-psr/blob/master/LICENSE.md
