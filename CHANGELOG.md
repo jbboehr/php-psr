@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed 
 - Test failures on PHP 8.0.0alpha1
 - Compile failures with clang
+- Report proper default value in reflection for LoggerInterface - PHP 8 only ([GH-78](https://github.com/jbboehr/php-psr/issues/78))
 
 ## [1.0.0] - 2020-02-18
 
