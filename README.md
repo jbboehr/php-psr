@@ -20,7 +20,7 @@ You can use interfaces provided by this extension in another extension easily - 
 | --- | --- | --- |
 | [PSR-3][:psr-3:] | [psr/log][:psr-log:] [*](#psrlogunimpl) | [monolog][:monolog:] |
 | [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [psx-cache][:psx-cache:], [laminas-cache](https://github.com/laminas/laminas-cache) |
-| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
+| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [laminas-diactoros](https://github.com/laminas/laminas-diactoros) |
 | [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
 | [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
 | [PSR-14][:psr-14:] | [psr/event-dispatcher][:psr-event-dispatcher:] | [tukio][:tukio:] |
@@ -169,7 +169,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psx-cache:]: https://github.com/apioo/psx-cache
 [:psr-7:]: https://www.php-fig.org/psr/psr-7
 [:psr-http-message:]: https://github.com/php-fig/http-message
-[:guzzle:]: https://github.com/guzzle/psr7
 [:psr-11:]: https://www.php-fig.org/psr/psr-11
 [:psr-container:]: https://github.com/php-fig/container
 [:league-container:]: https://github.com/thephpleague/container

@@ -37,6 +37,7 @@ branches:
     - master
     - develop
     - travis
+    - ci
 
 cache:
   directories:

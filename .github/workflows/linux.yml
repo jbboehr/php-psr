@@ -6,6 +6,7 @@ on:
     - master
     - dev-1.x
     - github-actions
+    - ci
   pull_request:
     branches:
     - master
