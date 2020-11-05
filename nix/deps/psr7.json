@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/guzzle/psr7.git",
-  "rev": "9f83dded91781a01c63574e387eaa769be769115",
-  "date": "2018-12-04T21:46:45+01:00",
-  "sha256": "05dphxj8jbqmjn1bnqxc6f86dkh99jhl1dksa9kmg9zck8x1j3c9",
+  "rev": "53330f47520498c0ae1f61f7e2c90f55690c06a3",
+  "date": "2020-09-30T09:37:11+02:00",
+  "sha256": "1rz1mqk7m3c0max7c0kb639grb6hdrhr16p3l7i3h3flbfgblgjd",
   "fetchSubmodules": false
 }

@@ -8,7 +8,7 @@
     "PSX_CACHE_VERSION": "v1.0.2",
     "GUZZLE_PSR7_SHORTNAME": "psr7",
     "GUZZLE_PSR7_REPO": "https://github.com/guzzle/psr7.git",
-    "GUZZLE_PSR7_VERSION": "1.5.2",
+    "GUZZLE_PSR7_VERSION": "1.7.0",
     "LEAGUE_CONTAINER_SHORTNAME": "league-container",
     "LEAGUE_CONTAINER_REPO": "https://github.com/thephpleague/container.git",
     "LEAGUE_CONTAINER_VERSION": "3.3.0",
