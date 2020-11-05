@@ -175,7 +175,9 @@ function upload_coverage() (
             --remove coverage.info "/home/travis/build/include/*" \
             --compat-libtool \
             --output-file coverage.info
+    fi
 
+    if [[ "${COVERAGE}" = "true" ]] && [[ "${TRAVIS}" = "true" ]]; then
         echo "Uploading coverage"
         coveralls-lcov coverage.info
     fi
