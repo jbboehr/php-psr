@@ -1,7 +1,6 @@
 
 # php-psr
 
-[![Travis Build Status][:badge-travis:]][:build-travis:]
 [![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
 [![GitHub Linux Build Status](https://github.com/jbboehr/php-psr/workflows/linux/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Alinux)
 [![GitHub OSX Build Status](https://github.com/jbboehr/php-psr/workflows/osx/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aosx)
@@ -20,7 +19,7 @@ You can use interfaces provided by this extension in another extension easily - 
 | --- | --- | --- |
 | [PSR-3][:psr-3:] | [psr/log][:psr-log:] [*](#psrlogunimpl) | [monolog][:monolog:] |
 | [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [psx-cache][:psx-cache:], [laminas-cache](https://github.com/laminas/laminas-cache) |
-| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [guzzle/psr7][:guzzle:] |
+| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [laminas-diactoros](https://github.com/laminas/laminas-diactoros) |
 | [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [league/container][:league-container:] |
 | [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
 | [PSR-14][:psr-14:] | [psr/event-dispatcher][:psr-event-dispatcher:] | [tukio][:tukio:] |
@@ -152,11 +151,9 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psr-fig:]: https://www.php-fig.org/psr
 [:php-fig:]: https://www.php-fig.org
 [:pecl-psr:]: https://pecl.php.net/package/psr
-[:badge-travis:]: https://travis-ci.org/jbboehr/php-psr.svg?branch=master
 [:badge-appveyor:]: https://ci.appveyor.com/api/projects/status/x1ymkqggy1mkl0ux/branch/master?svg=true
 [:badge-coveralls:]: https://coveralls.io/repos/jbboehr/php-psr/badge.svg?branch=master&service=github
 [:badge-license:]: https://img.shields.io/badge/license-BSD-brightgreen.svg
-[:build-travis:]: https://travis-ci.org/jbboehr/php-psr
 [:build-appveyor:]: https://ci.appveyor.com/project/jbboehr/php-psr/branch/master
 [:build-coveralls:]: https://coveralls.io/github/jbboehr/php-psr?branch=master
 [:ext-license:]: https://github.com/jbboehr/php-psr/blob/master/LICENSE.md
@@ -169,7 +166,6 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:psx-cache:]: https://github.com/apioo/psx-cache
 [:psr-7:]: https://www.php-fig.org/psr/psr-7
 [:psr-http-message:]: https://github.com/php-fig/http-message
-[:guzzle:]: https://github.com/guzzle/psr7
 [:psr-11:]: https://www.php-fig.org/psr/psr-11
 [:psr-container:]: https://github.com/php-fig/container
 [:league-container:]: https://github.com/thephpleague/container

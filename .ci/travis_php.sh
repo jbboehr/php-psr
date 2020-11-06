@@ -51,6 +51,8 @@ function init_repository() (
     find vendor/psr/ -type f -not -iname "*test*" -delete
     # remove some tests from laminas that are really slow
     rm -f test/Storage/Adapter/FilesystemTest.php test/Storage/Adapter/MemoryTest.php
+    # remove a test suite from laminas-diactoros that breaks due to process isolation
+    rm -f test/ServerRequestFactoryTest.php
 )
 
 function test_repository() (
@@ -75,7 +77,6 @@ function checkout_third_party_repos() (
 
     # install all libraries we test against
     init_repository ${MONOLOG_SHORTNAME} ${MONOLOG_VERSION} ${MONOLOG_REPO}
-    init_repository ${GUZZLE_PSR7_SHORTNAME} ${GUZZLE_PSR7_VERSION} ${GUZZLE_PSR7_REPO}
     init_repository ${LEAGUE_CONTAINER_SHORTNAME} ${LEAGUE_CONTAINER_VERSION} ${LEAGUE_CONTAINER_REPO}
     init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
     init_repository ${PSX_CACHE_SHORTNAME} ${PSX_CACHE_VERSION} ${PSX_CACHE_REPO}
@@ -88,6 +89,7 @@ function checkout_third_party_repos() (
         # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
         init_repository ${LAMINAS_CACHE_SHORTNAME} ${LAMINAS_CACHE_VERSION} ${LAMINAS_CACHE_REPO}
     fi
+    init_repository ${LAMINAS_DIACTOROS_SHORTNAME} ${LAMINAS_DIACTOROS_VERSION} ${LAMINAS_DIACTOROS_REPO}
 )
 
 function before_install() (
@@ -147,7 +149,6 @@ function script() (
 
     # run tests for all libraries we test against
     cifold "test ${MONOLOG_SHORTNAME}" test_repository ${MONOLOG_SHORTNAME}
-    cifold "test ${GUZZLE_PSR7_SHORTNAME}" test_repository ${GUZZLE_PSR7_SHORTNAME}
     cifold "test ${LEAGUE_CONTAINER_SHORTNAME}" test_repository ${LEAGUE_CONTAINER_SHORTNAME}
     cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
     cifold "test ${PSX_CACHE_SHORTNAME}" test_repository ${PSX_CACHE_SHORTNAME}
@@ -160,6 +161,7 @@ function script() (
         # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
         cifold "test ${LAMINAS_CACHE_SHORTNAME}" test_repository ${LAMINAS_CACHE_SHORTNAME}
     fi
+    cifold "test ${LAMINAS_DIACTOROS_SHORTNAME}" test_repository ${LAMINAS_DIACTOROS_SHORTNAME}
 )
 
 function upload_coverage() (
@@ -173,7 +175,9 @@ function upload_coverage() (
             --remove coverage.info "/home/travis/build/include/*" \
             --compat-libtool \
             --output-file coverage.info
+    fi
 
+    if [[ "${COVERAGE}" = "true" ]] && [[ "${TRAVIS}" = "true" ]]; then
         echo "Uploading coverage"
         coveralls-lcov coverage.info
     fi

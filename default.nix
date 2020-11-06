@@ -28,7 +28,7 @@
   phpPsrVersion ? null,
   phpPsrSha256 ? null,
   phpPsrSrc ? pkgs.lib.cleanSourceWith {
-    filter = (path: type: (builtins.all (x: x != baseNameOf path) [".idea" ".git" "ci.nix" ".travis.sh" ".travis.yml" ".ci" "nix" "default.nix"]));
+    filter = (path: type: (builtins.all (x: x != baseNameOf path) [".idea" ".git" ".github" "ci.nix" ".ci" "nix" "default.nix"]));
     src = gitignoreSource ./.;
   },
 
