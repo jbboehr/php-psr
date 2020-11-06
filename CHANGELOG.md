@@ -7,8 +7,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 
 ### Fixed 
-- Test failures on PHP 8.0.0alpha1
+- Test failures on PHP 8 in psr-http-client and psr-http-message due to changes in inheritance
 - Compile failures with clang
+- Compatibility with API changes to PHP 8 in psr-log (@remicollet)
 - Report proper default value in reflection for LoggerInterface - PHP 8 only ([GH-78](https://github.com/jbboehr/php-psr/issues/78))
 
 ## [1.0.0] - 2020-02-18

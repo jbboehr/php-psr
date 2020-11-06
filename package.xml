@@ -132,6 +132,8 @@
    <file name="tests/SampleEventDispatcher.inc" role="test"/>
    <file name="tests/SampleListenerProvider.inc" role="test"/>
    <file name="tests/SampleStoppableEvent.inc" role="test"/>
+   <file name="tests/gh78_php7.phpt" role="test"/>
+   <file name="tests/gh78_php8.phpt" role="test"/>
   </dir>
  </contents>
  <dependencies>
