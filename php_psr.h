@@ -17,8 +17,8 @@
 #endif
 
 #define PHP_PSR_NAME "psr"
-#define PHP_PSR_VERSION "1.0.0"
-#define PHP_PSR_RELEASE "2020-02-18"
+#define PHP_PSR_VERSION "1.0.1"
+#define PHP_PSR_RELEASE "2020-11-12"
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
 #define PHP_PSR_ABSTRACT_ME(c, f) PHP_ABSTRACT_ME(c, f, arginfo_ ## c ## _ ## f)

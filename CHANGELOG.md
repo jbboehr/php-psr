@@ -4,7 +4,7 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [1.0.1] - 2020-11-12
 
 ### Fixed 
 - Test failures on PHP 8 in psr-http-client and psr-http-message due to changes in inheritance
@@ -105,7 +105,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - PSR-7 [psr/http-message](https://github.com/php-fig/http-message) v1.0.0 interfaces
 
 
-[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/jbboehr/php-psr/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jbboehr/php-psr/compare/v0.7.0...v1.0.0
 [0.7.0]: https://github.com/jbboehr/php-psr/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/jbboehr/php-psr/compare/v0.6.0...v0.6.1
