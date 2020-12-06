@@ -2,7 +2,7 @@
     "MONOLOG_SHORTNAME": "monolog",
     "MONOLOG_PKG": "monolog/monolog",
     "MONOLOG_REPO": "https://github.com/Seldaek/monolog.git",
-    "MONOLOG_VERSION": "2.1.0",
+    "MONOLOG_VERSION": "2.1.1",
     "PSX_CACHE_SHORTNAME": "psx-cache",
     "PSX_CACHE_REPO": "https://github.com/apioo/psx-cache.git",
     "PSX_CACHE_VERSION": "v1.0.2",

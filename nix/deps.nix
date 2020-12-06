@@ -17,8 +17,9 @@ let
         unpackPhase = "true";
         installPhase = ''
                 mkdir -p $out/bin $out/etc/php.d
-                makeWrapper ${php}/bin/php $out/bin/php \
+                makeWrapper ${php.unwrapped}/bin/php $out/bin/php \
                     --set PHP_INI_SCAN_DIR $out/etc/php.d
+                cat ${php}/lib/php.ini > $out/etc/php.d/php.ini
                 echo error_reporting=24575 | tee -a $out/etc/php.d/php.ini
                 echo memory_limit=256M | tee -a $out/etc/php.d/php.ini
                 echo extension=${psr}/lib/php/extensions/psr.so | tee -a $out/etc/php.d/php.ini
@@ -34,7 +35,7 @@ let
         inherit (pkgs) fetchurl fetchgit fetchhg fetchsvn;
     };
     commonImport = (j: p: l: (import p commonArgs).override {
-        src = pkgs.fetchgit (filterAttrs (n: v: n != "date") (builtins.fromJSON (builtins.readFile j)));
+        src = pkgs.fetchgit (filterAttrs (n: v: n != "date" && n != "path") (builtins.fromJSON (builtins.readFile j)));
         buildInputs = [ pkgs.git phpWrapper ];
         buildPhase = ''
                 cp -av $src/* .

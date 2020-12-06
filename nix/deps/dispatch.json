@@ -2,6 +2,9 @@
   "url": "https://github.com/equip/dispatch.git",
   "rev": "5cb685252e73feda6012a922d6a8bd4fca16e2e2",
   "date": "2018-01-26T08:37:46-06:00",
+  "path": "/nix/store/fjdb3ypkcaxhz8a1q5cvi4nmxarsvgif-dispatch",
   "sha256": "0678vkajvsshq0vxy1z3i7ms3p6ig84y3gcw5hqhxxr3fy741aah",
-  "fetchSubmodules": false
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
 }

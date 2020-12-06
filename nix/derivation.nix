@@ -1,7 +1,7 @@
 {
   lib, stdenv, autoreconfHook, fetchurl,
   php, phpPackages,
-  buildPecl ? import <nixpkgs/pkgs/build-support/build-pecl.nix> {
+  buildPecl ? if builtins.hasAttr "buildPecl" php then php.buildPecl else import <nixpkgs/pkgs/build-support/build-pecl.nix> {
     # re2c is required for nixpkgs master, must not be specified for <= 19.03
     inherit php stdenv autoreconfHook fetchurl;
   },

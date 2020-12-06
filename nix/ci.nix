@@ -1,31 +1,33 @@
 let
-    generateTestsForPlatform = { system, pkgs, path, phpAttr }:
+    generateTestsForPlatform = { system, pkgs, phpAttr, noThirdParty ? false }:
         pkgs.recurseIntoAttrs {
             gcc = let
                 php = pkgs.${phpAttr};
-                phpPackages = pkgs."${phpAttr}Packages";
+                phpPackages = php.packages;
                 psr = pkgs.callPackage ../default.nix {
                     inherit php pkgs;
-                    buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+                    buildPecl = php.buildPecl;
                 };
             in pkgs.recurseIntoAttrs {
                 inherit psr;
-                third-party = pkgs.recurseIntoAttrs (pkgs.callPackage ./deps.nix {
+                third-party = if noThirdParty then null else pkgs.recurseIntoAttrs (pkgs.callPackage ./deps.nix {
                     inherit system pkgs php phpPackages psr;
                 });
             };
 
             gcc-i686 = let
-                php = pkgs.pkgsi686Linux.${phpAttr};
-                phpPackages = pkgs.pkgsi686Linux."${phpAttr}Packages";
+                # calendar tests are broken on 32bit?
+                php = pkgs.pkgsi686Linux.${phpAttr}.withExtensions ({ enabled, all }:
+                    (pkgs.lib.filter (e: e != pkgs.pkgsi686Linux.${phpAttr}.extensions.calendar) enabled));
+                phpPackages = php.packages;
                 psr = pkgs.pkgsi686Linux.callPackage ../default.nix {
                     inherit php;
                     pkgs = pkgs.pkgsi686Linux;
-                    buildPecl = pkgs.pkgsi686Linux.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php; };
+                    buildPecl = php.buildPecl;
                 };
             in pkgs.recurseIntoAttrs {
                 inherit psr;
-                third-party = pkgs.recurseIntoAttrs (pkgs.pkgsi686Linux.callPackage ./deps.nix {
+                third-party = if noThirdParty then null else pkgs.recurseIntoAttrs (pkgs.pkgsi686Linux.callPackage ./deps.nix {
                     pkgs = pkgs.pkgsi686Linux;
                     inherit system php phpPackages psr;
                 });
@@ -33,15 +35,15 @@ let
 
             clang = let
                 php = pkgs.${phpAttr};
-                phpPackages = pkgs."${phpAttr}Packages";
+                phpPackages = php.packages;
                 stdenv = pkgs.clangStdenv;
                 psr = pkgs.callPackage ../default.nix {
                     inherit php stdenv pkgs;
-                    buildPecl = pkgs.callPackage "${path}/pkgs/build-support/build-pecl.nix" { inherit php stdenv; };
+                    buildPecl = php.buildPecl;
                 };
             in pkgs.recurseIntoAttrs {
                 inherit psr;
-                third-party = pkgs.recurseIntoAttrs (pkgs.callPackage ./deps.nix {
+                third-party = if noThirdParty then null else pkgs.recurseIntoAttrs (pkgs.callPackage ./deps.nix {
                     inherit system pkgs php phpPackages stdenv psr;
                 });
             };
@@ -50,32 +52,36 @@ in
 builtins.mapAttrs (k: _v:
   let
     path = builtins.fetchTarball {
-        url = https://github.com/NixOS/nixpkgs-channels/archive/nixos-20.03.tar.gz;
-        name = "nixpkgs-20.03";
+        url = https://github.com/NixOS/nixpkgs/archive/nixos-20.09.tar.gz;
+        name = "nixos-20.09";
     };
     system = k;
     pkgs = import (path) { inherit system; };
 
   in
   pkgs.recurseIntoAttrs {
-    php72 = generateTestsForPlatform {
-        inherit system pkgs path;
-        phpAttr = "php72";
-    };
-
-    php73 = let
-        php = pkgs.php73;
-    in generateTestsForPlatform {
-        inherit system pkgs path;
+    php73 = generateTestsForPlatform {
+        inherit system pkgs;
         phpAttr = "php73";
     };
 
-    php74 = let
-        php = pkgs.php74;
-    in generateTestsForPlatform {
-        inherit system pkgs path;
+    php74 = generateTestsForPlatform {
+        inherit system pkgs;
         phpAttr = "php74";
     };
+
+#    php80 = let
+#        path = builtins.fetchTarball {
+#            url = https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+#            name = "nixos-unstable";
+#        };
+#        system = k;
+#        pkgs = import (path) { inherit system; };
+#    in generateTestsForPlatform {
+#        inherit system pkgs;
+#        phpAttr = "php80";
+#        noThirdParty = true;
+#    };
   }
 ) {
   x86_64-linux = {};

@@ -7,7 +7,7 @@
   php ? pkgs.php,
   phpPackages ? pkgs.phpPackages,
 
-  buildPecl ? pkgs.callPackage <nixpkgs/pkgs/build-support/build-pecl.nix> {
+  buildPecl ? if builtins.hasAttr "buildPecl" php then php.buildPecl else pkgs.callPackage <nixpkgs/pkgs/build-support/build-pecl.nix> {
     inherit php stdenv;
   },
 

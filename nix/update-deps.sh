@@ -21,7 +21,7 @@ function checkout_dep() (
 
 function build_composer2nix() (
     cd $CHECKOUT_DIR/$1
-    composer install --dev
+    composer install --dev --ignore-platform-reqs
     cp composer.lock $SCRIPTPATH/deps/$1-composer.lock
     composer2nix --output=$1-packages.nix \
         --composer-env=/dev/null \

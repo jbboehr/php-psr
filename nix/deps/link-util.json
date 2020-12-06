@@ -2,6 +2,9 @@
   "url": "https://github.com/php-fig/link-util.git",
   "rev": "1a07821801a148be4add11ab0603e4af55a72fac",
   "date": "2016-10-17T19:31:11+01:00",
+  "path": "/nix/store/9m0bmvd1i1rfdhbha6j13fs0nzkxmf7k-link-util",
   "sha256": "02jsfdli2qw03jmsic0r6hyj0nmci3hhib8cq7nld497wh5raizy",
-  "fetchSubmodules": false
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
 }

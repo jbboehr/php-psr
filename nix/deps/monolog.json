@@ -1,7 +1,10 @@
 {
   "url": "https://github.com/Seldaek/monolog.git",
-  "rev": "38914429aac460e8e4616c8cb486ecb40ec90bb1",
-  "date": "2020-05-22T10:12:19+02:00",
-  "sha256": "0gsp6r6z81n16ks1llxmqiabbyk6shglzg19ppy10990i5jmg3v7",
-  "fetchSubmodules": false
+  "rev": "f9eee5cec93dfb313a38b6b288741e84e53f02d5",
+  "date": "2020-07-23T10:41:23+02:00",
+  "path": "/nix/store/5xlaaazi5l0pfsiaydjxgbgkpybvh701-monolog",
+  "sha256": "11w50f57fr5hnp7lpd0j0ridwhn14aniynx2kahawp6x5c69lc8i",
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
 }

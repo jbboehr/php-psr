@@ -2,6 +2,9 @@
   "url": "https://github.com/Crell/Tukio.git",
   "rev": "c337f64bac182c309697edbd0b1f1e4ee73035c2",
   "date": "2019-03-26T10:42:07-05:00",
+  "path": "/nix/store/gaz5cdlnv8a871p8h8vfhi3j9ig4gijw-Tukio",
   "sha256": "1r9676bh3y5rmb4w5bjnsz5s0b76v5w5rw4mr3v4swdnr3rbh4xk",
-  "fetchSubmodules": false
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
 }

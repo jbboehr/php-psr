@@ -2,6 +2,9 @@
   "url": "https://github.com/ricardofiorani/guzzle-psr18-adapter.git",
   "rev": "daf7e8c1576d847adfc1fb8a269caab06d9a3548",
   "date": "2018-09-14T14:33:17+02:00",
+  "path": "/nix/store/aahjq0b55hr9mgk4wjd3m0dwq808q75c-guzzle-psr18-adapter",
   "sha256": "19nkbq0ri4182rwjvb9nm7jm08m9g3zh5aq629003zfa3q59x87c",
-  "fetchSubmodules": false
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
 }
