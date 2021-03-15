@@ -6,8 +6,8 @@ Psr\Container\ContainerInterface
 <?php
 use Psr\Container\ContainerInterface;
 class MyImpl implements ContainerInterface {
-    public function get($id) {}
-    public function has($id) {}
+    public function get(string $id) {}
+    public function has(string $id) {}
 }
 $ex = new MyImpl();
 var_dump($ex instanceof ContainerInterface);
