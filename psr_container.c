@@ -17,6 +17,7 @@ static zend_always_inline void php_psr_register_PsrContainerContainerExceptionIn
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Container\\ContainerExceptionInterface", NULL);
     PsrContainerContainerExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrContainerContainerExceptionInterface_ce_ptr, 1, zend_ce_throwable);
 }
 
 /* }}} ---------------------------------------------------------------------- */
