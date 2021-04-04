@@ -28,6 +28,7 @@
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
 #define PHP_PSR_ABSTRACT_ME(c, f) PHP_ABSTRACT_ME(c, f, arginfo_ ## c ## _ ## f)
+#define PHP_PSR_ABSTRACT_ME_WITH_FLAGS(c, f, fl) ZEND_FENTRY(f, NULL, arginfo_ ## c ## _ ## f, fl)
 #define PHP_PSR_BEGIN_ARG_INFO(c, f, n) ZEND_BEGIN_ARG_INFO_EX(arginfo_ ## c ## _ ## f, ZEND_SEND_BY_VAL, ZEND_RETURN_VALUE, n)
 #define PHP_PSR_END_ARG_INFO ZEND_END_ARG_INFO
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \

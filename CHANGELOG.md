@@ -4,6 +4,11 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
+### Changed
+- Updated psr/container to 1.1.1
+
 ## [1.0.1] - 2020-11-12
 
 ### Fixed 

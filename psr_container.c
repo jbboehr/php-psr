@@ -4,6 +4,7 @@
 #endif
 
 #include "php.h"
+#include <Zend/zend_exceptions.h>
 #include "php_psr.h"
 #include "psr_container.h"
 
@@ -24,9 +25,9 @@ static zend_always_inline void php_psr_register_PsrContainerContainerExceptionIn
 PHP_PSR_API zend_class_entry * PsrContainerContainerInterface_ce_ptr;
 
 static zend_function_entry PsrContainerContainerInterface_methods[] = {
-        PHP_PSR_ABSTRACT_ME(PsrContainerContainerInterface, get)
-        PHP_PSR_ABSTRACT_ME(PsrContainerContainerInterface, has)
-        PHP_FE_END
+    PHP_PSR_ABSTRACT_ME_WITH_FLAGS(PsrContainerContainerInterface, get, ZEND_ACC_PUBLIC | ZEND_ACC_ABSTRACT | ZEND_ACC_STRICT_TYPES)
+    PHP_PSR_ABSTRACT_ME_WITH_FLAGS(PsrContainerContainerInterface, has, ZEND_ACC_PUBLIC | ZEND_ACC_ABSTRACT | ZEND_ACC_STRICT_TYPES)
+    PHP_FE_END
 };
 
 static zend_always_inline void php_psr_register_PsrContainerContainerInterface(INIT_FUNC_ARGS)
