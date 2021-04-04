@@ -10,10 +10,16 @@
 #include "TSRM.h"
 #endif
 
-#if defined(PHP_WIN32) && defined(PSR_EXPORTS)
-#define PHP_PSR_API __declspec(dllexport)
+#ifdef PHP_WIN32
+# ifdef PHP_PSR_EXPORTS
+#  define PHP_PSR_API __declspec(dllexport)
+# else
+#  define PHP_PSR_API __declspec(dllimport)
+# endif
+#elif defined(__GNUC__) && __GNUC__ >= 4
+# define PHP_PSR_API __attribute__ ((visibility("default")))
 #else
-#define PHP_PSR_API PHPAPI
+# define PHP_PSR_API
 #endif
 
 #define PHP_PSR_NAME "psr"
