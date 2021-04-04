@@ -5,8 +5,7 @@
   pkgs ? import <nixpkgs> { inherit system; },
   stdenv ? pkgs.stdenv,
   php ? pkgs.php,
-  phpPackages ? pkgs.phpPackages,
-
+  phpPackages ? if builtins.hasAttr "packages" php then php.packages else pkgs.phpPackages,
   buildPecl ? if builtins.hasAttr "buildPecl" php then php.buildPecl else pkgs.callPackage <nixpkgs/pkgs/build-support/build-pecl.nix> {
     inherit php stdenv;
   },

@@ -1,8 +1,14 @@
 let
     generateTestsForPlatform = { system, pkgs, phpAttr, noThirdParty ? false }:
+        let
+            filterPhpExtensions = php: ({ enabled, all }:
+                # calendar tests are broken on 32bit?
+                let enabled' = (pkgs.lib.filter (e: e != php.extensions.calendar) enabled);
+                in enabled' ++ [ all.mongodb ]);
+        in
         pkgs.recurseIntoAttrs {
             gcc = let
-                php = pkgs.${phpAttr};
+                php = pkgs.${phpAttr}.withExtensions (filterPhpExtensions pkgs.${phpAttr});
                 phpPackages = php.packages;
                 psr = pkgs.callPackage ../default.nix {
                     inherit php pkgs;
@@ -16,9 +22,7 @@ let
             };
 
             gcc-i686 = let
-                # calendar tests are broken on 32bit?
-                php = pkgs.pkgsi686Linux.${phpAttr}.withExtensions ({ enabled, all }:
-                    (pkgs.lib.filter (e: e != pkgs.pkgsi686Linux.${phpAttr}.extensions.calendar) enabled));
+                php = pkgs.pkgsi686Linux.${phpAttr}.withExtensions (filterPhpExtensions pkgs.pkgsi686Linux.${phpAttr});
                 phpPackages = php.packages;
                 psr = pkgs.pkgsi686Linux.callPackage ../default.nix {
                     inherit php;
@@ -34,7 +38,7 @@ let
             };
 
             clang = let
-                php = pkgs.${phpAttr};
+                php = pkgs.${phpAttr}.withExtensions (filterPhpExtensions pkgs.${phpAttr});
                 phpPackages = php.packages;
                 stdenv = pkgs.clangStdenv;
                 psr = pkgs.callPackage ../default.nix {

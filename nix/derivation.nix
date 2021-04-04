@@ -1,10 +1,12 @@
 {
   lib, stdenv, autoreconfHook, fetchurl,
-  php, phpPackages,
+  php,
+  phpPackages ? if builtins.hasAttr "packages" php then php.packages else null,
   buildPecl ? if builtins.hasAttr "buildPecl" php then php.buildPecl else import <nixpkgs/pkgs/build-support/build-pecl.nix> {
     # re2c is required for nixpkgs master, must not be specified for <= 19.03
     inherit php stdenv autoreconfHook fetchurl;
   },
+  composer ? phpPackages.composer,
   composer2nix ? null,
   phpPsrVersion ? null,
   phpPsrSrc ? null,
@@ -26,7 +28,7 @@ buildPecl rec {
   });
 
   nativeBuildInputs = []
-    ++ lib.optionals devSupport [ phpPackages.composer composer2nix ]
+    ++ lib.optionals devSupport [ composer composer2nix ]
     ;
 
   makeFlags = ["phpincludedir=$(out)/include/php/ext/psr"];

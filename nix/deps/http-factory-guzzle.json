@@ -1,9 +1,9 @@
 {
-  "url": "https://github.com/http-interop/http-factory-guzzle.git",
-  "rev": "34861658efb9899a6618cef03de46e2a52c80fc0",
-  "date": "2018-07-31T12:32:56-07:00",
-  "path": "/nix/store/0039bz8zddlvdgbg23iij9cfqlnc7wp1-http-factory-guzzle",
-  "sha256": "1p6r7pya2v57lls9im82pjkmvismp9kfym1c8xnvgigrncg2nz7h",
+  "url": "https://github.com/jbboehr/http-factory-guzzle.git",
+  "rev": "30416768eae6a1cb22d1ff7a4ef983115de77e68",
+  "date": "2021-04-03T22:24:51-07:00",
+  "path": "/nix/store/8240fpwdgl2dwbzc904h3rkzb0rppxwq-http-factory-guzzle-3041676",
+  "sha256": "1kgxi8hm45gigj3lladhmdjq6bgns1r2x8q8mjgdfbkrxiv4xbin",
   "fetchSubmodules": false,
   "deepClone": false,
   "leaveDotGit": false
