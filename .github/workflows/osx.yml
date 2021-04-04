@@ -12,14 +12,6 @@ on:
     - master
 
 jobs:
-  php72:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
-      env:
-        PHP_VERSION: "7.2"
-      run: bash ./.github/workflows/osx.sh
   php73:
     runs-on: macos-latest
     steps:
@@ -35,4 +27,12 @@ jobs:
     - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
       env:
         PHP_VERSION: "7.4"
+      run: bash ./.github/workflows/osx.sh
+  php80:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
+      env:
+        PHP_VERSION: "8.0"
       run: bash ./.github/workflows/osx.sh

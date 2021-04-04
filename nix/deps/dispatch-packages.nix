@@ -37,10 +37,10 @@ let
     "doctrine/instantiator" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "doctrine-instantiator-f350df0268e904597e3bd9c4685c53e0e333feea";
+        name = "doctrine-instantiator-d56bf6102915de5702778fe20f2de3b2fe570b5b";
         src = fetchurl {
-          url = https://api.github.com/repos/doctrine/instantiator/zipball/f350df0268e904597e3bd9c4685c53e0e333feea;
-          sha256 = "01a3px69q7ddlskaq9dc1w3cy6kyx07jxmagnnlhqkxjy2jl247q";
+          url = https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b;
+          sha256 = "04rihgfjv8alvvb92bnb5qpz8fvqvjwfrawcjw34pfnfx4jflcwh";
         };
       };
     };
@@ -57,20 +57,20 @@ let
     "eloquent/phony" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "eloquent-phony-cdda528e448f717c6472f2c412f1e58dbbb740cb";
+        name = "eloquent-phony-f34d67d6db6b6f351ea7e8aa8066107e756ec26b";
         src = fetchurl {
-          url = https://api.github.com/repos/eloquent/phony/zipball/cdda528e448f717c6472f2c412f1e58dbbb740cb;
-          sha256 = "0d9m76g6z53vlkf48fm7bbrd506gap83dwd2cwhc3xyhf2bmgj52";
+          url = https://api.github.com/repos/eloquent/phony/zipball/f34d67d6db6b6f351ea7e8aa8066107e756ec26b;
+          sha256 = "07if6rmnrkg915rmpbkwcpc984zlydg351nh111ab8nhrvagl3wy";
         };
       };
     };
     "eloquent/phony-phpunit" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "eloquent-phony-phpunit-8b17d8ca52048b4615650b061fd9a5604ab8c799";
+        name = "eloquent-phony-phpunit-e77ff95ea6235211d4aae7e5f53488a5faebc2e0";
         src = fetchurl {
-          url = https://api.github.com/repos/eloquent/phony-phpunit/zipball/8b17d8ca52048b4615650b061fd9a5604ab8c799;
-          sha256 = "0ryc320zas9d2kfvii66h9l946xc6gd54j4i2lfls4n3x42qcrqw";
+          url = https://api.github.com/repos/eloquent/phony-phpunit/zipball/e77ff95ea6235211d4aae7e5f53488a5faebc2e0;
+          sha256 = "0vk2j98azcxnpdmbsvh7hqz945b8snmyklr5g3kap0134achmv2a";
         };
       };
     };
@@ -87,30 +87,40 @@ let
     "myclabs/deep-copy" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "myclabs-deep-copy-969b211f9a51aa1f6c01d1d2aef56d3bd91598e5";
+        name = "myclabs-deep-copy-776f831124e9c62e1a2c601ecc52e776d8bb7220";
         src = fetchurl {
-          url = https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5;
-          sha256 = "0i5aswlbn7pxhgwswpqxf5wdr1v40kic4a2z06xv77wnfkhb6myh";
+          url = https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220;
+          sha256 = "181f3fsxs6s2wyy4y7qfk08qmlbvz1wn3mn3lqy42grsb8g8ym0k";
+        };
+      };
+    };
+    "nikic/php-parser" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "nikic-php-parser-c6d052fc58cb876152f89f532b95a8d7907e7f0e";
+        src = fetchurl {
+          url = https://api.github.com/repos/nikic/PHP-Parser/zipball/c6d052fc58cb876152f89f532b95a8d7907e7f0e;
+          sha256 = "1392bj45myazpphic05jxqwlyify72s3qf5vspd991rk5a2p60pw";
         };
       };
     };
     "phar-io/manifest" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phar-io-manifest-2df402786ab5368a0169091f61a7c1e0eb6852d0";
+        name = "phar-io-manifest-85265efd3af7ba3ca4b2a2c34dbfc5788dd29133";
         src = fetchurl {
-          url = https://api.github.com/repos/phar-io/manifest/zipball/2df402786ab5368a0169091f61a7c1e0eb6852d0;
-          sha256 = "0l6n4z4mx84xbc0bjjyf0gxn3c1x2vq9aals46yj98wywp4sj7hx";
+          url = https://api.github.com/repos/phar-io/manifest/zipball/85265efd3af7ba3ca4b2a2c34dbfc5788dd29133;
+          sha256 = "13cqrx7iikx2aixszhxl55ql6hikblvbalix0kr05pbiccipg6fv";
         };
       };
     };
     "phar-io/version" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phar-io-version-a70c0ced4be299a63d32fa96d9281d03e94041df";
+        name = "phar-io-version-bae7c545bef187884426f042434e561ab1ddb182";
         src = fetchurl {
-          url = https://api.github.com/repos/phar-io/version/zipball/a70c0ced4be299a63d32fa96d9281d03e94041df;
-          sha256 = "07arsyb38pczdzvmnz785yf34rza6znv3z6db6y9d1yfyfrx6dix";
+          url = https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182;
+          sha256 = "0hqmrihb4wv53rl3fg93wjldwrz79jyad5bv29ynbdklsirh7b2l";
         };
       };
     };
@@ -147,200 +157,240 @@ let
     "phpspec/prophecy" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpspec-prophecy-451c3cd1418cf640de218914901e51b064abb093";
+        name = "phpspec-prophecy-be1996ed8adc35c3fd795488a653f4b518be70ea";
         src = fetchurl {
-          url = https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093;
-          sha256 = "0z6wh1lygafcfw36r9abrg7fgq9r3v1233v38g4wbqy3jf7xfrzb";
+          url = https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea;
+          sha256 = "167snpasy7499pbxpyx2bj607qa1vrg07xfpa30dlpbwi7f34dji";
         };
       };
     };
     "phpunit/php-code-coverage" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-php-code-coverage-c89677919c5dd6d3b3852f230a663118762218ac";
+        name = "phpunit-php-code-coverage-f6293e1b30a2354e8428e004689671b83871edde";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c89677919c5dd6d3b3852f230a663118762218ac;
-          sha256 = "1rcph2077zgnsib7bgb9d7ik64xyzrddzrx23im8829qdfk51s4a";
+          url = https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f6293e1b30a2354e8428e004689671b83871edde;
+          sha256 = "0q7az9h109jchlsgkzlnvzl90f39ifqp53k9bih85lbkaiz5w329";
         };
       };
     };
     "phpunit/php-file-iterator" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-php-file-iterator-730b01bc3e867237eaac355e06a36b85dd93a8b4";
+        name = "phpunit-php-file-iterator-aa4be8575f26070b100fccb67faabb28f21f66f8";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/730b01bc3e867237eaac355e06a36b85dd93a8b4;
-          sha256 = "0kbg907g9hrx7pv8v0wnf4ifqywdgvigq6y6z00lyhgd0b8is060";
+          url = https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/aa4be8575f26070b100fccb67faabb28f21f66f8;
+          sha256 = "0vxnrzwb573ddmiw1sd77bdym6jiimwjhcz7yvmsr9wswkxh18l6";
+        };
+      };
+    };
+    "phpunit/php-invoker" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "phpunit-php-invoker-5a10147d0aaf65b58940a0b72f71c9ac0423cc67";
+        src = fetchurl {
+          url = https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/5a10147d0aaf65b58940a0b72f71c9ac0423cc67;
+          sha256 = "1vqnnjnw94mzm30n9n5p2bfgd3wd5jah92q6cj3gz1nf0qigr4fh";
         };
       };
     };
     "phpunit/php-text-template" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-php-text-template-31f8b717e51d9a2afca6c9f046f5d69fc27c8686";
+        name = "phpunit-php-text-template-5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/31f8b717e51d9a2afca6c9f046f5d69fc27c8686;
-          sha256 = "1y03m38qqvsbvyakd72v4dram81dw3swyn5jpss153i5nmqr4p76";
+          url = https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/5da5f67fc95621df9ff4c4e5a84d6a8a2acf7c28;
+          sha256 = "0ff87yzywizi6j2ps3w0nalpx16mfyw3imzn6gj9jjsfwc2bb8lq";
         };
       };
     };
     "phpunit/php-timer" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-php-timer-3dcf38ca72b158baf0bc245e9184d3fdffa9c46f";
+        name = "phpunit-php-timer-5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3dcf38ca72b158baf0bc245e9184d3fdffa9c46f;
-          sha256 = "1j04r0hqzrv6m1jk5nb92k2nnana72nscqpfk3rgv3fzrrv69ljr";
-        };
-      };
-    };
-    "phpunit/php-token-stream" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "phpunit-php-token-stream-791198a2c6254db10131eecfe8c06670700904db";
-        src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/791198a2c6254db10131eecfe8c06670700904db;
-          sha256 = "03i9259r9mjib2ipdkavkq6di66mrsga6kzc7rq5pglrhfiiil4s";
+          url = https://api.github.com/repos/sebastianbergmann/php-timer/zipball/5a63ce20ed1b5bf577850e2c4e87f4aa902afbd2;
+          sha256 = "0g1g7yy4zk1bidyh165fsbqx5y8f1c8pxikvcahzlfsr9p2qxk6a";
         };
       };
     };
     "phpunit/phpunit" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-phpunit-bac23fe7ff13dbdb461481f706f0e9fe746334b7";
+        name = "phpunit-phpunit-c73c6737305e779771147af66c96ca6a7ed8a741";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bac23fe7ff13dbdb461481f706f0e9fe746334b7;
-          sha256 = "1vhjfsh9jyk6dvihxzzh2vg2lw54ja1g4649vgd7fp9q4jwh1czq";
+          url = https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c73c6737305e779771147af66c96ca6a7ed8a741;
+          sha256 = "1j7iz17jpf69ijidylsavqxn67qf3n8xvs8g9gk6wkl4z6db7gc7";
         };
       };
     };
-    "phpunit/phpunit-mock-objects" = {
+    "sebastian/cli-parser" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "phpunit-phpunit-mock-objects-cd1cf05c553ecfec36b170070573e540b67d3f1f";
+        name = "sebastian-cli-parser-442e7c7e687e42adc03470c7b668bc4b2402c0b2";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/cd1cf05c553ecfec36b170070573e540b67d3f1f;
-          sha256 = "0b987ra0ayz2pk78c9w2dpg4kzy2yys065p6ha6gxq2sq7s84yhk";
+          url = https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/442e7c7e687e42adc03470c7b668bc4b2402c0b2;
+          sha256 = "074qzdq19k9x4svhq3nak5h348xska56v1sqnhk1aj0jnrx02h37";
+        };
+      };
+    };
+    "sebastian/code-unit" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "sebastian-code-unit-1fc9f64c0927627ef78ba436c9b17d967e68e120";
+        src = fetchurl {
+          url = https://api.github.com/repos/sebastianbergmann/code-unit/zipball/1fc9f64c0927627ef78ba436c9b17d967e68e120;
+          sha256 = "04vlx050rrd54mxal7d93pz4119pas17w3gg5h532anfxjw8j7pm";
         };
       };
     };
     "sebastian/code-unit-reverse-lookup" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-code-unit-reverse-lookup-4419fcdb5eabb9caa61a27c7a1db532a6b55dd18";
+        name = "sebastian-code-unit-reverse-lookup-ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/4419fcdb5eabb9caa61a27c7a1db532a6b55dd18;
-          sha256 = "0n0bygv2vx1l7af8szbcbn5bpr4axrgvkzd0m348m8ckmk8akvs8";
+          url = https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/ac91f01ccec49fb77bdc6fd1e548bc70f7faa3e5;
+          sha256 = "1h1jbzz3zak19qi4mab2yd0ddblpz7p000jfyxfwd2ds0gmrnsja";
         };
       };
     };
     "sebastian/comparator" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-comparator-34369daee48eafb2651bea869b4b15d75ccc35f9";
+        name = "sebastian-comparator-55f4261989e546dc112258c7a75935a81a7ce382";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/comparator/zipball/34369daee48eafb2651bea869b4b15d75ccc35f9;
-          sha256 = "1l4kyl916gjqg2dj5xyqh951khx5zgi14bslw0319pmk1a2mzlx8";
+          url = https://api.github.com/repos/sebastianbergmann/comparator/zipball/55f4261989e546dc112258c7a75935a81a7ce382;
+          sha256 = "1d4bgf4m2x0kn3nw9hbb45asbx22lsp9vxl74rp1yl3sj2vk9sch";
+        };
+      };
+    };
+    "sebastian/complexity" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "sebastian-complexity-739b35e53379900cc9ac327b2147867b8b6efd88";
+        src = fetchurl {
+          url = https://api.github.com/repos/sebastianbergmann/complexity/zipball/739b35e53379900cc9ac327b2147867b8b6efd88;
+          sha256 = "1y4yz8n8hszbhinf9ipx3pqyvgm7gz0krgyn19z0097yq3bbq8yf";
         };
       };
     };
     "sebastian/diff" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-diff-347c1d8b49c5c3ee30c7040ea6fc446790e6bddd";
+        name = "sebastian-diff-3461e3fccc7cfdfc2720be910d3bd73c69be590d";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/diff/zipball/347c1d8b49c5c3ee30c7040ea6fc446790e6bddd;
-          sha256 = "0bca0q624zjwm555irbb2vv0y6dy0plbh01nlp74bxzmd3lra88a";
+          url = https://api.github.com/repos/sebastianbergmann/diff/zipball/3461e3fccc7cfdfc2720be910d3bd73c69be590d;
+          sha256 = "0967nl6cdnr0v0z83w4xy59agn60kfv8gb41aw3fpy1n2wpp62dj";
         };
       };
     };
     "sebastian/environment" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-environment-cd0871b3975fb7fc44d11314fd1ee20925fce4f5";
+        name = "sebastian-environment-388b6ced16caa751030f6a69e588299fa09200ac";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/environment/zipball/cd0871b3975fb7fc44d11314fd1ee20925fce4f5;
-          sha256 = "1b2jgfi67xmspijyzrgn23cycdw0rkfx5q3llhvz6gkwyxgmqxnm";
+          url = https://api.github.com/repos/sebastianbergmann/environment/zipball/388b6ced16caa751030f6a69e588299fa09200ac;
+          sha256 = "022vn8zss3sm7hg83kg3y0lmjw2ak6cy64b584nbsgxfhlmf6msd";
         };
       };
     };
     "sebastian/exporter" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-exporter-68609e1261d215ea5b21b7987539cbfbe156ec3e";
+        name = "sebastian-exporter-d89cc98761b8cb5a1a235a6b703ae50d34080e65";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/exporter/zipball/68609e1261d215ea5b21b7987539cbfbe156ec3e;
-          sha256 = "0i8a502xqf2ripwbr5rgw9z49z9as7fjibh7sr171q0h4yrrr02j";
+          url = https://api.github.com/repos/sebastianbergmann/exporter/zipball/d89cc98761b8cb5a1a235a6b703ae50d34080e65;
+          sha256 = "1s8v0cbcjdb0wvwyh869y5f8d55mpjkr0f3gg2kvvxk3wh8nvvc7";
         };
       };
     };
     "sebastian/global-state" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-global-state-e8ba02eed7bbbb9e59e43dedd3dddeff4a56b0c4";
+        name = "sebastian-global-state-a90ccbddffa067b51f574dea6eb25d5680839455";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/global-state/zipball/e8ba02eed7bbbb9e59e43dedd3dddeff4a56b0c4;
-          sha256 = "1489kfvz0gg6jprakr43mjkminlhpsimcdrrxkmsm6mmhahbgjnf";
+          url = https://api.github.com/repos/sebastianbergmann/global-state/zipball/a90ccbddffa067b51f574dea6eb25d5680839455;
+          sha256 = "0pad9gz2y38rziywdliylhhgz6762053pm57254xf7hywfpqsa3a";
+        };
+      };
+    };
+    "sebastian/lines-of-code" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "sebastian-lines-of-code-c1c2e997aa3146983ed888ad08b15470a2e22ecc";
+        src = fetchurl {
+          url = https://api.github.com/repos/sebastianbergmann/lines-of-code/zipball/c1c2e997aa3146983ed888ad08b15470a2e22ecc;
+          sha256 = "0fay9s5cm16gbwr7qjihwrzxn7sikiwba0gvda16xng903argbk0";
         };
       };
     };
     "sebastian/object-enumerator" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-object-enumerator-7cfd9e65d11ffb5af41198476395774d4c8a84c5";
+        name = "sebastian-object-enumerator-5c9eeac41b290a3712d88851518825ad78f45c71";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/7cfd9e65d11ffb5af41198476395774d4c8a84c5;
-          sha256 = "00z5wzh19z1drnh52d27gflqm7dyisp96c29zyxrgsdccv1wss3m";
+          url = https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/5c9eeac41b290a3712d88851518825ad78f45c71;
+          sha256 = "11853z07w8h1a67wsjy3a6ir5x7khgx6iw5bmrkhjkiyvandqcn1";
         };
       };
     };
     "sebastian/object-reflector" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-object-reflector-773f97c67f28de00d397be301821b06708fca0be";
+        name = "sebastian-object-reflector-b4f479ebdbf63ac605d183ece17d8d7fe49c15c7";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/773f97c67f28de00d397be301821b06708fca0be;
-          sha256 = "1rq5wwf7smdbbz3mj46hmjc643bbsm2b6cnnggmawyls479qmxlk";
+          url = https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/b4f479ebdbf63ac605d183ece17d8d7fe49c15c7;
+          sha256 = "0g5m1fswy6wlf300x1vcipjdljmd3vh05hjqhqfc91byrjbk4rsg";
         };
       };
     };
     "sebastian/recursion-context" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-recursion-context-5b0cd723502bac3b006cbf3dbf7a1e3fcefe4fa8";
+        name = "sebastian-recursion-context-cd9d8cf3c5804de4341c283ed787f099f5506172";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/5b0cd723502bac3b006cbf3dbf7a1e3fcefe4fa8;
-          sha256 = "0p4j54bxriciw67g7l8zy1wa472di0b8f8mxs4fdvm37asz2s6vd";
+          url = https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/cd9d8cf3c5804de4341c283ed787f099f5506172;
+          sha256 = "1k0ki1krwq6329vsbw3515wsyg8a7n2l83lk19pdc12i2lg9nhpy";
         };
       };
     };
     "sebastian/resource-operations" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-resource-operations-ce990bb21759f94aeafd30209e8cfcdfa8bc3f52";
+        name = "sebastian-resource-operations-0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52;
-          sha256 = "19jfc8xzkyycglrcz85sv3ajmxvxwkw4sid5l4i8g6wmz9npbsxl";
+          url = https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8;
+          sha256 = "0p5s8rp7mrhw20yz5wx1i4k8ywf0h0ximcqan39n9qnma1dlnbyr";
+        };
+      };
+    };
+    "sebastian/type" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "sebastian-type-81cd61ab7bbf2de744aba0ea61fae32f721df3d2";
+        src = fetchurl {
+          url = https://api.github.com/repos/sebastianbergmann/type/zipball/81cd61ab7bbf2de744aba0ea61fae32f721df3d2;
+          sha256 = "0mar746dr79v1phlfhv5k6kk10615yc0vz6afnmr6r36irqdazya";
         };
       };
     };
     "sebastian/version" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "sebastian-version-99732be0ddb3361e16ad77b68ba41efc8e979019";
+        name = "sebastian-version-c6c1022351a901512170118436c764e473f6de8c";
         src = fetchurl {
-          url = https://api.github.com/repos/sebastianbergmann/version/zipball/99732be0ddb3361e16ad77b68ba41efc8e979019;
-          sha256 = "0wrw5hskz2hg5aph9r1fhnngfrcvhws1pgs0lfrwindy066z6fj7";
+          url = https://api.github.com/repos/sebastianbergmann/version/zipball/c6c1022351a901512170118436c764e473f6de8c;
+          sha256 = "1bs7bwa9m0fin1zdk7vqy5lxzlfa9la90lkl27sn0wr00m745ig1";
         };
       };
     };
     "symfony/polyfill-ctype" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "symfony-polyfill-ctype-f4ba089a5b6366e453971d3aad5fe8e897b37f41";
+        name = "symfony-polyfill-ctype-c6c942b1ac76c82448322025e084cadc56048b4e";
         src = fetchurl {
-          url = https://api.github.com/repos/symfony/polyfill-ctype/zipball/f4ba089a5b6366e453971d3aad5fe8e897b37f41;
-          sha256 = "0gx3vypz6hipnma7ymqlarr66yxddjmqwkgspiriy8mqcz2y61mn";
+          url = https://api.github.com/repos/symfony/polyfill-ctype/zipball/c6c942b1ac76c82448322025e084cadc56048b4e;
+          sha256 = "0jpk859wx74vm03q5s9z25f4ak2138p2x5q3b587wvy8rq2m4pbd";
         };
       };
     };
@@ -357,10 +407,10 @@ let
     "webmozart/assert" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "webmozart-assert-bafc69caeb4d49c39fd0779086c03a3738cbb389";
+        name = "webmozart-assert-6964c76c7804814a842473e0c8fd15bab0f18e25";
         src = fetchurl {
-          url = https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389;
-          sha256 = "18jplwg4dsl86rqf1fvizbx84klmbvaq207a6i8gl97qxp20arlj";
+          url = https://api.github.com/repos/webmozarts/assert/zipball/6964c76c7804814a842473e0c8fd15bab0f18e25;
+          sha256 = "17xqhb2wkwr7cgbl4xdjf7g1vkal17y79rpp6xjpf1xgl5vypc64";
         };
       };
     };

@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/apioo/psx-cache.git",
-  "rev": "db251e891d553b5fb633c5f2535a36bfcdfa52cf",
-  "date": "2018-12-16T21:14:16+01:00",
-  "path": "/nix/store/d49si0szcnicj47df6rcs7ir0l94vi1d-psx-cache",
-  "sha256": "18waigg59033xzi2iak7j6xkq4zgjplkfs809m55q6pgf3zfy28w",
+  "rev": "5031bd9bbac1b9860317365bce44585c6d2b0c0c",
+  "date": "2020-12-25T22:10:47+01:00",
+  "path": "/nix/store/3m3ck92zjy1bcmj1zcj9sfsild8yvjcd-psx-cache-5031bd9",
+  "sha256": "1nrm8w1h797r039bzp5c4c0fp800yvw5ffl65z6372rwaiwfxd8g",
   "fetchSubmodules": false,
   "deepClone": false,
   "leaveDotGit": false

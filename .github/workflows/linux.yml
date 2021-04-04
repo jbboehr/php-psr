@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PHP_VERSION: ["7.2", "7.3", "7.4"]
+        PHP_VERSION: ["7.3", "7.4", "8.0"]
         COVERAGE: ["true", "false"]
     steps:
     - uses: actions/checkout@v2
