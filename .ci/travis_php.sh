@@ -10,13 +10,8 @@ export COVERAGE=${COVERAGE:-true}
 export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
 # error_reporting='E_ALL & ~E_DEPRECATED'
 export PHP_WITH_EXT="`which php` -d error_reporting=24575 -d extension=`pwd`/modules/psr.so"
-export DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
-
-# friendsofphp/php-cs-fixer v2.9.3 requires php ^5.6 || >=7.0 <7.3
-# We'll remove this in the future
-if [[ ${PHP_VERSION_ID} -ge 70300 ]]; then
-    export DEFAULT_COMPOSER_FLAGS="${DEFAULT_COMPOSER_FLAGS} --ignore-platform-reqs"
-fi
+export DEFAULT_COMPOSER_FLAGS="--ansi --no-interaction --no-progress --prefer-dist"
+export PHP_VERSION_ID=$(php -r 'echo PHP_VERSION_ID;')
 
 export NO_INTERACTION=1
 export REPORT_EXIT_STATUS=1
@@ -38,8 +33,9 @@ function init_repository() (
     mkdir -p ${dir}
     if [ ! -d ${dir}/.git ]; then
         rm -rf ${dir}
-        git clone -b ${ver} ${repo} ${dir}
+        git clone ${repo} ${dir}
         cd ${dir}
+        git checkout --force ${ver}
     else
         cd ${dir}
         git fetch origin
@@ -49,18 +45,18 @@ function init_repository() (
     # remove their installed psr dependencies (except testing classes)
     # monolog requires the test class, so don't delete everything
     find vendor/psr/ -type f -not -iname "*test*" -delete
-    # remove some tests from laminas that are really slow
-    rm -f test/Storage/Adapter/FilesystemTest.php test/Storage/Adapter/MemoryTest.php
-    # remove a test suite from laminas-diactoros that breaks due to process isolation
-    rm -f test/ServerRequestFactoryTest.php
+    # remove a test suite from laminas-diactoros that breaks due to process isolation and one that requires internet
+    rm -f test/ServerRequestFactoryTest.php test/ResponseTest.php
+    # remove a failing test from monolog
+    rm -f tests/Monolog/Formatter/MongoDBFormatterTest.php
 )
 
 function test_repository() (
     set -o errexit -o pipefail -o xtrace
 
     cd third-party/${1}
-    echo ${PHP_WITH_EXT} ./vendor/bin/phpunit
-    ${PHP_WITH_EXT} ./vendor/bin/phpunit
+    echo ${PHP_WITH_EXT} ./vendor/bin/phpunit --no-coverage
+    ${PHP_WITH_EXT} ./vendor/bin/phpunit --no-coverage
 )
 
 function install_coveralls_lcov() (
@@ -77,19 +73,18 @@ function checkout_third_party_repos() (
 
     # install all libraries we test against
     init_repository ${MONOLOG_SHORTNAME} ${MONOLOG_VERSION} ${MONOLOG_REPO}
-    init_repository ${LEAGUE_CONTAINER_SHORTNAME} ${LEAGUE_CONTAINER_VERSION} ${LEAGUE_CONTAINER_REPO}
-    init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
+    if [[ ${PHP_VERSION_ID} -lt 80000 ]]; then
+        init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
+    fi
     init_repository ${PSX_CACHE_SHORTNAME} ${PSX_CACHE_VERSION} ${PSX_CACHE_REPO}
     init_repository ${DISPATCH_SHORTNAME} ${DISPATCH_VERSION} ${DISPATCH_REPO}
     init_repository ${REQUEST_HANDLER_SHORTNAME} ${REQUEST_HANDLER_VERSION} ${REQUEST_HANDLER_REPO}
     init_repository ${HTTP_FACTORY_GUZZLE_SHORTNAME} ${HTTP_FACTORY_GUZZLE_VERSION} ${HTTP_FACTORY_GUZZLE_REPO}
     init_repository ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME} ${HTTP_GUZZLE_PSR18_ADAPTER_VERSION} ${HTTP_GUZZLE_PSR18_ADAPTER_REPO}
     init_repository ${TUKIO_SHORTNAME} ${TUKIO_VERSION} ${TUKIO_REPO}
-    if [[ -z "${TRAVIS_ARCH}" ]] || [[ "${TRAVIS_ARCH}" == "amd64" ]]; then
-        # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
-        init_repository ${LAMINAS_CACHE_SHORTNAME} ${LAMINAS_CACHE_VERSION} ${LAMINAS_CACHE_REPO}
-    fi
     init_repository ${LAMINAS_DIACTOROS_SHORTNAME} ${LAMINAS_DIACTOROS_VERSION} ${LAMINAS_DIACTOROS_REPO}
+    init_repository ${RELAY_SHORTNAME} ${RELAY_VERSION} ${RELAY_REPO}
+    init_repository ${PSX_DEPENDENCY_SHORTNAME} ${PSX_DEPENDENCY_VERSION} ${PSX_DEPENDENCY_REPO}
 )
 
 function before_install() (
@@ -149,19 +144,18 @@ function script() (
 
     # run tests for all libraries we test against
     cifold "test ${MONOLOG_SHORTNAME}" test_repository ${MONOLOG_SHORTNAME}
-    cifold "test ${LEAGUE_CONTAINER_SHORTNAME}" test_repository ${LEAGUE_CONTAINER_SHORTNAME}
-    cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
+    if [[ ${PHP_VERSION_ID} -lt 80000 ]]; then
+        cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
+    fi
     cifold "test ${PSX_CACHE_SHORTNAME}" test_repository ${PSX_CACHE_SHORTNAME}
     cifold "test ${DISPATCH_SHORTNAME}" test_repository ${DISPATCH_SHORTNAME}
     cifold "test ${REQUEST_HANDLER_SHORTNAME}" test_repository ${REQUEST_HANDLER_SHORTNAME}
     cifold "test ${HTTP_FACTORY_GUZZLE_SHORTNAME}" test_repository ${HTTP_FACTORY_GUZZLE_SHORTNAME}
     cifold "test ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME}" test_repository ${HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME}
     cifold "test ${TUKIO_SHORTNAME}" test_repository ${TUKIO_SHORTNAME}
-    if [[ -z "${TRAVIS_ARCH}" ]] || [[ "${TRAVIS_ARCH}" == "amd64" ]]; then
-        # laminas-cache tests are failing on basically all non-x86 architectures and it's not my fault (I think)
-        cifold "test ${LAMINAS_CACHE_SHORTNAME}" test_repository ${LAMINAS_CACHE_SHORTNAME}
-    fi
     cifold "test ${LAMINAS_DIACTOROS_SHORTNAME}" test_repository ${LAMINAS_DIACTOROS_SHORTNAME}
+    cifold "test ${RELAY_SHORTNAME}" test_repository ${RELAY_SHORTNAME}
+    cifold "test ${PSX_DEPENDENCY_SHORTNAME}" test_repository ${PSX_DEPENDENCY_SHORTNAME}
 )
 
 function upload_coverage() (

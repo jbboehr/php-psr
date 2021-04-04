@@ -34,12 +34,13 @@ let
         inherit composerEnv;
         inherit (pkgs) fetchurl fetchgit fetchhg fetchsvn;
     };
-    commonImport = (j: p: l: (import p commonArgs).override {
+    commonImport = (j: p: l: x: (import p commonArgs).override {
         src = pkgs.fetchgit (filterAttrs (n: v: n != "date" && n != "path") (builtins.fromJSON (builtins.readFile j)));
         buildInputs = [ pkgs.git phpWrapper ];
         buildPhase = ''
                 cp -av $src/* .
                 src=`pwd`
+                chmod +w . *
                 cp ${l} composer.lock
             '';
         postInstall = ''
@@ -47,22 +48,25 @@ let
                 # remove their installed psr dependencies (except testing classes)
 	            # monolog requires the test class, so don't delete everything
                 find vendor/psr/ -type f -not -iname "*test*" -delete
-                # remove some tests from laminas-cache that are really slow
-                rm -f test/Storage/Adapter/FilesystemTest.php test/Storage/Adapter/MemoryTest.php
+                if [ ! -z "${x}" ]
+                then
+                    rm -f ${x}
+                fi
                 chmod -R -w vendor
                 ${phpWrapper}/bin/php ./vendor/bin/phpunit --exclude-group internet
             '';
     });
 in
 {
-    monolog = commonImport ./deps/monolog.json ./deps/monolog-packages.nix ./deps/monolog-composer.lock;
-    psx-cache = commonImport ./deps/psx-cache.json ./deps/psx-cache-packages.nix ./deps/psx-cache-composer.lock;
-    league-container = commonImport ./deps/league-container.json ./deps/league-container-packages.nix ./deps/league-container-composer.lock;
-    link-util = commonImport ./deps/link-util.json ./deps/link-util-packages.nix ./deps/link-util-composer.lock;
-    dispatch = commonImport ./deps/dispatch.json ./deps/dispatch-packages.nix ./deps/dispatch-composer.lock;
-    http-factory-guzzle = commonImport ./deps/http-factory-guzzle.json ./deps/http-factory-guzzle-packages.nix ./deps/http-factory-guzzle-composer.lock;
-    guzzle-psr18-adapter = commonImport ./deps/guzzle-psr18-adapter.json ./deps/guzzle-psr18-adapter-packages.nix ./deps/guzzle-psr18-adapter-composer.lock;
-    tukio = commonImport ./deps/tukio.json ./deps/tukio-packages.nix ./deps/tukio-composer.lock;
-    laminas-cache = commonImport ./deps/laminas-cache.json ./deps/laminas-cache-packages.nix ./deps/laminas-cache-composer.lock;
-    laminas-diactoros = commonImport ./deps/laminas-diactoros.json ./deps/laminas-diactoros-packages.nix ./deps/laminas-diactoros-composer.lock;
+    monolog = commonImport ./deps/monolog.json ./deps/monolog-packages.nix ./deps/monolog-composer.lock "tests/Monolog/Formatter/MongoDBFormatterTest.php";
+    psx-cache = commonImport ./deps/psx-cache.json ./deps/psx-cache-packages.nix ./deps/psx-cache-composer.lock "";
+    link-util = commonImport ./deps/link-util.json ./deps/link-util-packages.nix ./deps/link-util-composer.lock "";
+    dispatch = commonImport ./deps/dispatch.json ./deps/dispatch-packages.nix ./deps/dispatch-composer.lock "";
+    request-handler = commonImport ./deps/request-handler.json ./deps/request-handler-packages.nix ./deps/request-handler-composer.lock "";
+    http-factory-guzzle = commonImport ./deps/http-factory-guzzle.json ./deps/http-factory-guzzle-packages.nix ./deps/http-factory-guzzle-composer.lock "";
+    guzzle-psr18-adapter = commonImport ./deps/guzzle-psr18-adapter.json ./deps/guzzle-psr18-adapter-packages.nix ./deps/guzzle-psr18-adapter-composer.lock "";
+    tukio = commonImport ./deps/tukio.json ./deps/tukio-packages.nix ./deps/tukio-composer.lock "";
+    laminas-diactoros = commonImport ./deps/laminas-diactoros.json ./deps/laminas-diactoros-packages.nix ./deps/laminas-diactoros-composer.lock "test/ResponseTest.php";
+    relay = commonImport ./deps/relay.json ./deps/relay-packages.nix ./deps/relay-composer.lock "";
+    psx-dependency = commonImport ./deps/psx-dependency.json ./deps/psx-dependency-packages.nix ./deps/psx-dependency-composer.lock "";
 }

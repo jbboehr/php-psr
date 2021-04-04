@@ -1,0 +1,10 @@
+{
+  "url": "https://github.com/apioo/psx-dependency.git",
+  "rev": "fc0a46e323da7e77a5175f0f8296b1952f76dee1",
+  "date": "2020-12-25T22:10:44+01:00",
+  "path": "/nix/store/r38j5g6awlairqmkvn8ii76rzqbcplp6-psx-dependency-fc0a46e",
+  "sha256": "1ik8ynd5g5q442qy56infyivg634sa9pa1n5vddxd0z0fqjvcrmf",
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
+}

@@ -2,48 +2,58 @@
 
 let
   packages = {
-    "guzzlehttp/psr7" = {
+    "doctrine/annotations" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "guzzlehttp-psr7-35ea11d335fd638b5882ff1725228b3d35496ab1";
+        name = "doctrine-annotations-b17c5014ef81d212ac539f07a1001832df1b6d3b";
         src = fetchurl {
-          url = https://api.github.com/repos/guzzle/psr7/zipball/35ea11d335fd638b5882ff1725228b3d35496ab1;
-          sha256 = "1nsd7sla2jpx9kzg0lzk4kvc66d30bnkf2yfzdp7gghb67wvajfa";
+          url = https://api.github.com/repos/doctrine/annotations/zipball/b17c5014ef81d212ac539f07a1001832df1b6d3b;
+          sha256 = "0p2qbbsirr2bahlpn0i1id93lb0cj2xpbcsh5l7vcyg253qz3775";
         };
       };
     };
-    "psr/http-factory" = {
+    "doctrine/lexer" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "psr-http-factory-12ac7fcd07e5b077433f5f2bee95b3a771bf61be";
+        name = "doctrine-lexer-e864bbf5904cb8f5bb334f99209b48018522f042";
         src = fetchurl {
-          url = https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be;
-          sha256 = "0inbnqpc5bfhbbda9dwazsrw9xscfnc8rdx82q1qm3r446mc1vds";
+          url = https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042;
+          sha256 = "11lg9fcy0crb8inklajhx3kyffdbx7xzdj8kwl21xsgq9nm9iwvv";
         };
       };
     };
-    "psr/http-message" = {
+    "psr/cache" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "psr-http-message-f6561bf28d520154e4b0ec72be95418abe6d9363";
+        name = "psr-cache-d11b50ad223250cf17b86e38383413f5a6764bf8";
         src = fetchurl {
-          url = https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363;
-          sha256 = "195dd67hva9bmr52iadr4kyp2gw2f5l51lplfiay2pv6l9y4cf45";
+          url = https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8;
+          sha256 = "06i2k3dx3b4lgn9a4v1dlgv8l9wcl4kl7vzhh63lbji0q96hv8qz";
         };
       };
     };
-    "ralouphie/getallheaders" = {
+    "psr/container" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "ralouphie-getallheaders-120b605dfeb996808c31b6477290a714d356e822";
+        name = "psr-container-8622567409010282b7aeebe4bb841fe98b58dcaf";
         src = fetchurl {
-          url = https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822;
-          sha256 = "1bv7ndkkankrqlr2b4kw7qp3fl0dxi6bp26bnim6dnlhavd6a0gg";
+          url = https://api.github.com/repos/php-fig/container/zipball/8622567409010282b7aeebe4bb841fe98b58dcaf;
+          sha256 = "0qfvyfp3mli776kb9zda5cpc8cazj3prk0bg0gm254kwxyfkfrwn";
         };
       };
     };
   };
   devPackages = {
+    "doctrine/cache" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "doctrine-cache-13e3381b25847283a91948d04640543941309727";
+        src = fetchurl {
+          url = https://api.github.com/repos/doctrine/cache/zipball/13e3381b25847283a91948d04640543941309727;
+          sha256 = "088fxbpjssp8x95qr3ip2iynxrimimrby03xlsvp2254vcyx94c5";
+        };
+      };
+    };
     "doctrine/instantiator" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
@@ -51,16 +61,6 @@ let
         src = fetchurl {
           url = https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b;
           sha256 = "04rihgfjv8alvvb92bnb5qpz8fvqvjwfrawcjw34pfnfx4jflcwh";
-        };
-      };
-    };
-    "http-interop/http-factory-tests" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "http-interop-http-factory-tests-642056c5360e8a74779cbf133afbc8aa2c174e15";
-        src = fetchurl {
-          url = https://api.github.com/repos/http-interop/http-factory-tests/zipball/642056c5360e8a74779cbf133afbc8aa2c174e15;
-          sha256 = "0z24kgjiw8ivlr40zqhyh934jv8xs6cx4aldgwvx20rsng90qrw8";
         };
       };
     };
@@ -191,6 +191,26 @@ let
         src = fetchurl {
           url = https://api.github.com/repos/sebastianbergmann/phpunit/zipball/038d4196d8e8cb405cd5e82cedfe413ad6eef9ef;
           sha256 = "166kbsg0w6hrakfzsl4rqbdwma1jv8mmhl1a1yqkd5p90913hd0n";
+        };
+      };
+    };
+    "psr/simple-cache" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "psr-simple-cache-408d5eafb83c57f6365a3ca330ff23aa4a5fa39b";
+        src = fetchurl {
+          url = https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b;
+          sha256 = "1djgzclkamjxi9jy4m9ggfzgq1vqxaga2ip7l3cj88p7rwkzjxgw";
+        };
+      };
+    };
+    "psx/cache" = {
+      targetDir = "";
+      src = composerEnv.buildZipPackage {
+        name = "psx-cache-db251e891d553b5fb633c5f2535a36bfcdfa52cf";
+        src = fetchurl {
+          url = https://api.github.com/repos/apioo/psx-cache/zipball/db251e891d553b5fb633c5f2535a36bfcdfa52cf;
+          sha256 = "1x6dz7glxjjxkgvq3kdzqc6dy55278diisv3f474xiyjsi9svp24";
         };
       };
     };
@@ -348,11 +368,12 @@ let
 in
 composerEnv.buildPackage {
   inherit packages devPackages noDev;
-  name = "http-interop-http-factory-guzzle";
+  name = "psx-dependency";
   src = ./.;
   executable = false;
   symlinkDependencies = false;
   meta = {
-    license = "MIT";
+    homepage = http://phpsx.org;
+    license = "Apache-2.0";
   };
 }
