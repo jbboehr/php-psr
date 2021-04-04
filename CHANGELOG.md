@@ -9,6 +9,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Changed
 - Updated psr/container to 1.1.1
 
+### Fixed
+- Use __dllspec(dllimport) where appropriate in php_psr.h on windows
+
 ## [1.0.1] - 2020-11-12
 
 ### Fixed 
