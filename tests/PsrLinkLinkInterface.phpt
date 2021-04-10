@@ -6,10 +6,10 @@ Psr\Link\LinkInterface
 <?php
 use Psr\Link\LinkInterface;
 class MyImpl implements LinkInterface {
-    public function getHref() {}
-    public function isTemplated() {}
-    public function getRels() {}
-    public function getAttributes() {}
+    public function getHref(): string {}
+    public function isTemplated(): bool {}
+    public function getRels(): array {}
+    public function getAttributes(): array {}
 }
 $ex = new MyImpl();
 var_dump($ex instanceof LinkInterface);

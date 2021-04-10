@@ -6,8 +6,12 @@ Psr\Link\LinkProviderInterface
 <?php
 use Psr\Link\LinkProviderInterface;
 class MyImpl implements LinkProviderInterface {
-    public function getLinks() {}
-    public function getLinksByRel($rel) {}
+    public function getLinks(): array {
+        return [];
+    }
+    public function getLinksByRel(string $rel): array {
+        return [];
+    }
 }
 $ex = new MyImpl();
 var_dump($ex instanceof LinkProviderInterface);

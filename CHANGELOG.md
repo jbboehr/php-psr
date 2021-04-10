@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Changed
 - Update psr/cache to 3.0.0
 - Update psr/container to 2.0.1
+- Update psr/link to 2.0.1
 
 ### Removed
 - PHP 7 support

@@ -7,19 +7,51 @@ Psr\Link\EvolvableLinkInterface
 use Psr\Link\LinkInterface;
 use Psr\Link\EvolvableLinkInterface;
 class MyImpl implements EvolvableLinkInterface {
-    public function getHref() {}
-    public function isTemplated() {}
-    public function getRels() {}
-    public function getAttributes() {}
-    public function withHref($href) {}
-    public function withRel($rel) {}
-    public function withoutRel($rel) {}
-    public function withAttribute($attribute, $value) {}
-    public function withoutAttribute($attribute) {}
+    public function getHref(): string {
+        return "";
+    }
+
+    public function isTemplated(): bool {
+        return false;
+    }
+
+    public function getRels(): array {
+        return [];
+    }
+
+    public function getAttributes(): array {
+        return [];
+    }
+
+    public function withHref(string|\Stringable $href): static {
+        return $this;
+    }
+
+    public function withRel(string $rel): static {
+        return $this;
+    }
+
+    public function withoutRel(string $rel): static {
+        return $this;
+    }
+
+    public function withAttribute(string $attribute, string|\Stringable|int|float|bool|array $value): static {
+        return $this;
+    }
+
+    public function withoutAttribute(string $attribute): static {
+        return $this;
+    }
 }
 $ex = new MyImpl();
 var_dump($ex instanceof LinkInterface);
 var_dump($ex instanceof EvolvableLinkInterface);
+var_dump($ex->withHref("foo") === $ex);
+var_dump($ex->withRel("foo") === $ex);
+var_dump($ex->withoutRel("foo") === $ex);
 --EXPECT--
+bool(true)
+bool(true)
+bool(true)
 bool(true)
 bool(true)
