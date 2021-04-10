@@ -1,10 +1,11 @@
 
 # php-psr
 
-[![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
 [![GitHub Linux Build Status](https://github.com/jbboehr/php-psr/workflows/linux/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Alinux)
 [![GitHub OSX Build Status](https://github.com/jbboehr/php-psr/workflows/osx/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aosx)
+[![GitHub Windows Build Status](https://github.com/jbboehr/php-psr/workflows/windows/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Awindows)
 [![GitHub Docker Build Status](https://github.com/jbboehr/php-psr/workflows/docker/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Adocker)
+[![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
 [![Coverage Status][:badge-coveralls:]][:build-coveralls:]
 [![License][:badge-license:]][:ext-license:]
 

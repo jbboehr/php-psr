@@ -3,32 +3,44 @@ name: linux
 on:
   push:
     branches:
-    - master
-    - dev-1.x
-    - github-actions
-    - ci
+      - master
+      - dev-1.x
+      - github-actions
+      - ci
+      - linux
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
-  linux:
-    runs-on: ubuntu-20.04
+  test_linux:
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+
+    name: PHP ${{ matrix.php-versions }} / ${{ matrix.operating-system }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        PHP_VERSION: ["7.3", "7.4", "8.0"]
-        COVERAGE: ["true", "false"]
+        operating-system: [ubuntu-20.04]
+        php-versions:
+          - "7.3"
+          - "7.4"
+          - "8.0"
+        coverage:
+          - "true"
+          - "false"
+
     steps:
-    - uses: actions/checkout@v2
-    - name: I am tired of writing this shit in YAML and learning a new DSL for every CI service so I'm putting everything in a FSCKING BASH SCRIPT
-      env:
-        PHP_VERSION: ${{ matrix.PHP_VERSION }}
-        COVERAGE: ${{ matrix.COVERAGE }}
-      run: bash ./.github/workflows/linux.sh
-    - name: Coveralls
-      if: ${{ matrix.COVERAGE == 'true' }}
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./coverage.info
+      - uses: actions/checkout@v2
+
+      - run: bash .github/scripts/linux.sh
+        env:
+          PHP_VERSION: ${{ matrix.php-versions }}
+          COVERAGE: ${{ matrix.coverage }}
+
+      - name: Coveralls
+        if: ${{ matrix.coverage == 'true' }}
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage.info
