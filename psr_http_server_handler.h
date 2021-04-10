@@ -5,6 +5,7 @@
 #include "php_psr.h"
 
 #define PHP_PSR_HTTP_SERVER_HANDLER_VERSION "1.0.0"
+#define PHP_PSR_HTTP_SERVER_HANDLER_VERSION_ID 10000
 
 extern PHP_MINIT_FUNCTION(psr_http_server_handler);
 

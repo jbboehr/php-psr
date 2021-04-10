@@ -6,6 +6,7 @@
 #include "php_psr.h"
 
 #define PHP_PSR_LINK_VERSION "2.0.1"
+#define PHP_PSR_LINK_VERSION_ID 20001
 
 extern PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkProviderInterface_ce_ptr;

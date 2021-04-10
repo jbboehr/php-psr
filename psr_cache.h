@@ -6,6 +6,7 @@
 #include "php_psr.h"
 
 #define PHP_PSR_CACHE_VERSION "3.0.0"
+#define PHP_PSR_CACHE_VERSION_ID 30000
 
 extern PHP_PSR_API zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;

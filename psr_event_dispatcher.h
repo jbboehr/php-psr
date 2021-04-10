@@ -6,6 +6,7 @@
 #include "php_psr.h"
 
 #define PHP_PSR_EVENT_DISPATCHER_VERSION "1.0.0"
+#define PHP_PSR_EVENT_DISPATCHER_VERSION_ID 10000
 
 extern PHP_PSR_API zend_class_entry * PsrEventDispatcherEventDispatcherInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrEventDispatcherListenerProviderInterface_ce_ptr;
