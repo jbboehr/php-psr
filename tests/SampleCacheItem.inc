@@ -4,33 +4,43 @@ use Psr\Cache\CacheItemInterface;
 
 class SampleCacheItem implements CacheItemInterface
 {
-    public function getKey()
+    public function getKey(): string
     {
         var_dump(__METHOD__);
+        return "";
     }
 
-    public function get()
+    public function get(): mixed
     {
         var_dump(__METHOD__);
+        return null;
     }
 
-    public function isHit()
+    public function isHit(): bool
     {
         var_dump(__METHOD__);
+        return false;
     }
 
-    public function set($value)
+    public function set(mixed $value): static
     {
         var_dump(__METHOD__, $value);
+        return $this;
     }
 
-    public function expiresAt($expiration)
+    public function expiresAt(?\DateTimeInterface $expiration): static
     {
-        var_dump(__METHOD__, $expiration);
+        var_dump(__METHOD__, $expiration?->getTimestamp());
+        return $this;
     }
 
-    public function expiresAfter($time)
+    public function expiresAfter(int|\DateInterval|null $time): static
     {
-        var_dump(__METHOD__, $time);
+        if (!($time instanceof \DateInterval)) {
+            var_dump(__METHOD__, $time);
+        } else {
+            var_dump(__METHOD__, $time->format('%d days'));
+        }
+        return $this;
     }
 }

@@ -9,6 +9,7 @@
 #include "ext/spl/spl_exceptions.h"
 #include "zend_API.h"
 #include "zend_interfaces.h"
+#include "zend_exceptions.h"
 
 #include "php_psr.h"
 #include "psr_cache.h"
@@ -22,6 +23,7 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
     zend_class_entry ce;
     INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheException", NULL);
     PsrCacheCacheException_ce_ptr = zend_register_internal_interface(&ce);
+    zend_class_implements(PsrCacheCacheException_ce_ptr, 1, zend_ce_throwable);
 }
 
 /* }}} ---------------------------------------------------------------------- */

@@ -12,8 +12,8 @@ $cacheItem->getKey();
 $cacheItem->get();
 $cacheItem->isHit();
 $cacheItem->set('test set');
-$cacheItem->expiresAt(1435364259);
-$cacheItem->expiresAfter(1435364259);
+$cacheItem->expiresAt(new DateTime('2000-01-01'));
+$cacheItem->expiresAfter(new DateInterval("P2Y4DT6H8M"));
 --EXPECT--
 bool(true)
 array(1) {
@@ -26,7 +26,7 @@ string(22) "SampleCacheItem::isHit"
 string(20) "SampleCacheItem::set"
 string(8) "test set"
 string(26) "SampleCacheItem::expiresAt"
-int(1435364259)
+int(946684800)
 string(29) "SampleCacheItem::expiresAfter"
-int(1435364259)
+string(6) "4 days"
 
