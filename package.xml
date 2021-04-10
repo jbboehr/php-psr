@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2020-11-12</date>
+ <date>2021-04-10</date>
  <version>
-  <release>1.0.1</release>
-  <api>1.0.1</api>
+  <release>1.1.0</release>
+  <api>1.1.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,10 +26,9 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
- - Test failures on PHP 8 in psr-http-client and psr-http-message due to changes in inheritance
- - Compile failures with clang
- - Compatibility with API changes to PHP 8 in psr-log (@remicollet)
- - Report proper default value in reflection for LoggerInterface - PHP 8 only
+- Update psr/container to 1.1.1
+- Add version ID constants to each header
+- Use __dllspec(dllimport) where appropriate in php_psr.h on windows
  </notes>
  <contents>
   <dir name="/">

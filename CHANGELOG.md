@@ -4,7 +4,7 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [1.1.0] - 2021-04-10
 
 ### Changed
 - Update psr/container to 1.1.1
@@ -116,7 +116,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - PSR-7 [psr/http-message](https://github.com/php-fig/http-message) v1.0.0 interfaces
 
 
-[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/jbboehr/php-psr/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/jbboehr/php-psr/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jbboehr/php-psr/compare/v0.7.0...v1.0.0
 [0.7.0]: https://github.com/jbboehr/php-psr/compare/v0.6.1...v0.7.0
