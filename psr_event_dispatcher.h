@@ -5,7 +5,6 @@
 #include "php.h"
 #include "php_psr.h"
 
-#if PHP_VERSION_ID >= 70200
 #define PHP_PSR_EVENT_DISPATCHER_VERSION "1.0.0"
 
 extern PHP_PSR_API zend_class_entry * PsrEventDispatcherEventDispatcherInterface_ce_ptr;
@@ -24,7 +23,6 @@ PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(PsrEventDispatcherStoppableEventInterface, isPropagationStopped, 0, _IS_BOOL, 0)
 PHP_PSR_END_ARG_INFO()
-#endif
 
 #endif /* PSR_EVENT_DISPATCHER_H */
 

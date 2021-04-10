@@ -1,7 +1,5 @@
 --TEST--
 Psr\EventDispatcher\StoppableEventInterface
---SKIPIF--
-<?php include('skip_lt_php72.inc'); ?>
 --FILE--
 <?php
 include __DIR__ . '/SampleStoppableEvent.inc';

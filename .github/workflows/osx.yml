@@ -8,6 +8,7 @@ on:
       - github-actions
       - ci
       - osx
+      - "2.x"
   pull_request:
     branches:
       - master
@@ -24,8 +25,6 @@ jobs:
         operating-system:
           - "macos-latest"
         php-versions:
-          - "7.3"
-          - "7.4"
           - "8.0"
     steps:
       - uses: actions/checkout@v2

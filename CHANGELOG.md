@@ -12,6 +12,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 - Use __dllspec(dllimport) where appropriate in php_psr.h on windows
 
+### Removed
+- PHP 7 support
+
 ## [1.0.1] - 2020-11-12
 
 ### Fixed 

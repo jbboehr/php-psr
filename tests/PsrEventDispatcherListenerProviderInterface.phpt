@@ -1,7 +1,5 @@
 --TEST--
 Psr\EventDispatcher\ListenerProviderInterface
---SKIPIF--
-<?php include('skip_lt_php72.inc'); ?>
 --FILE--
 <?php
 include __DIR__ . '/SampleListenerProvider.inc';

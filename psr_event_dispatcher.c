@@ -7,7 +7,6 @@
 #include "php_psr.h"
 #include "psr_event_dispatcher.h"
 
-#if PHP_VERSION_ID >= 70200
 /* {{{ Psr\EventDispatcher\EventDispatcherInterface */
 
 PHP_PSR_API zend_class_entry * PsrEventDispatcherEventDispatcherInterface_ce_ptr;
@@ -59,16 +58,13 @@ static zend_always_inline void php_psr_register_PsrEventDispatcherStoppableEvent
 }
 
 /* }}} Psr\EventDispatcher\StoppableEventInterface */
-#endif
 
 /* {{{ PHP_MINIT_FUNCTION */
 PHP_MINIT_FUNCTION(psr_event_dispatcher)
 {
-#if PHP_VERSION_ID >= 70200
     php_psr_register_PsrEventDispatcherEventDispatcherInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrEventDispatcherListenerProviderInterface(INIT_FUNC_ARGS_PASSTHRU);
     php_psr_register_PsrEventDispatcherStoppableEventInterface(INIT_FUNC_ARGS_PASSTHRU);
-#endif
 
     return SUCCESS;
 }

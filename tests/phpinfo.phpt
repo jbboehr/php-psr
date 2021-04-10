@@ -1,7 +1,5 @@
 --TEST--
 psr phpinfo
---SKIPIF--
-<?php include('skip_lt_php72.inc'); ?>
 --FILE--
 <?php
 phpinfo(INFO_MODULES);

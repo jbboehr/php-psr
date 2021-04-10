@@ -5,6 +5,7 @@ branches:
   - master
   - appveyor
   - w32
+  - "2.x"
 
 platform:
   - x86

@@ -64,15 +64,18 @@ builtins.mapAttrs (k: _v:
 
   in
   pkgs.recurseIntoAttrs {
-    php73 = generateTestsForPlatform {
-        inherit system pkgs;
-        phpAttr = "php73";
-    };
 
-    php74 = generateTestsForPlatform {
-        inherit system pkgs;
-        phpAttr = "php74";
-    };
+    # php73 = generateTestsForPlatform {
+    #     inherit system pkgs;
+    #     phpAttr = "php73";
+    # };
+
+    # php74 = generateTestsForPlatform {
+    #     inherit system pkgs;
+    #     phpAttr = "php74";
+    # };
+
+    # disabled until nixos 21.05 is out
 
 #    php80 = let
 #        path = builtins.fetchTarball {

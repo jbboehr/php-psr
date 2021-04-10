@@ -8,6 +8,7 @@ on:
       - github-actions
       - ci
       - windows
+      - "2.x"
   pull_request:
     branches:
       - master
@@ -22,13 +23,9 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [windows-2016]
-        php-versions: ["7.4", "8.0"]
+        php-versions: ["8.0"]
         ts: [ts, nts]
         include:
-          - php-versions: "7.4"
-            vc_num: "vc15"
-            arch: x64
-            build_type: Win32
           - php-versions: "8.0"
             vc_num: "vs16"
             arch: x64

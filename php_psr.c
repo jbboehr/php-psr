@@ -35,9 +35,8 @@ static PHP_MINIT_FUNCTION(psr)
     PHP_MINIT(psr_http_server_middleware)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_factory)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(psr_http_client)(INIT_FUNC_ARGS_PASSTHRU);
-#if PHP_VERSION_ID >= 70200
     PHP_MINIT(psr_event_dispatcher)(INIT_FUNC_ARGS_PASSTHRU);
-#endif
+
     return SUCCESS;
 }
 
@@ -52,9 +51,7 @@ static PHP_MINFO_FUNCTION(psr)
     php_info_print_table_row(2, "PSR-7 Http Message Version", PHP_PSR_HTTP_MESSAGE_VERSION);
     php_info_print_table_row(2, "PSR-11 Container Version", PHP_PSR_CONTAINER_VERSION);
     php_info_print_table_row(2, "PSR-13 Link Version", PHP_PSR_LOG_VERSION);
-#if PHP_VERSION_ID >= 70200
     php_info_print_table_row(2, "PSR-14 Event Dispatcher", PHP_PSR_EVENT_DISPATCHER_VERSION);
-#endif
     php_info_print_table_row(2, "PSR-15 HTTP Handlers (Server Handler)", PHP_PSR_HTTP_SERVER_HANDLER_VERSION);
     php_info_print_table_row(2, "PSR-15 HTTP Handlers (Middleware)", PHP_PSR_HTTP_SERVER_MIDDLEWARE_VERSION);
     php_info_print_table_row(2, "PSR-16 Simple Cache Version", PHP_PSR_SIMPLE_CACHE_VERSION);

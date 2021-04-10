@@ -251,11 +251,7 @@ PHP_METHOD(PsrLogLoggerAwareTrait, setLogger)
 		Z_PARAM_OBJECT_OF_CLASS(logger, PsrLogLoggerInterface_ce_ptr)
 	ZEND_PARSE_PARAMETERS_END();
 
-#if PHP_VERSION_ID < 80000
-    zend_update_property(Z_OBJCE_P(_this_zval), _this_zval, "logger", sizeof("logger")-1, logger);
-#else
     zend_update_property(Z_OBJCE_P(_this_zval), Z_OBJ_P(_this_zval), "logger", sizeof("logger")-1, logger);
-#endif
 }
 
 static zend_function_entry PsrLogLoggerAwareTrait_methods[] = {

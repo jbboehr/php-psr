@@ -18,56 +18,50 @@ extern PHP_PSR_API zend_class_entry * PsrLogLoggerAwareTrait_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_log);
 
-#if PHP_VERSION_ID < 80000
-#define PHP_PSR_CONTEXT_PARAM ZEND_ARG_ARRAY_INFO(0, context, 0)
-#else
-#define PHP_PSR_CONTEXT_PARAM ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
-#endif
-
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, emergency, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, alert, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, critical, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, error, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, warning, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, notice, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, info, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, debug, 1)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, log, 2)
     ZEND_ARG_INFO(0, level)
     ZEND_ARG_INFO(0, message)
-    PHP_PSR_CONTEXT_PARAM
+    ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerAwareInterface, setLogger, 1)
