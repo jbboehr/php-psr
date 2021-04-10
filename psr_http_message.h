@@ -6,6 +6,7 @@
 #include "php_psr.h"
 
 #define PHP_PSR_HTTP_MESSAGE_VERSION "1.0.0"
+#define PHP_PSR_HTTP_MESSAGE_VERSION_ID 10000
 
 extern PHP_PSR_API zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;

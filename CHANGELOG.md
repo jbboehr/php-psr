@@ -7,7 +7,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 
 ### Changed
-- Updated psr/container to 1.1.1
+- Update psr/container to 1.1.1
+
+### Added
+- Version ID constants to each header
 
 ### Fixed
 - Use __dllspec(dllimport) where appropriate in php_psr.h on windows
