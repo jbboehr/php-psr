@@ -7,10 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 
 ### Changed
-- Updated psr/container to 1.1.1
-
-### Fixed
-- Use __dllspec(dllimport) where appropriate in php_psr.h on windows
+- Updated psr/container to 2.0.1
 
 ### Removed
 - PHP 7 support

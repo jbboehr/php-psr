@@ -5,7 +5,7 @@
 #include "php.h"
 #include "php_psr.h"
 
-#define PHP_PSR_CONTAINER_VERSION "2.0.0"
+#define PHP_PSR_CONTAINER_VERSION "2.0.1"
 
 extern PHP_PSR_API zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
 extern PHP_PSR_API zend_class_entry * PsrContainerContainerInterface_ce_ptr;
