@@ -25,7 +25,7 @@
 #define PHP_PSR_NAME "psr"
 #define PHP_PSR_VERSION "2.0.0-dev"
 #define PHP_PSR_VERSION_ID 20000
-#define PHP_PSR_RELEASE "2020-11-12"
+#define PHP_PSR_RELEASE "2021-04-10"
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
 #define PHP_PSR_ABSTRACT_ME(c, f) PHP_ABSTRACT_ME(c, f, arginfo_ ## c ## _ ## f)
