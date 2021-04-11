@@ -65,16 +65,6 @@ builtins.mapAttrs (k: _v:
   in
   pkgs.recurseIntoAttrs {
 
-    # php73 = generateTestsForPlatform {
-    #     inherit system pkgs;
-    #     phpAttr = "php73";
-    # };
-
-    # php74 = generateTestsForPlatform {
-    #     inherit system pkgs;
-    #     phpAttr = "php74";
-    # };
-
     # disabled until nixos 21.05 is out
 
 #    php80 = let
@@ -87,7 +77,6 @@ builtins.mapAttrs (k: _v:
 #    in generateTestsForPlatform {
 #        inherit system pkgs;
 #        phpAttr = "php80";
-#        noThirdParty = true;
 #    };
   }
 ) {

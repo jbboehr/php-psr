@@ -1,9 +1,9 @@
 {
-  "url": "https://github.com/Crell/Tukio.git",
-  "rev": "28e2bf9ba45035826c693bf96f64b68a3c805d34",
-  "date": "2020-11-10T16:36:07-06:00",
-  "path": "/nix/store/ygqkzfmfw6cw06r9sam91b2px0nyp3bw-Tukio",
-  "sha256": "1fwm74cmc2whskav9n07z8fnm9ll0cs2b89l7rgqdlbslr2s67fs",
+  "url": "https://github.com/jbboehr/Tukio.git",
+  "rev": "c8f1ca5ca3e3eaed842d9e8713e12a632b6a68fd",
+  "date": "2021-04-10T21:23:07-07:00",
+  "path": "/nix/store/m468nyzkqfib5v25gphzxchvfn6igrgw-Tukio-c8f1ca5",
+  "sha256": "162k133d6vfq8rz3rwb1rgd10ydyb8zx85ajhwbd1jac7l4ls4kr",
   "fetchSubmodules": false,
   "deepClone": false,
   "leaveDotGit": false

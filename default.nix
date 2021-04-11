@@ -6,6 +6,7 @@
   stdenv ? pkgs.stdenv,
   php ? pkgs.php,
   phpPackages ? if builtins.hasAttr "packages" php then php.packages else pkgs.phpPackages,
+  composer ? if builtins.hasAttr "composer" phpPackages then phpPackages.composer else null,
   buildPecl ? if builtins.hasAttr "buildPecl" php then php.buildPecl else pkgs.callPackage <nixpkgs/pkgs/build-support/build-pecl.nix> {
     inherit php stdenv;
   },
@@ -18,11 +19,11 @@
   }) { inherit (pkgs) lib; }).gitignoreSource,
 
   composer2nix ? pkgs.callPackage (import (pkgs.fetchFromGitHub {
-      owner = "svanderburg";
+      owner = "jbboehr";
       repo = "composer2nix";
-      rev = "57cecaf5d9d667b47415bb7c1d1f5154be7c759e";
-      sha256 = "0q0x3in43ss1p0drhc5lp5bnp2jqni1i7zxm7lmjl5aad9nkn3gf";
-  })) { inherit pkgs system; },
+      rev = "029aeb997d05cda720cf1f8fdfaca7e921c648ea";
+      sha256 = "034kvfl76xqd1ij5fp62hfa1i3qhfzyxn8yzaqv3r5d1g84mhmll";
+  })) { inherit pkgs system php phpPackages; },
 
   phpPsrVersion ? null,
   phpPsrSha256 ? null,
@@ -35,7 +36,7 @@
 }:
 
 pkgs.callPackage ./nix/derivation.nix {
-  inherit stdenv php phpPackages buildPecl composer2nix;
+  inherit stdenv php phpPackages buildPecl composer2nix composer;
   inherit phpPsrVersion phpPsrSrc phpPsrSha256;
   inherit devSupport;
 }

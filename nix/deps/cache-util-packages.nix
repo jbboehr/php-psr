@@ -2,33 +2,13 @@
 
 let
   packages = {
-    "laminas/laminas-zendframework-bridge" = {
+    "psr/cache" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
-        name = "laminas-laminas-zendframework-bridge-6cccbddfcfc742eb02158d6137ca5687d92cee32";
+        name = "psr-cache-aa5030cfa5405eccfdcb1083ce040c2cb8d253bf";
         src = fetchurl {
-          url = "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/6cccbddfcfc742eb02158d6137ca5687d92cee32";
-          sha256 = "10i9dk9idj2drcknglw9vzgvnk1mpnayq08yx8899q3k33bsj7vd";
-        };
-      };
-    };
-    "psr/http-factory" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "psr-http-factory-12ac7fcd07e5b077433f5f2bee95b3a771bf61be";
-        src = fetchurl {
-          url = "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be";
-          sha256 = "0inbnqpc5bfhbbda9dwazsrw9xscfnc8rdx82q1qm3r446mc1vds";
-        };
-      };
-    };
-    "psr/http-message" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "psr-http-message-f6561bf28d520154e4b0ec72be95418abe6d9363";
-        src = fetchurl {
-          url = "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363";
-          sha256 = "195dd67hva9bmr52iadr4kyp2gw2f5l51lplfiay2pv6l9y4cf45";
+          url = "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf";
+          sha256 = "07rnyjwb445sfj30v5ny3gfsgc1m7j7cyvwjgs2cm9slns1k1ml8";
         };
       };
     };
@@ -41,26 +21,6 @@ let
         src = fetchurl {
           url = "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b";
           sha256 = "04rihgfjv8alvvb92bnb5qpz8fvqvjwfrawcjw34pfnfx4jflcwh";
-        };
-      };
-    };
-    "http-interop/http-factory-tests" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "http-interop-http-factory-tests-7384d93cd4841647b16b3c9bfd56c0367a40fce1";
-        src = fetchurl {
-          url = "https://api.github.com/repos/http-interop/http-factory-tests/zipball/7384d93cd4841647b16b3c9bfd56c0367a40fce1";
-          sha256 = "039qm89virpky5bqcxl64x69f5hcas8f00y06c7ig45b95cf4ni4";
-        };
-      };
-    };
-    "laminas/laminas-coding-standard" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "laminas-laminas-coding-standard-08880ce2fbfe62d471cd3cb766a91da630b32539";
-        src = fetchurl {
-          url = "https://api.github.com/repos/laminas/laminas-coding-standard/zipball/08880ce2fbfe62d471cd3cb766a91da630b32539";
-          sha256 = "0zgc255wp6xwlpa0qnkvqn9l2cy2mbbijqli8775mv6wmfgi79ld";
         };
       };
     };
@@ -104,16 +64,6 @@ let
         };
       };
     };
-    "php-http/psr7-integration-tests" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "php-http-psr7-integration-tests-dbc81e59655c3d927ba62b2cd38be9af334590fc";
-        src = fetchurl {
-          url = "https://api.github.com/repos/php-http/psr7-integration-tests/zipball/dbc81e59655c3d927ba62b2cd38be9af334590fc";
-          sha256 = "1i891yd9rggpqszrknyzcq53cmwrxslqlz46y6fcpp2a7rj1azbs";
-        };
-      };
-    };
     "phpdocumentor/reflection-common" = {
       targetDir = "";
       src = composerEnv.buildZipPackage {
@@ -151,16 +101,6 @@ let
         src = fetchurl {
           url = "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea";
           sha256 = "167snpasy7499pbxpyx2bj607qa1vrg07xfpa30dlpbwi7f34dji";
-        };
-      };
-    };
-    "phpspec/prophecy-phpunit" = {
-      targetDir = "";
-      src = composerEnv.buildZipPackage {
-        name = "phpspec-prophecy-phpunit-2d7a9df55f257d2cba9b1d0c0963a54960657177";
-        src = fetchurl {
-          url = "https://api.github.com/repos/phpspec/prophecy-phpunit/zipball/2d7a9df55f257d2cba9b1d0c0963a54960657177";
-          sha256 = "07dxv6bp7iz0qbhyk0irw3vsq2ikm4h3c6czqa5a31n8kqh1cini";
         };
       };
     };
@@ -428,12 +368,11 @@ let
 in
 composerEnv.buildPackage {
   inherit packages devPackages noDev;
-  name = "laminas-laminas-diactoros";
+  name = "fig-cache-util";
   src = ./.;
   executable = false;
   symlinkDependencies = false;
   meta = {
-    homepage = "https://laminas.dev";
-    license = "BSD-3-Clause";
+    license = "MIT";
   };
 }

@@ -73,9 +73,7 @@ function checkout_third_party_repos() (
 
     # install all libraries we test against
     init_repository ${MONOLOG_SHORTNAME} ${MONOLOG_VERSION} ${MONOLOG_REPO}
-    if [[ ${PHP_VERSION_ID} -lt 80000 ]]; then
-        init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
-    fi
+    init_repository ${LINK_UTIL_SHORTNAME} ${LINK_UTIL_VERSION} ${LINK_UTIL_REPO}
     init_repository ${PSX_CACHE_SHORTNAME} ${PSX_CACHE_VERSION} ${PSX_CACHE_REPO}
     init_repository ${DISPATCH_SHORTNAME} ${DISPATCH_VERSION} ${DISPATCH_REPO}
     init_repository ${REQUEST_HANDLER_SHORTNAME} ${REQUEST_HANDLER_VERSION} ${REQUEST_HANDLER_REPO}
@@ -85,6 +83,7 @@ function checkout_third_party_repos() (
     init_repository ${LAMINAS_DIACTOROS_SHORTNAME} ${LAMINAS_DIACTOROS_VERSION} ${LAMINAS_DIACTOROS_REPO}
     init_repository ${RELAY_SHORTNAME} ${RELAY_VERSION} ${RELAY_REPO}
     init_repository ${PSX_DEPENDENCY_SHORTNAME} ${PSX_DEPENDENCY_VERSION} ${PSX_DEPENDENCY_REPO}
+    init_repository ${CACHE_UTIL_SHORTNAME} ${CACHE_UTIL_VERSION} ${CACHE_UTIL_REPO}
 )
 
 function before_install() (
@@ -144,9 +143,7 @@ function script() (
 
     # run tests for all libraries we test against
     cifold "test ${MONOLOG_SHORTNAME}" test_repository ${MONOLOG_SHORTNAME}
-    if [[ ${PHP_VERSION_ID} -lt 80000 ]]; then
-        cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
-    fi
+    cifold "test ${LINK_UTIL_SHORTNAME}" test_repository ${LINK_UTIL_SHORTNAME}
     cifold "test ${PSX_CACHE_SHORTNAME}" test_repository ${PSX_CACHE_SHORTNAME}
     cifold "test ${DISPATCH_SHORTNAME}" test_repository ${DISPATCH_SHORTNAME}
     cifold "test ${REQUEST_HANDLER_SHORTNAME}" test_repository ${REQUEST_HANDLER_SHORTNAME}
@@ -156,6 +153,7 @@ function script() (
     cifold "test ${LAMINAS_DIACTOROS_SHORTNAME}" test_repository ${LAMINAS_DIACTOROS_SHORTNAME}
     cifold "test ${RELAY_SHORTNAME}" test_repository ${RELAY_SHORTNAME}
     cifold "test ${PSX_DEPENDENCY_SHORTNAME}" test_repository ${PSX_DEPENDENCY_SHORTNAME}
+    cifold "test ${CACHE_UTIL_SHORTNAME}" test_repository ${CACHE_UTIL_SHORTNAME}
 )
 
 function upload_coverage() (

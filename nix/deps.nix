@@ -68,5 +68,7 @@ in
     tukio = commonImport ./deps/tukio.json ./deps/tukio-packages.nix ./deps/tukio-composer.lock "";
     laminas-diactoros = commonImport ./deps/laminas-diactoros.json ./deps/laminas-diactoros-packages.nix ./deps/laminas-diactoros-composer.lock "test/ResponseTest.php";
     relay = commonImport ./deps/relay.json ./deps/relay-packages.nix ./deps/relay-composer.lock "";
+    # psx-dependency is broken
     psx-dependency = commonImport ./deps/psx-dependency.json ./deps/psx-dependency-packages.nix ./deps/psx-dependency-composer.lock "";
+    cache-util = commonImport ./deps/cache-util.json ./deps/cache-util-packages.nix ./deps/cache-util-composer.lock "";
 }

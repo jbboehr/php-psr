@@ -1,0 +1,10 @@
+{
+  "url": "https://github.com/php-fig/cache-util.git",
+  "rev": "2966d0f8adb8f95df85a91d0bce96aefaf11faff",
+  "date": "2021-02-08T17:48:54-06:00",
+  "path": "/nix/store/lfg4hx61n3rwxf40p9l52lhgbpkbl3c7-cache-util",
+  "sha256": "1qj4abfiqhgdg73kq17qpxa2va4v8wpz4k278iglzpain8w2mh5g",
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
+}
