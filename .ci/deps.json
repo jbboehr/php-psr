@@ -11,13 +11,13 @@
     "LINK_UTIL_VERSION": "1.2.0",
     "DISPATCH_SHORTNAME": "dispatch",
     "DISPATCH_REPO": "https://github.com/jbboehr/dispatch.git",
-    "DISPATCH_VERSION": "3faf826ed8ea891fb79358c755d355871c2f38ea",
+    "DISPATCH_VERSION": "923f64581c5af893efc374da3acfea7c0e8cfe31",
     "REQUEST_HANDLER_SHORTNAME": "request-handler",
     "REQUEST_HANDLER_REPO": "https://github.com/middlewares/request-handler.git",
     "REQUEST_HANDLER_VERSION": "v2.0.1",
     "HTTP_FACTORY_GUZZLE_SHORTNAME": "http-factory-guzzle",
-    "HTTP_FACTORY_GUZZLE_REPO": "https://github.com/jbboehr/http-factory-guzzle.git",
-    "HTTP_FACTORY_GUZZLE_VERSION": "30416768eae6a1cb22d1ff7a4ef983115de77e68",
+    "HTTP_FACTORY_GUZZLE_REPO": "https://github.com/http-interop/http-factory-guzzle.git",
+    "HTTP_FACTORY_GUZZLE_VERSION": "e0bf8e25f81619eb70c15f3bbb38360118554776",
     "HTTP_GUZZLE_PSR18_ADAPTER_SHORTNAME": "guzzle-psr18-adapter",
     "HTTP_GUZZLE_PSR18_ADAPTER_REPO": "https://github.com/ricardofiorani/guzzle-psr18-adapter.git",
     "HTTP_GUZZLE_PSR18_ADAPTER_VERSION": "ade71939e1805b6e5305dbec4fb72b64f983b12d",
@@ -35,5 +35,8 @@
     "PSX_DEPENDENCY_VERSION": "fb3fbaab14a3e717a20f7fd970f0c2e5599a739f",
     "CACHE_UTIL_SHORTNAME": "cache-util",
     "CACHE_UTIL_REPO": "https://github.com/php-fig/cache-util.git",
-    "CACHE_UTIL_VERSION": "2.0.0"
+    "CACHE_UTIL_VERSION": "2.0.0",
+    "EVENT_DISPATCHER_UTIL_SHORTNAME": "event-dispatcher-util",
+    "EVENT_DISPATCHER_UTIL_REPO": "https://github.com/jbboehr/event-dispatcher-util.git",
+    "EVENT_DISPATCHER_UTIL_VERSION": "9dc08682c14a15bcd606671cc5db008a44157253"
 }

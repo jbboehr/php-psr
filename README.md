@@ -18,17 +18,17 @@ You can use interfaces provided by this extension in another extension easily - 
 
 | PSR | Reference | Tested against |
 | --- | --- | --- |
-| [PSR-3][:psr-3:] | [psr/log][:psr-log:] [*](#psrlogunimpl) | [monolog][:monolog:] |
-| [PSR-6][:psr-6:] | [psr/cache][:psr-cache:] | [psx-cache][:psx-cache:] |
-| [PSR-7][:psr-7:] | [psr/http-message][:psr-http-message:] | [laminas-diactoros](https://github.com/laminas/laminas-diactoros) |
-| [PSR-11][:psr-11:] | [psr/container][:psr-container:] | [psx-dependency][:psx-dependency:] |
-| [PSR-13][:psr-13:] | [psr/link][:psr-link:] | [php-fig/link-util][:link-util:] |
-| [PSR-14][:psr-14:] | [psr/event-dispatcher][:psr-event-dispatcher:] | [tukio][:tukio:] |
-| [PSR-15][:psr-15:] | [psr/http-server-handler][:psr-http-server-handler:] | [equip/dispatch][:dispatch:] |
-| [PSR-15][:psr-15:] | [psr/http-server-middleware][:psr-http-server-middleware:] | [middleware/request-handler][:request-handler:] |
-| [PSR-16][:psr-16:] | [psr/simple-cache][:psr-simple-cache:] | [psx-cache][:psx-cache:] |
-| [PSR-17][:psr-17:] | [psr/http-factory][:psr-http-factory:] | [http-interop/http-factory-guzzle][:http-factory-guzzle:] |
-| [PSR-18][:psr-18:] | [psr/http-client][:psr-http-client:] | [ricardofiorani/guzzle-psr18-adapter][:guzzle-psr18-adapter:] |
+| [PSR-3] | [psr/log] [*](#psrlogunimpl) | [monolog/monolog] |
+| [PSR-6] | [psr/cache] | [psx/cache], [php-fig/cache-util] |
+| [PSR-7] | [psr/http-message] | [laminas/laminas-diactoros] |
+| [PSR-11] | [psr/container] | [psx/dependency] |
+| [PSR-13] | [psr/link] | [php-fig/link-util] |
+| [PSR-14] | [psr/event-dispatcher] | [crell/tukio], [php-fig/event-dispatcher-util] |
+| [PSR-15] | [psr/http-server-handler] | [equip/dispatch] |
+| [PSR-15] | [psr/http-server-middleware] | [middlewares/request-handler] |
+| [PSR-16] | [psr/simple-cache] | [psx/cache] |
+| [PSR-17] | [psr/http-factory] | [http-interop/http-factory-guzzle] |
+| [PSR-18] | [psr/http-client] | [ricardofiorani/guzzle-psr18-adapter] |
 
 ## Installation
 
@@ -159,37 +159,45 @@ PSR Interfaces: Copyright (c) 2012-present [PHP Framework Interoperability Group
 [:build-coveralls:]: https://coveralls.io/github/jbboehr/php-psr?branch=master
 [:ext-license:]: https://github.com/jbboehr/php-psr/blob/master/LICENSE.md
 [:example:]: https://github.com/jbboehr/php-handlebars/blob/v0.7.1/impl.c#L213-L215
-[:psr-3:]: http://www.php-fig.org/psr/psr-3
-[:psr-log:]: https://github.com/php-fig/log
-[:monolog:]: https://github.com/Seldaek/monolog
-[:psr-6:]: https://www.php-fig.org/psr/psr-6
-[:psr-cache:]: https://github.com/php-fig/cache
-[:psx-cache:]: https://github.com/apioo/psx-cache
-[:psr-7:]: https://www.php-fig.org/psr/psr-7
-[:psr-http-message:]: https://github.com/php-fig/http-message
-[:psr-11:]: https://www.php-fig.org/psr/psr-11
-[:psr-container:]: https://github.com/php-fig/container
-[:psx-dependency:]: https://github.com/apioo/psx-dependency
-[:psr-13:]: https://www.php-fig.org/psr/psr-13
-[:psr-link:]: https://github.com/php-fig/link
-[:link-util:]: https://github.com/php-fig/link-util
-[:psr-16:]: https://www.php-fig.org/psr/psr-16
-[:psr-simple-cache:]: https://github.com/php-fig/simple-cache
 [:windows-psr:]: http://windows.php.net/downloads/pecl/releases/psr/
+
+[PSR-3]: http://www.php-fig.org/psr/psr-3
+[PSR-6]: https://www.php-fig.org/psr/psr-6
+[PSR-7]: https://www.php-fig.org/psr/psr-7
+[PSR-11]: https://www.php-fig.org/psr/psr-11
+[PSR-13]: https://www.php-fig.org/psr/psr-13
+[PSR-14]: http://www.php-fig.org/psr/psr-14
+[PSR-15]: http://www.php-fig.org/psr/psr-15
+[PSR-16]: https://www.php-fig.org/psr/psr-16
+[PSR-17]: https://www.php-fig.org/psr/psr-17
+[PSR-18]: https://www.php-fig.org/psr/psr-18
+
+[psr/log]: https://github.com/php-fig/log
+[psr/cache]: https://github.com/php-fig/cache
+[psr/http-message]: https://github.com/php-fig/http-message
+[psr/container]: https://github.com/php-fig/container
+[psr/link]: https://github.com/php-fig/link
+[psr/simple-cache]: https://github.com/php-fig/simple-cache
+[psr/http-server-handler]: https://github.com/php-fig/http-server-handler
+[psr/http-server-middleware]: https://github.com/php-fig/http-server-middleware
+[psr/http-factory]: https://github.com/php-fig/http-factory
+[psr/http-client]: https://github.com/php-fig/http-client
+[psr/event-dispatcher]: https://github.com/php-fig/event-dispatcher
+
+[equip/dispatch]: https://github.com/equip/dispatch
+[middlewares/request-handler]: https://github.com/middlewares/request-handler
+[http-interop/http-factory-guzzle]: https://github.com/http-interop/http-factory-guzzle
+[ricardofiorani/guzzle-psr18-adapter]: https://github.com/ricardofiorani/guzzle-psr18-adapter
+[monolog/monolog]: https://github.com/Seldaek/monolog
+[psx/cache]: https://github.com/apioo/psx-cache
+[psx/dependency]: https://github.com/apioo/psx-dependency
+[php-fig/link-util]: https://github.com/php-fig/link-util
+[crell/tukio]: https://github.com/Crell/Tukio.git
+[php-fig/event-dispatcher-util]: https://github.com/php-fig/event-dispatcher-util
+[php-fig/cache-util]: https://github.com/php-fig/cache-util
+[laminas/laminas-diactoros]: https://github.com/laminas/laminas-diactoros
+[php-fig/event-dispatcher-util]: https://github.com/php-fig/event-dispatcher-util
+
 [:github-sergeyklay:]: https://github.com/sergeyklay
 [:github-jan-e:]: https://github.com/Jan-E
 [:github-flyinghail:]: https://github.com/flyinghail
-[:psr-15:]: http://www.php-fig.org/psr/psr-15
-[:psr-http-server-handler:]: https://github.com/php-fig/http-server-handler
-[:psr-http-server-middleware:]: https://github.com/php-fig/http-server-middleware
-[:dispatch:]: https://github.com/equip/dispatch
-[:request-handler:]: https://github.com/middlewares/request-handler
-[:psr-17:]: https://www.php-fig.org/psr/psr-17
-[:psr-http-factory:]: https://github.com/php-fig/http-factory
-[:http-factory-guzzle:]: https://github.com/http-interop/http-factory-guzzle
-[:psr-18:]: https://www.php-fig.org/psr/psr-18
-[:psr-http-client:]: https://github.com/php-fig/http-client
-[:guzzle-psr18-adapter:]: https://github.com/ricardofiorani/guzzle-psr18-adapter
-[:psr-14:]: http://www.php-fig.org/psr/psr-14
-[:psr-event-dispatcher:]: https://github.com/php-fig/event-dispatcher
-[:tukio:]: https://github.com/Crell/Tukio.git

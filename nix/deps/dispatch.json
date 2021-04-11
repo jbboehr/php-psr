@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/jbboehr/dispatch.git",
-  "rev": "3faf826ed8ea891fb79358c755d355871c2f38ea",
-  "date": "2021-04-10T22:10:24-07:00",
-  "path": "/nix/store/jvkggnmrpqz83kcpn1pygiwjv8mxpij1-dispatch-3faf826",
-  "sha256": "1b5aax89hq727ll9rqr479fzqcj9qzvgnvfbihyxm1fiizkxrl1j",
+  "rev": "923f64581c5af893efc374da3acfea7c0e8cfe31",
+  "date": "2021-04-10T23:12:45-07:00",
+  "path": "/nix/store/g7s5b7l079h3k3wyay384f3lmdzq8in3-dispatch-923f645",
+  "sha256": "0gn7m6503d68ffpmd7jrqfb9zrhxvmicgwp4255z0rcgl81jz8z9",
   "fetchSubmodules": false,
   "deepClone": false,
   "leaveDotGit": false

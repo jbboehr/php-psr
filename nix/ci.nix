@@ -67,17 +67,17 @@ builtins.mapAttrs (k: _v:
 
     # disabled until nixos 21.05 is out
 
-#    php80 = let
-#        path = builtins.fetchTarball {
-#            url = https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
-#            name = "nixos-unstable";
-#        };
-#        system = k;
-#        pkgs = import (path) { inherit system; };
-#    in generateTestsForPlatform {
-#        inherit system pkgs;
-#        phpAttr = "php80";
-#    };
+    # php80 = let
+    #     path = builtins.fetchTarball {
+    #         url = https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+    #         name = "nixos-unstable";
+    #     };
+    #     system = k;
+    #     pkgs = import (path) { inherit system; };
+    # in generateTestsForPlatform {
+    #     inherit system pkgs;
+    #     phpAttr = "php80";
+    # };
   }
 ) {
   x86_64-linux = {};
