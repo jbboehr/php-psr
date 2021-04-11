@@ -85,6 +85,8 @@ function checkout_third_party_repos() (
     init_repository ${LAMINAS_DIACTOROS_SHORTNAME} ${LAMINAS_DIACTOROS_VERSION} ${LAMINAS_DIACTOROS_REPO}
     init_repository ${RELAY_SHORTNAME} ${RELAY_VERSION} ${RELAY_REPO}
     init_repository ${PSX_DEPENDENCY_SHORTNAME} ${PSX_DEPENDENCY_VERSION} ${PSX_DEPENDENCY_REPO}
+    init_repository ${CACHE_UTIL_SHORTNAME} ${CACHE_UTIL_VERSION} ${CACHE_UTIL_REPO}
+    init_repository ${EVENT_DISPATCHER_UTIL_SHORTNAME} ${EVENT_DISPATCHER_UTIL_VERSION} ${EVENT_DISPATCHER_UTIL_REPO}
 )
 
 function before_install() (
@@ -156,6 +158,8 @@ function script() (
     cifold "test ${LAMINAS_DIACTOROS_SHORTNAME}" test_repository ${LAMINAS_DIACTOROS_SHORTNAME}
     cifold "test ${RELAY_SHORTNAME}" test_repository ${RELAY_SHORTNAME}
     cifold "test ${PSX_DEPENDENCY_SHORTNAME}" test_repository ${PSX_DEPENDENCY_SHORTNAME}
+    cifold "test ${CACHE_UTIL_SHORTNAME}" test_repository ${CACHE_UTIL_SHORTNAME}
+    cifold "test ${EVENT_DISPATCHER_UTIL_SHORTNAME}" test_repository ${EVENT_DISPATCHER_UTIL_SHORTNAME}
 )
 
 function upload_coverage() (

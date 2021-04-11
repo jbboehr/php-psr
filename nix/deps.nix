@@ -6,7 +6,7 @@
     stdenv ? pkgs.stdenv,
     php ? pkgs.php,
     phpPackages ? pkgs.phpPackages,
-    psr ? pkgs.callPackage (import ../default.nix) { inherit stdenv php pkgs; },
+    psr ? pkgs.callPackage (import ../default.nix) { inherit stdenv php pkgs phpPackages; },
     filterAttrs ? pkgs.lib.filterAttrs
 }:
 
@@ -69,4 +69,6 @@ in
     laminas-diactoros = commonImport ./deps/laminas-diactoros.json ./deps/laminas-diactoros-packages.nix ./deps/laminas-diactoros-composer.lock "test/ResponseTest.php";
     relay = commonImport ./deps/relay.json ./deps/relay-packages.nix ./deps/relay-composer.lock "";
     psx-dependency = commonImport ./deps/psx-dependency.json ./deps/psx-dependency-packages.nix ./deps/psx-dependency-composer.lock "";
+    cache-util = commonImport ./deps/cache-util.json ./deps/cache-util-packages.nix ./deps/cache-util-composer.lock "";
+    event-dispatcher-util = commonImport ./deps/event-dispatcher-util.json ./deps/event-dispatcher-util-packages.nix ./deps/event-dispatcher-util-composer.lock "";
 }
