@@ -7,6 +7,7 @@
 #include <Zend/zend_exceptions.h>
 #include "php_psr.h"
 #include "psr_http_client.h"
+#include "psr_private.h"
 
 /* {{{ Psr\Http\Client\ClientInterface */
 
@@ -19,21 +20,18 @@ static zend_function_entry PsrHttpClientClientInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrHttpClientClientInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\ClientInterface", PsrHttpClientClientInterface_methods);
-    PsrHttpClientClientInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Client, ClientInterface);
 }
 
 /* }}} Psr\Http\Client\ClientInterface */
 /* {{{ Psr\Http\Client\ClientExceptionInterface */
 
 PHP_PSR_API zend_class_entry * PsrHttpClientClientExceptionInterface_ce_ptr;
+#define PsrHttpClientClientExceptionInterface_methods NULL
 
 static zend_always_inline void php_psr_register_PsrHttpClientClientExceptionInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\ClientExceptionInterface", NULL);
-    PsrHttpClientClientExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Client, ClientExceptionInterface);
     zend_class_implements(PsrHttpClientClientExceptionInterface_ce_ptr, 1, zend_ce_throwable);
 }
 
@@ -49,9 +47,7 @@ static zend_function_entry PsrHttpClientNetworkExceptionInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrHttpClientNetworkExceptionInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\NetworkExceptionInterface", PsrHttpClientNetworkExceptionInterface_methods);
-    PsrHttpClientNetworkExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Client, NetworkExceptionInterface);
     zend_class_implements(PsrHttpClientNetworkExceptionInterface_ce_ptr, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
 }
 
@@ -67,9 +63,7 @@ static zend_function_entry PsrHttpClientRequestExceptionInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrHttpClientRequestExceptionInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Client\\RequestExceptionInterface", PsrHttpClientRequestExceptionInterface_methods);
-    PsrHttpClientRequestExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Client, RequestExceptionInterface);
     zend_class_implements(PsrHttpClientRequestExceptionInterface_ce_ptr, 1, PsrHttpClientClientExceptionInterface_ce_ptr);
 }
 

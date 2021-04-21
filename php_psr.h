@@ -35,6 +35,9 @@
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1);
 
+#define PHP_PSR_CLASS_NAMESPACE "Psr"
+#define PHP_PSR_ALIAS_NAMESPACE "FakePsr"
+
 #ifdef ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX
 #define PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(c, f, n, cn, an) ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_ ## c ## _ ## f, ZEND_RETURN_VALUE, n, cn, an)
 #define PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(c, f, n, t, an) ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_ ## c ## _ ## f, ZEND_RETURN_VALUE, n, t, an)
