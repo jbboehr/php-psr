@@ -13,4 +13,4 @@ try {
     echo $e->getMessage();
 }
 --EXPECTF--
-%SCannot instantiate abstract class Psr\Log\AbstractLogger%S
+%SCannot instantiate abstract class NativePsrExt\Log\AbstractLogger%S

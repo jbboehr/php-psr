@@ -18,10 +18,10 @@ $request->getReasonPhrase();
 bool(true)
 bool(true)
 array(2) {
-  ["Psr\Http\Message\MessageInterface"]=>
-  string(33) "Psr\Http\Message\MessageInterface"
-  ["Psr\Http\Message\ResponseInterface"]=>
-  string(34) "Psr\Http\Message\ResponseInterface"
+  ["NativePsrExt\Http\Message\MessageInterface"]=>
+  string(42) "NativePsrExt\Http\Message\MessageInterface"
+  ["NativePsrExt\Http\Message\ResponseInterface"]=>
+  string(43) "NativePsrExt\Http\Message\ResponseInterface"
 }
 bool(true)
 string(29) "SampleResponse::getStatusCode"
