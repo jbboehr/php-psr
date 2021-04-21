@@ -19,8 +19,8 @@ var_dump($response instanceof \Psr\Http\Message\ResponseInterface);
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\Http\Server\RequestHandlerInterface"]=>
-  string(48) "NativePsrExt\Http\Server\RequestHandlerInterface"
+  ["PsrExt\Http\Server\RequestHandlerInterface"]=>
+  string(42) "PsrExt\Http\Server\RequestHandlerInterface"
 }
 bool(true)
 string(28) "SampleRequestHandler::handle"

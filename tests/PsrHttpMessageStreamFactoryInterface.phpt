@@ -20,8 +20,8 @@ var_dump($stream instanceof \Psr\Http\Message\StreamInterface);
 --EXPECTF--
 bool(true)
 array(1) {
-  ["NativePsrExt\Http\Message\StreamFactoryInterface"]=>
-  string(48) "NativePsrExt\Http\Message\StreamFactoryInterface"
+  ["PsrExt\Http\Message\StreamFactoryInterface"]=>
+  string(42) "PsrExt\Http\Message\StreamFactoryInterface"
 }
 string(33) "SampleStreamFactory::createStream"
 string(0) ""

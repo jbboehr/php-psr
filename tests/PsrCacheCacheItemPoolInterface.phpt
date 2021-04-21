@@ -22,8 +22,8 @@ $cacheItem->commit();
 --EXPECTF--
 bool(true)
 array(1) {
-  ["NativePsrExt\Cache\CacheItemPoolInterface"]=>
-  string(41) "NativePsrExt\Cache\CacheItemPoolInterface"
+  ["PsrExt\Cache\CacheItemPoolInterface"]=>
+  string(35) "PsrExt\Cache\CacheItemPoolInterface"
 }
 string(28) "SampleCacheItemPool::getItem"
 string(3) "key"

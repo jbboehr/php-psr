@@ -15,8 +15,8 @@ $factory->createUri('http://domain.com');
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\Http\Message\UriFactoryInterface"]=>
-  string(45) "NativePsrExt\Http\Message\UriFactoryInterface"
+  ["PsrExt\Http\Message\UriFactoryInterface"]=>
+  string(39) "PsrExt\Http\Message\UriFactoryInterface"
 }
 string(27) "SampleUriFactory::createUri"
 string(0) ""

@@ -15,8 +15,8 @@ var_dump(is_iterable($return));
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\EventDispatcher\ListenerProviderInterface"]=>
-  string(54) "NativePsrExt\EventDispatcher\ListenerProviderInterface"
+  ["PsrExt\EventDispatcher\ListenerProviderInterface"]=>
+  string(48) "PsrExt\EventDispatcher\ListenerProviderInterface"
 }
 bool(true)
 string(44) "SampleListenerProvider::getListenersForEvent"

@@ -23,10 +23,10 @@ $request->withUri(new SampleUri(), true);
 bool(true)
 bool(true)
 array(2) {
-  ["NativePsrExt\Http\Message\MessageInterface"]=>
-  string(42) "NativePsrExt\Http\Message\MessageInterface"
-  ["NativePsrExt\Http\Message\RequestInterface"]=>
-  string(42) "NativePsrExt\Http\Message\RequestInterface"
+  ["PsrExt\Http\Message\MessageInterface"]=>
+  string(36) "PsrExt\Http\Message\MessageInterface"
+  ["PsrExt\Http\Message\RequestInterface"]=>
+  string(36) "PsrExt\Http\Message\RequestInterface"
 }
 bool(true)
 string(31) "SampleRequest::getRequestTarget"

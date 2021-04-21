@@ -9,10 +9,10 @@
 [![Coverage Status][:badge-coveralls:]][:build-coveralls:]
 [![License][:badge-license:]][:ext-license:]
 
-
-
 This PHP extension provides the interfaces from the [PSR][:psr-fig:] standards as established by the [PHP-FIG][:php-fig:] group.
 You can use interfaces provided by this extension in another extension easily - see this [example][:example:].
+
+As of v2.0 of the extension, classes are defined in the `PsrExt` namespace and aliased into the `Psr` namespace.
 
 ## Interfaces
 

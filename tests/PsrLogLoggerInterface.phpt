@@ -21,8 +21,8 @@ $logger->log('level', 'no context');
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\Log\LoggerInterface"]=>
-  string(32) "NativePsrExt\Log\LoggerInterface"
+  ["PsrExt\Log\LoggerInterface"]=>
+  string(26) "PsrExt\Log\LoggerInterface"
 }
 string(9) "emergency"
 string(13) "msg emergency"

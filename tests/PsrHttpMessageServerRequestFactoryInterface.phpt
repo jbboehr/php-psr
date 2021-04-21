@@ -18,8 +18,8 @@ $request = $factory->createServerRequest('POST', new SampleUri(), ['param' => 'v
 --EXPECTF--
 bool(true)
 array(1) {
-  ["NativePsrExt\Http\Message\ServerRequestFactoryInterface"]=>
-  string(55) "NativePsrExt\Http\Message\ServerRequestFactoryInterface"
+  ["PsrExt\Http\Message\ServerRequestFactoryInterface"]=>
+  string(49) "PsrExt\Http\Message\ServerRequestFactoryInterface"
 }
 string(47) "SampleServerRequestFactory::createServerRequest"
 string(3) "GET"

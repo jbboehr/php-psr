@@ -14,8 +14,8 @@ var_dump(is_bool($return));
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\EventDispatcher\StoppableEventInterface"]=>
-  string(52) "NativePsrExt\EventDispatcher\StoppableEventInterface"
+  ["PsrExt\EventDispatcher\StoppableEventInterface"]=>
+  string(46) "PsrExt\EventDispatcher\StoppableEventInterface"
 }
 bool(true)
 string(42) "SampleStoppableEvent::isPropagationStopped"

@@ -15,8 +15,8 @@ $aware->doSomethingThatLogs();
 --EXPECT--
 bool(true)
 array(1) {
-  ["NativePsrExt\Log\LoggerAwareInterface"]=>
-  string(37) "NativePsrExt\Log\LoggerAwareInterface"
+  ["PsrExt\Log\LoggerAwareInterface"]=>
+  string(31) "PsrExt\Log\LoggerAwareInterface"
 }
 string(10) "got logger"
 string(9) "emergency"

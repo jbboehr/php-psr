@@ -17,8 +17,8 @@ $factory->createUploadedFile($stream, 100, UPLOAD_ERR_NO_FILE, 'image.png', 'ima
 --EXPECTF--
 bool(true)
 array(1) {
-  ["NativePsrExt\Http\Message\UploadedFileFactoryInterface"]=>
-  string(54) "NativePsrExt\Http\Message\UploadedFileFactoryInterface"
+  ["PsrExt\Http\Message\UploadedFileFactoryInterface"]=>
+  string(48) "PsrExt\Http\Message\UploadedFileFactoryInterface"
 }
 string(45) "SampleUploadedFileFactory::createUploadedFile"
 object(SampleStream)#%d (0) {

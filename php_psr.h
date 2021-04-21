@@ -35,7 +35,7 @@
 #define REGISTER_PSR_CLASS_CONST_STRING(ce, const_name, value) \
         zend_declare_class_constant_stringl(ce, const_name, sizeof(const_name)-1, value, sizeof(value)-1);
 
-#define PHP_PSR_CLASS_NAMESPACE "NativePsrExt"
+#define PHP_PSR_CLASS_NAMESPACE "PsrExt"
 #define PHP_PSR_ALIAS_NAMESPACE "Psr"
 
 #ifdef ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX

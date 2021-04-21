@@ -84,6 +84,6 @@ string(10) "no context"
 array(0) {
 }
 array(1) {
-  ["NativePsrExt\Log\LoggerTrait"]=>
-  string(28) "NativePsrExt\Log\LoggerTrait"
+  ["PsrExt\Log\LoggerTrait"]=>
+  string(22) "PsrExt\Log\LoggerTrait"
 }
