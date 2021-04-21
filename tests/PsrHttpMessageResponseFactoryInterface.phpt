@@ -16,8 +16,8 @@ $factory->createResponse(400, 'BAD REQUEST');
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\Http\Message\ResponseFactoryInterface"]=>
-  string(41) "Psr\Http\Message\ResponseFactoryInterface"
+  ["NativePsrExt\Http\Message\ResponseFactoryInterface"]=>
+  string(50) "NativePsrExt\Http\Message\ResponseFactoryInterface"
 }
 string(37) "SampleResponseFactory::createResponse"
 int(200)

@@ -13,8 +13,8 @@ var_dump(is_object($return));
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\EventDispatcher\EventDispatcherInterface"]=>
-  string(44) "Psr\EventDispatcher\EventDispatcherInterface"
+  ["NativePsrExt\EventDispatcher\EventDispatcherInterface"]=>
+  string(53) "NativePsrExt\EventDispatcher\EventDispatcherInterface"
 }
 bool(true)
 string(31) "SampleEventDispatcher::dispatch"

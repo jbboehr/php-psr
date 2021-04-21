@@ -21,6 +21,6 @@ var_dump(class_uses($aware, false));
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\Log\LoggerAwareTrait"]=>
-  string(24) "Psr\Log\LoggerAwareTrait"
+  ["NativePsrExt\Log\LoggerAwareTrait"]=>
+  string(33) "NativePsrExt\Log\LoggerAwareTrait"
 }

@@ -7,16 +7,16 @@
 #include <Zend/zend_exceptions.h>
 #include "php_psr.h"
 #include "psr_container.h"
+#include "psr_private.h"
 
 /* {{{ ContainerExceptionInterface ------------------------------------------ */
 
 PHP_PSR_API zend_class_entry * PsrContainerContainerExceptionInterface_ce_ptr;
+#define PsrContainerContainerExceptionInterface_methods NULL
 
 static zend_always_inline void php_psr_register_PsrContainerContainerExceptionInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Container\\ContainerExceptionInterface", NULL);
-    PsrContainerContainerExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Container, ContainerExceptionInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -32,21 +32,18 @@ static zend_function_entry PsrContainerContainerInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrContainerContainerInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Container\\ContainerInterface", PsrContainerContainerInterface_methods);
-    PsrContainerContainerInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Container, ContainerInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ NotFoundException ---------------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_ptr;
+#define PsrContainerNotFoundExceptionInterface_methods NULL
 
 static zend_always_inline void php_psr_register_PsrContainerNotFoundExceptionInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Container\\NotFoundExceptionInterface", NULL);
-    PsrContainerNotFoundExceptionInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Container, NotFoundExceptionInterface);
     zend_class_implements(PsrContainerNotFoundExceptionInterface_ce_ptr, 1, PsrContainerContainerExceptionInterface_ce_ptr);
 }
 

@@ -35,12 +35,12 @@ bool(true)
 bool(true)
 bool(true)
 array(3) {
-  ["Psr\Http\Message\MessageInterface"]=>
-  string(33) "Psr\Http\Message\MessageInterface"
-  ["Psr\Http\Message\RequestInterface"]=>
-  string(33) "Psr\Http\Message\RequestInterface"
-  ["Psr\Http\Message\ServerRequestInterface"]=>
-  string(39) "Psr\Http\Message\ServerRequestInterface"
+  ["NativePsrExt\Http\Message\MessageInterface"]=>
+  string(42) "NativePsrExt\Http\Message\MessageInterface"
+  ["NativePsrExt\Http\Message\RequestInterface"]=>
+  string(42) "NativePsrExt\Http\Message\RequestInterface"
+  ["NativePsrExt\Http\Message\ServerRequestInterface"]=>
+  string(48) "NativePsrExt\Http\Message\ServerRequestInterface"
 }
 bool(true)
 bool(true)

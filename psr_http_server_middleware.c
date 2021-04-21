@@ -6,21 +6,20 @@
 #include "php.h"
 #include "php_psr.h"
 #include "psr_http_server_middleware.h"
+#include "psr_private.h"
 
 /* {{{ MiddlewareInterface -------------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
 
 static zend_function_entry PsrHttpServerMiddlewareInterface_methods[] = {
-        PHP_PSR_ABSTRACT_ME(PsrHttpServerMiddlewareInterface, process)
-        PHP_FE_END
+    PHP_PSR_ABSTRACT_ME(PsrHttpServerMiddlewareInterface, process)
+    PHP_FE_END
 };
 
 static zend_always_inline void php_psr_register_PsrHttpServerMiddlewareInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\MiddlewareInterface", PsrHttpServerMiddlewareInterface_methods);
-    PsrHttpServerMiddlewareInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Server, MiddlewareInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */

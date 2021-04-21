@@ -7,6 +7,7 @@
 
 #include "php_psr.h"
 #include "psr_link.h"
+#include "psr_private.h"
 
 /* {{{ EvolvableLinkInterface ----------------------------------------------- */
 
@@ -23,9 +24,7 @@ static zend_function_entry PsrLinkEvolvableLinkInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Link\\EvolvableLinkInterface", PsrLinkEvolvableLinkInterface_methods);
-    PsrLinkEvolvableLinkInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Link, EvolvableLinkInterface);
     zend_class_implements(PsrLinkEvolvableLinkInterface_ce_ptr, 1, PsrLinkLinkInterface_ce_ptr);
 }
 
@@ -42,9 +41,7 @@ static zend_function_entry PsrLinkEvolvableLinkProviderInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkProviderInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Link\\EvolvableLinkProviderInterface", PsrLinkEvolvableLinkProviderInterface_methods);
-    PsrLinkEvolvableLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Link, EvolvableLinkProviderInterface);
     zend_class_implements(PsrLinkEvolvableLinkProviderInterface_ce_ptr, 1, PsrLinkLinkProviderInterface_ce_ptr);
 }
 
@@ -63,9 +60,7 @@ static zend_function_entry PsrLinkLinkInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrLinkLinkInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Link\\LinkInterface", PsrLinkLinkInterface_methods);
-    PsrLinkLinkInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Link, LinkInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -81,9 +76,7 @@ static zend_function_entry PsrLinkLinkProviderInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrLinkLinkProviderInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Link\\LinkProviderInterface", PsrLinkLinkProviderInterface_methods);
-    PsrLinkLinkProviderInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Link, LinkProviderInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
