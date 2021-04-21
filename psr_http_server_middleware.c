@@ -6,6 +6,9 @@
 #include "php.h"
 #include "php_psr.h"
 #include "psr_http_server_middleware.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME HttpServer
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 /* {{{ MiddlewareInterface -------------------------------------------------- */

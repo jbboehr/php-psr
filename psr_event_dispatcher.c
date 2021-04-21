@@ -6,6 +6,9 @@
 #include "php.h"
 #include "php_psr.h"
 #include "psr_event_dispatcher.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME EventDispatcher
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 #if PHP_VERSION_ID >= 70200

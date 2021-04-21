@@ -12,6 +12,9 @@
 
 #include "php_psr.h"
 #include "psr_http_message.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME HttpMessage
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 /* {{{ Psr\Http\Message\MessageInterface */

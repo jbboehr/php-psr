@@ -7,6 +7,9 @@
 #include <Zend/zend_exceptions.h>
 #include "php_psr.h"
 #include "psr_http_client.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME HttpClient
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 /* {{{ Psr\Http\Client\ClientInterface */

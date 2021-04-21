@@ -12,6 +12,9 @@
 
 #include "php_psr.h"
 #include "psr_log.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME Log
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 /* Needed to work around https://bugs.php.net/bug.php?id=69579 */

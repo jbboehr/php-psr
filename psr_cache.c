@@ -12,6 +12,9 @@
 
 #include "php_psr.h"
 #include "psr_cache.h"
+
+#define PHP_PSR_LOCAL_PSR_NAME Cache
+#define PHP_PSR_LOCAL_VERSION_NAME v1
 #include "psr_private.h"
 
 /* {{{ CacheException ------------------------------------------------------- */
