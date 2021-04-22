@@ -1,4 +1,7 @@
 
+#define PHP_PSR_ABSTRACT_ME(p, c, f) PHP_ABSTRACT_ME(p ## c, f, PHP_PSR_ARGINFO(p, c, f))
+#define PHP_PSR_ABSTRACT_ME_WITH_FLAGS(p, c, f, fl) ZEND_FENTRY(f, NULL, PHP_PSR_ARGINFO(p, c, f), fl)
+
 static zend_always_inline zend_class_entry* php_psr_register_interface(
     const char* class_name,
     size_t class_name_len,

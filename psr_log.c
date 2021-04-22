@@ -54,15 +54,15 @@ static zend_always_inline void php_psr_register_LogLevel(INIT_FUNC_ARGS)
 PHP_PSR_API zend_class_entry * PsrLogLoggerInterface_ce_ptr;
 
 static zend_function_entry PsrLogLoggerInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, emergency)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, alert)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, critical)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, error)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, warning)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, notice)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, info)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, debug)
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerInterface, log)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, emergency)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, alert)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, critical)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, error)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, warning)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, notice)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, info)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, debug)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerInterface, log)
     PHP_FE_END
 };
 
@@ -77,7 +77,7 @@ static zend_always_inline void php_psr_register_LoggerInterface(INIT_FUNC_ARGS)
 PHP_PSR_API zend_class_entry * PsrLogLoggerAwareInterface_ce_ptr;
 
 static zend_function_entry PsrLogLoggerAwareInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLogLoggerAwareInterface, setLogger)
+    PHP_PSR_ABSTRACT_ME(Log, LoggerAwareInterface, setLogger)
     PHP_FE_END
 };
 

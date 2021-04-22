@@ -15,15 +15,15 @@ extern PHP_PSR_API zend_class_entry * PsrEventDispatcherStoppableEventInterface_
 
 extern PHP_MINIT_FUNCTION(psr_event_dispatcher);
 
-PHP_PSR_BEGIN_ARG_INFO(PsrEventDispatcherEventDispatcherInterface, dispatch, 1)
+PHP_PSR_BEGIN_ARG_INFO(EventDispatcher, EventDispatcherInterface, dispatch, 1)
     ZEND_ARG_TYPE_INFO(0, event, IS_OBJECT, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(PsrEventDispatcherListenerProviderInterface, getListenersForEvent, 1, IS_ITERABLE, 0)
+PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(EventDispatcher, ListenerProviderInterface, getListenersForEvent, 1, IS_ITERABLE, 0)
     ZEND_ARG_TYPE_INFO(0, event, IS_OBJECT, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(PsrEventDispatcherStoppableEventInterface, isPropagationStopped, 0, _IS_BOOL, 0)
+PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(EventDispatcher, StoppableEventInterface, isPropagationStopped, 0, _IS_BOOL, 0)
 PHP_PSR_END_ARG_INFO()
 #endif
 

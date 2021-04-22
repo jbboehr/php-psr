@@ -14,11 +14,11 @@ extern PHP_PSR_API zend_class_entry * PsrContainerNotFoundExceptionInterface_ce_
 
 extern PHP_MINIT_FUNCTION(psr_container);
 
-PHP_PSR_BEGIN_ARG_INFO(PsrContainerContainerInterface, get, 1)
+PHP_PSR_BEGIN_ARG_INFO(Container, ContainerInterface, get, 1)
     ZEND_ARG_TYPE_INFO(0, id, IS_STRING, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrContainerContainerInterface, has, 1)
+PHP_PSR_BEGIN_ARG_INFO(Container, ContainerInterface, has, 1)
     ZEND_ARG_TYPE_INFO(0, id, IS_STRING, 0)
 PHP_PSR_END_ARG_INFO()
 

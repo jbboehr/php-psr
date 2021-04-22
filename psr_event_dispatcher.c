@@ -14,7 +14,7 @@
 PHP_PSR_API zend_class_entry * PsrEventDispatcherEventDispatcherInterface_ce_ptr;
 
 static zend_function_entry PsrEventDispatcherEventDispatcherInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrEventDispatcherEventDispatcherInterface, dispatch)
+    PHP_PSR_ABSTRACT_ME(EventDispatcher, EventDispatcherInterface, dispatch)
     PHP_FE_END
 };
 
@@ -29,7 +29,7 @@ static zend_always_inline void php_psr_register_PsrEventDispatcherEventDispatche
 PHP_PSR_API zend_class_entry * PsrEventDispatcherListenerProviderInterface_ce_ptr;
 
 static zend_function_entry PsrEventDispatcherListenerProviderInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrEventDispatcherListenerProviderInterface, getListenersForEvent)
+    PHP_PSR_ABSTRACT_ME(EventDispatcher, ListenerProviderInterface, getListenersForEvent)
     PHP_FE_END
 };
 
@@ -44,7 +44,7 @@ static zend_always_inline void php_psr_register_PsrEventDispatcherListenerProvid
 PHP_PSR_API zend_class_entry * PsrEventDispatcherStoppableEventInterface_ce_ptr;
 
 static zend_function_entry PsrEventDispatcherStoppableEventInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrEventDispatcherStoppableEventInterface, isPropagationStopped)
+    PHP_PSR_ABSTRACT_ME(EventDispatcher, StoppableEventInterface, isPropagationStopped)
     PHP_FE_END
 };
 

@@ -14,11 +14,11 @@
 PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkInterface_ce_ptr;
 
 static zend_function_entry PsrLinkEvolvableLinkInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkInterface, withHref)
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkInterface, withRel)
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkInterface, withoutRel)
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkInterface, withAttribute)
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkInterface, withoutAttribute)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkInterface, withHref)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkInterface, withRel)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkInterface, withoutRel)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkInterface, withAttribute)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkInterface, withoutAttribute)
     PHP_FE_END
 };
 
@@ -34,8 +34,8 @@ static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkInterface(IN
 PHP_PSR_API zend_class_entry * PsrLinkEvolvableLinkProviderInterface_ce_ptr;
 
 static zend_function_entry PsrLinkEvolvableLinkProviderInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkProviderInterface, withLink)
-    PHP_PSR_ABSTRACT_ME(PsrLinkEvolvableLinkProviderInterface, withoutLink)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkProviderInterface, withLink)
+    PHP_PSR_ABSTRACT_ME(Link, EvolvableLinkProviderInterface, withoutLink)
     PHP_FE_END
 };
 
@@ -51,10 +51,10 @@ static zend_always_inline void php_psr_register_PsrLinkEvolvableLinkProviderInte
 PHP_PSR_API zend_class_entry * PsrLinkLinkInterface_ce_ptr;
 
 static zend_function_entry PsrLinkLinkInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkInterface, getHref)
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkInterface, isTemplated)
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkInterface, getRels)
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkInterface, getAttributes)
+    PHP_PSR_ABSTRACT_ME(Link, LinkInterface, getHref)
+    PHP_PSR_ABSTRACT_ME(Link, LinkInterface, isTemplated)
+    PHP_PSR_ABSTRACT_ME(Link, LinkInterface, getRels)
+    PHP_PSR_ABSTRACT_ME(Link, LinkInterface, getAttributes)
     PHP_FE_END
 };
 
@@ -69,8 +69,8 @@ static zend_always_inline void php_psr_register_PsrLinkLinkInterface(INIT_FUNC_A
 PHP_PSR_API zend_class_entry * PsrLinkLinkProviderInterface_ce_ptr;
 
 static zend_function_entry PsrLinkLinkProviderInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkProviderInterface, getLinks)
-    PHP_PSR_ABSTRACT_ME(PsrLinkLinkProviderInterface, getLinksByRel)
+    PHP_PSR_ABSTRACT_ME(Link, LinkProviderInterface, getLinks)
+    PHP_PSR_ABSTRACT_ME(Link, LinkProviderInterface, getLinksByRel)
     PHP_FE_END
 };
 

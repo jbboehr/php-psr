@@ -14,7 +14,7 @@
 PHP_PSR_API zend_class_entry * PsrHttpClientClientInterface_ce_ptr;
 
 static zend_function_entry PsrHttpClientClientInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpClientClientInterface, sendRequest)
+    PHP_PSR_ABSTRACT_ME(HttpClient, ClientInterface, sendRequest)
     PHP_FE_END
 };
 
@@ -41,7 +41,7 @@ static zend_always_inline void php_psr_register_PsrHttpClientClientExceptionInte
 PHP_PSR_API zend_class_entry * PsrHttpClientNetworkExceptionInterface_ce_ptr;
 
 static zend_function_entry PsrHttpClientNetworkExceptionInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpClientNetworkExceptionInterface, getRequest)
+    PHP_PSR_ABSTRACT_ME(HttpClient, NetworkExceptionInterface, getRequest)
     PHP_FE_END
 };
 
@@ -57,7 +57,7 @@ static zend_always_inline void php_psr_register_PsrHttpClientNetworkExceptionInt
 PHP_PSR_API zend_class_entry * PsrHttpClientRequestExceptionInterface_ce_ptr;
 
 static zend_function_entry PsrHttpClientRequestExceptionInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpClientRequestExceptionInterface, getRequest)
+    PHP_PSR_ABSTRACT_ME(HttpClient, RequestExceptionInterface, getRequest)
     PHP_FE_END
 };
 

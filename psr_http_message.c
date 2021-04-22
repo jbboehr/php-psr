@@ -19,17 +19,17 @@
 PHP_PSR_API zend_class_entry * PsrHttpMessageMessageInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageMessageInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, getProtocolVersion)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, withProtocolVersion)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, getHeaders)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, hasHeader)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, getHeader)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, getHeaderLine)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, withHeader)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, withAddedHeader)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, withoutHeader)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, getBody)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageMessageInterface, withBody)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, getProtocolVersion)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, withProtocolVersion)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, getHeaders)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, hasHeader)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, getHeader)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, getHeaderLine)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, withHeader)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, withAddedHeader)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, withoutHeader)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, getBody)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, MessageInterface, withBody)
     PHP_FE_END
 };
 
@@ -44,12 +44,12 @@ static zend_always_inline void php_register_PsrHttpMessageMessageInterface(INIT_
 PHP_PSR_API zend_class_entry * PsrHttpMessageRequestInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageRequestInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, getRequestTarget)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, withRequestTarget)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, getMethod)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, withMethod)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, getUri)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageRequestInterface, withUri)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, getRequestTarget)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, withRequestTarget)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, getMethod)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, withMethod)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, getUri)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, RequestInterface, withUri)
     PHP_FE_END
 };
 
@@ -66,9 +66,9 @@ static zend_always_inline void php_register_PsrHttpMessageRequestInterface(INIT_
 PHP_PSR_API zend_class_entry * PsrHttpMessageResponseInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageResponseInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageResponseInterface, getStatusCode)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageResponseInterface, withStatus)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageResponseInterface, getReasonPhrase)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ResponseInterface, getStatusCode)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ResponseInterface, withStatus)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ResponseInterface, getReasonPhrase)
     PHP_FE_END
 };
 
@@ -84,19 +84,19 @@ static zend_always_inline void php_register_PsrHttpMessageResponseInterface(INIT
 PHP_PSR_API zend_class_entry * PsrHttpMessageServerRequestInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageServerRequestInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getServerParams)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getCookieParams)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withCookieParams)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getQueryParams)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withQueryParams)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getUploadedFiles)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withUploadedFiles)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getParsedBody)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withParsedBody)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getAttributes)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, getAttribute)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withAttribute)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageServerRequestInterface, withoutAttribute)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getServerParams)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getCookieParams)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withCookieParams)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getQueryParams)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withQueryParams)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getUploadedFiles)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withUploadedFiles)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getParsedBody)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withParsedBody)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getAttributes)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, getAttribute)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withAttribute)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, ServerRequestInterface, withoutAttribute)
     PHP_FE_END
 };
 
@@ -112,21 +112,21 @@ static zend_always_inline void php_register_PsrHttpMessageServerRequestInterface
 PHP_PSR_API zend_class_entry * PsrHttpMessageStreamInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageStreamInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, __toString)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, close)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, detach)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, getSize)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, tell)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, eof)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, isSeekable)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, seek)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, rewind)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, isWritable)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, write)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, isReadable)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, read)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, getContents)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageStreamInterface, getMetadata)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, __toString)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, close)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, detach)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, getSize)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, tell)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, eof)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, isSeekable)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, seek)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, rewind)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, isWritable)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, write)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, isReadable)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, read)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, getContents)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, StreamInterface, getMetadata)
     PHP_FE_END
 };
 
@@ -141,12 +141,12 @@ static zend_always_inline void php_register_PsrHttpMessageStreamInterface(INIT_F
 PHP_PSR_API zend_class_entry * PsrHttpMessageUploadedFileInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageUploadedFileInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, getStream)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, moveTo)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, getSize)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, getError)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, getClientFilename)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUploadedFileInterface, getClientMediaType)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, getStream)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, moveTo)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, getSize)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, getError)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, getClientFilename)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UploadedFileInterface, getClientMediaType)
     PHP_FE_END
 };
 
@@ -161,22 +161,22 @@ static zend_always_inline void php_register_PsrHttpMessageUploadedFileInterface(
 PHP_PSR_API zend_class_entry * PsrHttpMessageUriInterface_ce_ptr;
 
 static zend_function_entry PsrHttpMessageUriInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getScheme)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getAuthority)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getUserInfo)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getHost)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getPort)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getPath)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getQuery)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, getFragment)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withScheme)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withUserInfo)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withHost)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withPort)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withPath)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withQuery)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, withFragment)
-    PHP_PSR_ABSTRACT_ME(PsrHttpMessageUriInterface, __toString)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getScheme)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getAuthority)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getUserInfo)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getHost)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getPort)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getPath)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getQuery)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, getFragment)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withScheme)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withUserInfo)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withHost)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withPort)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withPath)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withQuery)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, withFragment)
+    PHP_PSR_ABSTRACT_ME(HttpMessage, UriInterface, __toString)
     PHP_FE_END
 };
 

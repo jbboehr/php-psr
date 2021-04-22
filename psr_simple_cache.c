@@ -30,14 +30,14 @@ static zend_always_inline void php_psr_register_PsrSimpleCacheCacheException(INI
 PHP_PSR_API zend_class_entry * PsrSimpleCacheCacheInterface_ce_ptr;
 
 static zend_function_entry PsrSimpleCacheCacheInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, get)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, set)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, delete)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, clear)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, getMultiple)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, setMultiple)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, deleteMultiple)
-    PHP_PSR_ABSTRACT_ME(PsrSimpleCacheCacheInterface, has)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, get)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, set)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, delete)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, clear)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, getMultiple)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, setMultiple)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, deleteMultiple)
+    PHP_PSR_ABSTRACT_ME(SimpleCache, CacheInterface, has)
     PHP_FE_END
 };
 

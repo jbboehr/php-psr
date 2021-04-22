@@ -13,7 +13,7 @@
 PHP_PSR_API zend_class_entry * PsrHttpServerMiddlewareInterface_ce_ptr;
 
 static zend_function_entry PsrHttpServerMiddlewareInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpServerMiddlewareInterface, process)
+    PHP_PSR_ABSTRACT_ME(HttpServer, MiddlewareInterface, process)
     PHP_FE_END
 };
 

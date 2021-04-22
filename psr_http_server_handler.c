@@ -13,7 +13,7 @@
 PHP_PSR_API zend_class_entry * PsrHttpServerRequestHandlerInterface_ce_ptr;
 
 static zend_function_entry PsrHttpServerRequestHandlerInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrHttpServerRequestHandlerInterface, handle)
+    PHP_PSR_ABSTRACT_ME(HttpServer, RequestHandlerInterface, handle)
     PHP_FE_END
 };
 

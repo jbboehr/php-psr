@@ -30,12 +30,12 @@ static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 PHP_PSR_API zend_class_entry * PsrCacheCacheItemInterface_ce_ptr;
 
 static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, getKey)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, get)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, isHit)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, set)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAt)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemInterface, expiresAfter)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, getKey)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, get)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, isHit)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, set)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, expiresAt)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemInterface, expiresAfter)
     PHP_FE_END
 };
 
@@ -50,15 +50,15 @@ static zend_always_inline void php_psr_register_CacheItemInterface(INIT_FUNC_ARG
 PHP_PSR_API zend_class_entry * PsrCacheCacheItemPoolInterface_ce_ptr;
 
 static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItem)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, getItems)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, hasItem)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, clear)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItem)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, deleteItems)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, save)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, saveDeferred)
-    PHP_PSR_ABSTRACT_ME(PsrCacheCacheItemPoolInterface, commit)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, getItem)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, getItems)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, hasItem)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, clear)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, deleteItem)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, deleteItems)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, save)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, saveDeferred)
+    PHP_PSR_ABSTRACT_ME(Cache, CacheItemPoolInterface, commit)
     PHP_FE_END
 };
 

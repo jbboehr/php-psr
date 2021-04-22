@@ -15,14 +15,14 @@ extern PHP_PSR_API zend_class_entry * PsrHttpClientRequestExceptionInterface_ce_
 
 extern PHP_MINIT_FUNCTION(psr_http_client);
 
-PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientClientInterface, sendRequest, 1, Psr\\Http\\Message\\ResponseInterface, 0)
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(HttpClient, ClientInterface, sendRequest, 1, Psr\\Http\\Message\\ResponseInterface, 0)
     ZEND_ARG_OBJ_INFO(0, request, Psr\\Http\\Message\\RequestInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientNetworkExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(HttpClient, NetworkExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(PsrHttpClientRequestExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
+PHP_PSR_BEGIN_ARG_WITH_RETURN_OBJ_INFO(HttpClient, RequestExceptionInterface, getRequest, 0, Psr\\Http\\Message\\RequestInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
 #endif /* PSR_HTTP_CLIENT_H */

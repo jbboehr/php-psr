@@ -15,51 +15,51 @@ extern PHP_PSR_API zend_class_entry * PsrLinkLinkProviderInterface_ce_ptr;
 
 extern PHP_MINIT_FUNCTION(psr_link);
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkInterface, withHref, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkInterface, withHref, 1)
     ZEND_ARG_INFO(0, href)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkInterface, withRel, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkInterface, withRel, 1)
     ZEND_ARG_INFO(0, rel)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkInterface, withoutRel, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkInterface, withoutRel, 1)
     ZEND_ARG_INFO(0, rel)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkInterface, withAttribute, 2)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkInterface, withAttribute, 2)
     ZEND_ARG_INFO(0, attribute)
     ZEND_ARG_INFO(0, value)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkInterface, withoutAttribute, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkInterface, withoutAttribute, 1)
     ZEND_ARG_INFO(0, attribute)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkProviderInterface, withLink, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkProviderInterface, withLink, 1)
     ZEND_ARG_OBJ_INFO(0, link, Psr\\Link\\LinkInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkEvolvableLinkProviderInterface, withoutLink, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, EvolvableLinkProviderInterface, withoutLink, 1)
     ZEND_ARG_OBJ_INFO(0, link, Psr\\Link\\LinkInterface, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkInterface, getHref, 0)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkInterface, getHref, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkInterface, isTemplated, 0)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkInterface, isTemplated, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkInterface, getRels, 0)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkInterface, getRels, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkInterface, getAttributes, 0)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkInterface, getAttributes, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkProviderInterface, getLinks, 0)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkProviderInterface, getLinks, 0)
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLinkLinkProviderInterface, getLinksByRel, 1)
+PHP_PSR_BEGIN_ARG_INFO(Link, LinkProviderInterface, getLinksByRel, 1)
     ZEND_ARG_INFO(0, rel)
 PHP_PSR_END_ARG_INFO()
 

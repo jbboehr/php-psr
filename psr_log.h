@@ -25,53 +25,53 @@ extern PHP_MINIT_FUNCTION(psr_log);
 #define PHP_PSR_CONTEXT_PARAM ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_ARRAY, 0, "[]")
 #endif
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, emergency, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, emergency, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, alert, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, alert, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, critical, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, critical, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, error, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, error, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, warning, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, warning, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, notice, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, notice, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, info, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, info, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, debug, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, debug, 1)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerInterface, log, 2)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerInterface, log, 2)
     ZEND_ARG_INFO(0, level)
     ZEND_ARG_INFO(0, message)
     PHP_PSR_CONTEXT_PARAM
 PHP_PSR_END_ARG_INFO()
 
-PHP_PSR_BEGIN_ARG_INFO(PsrLogLoggerAwareInterface, setLogger, 1)
+PHP_PSR_BEGIN_ARG_INFO(Log, LoggerAwareInterface, setLogger, 1)
     ZEND_ARG_OBJ_INFO(0, logger, Psr\\Log\\LoggerInterface, 0)
 PHP_PSR_END_ARG_INFO();
 
