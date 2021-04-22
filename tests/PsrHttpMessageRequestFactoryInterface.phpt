@@ -17,8 +17,8 @@ $factory->createRequest('POST', new SampleUri());
 --EXPECTF--
 bool(true)
 array(1) {
-  ["Psr\Http\Message\RequestFactoryInterface"]=>
-  string(40) "Psr\Http\Message\RequestFactoryInterface"
+  ["PsrExt\Http\Message\RequestFactoryInterface"]=>
+  string(43) "PsrExt\Http\Message\RequestFactoryInterface"
 }
 string(35) "SampleRequestFactory::createRequest"
 string(3) "GET"

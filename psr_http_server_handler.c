@@ -6,21 +6,20 @@
 #include "php.h"
 #include "php_psr.h"
 #include "psr_http_server_handler.h"
+#include "psr_private.h"
 
 /* {{{ RequestHandlerInterface ---------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrHttpServerRequestHandlerInterface_ce_ptr;
 
 static zend_function_entry PsrHttpServerRequestHandlerInterface_methods[] = {
-        PHP_PSR_ABSTRACT_ME(PsrHttpServerRequestHandlerInterface, handle)
-        PHP_FE_END
+    PHP_PSR_ABSTRACT_ME(PsrHttpServerRequestHandlerInterface, handle)
+    PHP_FE_END
 };
 
 static zend_always_inline void php_psr_register_PsrHttpServerRequestHandlerInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Server\\RequestHandlerInterface", PsrHttpServerRequestHandlerInterface_methods);
-    PsrHttpServerRequestHandlerInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Server, RequestHandlerInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */

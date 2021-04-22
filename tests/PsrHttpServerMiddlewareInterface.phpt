@@ -22,8 +22,8 @@ var_dump($response instanceof \Psr\Http\Message\ResponseInterface);
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\Http\Server\MiddlewareInterface"]=>
-  string(35) "Psr\Http\Server\MiddlewareInterface"
+  ["PsrExt\Http\Server\MiddlewareInterface"]=>
+  string(38) "PsrExt\Http\Server\MiddlewareInterface"
 }
 bool(true)
 bool(true)

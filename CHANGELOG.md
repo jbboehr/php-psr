@@ -4,6 +4,12 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
+### Changed
+- All classes are now defined in a separate namespace `PsrExt` and aliased into the `Psr` 
+namespace to aid in debuggging compatibility issues for framework maintainers.
+
 ## [1.1.0] - 2021-04-10
 
 ### Changed

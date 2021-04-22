@@ -12,16 +12,16 @@
 
 #include "php_psr.h"
 #include "psr_cache.h"
+#include "psr_private.h"
 
 /* {{{ CacheException ------------------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrCacheCacheException_ce_ptr;
+#define PsrCacheCacheException_methods NULL
 
 static zend_always_inline void php_psr_register_CacheException(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheException", NULL);
-    PsrCacheCacheException_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Cache, CacheException);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -41,9 +41,7 @@ static zend_function_entry PsrCacheCacheItemInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_CacheItemInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheItemInterface", PsrCacheCacheItemInterface_methods);
-    PsrCacheCacheItemInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Cache, CacheItemInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -66,21 +64,18 @@ static zend_function_entry PsrCacheCacheItemPoolInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_CacheItemPoolInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\CacheItemPoolInterface", PsrCacheCacheItemPoolInterface_methods);
-    PsrCacheCacheItemPoolInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Cache, CacheItemPoolInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ InvalidArgumentException --------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrCacheInvalidArgumentException_ce_ptr;
+#define PsrCacheInvalidArgumentException_methods NULL
 
 static zend_always_inline void php_psr_register_InvalidArgumentException(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Cache\\InvalidArgumentException", NULL);
-    PsrCacheInvalidArgumentException_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(Cache, InvalidArgumentException);
     zend_class_implements(PsrCacheInvalidArgumentException_ce_ptr, 1, PsrCacheCacheException_ce_ptr);
 }
 

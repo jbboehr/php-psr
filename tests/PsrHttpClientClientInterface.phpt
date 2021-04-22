@@ -17,8 +17,8 @@ var_dump($response instanceof \Psr\Http\Message\ResponseInterface);
 --EXPECTF--
 bool(true)
 array(1) {
-  ["Psr\Http\Client\ClientInterface"]=>
-  string(31) "Psr\Http\Client\ClientInterface"
+  ["PsrExt\Http\Client\ClientInterface"]=>
+  string(34) "PsrExt\Http\Client\ClientInterface"
 }
 string(25) "SampleClient::sendRequest"
 object(SampleRequest)#%d (0) {

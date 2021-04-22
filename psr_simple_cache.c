@@ -12,16 +12,16 @@
 
 #include "php_psr.h"
 #include "psr_simple_cache.h"
+#include "psr_private.h"
 
 /* {{{ CacheException ------------------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrSimpleCacheCacheException_ce_ptr;
+#define PsrSimpleCacheCacheException_methods NULL
 
 static zend_always_inline void php_psr_register_PsrSimpleCacheCacheException(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\SimpleCache\\CacheException", NULL);
-    PsrSimpleCacheCacheException_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(SimpleCache, CacheException);
 }
 
 /* }}} ---------------------------------------------------------------------- */
@@ -43,21 +43,18 @@ static zend_function_entry PsrSimpleCacheCacheInterface_methods[] = {
 
 static zend_always_inline void php_psr_register_PsrSimpleCacheCacheInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\SimpleCache\\CacheInterface", PsrSimpleCacheCacheInterface_methods);
-    PsrSimpleCacheCacheInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(SimpleCache, CacheInterface);
 }
 
 /* }}} ---------------------------------------------------------------------- */
 /* {{{ InvalidArgumentException --------------------------------------------- */
 
 PHP_PSR_API zend_class_entry * PsrSimpleCacheInvalidArgumentException_ce_ptr;
+#define PsrSimpleCacheInvalidArgumentException_methods NULL
 
 static zend_always_inline void php_psr_register_PsrSimpleCacheInvalidArgumentException(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\SimpleCache\\InvalidArgumentException", NULL);
-    PsrSimpleCacheInvalidArgumentException_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(SimpleCache, InvalidArgumentException);
     zend_class_implements(PsrSimpleCacheInvalidArgumentException_ce_ptr, 1, PsrSimpleCacheCacheException_ce_ptr);
 }
 

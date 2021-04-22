@@ -17,8 +17,8 @@ $uploadedFile->getClientMediaType();
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\Http\Message\UploadedFileInterface"]=>
-  string(38) "Psr\Http\Message\UploadedFileInterface"
+  ["PsrExt\Http\Message\UploadedFileInterface"]=>
+  string(41) "PsrExt\Http\Message\UploadedFileInterface"
 }
 string(29) "SampleUploadedFile::getStream"
 string(26) "SampleUploadedFile::moveTo"

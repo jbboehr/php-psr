@@ -59,6 +59,7 @@
    <file name="psr_link.h" role="src"/>
    <file name="psr_log.c" role="src"/>
    <file name="psr_log.h" role="src"/>
+   <file name="psr_private.h" role="src"/>
    <file name="psr_simple_cache.c" role="src"/>
    <file name="psr_simple_cache.h" role="src"/>
    <file name="tests/PsrLogAbstractLogger.phpt" role="test"/>

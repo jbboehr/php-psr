@@ -17,8 +17,8 @@ $cacheItem->expiresAfter(1435364259);
 --EXPECT--
 bool(true)
 array(1) {
-  ["Psr\Cache\CacheItemInterface"]=>
-  string(28) "Psr\Cache\CacheItemInterface"
+  ["PsrExt\Cache\CacheItemInterface"]=>
+  string(31) "PsrExt\Cache\CacheItemInterface"
 }
 string(23) "SampleCacheItem::getKey"
 string(20) "SampleCacheItem::get"

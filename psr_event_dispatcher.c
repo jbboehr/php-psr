@@ -6,6 +6,7 @@
 #include "php.h"
 #include "php_psr.h"
 #include "psr_event_dispatcher.h"
+#include "psr_private.h"
 
 #if PHP_VERSION_ID >= 70200
 /* {{{ Psr\EventDispatcher\EventDispatcherInterface */
@@ -19,9 +20,7 @@ static zend_function_entry PsrEventDispatcherEventDispatcherInterface_methods[] 
 
 static zend_always_inline void php_psr_register_PsrEventDispatcherEventDispatcherInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\EventDispatcher\\EventDispatcherInterface", PsrEventDispatcherEventDispatcherInterface_methods);
-    PsrEventDispatcherEventDispatcherInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(EventDispatcher, EventDispatcherInterface);
 }
 
 /* }}} Psr\EventDispatcher\EventDispatcherInterface */
@@ -36,9 +35,7 @@ static zend_function_entry PsrEventDispatcherListenerProviderInterface_methods[]
 
 static zend_always_inline void php_psr_register_PsrEventDispatcherListenerProviderInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\EventDispatcher\\ListenerProviderInterface", PsrEventDispatcherListenerProviderInterface_methods);
-    PsrEventDispatcherListenerProviderInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(EventDispatcher, ListenerProviderInterface);
 }
 
 /* }}} Psr\EventDispatcher\ListenerProviderInterface */
@@ -53,9 +50,7 @@ static zend_function_entry PsrEventDispatcherStoppableEventInterface_methods[] =
 
 static zend_always_inline void php_psr_register_PsrEventDispatcherStoppableEventInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\EventDispatcher\\StoppableEventInterface", PsrEventDispatcherStoppableEventInterface_methods);
-    PsrEventDispatcherStoppableEventInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE(EventDispatcher, StoppableEventInterface);
 }
 
 /* }}} Psr\EventDispatcher\StoppableEventInterface */

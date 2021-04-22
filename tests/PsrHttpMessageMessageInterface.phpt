@@ -23,8 +23,8 @@ $message->withBody(new SampleStream());
 --EXPECTF--
 bool(true)
 array(1) {
-  ["Psr\Http\Message\MessageInterface"]=>
-  string(33) "Psr\Http\Message\MessageInterface"
+  ["PsrExt\Http\Message\MessageInterface"]=>
+  string(36) "PsrExt\Http\Message\MessageInterface"
 }
 string(33) "SampleMessage::getProtocolVersion"
 string(34) "SampleMessage::withProtocolVersion"

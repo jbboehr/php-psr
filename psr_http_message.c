@@ -12,6 +12,7 @@
 
 #include "php_psr.h"
 #include "psr_http_message.h"
+#include "psr_private.h"
 
 /* {{{ Psr\Http\Message\MessageInterface */
 
@@ -34,9 +35,7 @@ static zend_function_entry PsrHttpMessageMessageInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageMessageInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\MessageInterface", PsrHttpMessageMessageInterface_methods);
-    PsrHttpMessageMessageInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, MessageInterface);
 }
 
 /* }}} Psr\Http\Message\MessageInterface */
@@ -56,9 +55,7 @@ static zend_function_entry PsrHttpMessageRequestInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageRequestInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\RequestInterface", PsrHttpMessageRequestInterface_methods);
-    PsrHttpMessageRequestInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, RequestInterface);
     // @todo make sure this is right
     zend_class_implements(PsrHttpMessageRequestInterface_ce_ptr, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
@@ -77,9 +74,7 @@ static zend_function_entry PsrHttpMessageResponseInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageResponseInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ResponseInterface", PsrHttpMessageResponseInterface_methods);
-    PsrHttpMessageResponseInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, ResponseInterface);
     zend_class_implements(PsrHttpMessageResponseInterface_ce_ptr, 1, PsrHttpMessageMessageInterface_ce_ptr);
 }
 
@@ -107,9 +102,7 @@ static zend_function_entry PsrHttpMessageServerRequestInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageServerRequestInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\ServerRequestInterface", PsrHttpMessageServerRequestInterface_methods);
-    PsrHttpMessageServerRequestInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, ServerRequestInterface);
     zend_class_implements(PsrHttpMessageServerRequestInterface_ce_ptr, 1, PsrHttpMessageRequestInterface_ce_ptr);
 }
 
@@ -139,9 +132,7 @@ static zend_function_entry PsrHttpMessageStreamInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageStreamInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\StreamInterface", PsrHttpMessageStreamInterface_methods);
-    PsrHttpMessageStreamInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, StreamInterface);
 }
 
 /* }}} Psr\Http\Message\StreamInterface */
@@ -161,9 +152,7 @@ static zend_function_entry PsrHttpMessageUploadedFileInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageUploadedFileInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UploadedFileInterface", PsrHttpMessageUploadedFileInterface_methods);
-    PsrHttpMessageUploadedFileInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, UploadedFileInterface);
 }
 
 /* }}} Psr\Http\Message\UploadedFileInterface */
@@ -193,9 +182,7 @@ static zend_function_entry PsrHttpMessageUriInterface_methods[] = {
 
 static zend_always_inline void php_register_PsrHttpMessageUriInterface(INIT_FUNC_ARGS)
 {
-    zend_class_entry ce;
-    INIT_CLASS_ENTRY(ce, "Psr\\Http\\Message\\UriInterface", PsrHttpMessageUriInterface_methods);
-    PsrHttpMessageUriInterface_ce_ptr = zend_register_internal_interface(&ce);
+    PHP_PSR_REGISTER_INTERFACE2(Http, Message, UriInterface);
 }
 
 /* }}} Psr\Http\Message\UriInterface */
