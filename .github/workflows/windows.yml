@@ -33,7 +33,7 @@ jobs:
             vc_num: "vs16"
             arch: x64
             build_type: Win32
-          - php-versions: "8.0"
+          - php-versions: "8.1"
             vc_num: "vs16"
             arch: x64
             build_type: Win32
