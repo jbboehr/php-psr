@@ -23,7 +23,7 @@
     "HTTP_GUZZLE_PSR18_ADAPTER_VERSION": "ade71939e1805b6e5305dbec4fb72b64f983b12d",
     "TUKIO_SHORTNAME": "tukio",
     "TUKIO_REPO": "https://github.com/Crell/Tukio.git",
-    "TUKIO_VERSION": "1.2.0",
+    "TUKIO_VERSION": "1.3.0",
     "LAMINAS_DIACTOROS_SHORTNAME": "laminas-diactoros",
     "LAMINAS_DIACTOROS_REPO": "https://github.com/laminas/laminas-diactoros.git",
     "LAMINAS_DIACTOROS_VERSION": "2.8.0",
