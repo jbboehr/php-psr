@@ -1,4 +1,3 @@
-
 ARG BASE_IMAGE=fedora:latest
 
 # image0
