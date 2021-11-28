@@ -26,7 +26,7 @@
     "TUKIO_VERSION": "1.2.0",
     "LAMINAS_DIACTOROS_SHORTNAME": "laminas-diactoros",
     "LAMINAS_DIACTOROS_REPO": "https://github.com/laminas/laminas-diactoros.git",
-    "LAMINAS_DIACTOROS_VERSION": "2.5.0",
+    "LAMINAS_DIACTOROS_VERSION": "2.8.0",
     "RELAY_SHORTNAME": "relay",
     "RELAY_REPO": "https://github.com/jbboehr/Relay.Relay.git",
     "RELAY_VERSION": "d1b26ae9e1cbfcc713f1e7d328a88fb1fba1ab9b",
