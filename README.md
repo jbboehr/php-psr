@@ -36,7 +36,7 @@ As of v2.0 of the extension, classes are defined in the `PsrExt` namespace and a
 
 Prerequisite packages are:
 
-- PHP development headers and tools
+- PHP development headers and tools, `php` >= 7.3
 - `gcc` >= 4.4 | `clang` >= 3.x | `vc` >= 11
 - GNU `make` >= 3.81
 - `automake`
