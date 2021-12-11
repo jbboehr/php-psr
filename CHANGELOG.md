@@ -4,11 +4,14 @@ All Notable changes to `php-psr` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [1.2.0] - 2021-12-11
+
+### Added
+- PHP 8.1 support (@Jeckerson)
 
 ### Changed
 - All classes are now defined in a separate namespace `PsrExt` and aliased into the `Psr` 
-namespace to aid in debuggging compatibility issues for framework maintainers.
+namespace to aid in debuggging compatibility issues for framework maintainers. ([GH-88](https://github.com/jbboehr/php-psr/issues/88))
 
 ## [1.1.0] - 2021-04-10
 
@@ -122,7 +125,8 @@ namespace to aid in debuggging compatibility issues for framework maintainers.
 - PSR-7 [psr/http-message](https://github.com/php-fig/http-message) v1.0.0 interfaces
 
 
-[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/jbboehr/php-psr/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/jbboehr/php-psr/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/jbboehr/php-psr/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/jbboehr/php-psr/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jbboehr/php-psr/compare/v0.7.0...v1.0.0

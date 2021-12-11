@@ -15,10 +15,10 @@
   <email>jbboehr@php.net</email>
   <active>yes</active>
  </lead>
- <date>2021-04-10</date>
+ <date>2021-12-11</date>
  <version>
-  <release>1.1.0</release>
-  <api>1.1.0</api>
+  <release>1.2.0</release>
+  <api>1.2.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -26,9 +26,8 @@
  </stability>
  <license uri="https://opensource.org/licenses/BSD-2-Clause">BSD-2-Clause</license>
  <notes>
-- Update psr/container to 1.1.1
-- Add version ID constants to each header
-- Use __dllspec(dllimport) where appropriate in php_psr.h on windows
+- PHP 8.1 compatibility (@Jeckerson)
+- All classes are now defined in a separate namespace `PsrExt` and aliased into the `Psr` namespace to aid in debuggging compatibility issues for framework maintainers
  </notes>
  <contents>
   <dir name="/">

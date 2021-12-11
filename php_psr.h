@@ -23,9 +23,9 @@
 #endif
 
 #define PHP_PSR_NAME "psr"
-#define PHP_PSR_VERSION "1.1.0"
-#define PHP_PSR_VERSION_ID 10100
-#define PHP_PSR_RELEASE "2021-04-10"
+#define PHP_PSR_VERSION "1.2.0"
+#define PHP_PSR_VERSION_ID 10200
+#define PHP_PSR_RELEASE "2021-12-11"
 #define PHP_PSR_AUTHORS "John Boehr <jbboehr@gmail.com> (lead)"
 
 #define PHP_PSR_ARGINFO(p, c, f) (arginfo_Psr ## p ## c ## _ ## f)
