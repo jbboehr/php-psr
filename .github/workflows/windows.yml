@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [windows-2016]
-        php-versions: ["7.4", "8.0"]
+        php-versions: ["7.4", "8.0", "8.1"]
         ts: [ts, nts]
         include:
           - php-versions: "7.4"
@@ -30,6 +30,10 @@ jobs:
             arch: x64
             build_type: Win32
           - php-versions: "8.0"
+            vc_num: "vs16"
+            arch: x64
+            build_type: Win32
+          - php-versions: "8.1"
             vc_num: "vs16"
             arch: x64
             build_type: Win32

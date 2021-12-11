@@ -142,7 +142,11 @@ PHP_PSR_BEGIN_ARG_INFO(HttpMessage, ServerRequestInterface, withoutAttribute, 1)
     ZEND_ARG_INFO(0, name)
 PHP_PSR_END_ARG_INFO()
 
+#if PHP_VERSION_ID >= 80000
+PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(HttpMessage, StreamInterface, __toString, 0, IS_STRING, 0)
+#else
 PHP_PSR_BEGIN_ARG_INFO(HttpMessage, StreamInterface, __toString, 0)
+#endif
 PHP_PSR_END_ARG_INFO()
 
 PHP_PSR_BEGIN_ARG_INFO(HttpMessage, StreamInterface, close, 0)
@@ -264,7 +268,11 @@ PHP_PSR_BEGIN_ARG_INFO(HttpMessage, UriInterface, withFragment, 1)
     ZEND_ARG_INFO(0, fragment)
 PHP_PSR_END_ARG_INFO()
 
+#if PHP_VERSION_ID >= 80000
+PHP_PSR_BEGIN_ARG_WITH_RETURN_TYPE_INFO(HttpMessage, UriInterface, __toString, 0, IS_STRING, 0)
+#else
 PHP_PSR_BEGIN_ARG_INFO(HttpMessage, UriInterface, __toString, 0)
+#endif
 PHP_PSR_END_ARG_INFO()
 
 #endif /* PSR_HTTP_MESSAGE_H */
