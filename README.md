@@ -118,17 +118,17 @@ In your project, you can prevent the installation of the unnecessary composer pa
         "ext-psr": "*"
     },
     "provide": {
-        "psr/log": "^1",
-        "psr/cache": "^1",
-        "psr/http-message": "^1",
-        "psr/container": "^1",
-        "psr/link": "^1",
-        "psr/event-dispatcher": "^1",
-        "psr/http-server-handler": "^1",
-        "psr/http-server-middleware": "^1",
-        "psr/simple-cache": "^1",
-        "psr/http-factory": "^1",
-        "psr/http-client": "^1"
+        "psr/log": "1.0.0",
+        "psr/cache": "1.0.0",
+        "psr/http-message": "1.0.0",
+        "psr/container": "1.1.1",
+        "psr/link": "1.0.0",
+        "psr/event-dispatcher": "1.0.0",
+        "psr/http-server-handler": "1.0.0",
+        "psr/http-server-middleware": "1.0.0",
+        "psr/simple-cache": "1.0.0",
+        "psr/http-factory": "1.0.0",
+        "psr/http-client": "1.0.0"
     },
 }
 ```
