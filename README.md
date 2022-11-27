@@ -15,7 +15,7 @@ As of v1.2 of the extension, classes are defined in the `PsrExt` namespace and a
 ## Interfaces
 
 | PSR | Reference | 
-| --- | --- | --- |
+| --- | --- |
 | [PSR-3] | [psr/log] [*](#psrlogunimpl) | 
 | [PSR-6] | [psr/cache] | 
 | [PSR-7] | [psr/http-message] | 
