@@ -18,7 +18,6 @@ function install_apt_packages() (
         php${PHP_VERSION}-curl \
         php${PHP_VERSION}-gd \
         php${PHP_VERSION}-mbstring \
-        php${PHP_VERSION}-mongodb \
         php${PHP_VERSION}-xml \
         php${PHP_VERSION}-zip
     ${SUDO} update-alternatives --set php /usr/bin/php${PHP_VERSION}
