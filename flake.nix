@@ -12,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, composer2nix, gitignore }:
+  outputs = { self, nixpkgs, flake-utils, composer2nix, gitignore }@args:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -20,6 +20,7 @@
       in
       rec {
         packages = flake-utils.lib.flattenTree rec {
+          composer2nix = pkgs.callPackage args.composer2nix {};
           php-psr = pkgs.callPackage ./default.nix {
             inherit php;
             inherit (gitignore.lib) gitignoreSource;
@@ -28,9 +29,9 @@
           default = php-psr;
         };
 
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           inputsFrom = builtins.attrValues self.packages.${system};
-          buildInputs = [ composer2nix php.packages.composer ];
+          buildInputs = [ php.packages.composer ];
         };
       }
     );
