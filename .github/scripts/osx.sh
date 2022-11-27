@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e -o pipefail
-source .ci/fold.sh
+source .github/scripts/fold.sh
 
 # config
 export PHP_VERSION=${PHP_VERSION:-"7.4"}

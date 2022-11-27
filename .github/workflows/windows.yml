@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [windows-2016]
+        operating-system: [windows-latest]
         php-versions: ["7.4", "8.0", "8.1"]
         ts: [ts, nts]
         include:
@@ -43,7 +43,7 @@ jobs:
         run: git config --global core.autocrlf false
 
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
 

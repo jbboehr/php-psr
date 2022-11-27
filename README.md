@@ -1,10 +1,8 @@
 
 # php-psr
 
-[![GitHub Linux Build Status](https://github.com/jbboehr/php-psr/workflows/linux/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Alinux)
-[![GitHub OSX Build Status](https://github.com/jbboehr/php-psr/workflows/osx/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aosx)
+[![GitHub Build Status](https://github.com/jbboehr/php-psr/workflows/ci/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Aci)
 [![GitHub Windows Build Status](https://github.com/jbboehr/php-psr/workflows/windows/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Awindows)
-[![GitHub Docker Build Status](https://github.com/jbboehr/php-psr/workflows/docker/badge.svg)](https://github.com/jbboehr/php-psr/actions?query=workflow%3Adocker)
 [![Appveyor Build Status][:badge-appveyor:]][:build-appveyor:]
 [![Coverage Status][:badge-coveralls:]][:build-coveralls:]
 [![License][:badge-license:]][:ext-license:]
@@ -16,19 +14,19 @@ As of v1.2 of the extension, classes are defined in the `PsrExt` namespace and a
 
 ## Interfaces
 
-| PSR | Reference | Tested against |
+| PSR | Reference | 
 | --- | --- | --- |
-| [PSR-3] | [psr/log] [*](#psrlogunimpl) | [monolog/monolog] |
-| [PSR-6] | [psr/cache] | [psx/cache], [php-fig/cache-util] |
-| [PSR-7] | [psr/http-message] | [laminas/laminas-diactoros] |
-| [PSR-11] | [psr/container] | [psx/dependency] |
-| [PSR-13] | [psr/link] | [php-fig/link-util] |
-| [PSR-14] | [psr/event-dispatcher] | [crell/tukio], [php-fig/event-dispatcher-util] |
-| [PSR-15] | [psr/http-server-handler] | [equip/dispatch] |
-| [PSR-15] | [psr/http-server-middleware] | [middlewares/request-handler] |
-| [PSR-16] | [psr/simple-cache] | [psx/cache] |
-| [PSR-17] | [psr/http-factory] | [http-interop/http-factory-guzzle] |
-| [PSR-18] | [psr/http-client] | [ricardofiorani/guzzle-psr18-adapter] |
+| [PSR-3] | [psr/log] [*](#psrlogunimpl) | 
+| [PSR-6] | [psr/cache] | 
+| [PSR-7] | [psr/http-message] | 
+| [PSR-11] | [psr/container] | 
+| [PSR-13] | [psr/link] | 
+| [PSR-14] | [psr/event-dispatcher] | 
+| [PSR-15] | [psr/http-server-handler] | 
+| [PSR-15] | [psr/http-server-middleware] | 
+| [PSR-16] | [psr/simple-cache] | 
+| [PSR-17] | [psr/http-factory] | 
+| [PSR-18] | [psr/http-client] | 
 
 ## Installation
 

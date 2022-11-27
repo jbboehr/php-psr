@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e -o pipefail
-source .ci/fold.sh
+source .github/scripts/fold.sh
 
 # config
 export DOCKER_NAME=${DOCKER_NAME:-"alpine"}

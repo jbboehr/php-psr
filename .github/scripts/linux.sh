@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e -o pipefail
-source .ci/fold.sh
+source .github/scripts/fold.sh
 
 # config
 export PHP_VERSION=${PHP_VERSION:-"7.4"}
@@ -38,5 +38,5 @@ cifold "install apt packages" install_apt_packages
 cifold "install composer" install_composer
 
 # source and execute script used in travis
-source .ci/travis_php.sh
+source .github/scripts/suite.sh
 run_all
