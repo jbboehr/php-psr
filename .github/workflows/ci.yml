@@ -31,7 +31,7 @@ jobs:
                     - "true"
                     - "false"
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - run: bash .github/scripts/linux.sh
               env:
                   PHP_VERSION: ${{ matrix.php-versions }}
@@ -56,7 +56,7 @@ jobs:
                     # these are broken but Apple is trash, so I don't care
                     - "8.3"
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - run: bash .github/scripts/osx.sh
               env:
                   PHP_VERSION: ${{ matrix.php-versions }}
@@ -79,7 +79,7 @@ jobs:
                     - "8.3"
                     - "8.4.0RC1"
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - run: bash .github/scripts/docker.sh
               env:
                   PHP_VERSION: ${{ matrix.php-versions }}
@@ -90,7 +90,7 @@ jobs:
         name: fedora
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
             - run: bash .github/scripts/docker.sh
               env:
                   DOCKER_NAME: fedora
