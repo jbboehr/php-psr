@@ -1,113 +1,177 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - master
-      - github-actions
-      - ci
-  pull_request:
-    branches:
-      - master
+    push:
+        branches:
+            - master
+            - develop
+            - github-actions
+            - ci
+    pull_request:
+        branches:
+            - master
 
 jobs:
-  linux:
-    if: "!contains(github.event.head_commit.message, 'ci skip')"
-    name: PHP ${{ matrix.php-versions }} / ${{ matrix.operating-system }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        operating-system: [ubuntu-latest]
-        php-versions:
-          - "7.4"
-          - "8.0"
-          - "8.1"
-          - "8.2"
-        coverage:
-          - "true"
-          - "false"
-    steps:
-      - uses: actions/checkout@v3
-      - run: bash .github/scripts/linux.sh
-        env:
-          PHP_VERSION: ${{ matrix.php-versions }}
-          COVERAGE: ${{ matrix.coverage }}
-      - name: Coveralls
-        if: ${{ matrix.coverage == 'true' }}
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage.info
+    linux:
+        if: "!contains(github.event.head_commit.message, 'ci skip')"
+        name: PHP ${{ matrix.php-versions }} / ${{ matrix.operating-system }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                operating-system: [ubuntu-latest]
+                php-versions:
+                    - "7.4"
+                    - "8.0"
+                    - "8.1"
+                    - "8.2"
+                    - "8.3"
+                    - "8.4"
+                coverage:
+                    - "true"
+                    - "false"
+        steps:
+            - uses: actions/checkout@v3
+            - run: bash .github/scripts/linux.sh
+              env:
+                  PHP_VERSION: ${{ matrix.php-versions }}
+                  COVERAGE: ${{ matrix.coverage }}
+            - name: Coveralls
+              if: ${{ matrix.coverage == 'true' }}
+              uses: coverallsapp/github-action@master
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  path-to-lcov: ./coverage.info
 
-  osx:
-    if: "!contains(github.event.head_commit.message, 'ci skip')"
-    name: PHP ${{ matrix.php-versions }} / ${{ matrix.operating-system }}
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        operating-system:
-          - "macos-latest"
-        php-versions:
-          - "7.4"
-          - "8.0"
-          - "8.1"
-    steps:
-      - uses: actions/checkout@v3
-      - run: bash .github/scripts/osx.sh
-        env:
-          PHP_VERSION: ${{ matrix.php-versions }}
+    osx:
+        if: "!contains(github.event.head_commit.message, 'ci skip')"
+        name: PHP ${{ matrix.php-versions }} / ${{ matrix.operating-system }}
+        runs-on: ${{ matrix.operating-system }}
+        strategy:
+            fail-fast: false
+            matrix:
+                operating-system:
+                    - "macos-latest"
+                php-versions:
+                    # these are broken but Apple is trash, so I don't care
+                    - "8.3"
+        steps:
+            - uses: actions/checkout@v3
+            - run: bash .github/scripts/osx.sh
+              env:
+                  PHP_VERSION: ${{ matrix.php-versions }}
 
-  docker:
-    if: "!contains(github.event.head_commit.message, 'ci skip')"
-    name: PHP ${{ matrix.php-versions }} / ${{ matrix.docker-image }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        docker-image:
-          - "alpine"
-          - "debian"
-        php-versions:
-          - "7.4"
-          - "8.0"
-          - "8.1"
-          - "8.2-rc"
-    steps:
-      - uses: actions/checkout@v3
-      - run: bash .github/scripts/docker.sh
-        env:
-          PHP_VERSION: ${{ matrix.php-versions }}
-          DOCKER_NAME: ${{ matrix.docker-image }}
+    docker:
+        if: "!contains(github.event.head_commit.message, 'ci skip')"
+        name: PHP ${{ matrix.php-versions }} / ${{ matrix.docker-image }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                docker-image:
+                    - "alpine"
+                    - "debian"
+                php-versions:
+                    - "7.4"
+                    - "8.0"
+                    - "8.1"
+                    - "8.2"
+                    - "8.3"
+                    - "8.4.0RC1"
+        steps:
+            - uses: actions/checkout@v3
+            - run: bash .github/scripts/docker.sh
+              env:
+                  PHP_VERSION: ${{ matrix.php-versions }}
+                  DOCKER_NAME: ${{ matrix.docker-image }}
 
-  docker-fedora:
-    if: "!contains(github.event.head_commit.message, 'ci skip')"
-    name: fedora
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: bash .github/scripts/docker.sh
-        env:
-          DOCKER_NAME: fedora
-          TEST_PHP_EXECUTABLE: /usr/bin/php
+    docker-fedora:
+        if: "!contains(github.event.head_commit.message, 'ci skip')"
+        name: fedora
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: bash .github/scripts/docker.sh
+              env:
+                  DOCKER_NAME: fedora
+                  TEST_PHP_EXECUTABLE: /usr/bin/php
 
-  nix:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix-build
-      - run: nix-build nix/ci.nix
+    nix-matrix:
+        runs-on: ubuntu-latest
+        outputs:
+            matrix: ${{ steps.set-matrix.outputs.matrix }}
+        steps:
+            -   uses: actions/checkout@v4
+            -   uses: cachix/install-nix-action@v27
+                with:
+                    nix_path: nixpkgs=channel:nixos-24.05
+                    extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+            -   id: set-matrix
+                name: Generate Nix Matrix
+                run: |
+                    set -Eeu
+                    matrix="$(nix eval --json '.#githubActions.matrix')"
+                    echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
 
-  nix-flake:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix build
-      - run: nix flake check
+    nix:
+        name: "nix (${{ matrix.name }})"
+        runs-on: ${{ matrix.os }}
+        needs: nix-matrix
+        strategy:
+            matrix: ${{fromJSON(needs.nix-matrix.outputs.matrix)}}
+        steps:
+            -   uses: actions/checkout@v4
+
+            -   name: Set Up Build Cache
+                uses: actions/cache@v4
+                id: nix-cache
+                with:
+                    path: /tmp/nix-store.nar
+                    key: nix-store.nar-${{ runner.os }}-${{ hashFiles('flake.lock') }}-${{ matrix.attr }}
+                    restore-keys: |
+                        nix-store.nar-${{ runner.os }}-${{ hashFiles('flake.lock') }}-${{ matrix.attr }}
+                        nix-store.nar-${{ runner.os }}-${{ hashFiles('flake.lock') }}-
+                        nix-store.nar-${{ runner.os }}-
+
+            -   uses: cachix/install-nix-action@v27
+                with:
+                    nix_path: nixpkgs=channel:nixos-24.05
+                    extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+
+            -   name: Import Nix Store Cache
+                if: "steps.nix-cache.outputs.cache-hit == 'true'"
+                run: |
+                    nix-store --import < /tmp/nix-store.nar
+
+            -   run: nix build -L ".#${{ matrix.attr }}"
+
+            -   run: find -L result*; cp result-coverage/coverage.info coverage.info || true
+
+            # -   name: Upload coverage reports to Codecov
+            #     if: ${{ hashFiles('coverage.info') != '' }}
+            #     uses: codecov/codecov-action@v4
+            #     with:
+            #         file: coverage.info
+            #         token: ${{ secrets.CODECOV_TOKEN }}
+            #         slug: jbboehr/php-perfifidous
+
+            # -   name: Coveralls
+            #     if: ${{ hashFiles('coverage.info') != '' }}
+            #     uses: coverallsapp/github-action@v2
+            #     continue-on-error: true
+            #     with:
+            #         file: coverage.info
+            #         format: lcov
+            #         parallel: true
+
+            -   name: Export Nix Store Cache
+                shell: bash
+                # partially based on https://github.com/NixOS/nix/issues/1245#issuecomment-282586759
+                run: |
+                    drv="$(nix-store -qd "$(readlink result)")"
+                    drvRefs="$( echo "$drv" | xargs nix-store -q --references )"
+                    ( echo "$drvRefs" | grep '[.]drv$' | xargs nix-store -q --outputs ;
+                      echo "$drvRefs" | grep -v '[.]drv$' ) | \
+                        xargs nix-store -r | \
+                        xargs nix-store -qR |
+                        xargs nix-store --export > /tmp/nix-store.nar

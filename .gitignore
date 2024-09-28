@@ -3,11 +3,14 @@
 .c9
 .deps
 .dirstamp
+.direnv
 .libs
+.pre-commit-config.yaml
 .settings
 autom4te.cache
 gmon*
 *.a
+*.dep
 *.la
 *.lo
 *.log

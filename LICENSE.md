@@ -1,7 +1,7 @@
 Simplified BSD License
 ======================
 
-_Copyright © 2016-2018 John Boehr_  
+_Copyright © anno Domini nostri Jesu Christi MMXVI-MMXXIV John Boehr & contributors_  
 _All rights reserved._
 
 Redistribution and use in source and binary forms, with or without
