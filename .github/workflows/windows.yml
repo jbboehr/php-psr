@@ -5,10 +5,6 @@ on:
         branches:
             - master
             - develop
-            - dev-1.x
-            - github-actions
-            - ci
-            - windows
     pull_request:
         branches:
             - master
@@ -22,22 +18,12 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                operating-system: [windows-latest]
-                php-versions: ["7.4", "8.0", "8.1"]
-                ts: [ts, nts]
-                include:
-                    - php-versions: "7.4"
-                      vc_num: "vc15"
-                      arch: x64
-                      build_type: Win32
-                    - php-versions: "8.0"
-                      vc_num: "vs16"
-                      arch: x64
-                      build_type: Win32
-                    - php-versions: "8.1"
-                      vc_num: "vs16"
-                      arch: x64
-                      build_type: Win32
+                operating-system: ["windows-2019"]
+                php-versions: ["8.1", "8.2", "8.3"]
+                ts: ["ts", "nts"]
+                vc_num: ["vs16"]
+                build_type: ["Win32"]
+                arch: ["x64"]
 
         steps:
             - name: Disable Git autocrlf
